@@ -1,0 +1,36 @@
+name: Validate project
+
+on:
+  push:
+    branches: [main, "agent/**", "feature/**"]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  static-validation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install validators
+        run: python -m pip install --upgrade jsonschema gdtoolkit
+
+      - name: Check shell syntax
+        run: bash -n start.sh test.sh verify.sh package.sh
+
+      - name: Rebuild deterministic manifest
+        run: python tools/build_manifest.py
+
+      - name: Validate package
+        run: ./verify.sh
+
+      - name: Check Python syntax
+        run: python -m compileall -q tools

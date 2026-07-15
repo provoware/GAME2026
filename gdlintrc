@@ -1,0 +1,6 @@
+max-line-length: 140
+disable:
+- class-definitions-order
+- max-returns
+excluded_directories: !!set
+  .git: null

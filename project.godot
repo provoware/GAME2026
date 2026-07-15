@@ -1,0 +1,28 @@
+; Engine configuration file.
+; PPPOPPI – Bunkerwahrheit
+config_version=5
+
+[application]
+config/name="PPPOPPI – Bunkerwahrheit"
+run/main_scene="res://scenes/main/main.tscn"
+config/features=PackedStringArray("4.6", "GL Compatibility")
+boot_splash/show_image=false
+
+[display]
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/size/window_width_override=1280
+window/size/window_height_override=720
+window/stretch/mode="canvas_items"
+
+[rendering]
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/default_filters/use_nearest_mipmap_filter=false
+
+[accessibility]
+settings/default_language="de"
+settings/minimum_font_size=18
+
+[debug]
+settings/run_self_tests_on_start=true
