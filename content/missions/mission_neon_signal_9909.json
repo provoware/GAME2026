@@ -1,0 +1,207 @@
+{
+  "id": "mission.neon.signal_9909",
+  "title": "Signal 9909",
+  "description": "Der Bunkerkreis verfolgt eine gestörte Aufnahme bis zum Neon-Kellerclub und entscheidet, ob der Zugriff leise oder öffentlich erzwungen wird.",
+  "category": "story",
+  "repeat_policy": "ONCE_PER_CAMPAIGN",
+  "start_phase_id": "phase.approach",
+  "start_requirements": [
+    {
+      "type": "resource_minimum",
+      "resource_id": "resource.money",
+      "amount": 500
+    },
+    {
+      "type": "current_location",
+      "location_id": "location.bunker.main"
+    },
+    {
+      "type": "character_available",
+      "character_id": "character.pppoppi"
+    }
+  ],
+  "start_costs": [
+    {
+      "type": "modify_resource",
+      "resource_id": "resource.money",
+      "amount": -100
+    }
+  ],
+  "deadline": {
+    "offset_months": 3,
+    "partial_success_threshold": 0.5,
+    "pause_extends_deadline": false
+  },
+  "pause_on_signals": [
+    "resonance.riss_invoked"
+  ],
+  "phases": [
+    {
+      "id": "phase.approach",
+      "title": "Zugang wählen",
+      "paths": [
+        {
+          "id": "path.quiet",
+          "title": "Leiser Zugriff",
+          "requirements": [
+            {
+              "type": "ability_unlocked",
+              "ability_id": "ability.paule.quarter_truth"
+            }
+          ],
+          "selection_effects": [
+            {
+              "type": "set_flag",
+              "flag_id": "mission.signal_9909.path_quiet",
+              "value": true
+            }
+          ]
+        },
+        {
+          "id": "path.loud",
+          "title": "Öffentliche Ablenkung",
+          "requirements": [],
+          "selection_effects": [
+            {
+              "type": "set_flag",
+              "flag_id": "mission.signal_9909.path_loud",
+              "value": true
+            }
+          ]
+        }
+      ],
+      "objectives": [
+        {
+          "id": "reach_neon_club",
+          "title": "Neon-Kellerclub erreichen",
+          "required": true,
+          "target": 1,
+          "trigger": {
+            "signal": "world.location_entered",
+            "match": {
+              "location_id": "location.neon.cellar_club"
+            }
+          }
+        }
+      ],
+      "completion_effects": [
+        {
+          "type": "set_flag",
+          "flag_id": "mission.signal_9909.club_reached",
+          "value": true
+        }
+      ],
+      "next_phase_id": "phase.recovery"
+    },
+    {
+      "id": "phase.recovery",
+      "title": "Aufnahme sichern",
+      "paths": [],
+      "objectives": [
+        {
+          "id": "secure_recording",
+          "title": "Gestörte Aufnahme sichern",
+          "required": true,
+          "target": 1,
+          "trigger": {
+            "signal": "mission.recording_secured",
+            "match": {
+              "recording_id": "recording.signal_9909"
+            }
+          }
+        },
+        {
+          "id": "avoid_control",
+          "title": "Mobile Kontrolle umgehen",
+          "required": false,
+          "target": 1,
+          "path_ids": [
+            "path.quiet"
+          ],
+          "trigger": {
+            "signal": "world.control_avoided",
+            "match": {
+              "control_id": "control.neon.mobile"
+            }
+          }
+        },
+        {
+          "id": "publish_distraction",
+          "title": "Ablenkende Ansage veröffentlichen",
+          "required": false,
+          "target": 1,
+          "path_ids": [
+            "path.loud"
+          ],
+          "trigger": {
+            "signal": "dialogue.choice_selected",
+            "match": {
+              "choice_id": "choice.publish_distraction"
+            }
+          }
+        }
+      ],
+      "completion_effects": [],
+      "next_phase_id": ""
+    }
+  ],
+  "success_effects": [
+    {
+      "type": "modify_resource",
+      "resource_id": "resource.money",
+      "amount": 800
+    },
+    {
+      "type": "modify_resource",
+      "resource_id": "resource.influence",
+      "amount": 5
+    },
+    {
+      "type": "set_flag",
+      "flag_id": "world.signal_9909.secured",
+      "value": true
+    }
+  ],
+  "partial_success_effects": [
+    {
+      "type": "modify_resource",
+      "resource_id": "resource.money",
+      "amount": 250
+    },
+    {
+      "type": "modify_resource",
+      "resource_id": "resource.influence",
+      "amount": 2
+    },
+    {
+      "type": "set_flag",
+      "flag_id": "world.signal_9909.partial",
+      "value": true
+    }
+  ],
+  "failure_effects": [
+    {
+      "type": "modify_resource",
+      "resource_id": "resource.system_pressure",
+      "amount": 10
+    },
+    {
+      "type": "set_flag",
+      "flag_id": "world.signal_9909.lost",
+      "value": true
+    }
+  ],
+  "cancel_effects": [
+    {
+      "type": "modify_resource",
+      "resource_id": "resource.money",
+      "amount": -50
+    }
+  ],
+  "tags": [
+    "neonring",
+    "archive",
+    "signal",
+    "alternative_paths"
+  ]
+}

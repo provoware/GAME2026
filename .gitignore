@@ -1,0 +1,7 @@
+.godot/
+*.tmp
+*.bak
+*.log
+__pycache__/
+*.pyc
+user/
