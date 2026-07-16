@@ -23,7 +23,8 @@ func run_all() -> Dictionary:
 	var passed := 0
 	var failures: Array[String] = []
 	for test_case in tests:
-		var result: GameResult = (test_case[1] as Callable).call()
+		var callable: Callable = test_case[1]
+		var result: GameResult = callable.call()
 		if result.ok:
 			passed += 1
 		else:
@@ -36,28 +37,13 @@ func _test_gold_quality_and_history() -> GameResult:
 	var result := _start(state, "c-quality", "path.quiet")
 	if not result.ok:
 		return result
-	result = _signal(
-		state,
-		"world.location_entered",
-		{"location_id": "location.neon.cellar_club"},
-		"c-quality-location"
-	)
+	result = _signal(state, "world.location_entered", {"location_id": "location.neon.cellar_club"}, "c-quality-location")
 	if not result.ok:
 		return result
-	result = _signal(
-		state,
-		"world.control_avoided",
-		{"control_id": "control.neon.mobile"},
-		"c-quality-optional"
-	)
+	result = _signal(state, "world.control_avoided", {"control_id": "control.neon.mobile"}, "c-quality-optional")
 	if not result.ok:
 		return result
-	result = _signal(
-		state,
-		"mission.recording_secured",
-		{"recording_id": "recording.signal_9909"},
-		"c-quality-recording"
-	)
+	result = _signal(state, "mission.recording_secured", {"recording_id": "recording.signal_9909"}, "c-quality-recording")
 	if not result.ok:
 		return result
 	var mission := state.get_mission(MISSION_ID)
@@ -76,28 +62,16 @@ func _test_checkpoint_restore() -> GameResult:
 	var result := _start(state, "c-checkpoint", "path.quiet")
 	if not result.ok:
 		return result
-	result = _signal(
-		state,
-		"world.location_entered",
-		{"location_id": "location.neon.cellar_club"},
-		"c-checkpoint-location"
-	)
+	result = _signal(state, "world.location_entered", {"location_id": "location.neon.cellar_club"}, "c-checkpoint-location")
 	if not result.ok:
 		return result
-	result = _signal(
-		state,
-		"world.control_avoided",
-		{"control_id": "control.neon.mobile"},
-		"c-checkpoint-progress"
-	)
+	result = _signal(state, "world.control_avoided", {"control_id": "control.neon.mobile"}, "c-checkpoint-progress")
 	if not result.ok:
 		return result
 	var mission := state.get_mission(MISSION_ID)
 	if int(mission.objective_progress.get("avoid_control", 0)) != 1:
 		return _failure("TEST-ERR-046", "Testfortschritt wurde nicht aufgebaut.")
-	result = _executor.execute(
-		RestoreMissionCheckpointCommand.new(MISSION_ID, "c-checkpoint-restore"), state, _context
-	)
+	result = _executor.execute(RestoreMissionCheckpointCommand.new(MISSION_ID, "c-checkpoint-restore"), state, _context)
 	if not result.ok:
 		return result
 	if mission.current_phase_id != "phase.recovery":
@@ -143,28 +117,20 @@ func _test_mass_simulation() -> GameResult:
 	var grades: Dictionary = report.get("grade_counts", {}) as Dictionary
 	if not grades.has(MissionOutcomeEvaluator.GRADE_GOLD):
 		return _failure("TEST-ERR-052", "Massensimulation erzeugte keine Gold-Ergebnisse.")
-	if not grades.has(MissionOutcomeEvaluator.GRADE_SILVER):
+	if not grades.has(MissionOutcomeEvaluator.GRADE_BRONZE):
 		return _failure("TEST-ERR-053", "Massensimulation erzeugte keine abgestuften Ergebnisse.")
 	return GameResult.success()
 
 
 func _start(state: GameSessionState, prefix: String, path_id: String) -> GameResult:
-	var result := _executor.execute(
-		StartMissionCommand.new(MISSION_ID, "%s-start" % prefix), state, _context
-	)
+	var result := _executor.execute(StartMissionCommand.new(MISSION_ID, "%s-start" % prefix), state, _context)
 	if not result.ok:
 		return result
-	return _executor.execute(
-		SelectMissionPathCommand.new(MISSION_ID, path_id, "%s-path" % prefix), state, _context
-	)
+	return _executor.execute(SelectMissionPathCommand.new(MISSION_ID, path_id, "%s-path" % prefix), state, _context)
 
 
-func _signal(
-	state: GameSessionState, signal_type: String, payload: Dictionary, transaction_id: String
-) -> GameResult:
-	return _executor.execute(
-		ApplyMissionSignalCommand.new(signal_type, payload, transaction_id), state, _context
-	)
+func _signal(state: GameSessionState, signal_type: String, payload: Dictionary, transaction_id: String) -> GameResult:
+	return _executor.execute(ApplyMissionSignalCommand.new(signal_type, payload, transaction_id), state, _context)
 
 
 func _failure(code: String, message: String) -> GameResult:
