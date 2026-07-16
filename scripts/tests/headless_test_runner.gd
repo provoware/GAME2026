@@ -9,10 +9,21 @@ func _initialize() -> void:
 		quit(1)
 		return
 
-	var runner := TestRunner.new(registry)
-	var report := runner.run_all()
-	print("[Tests] %d/%d bestanden" % [report["passed"], report["total"]])
-	for failure in report["failures"]:
+	var reports := [
+		TestRunner.new(registry).run_all(),
+		IterationCTestRunner.new(registry).run_all(),
+	]
+	var passed := 0
+	var total := 0
+	var failures: Array = []
+	for report_value in reports:
+		var report: Dictionary = report_value
+		passed += int(report.get("passed", 0))
+		total += int(report.get("total", 0))
+		failures.append_array(report.get("failures", []) as Array)
+
+	print("[Tests] %d/%d bestanden" % [passed, total])
+	for failure in failures:
 		push_error(str(failure))
 
-	quit(0 if int(report["passed"]) == int(report["total"]) else 1)
+	quit(0 if passed == total else 1)
