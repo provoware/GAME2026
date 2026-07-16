@@ -1,0 +1,121 @@
+{
+  "id": "world.berlin_bunker_ring",
+  "title": "Bunker-Ring",
+  "start_location_id": "location.bunker.main",
+  "locations": [
+    {
+      "id": "location.bunker.main",
+      "title": "Hauptbunker",
+      "description": "Kommandozentrale, Lager und Ausgangspunkt des Bunkerkreises.",
+      "kind": "base",
+      "position": {"x": 0, "y": 0}
+    },
+    {
+      "id": "location.tunnel.west",
+      "title": "Westtunnel",
+      "description": "Feuchte Verbindung zwischen Bunker, Markt und Neonring.",
+      "kind": "transit",
+      "position": {"x": -2, "y": 1}
+    },
+    {
+      "id": "location.market.black",
+      "title": "Schwarzmarkt",
+      "description": "Handelsplatz für Material, Gerüchte und zweifelhafte Abkürzungen.",
+      "kind": "market",
+      "position": {"x": -3, "y": 3}
+    },
+    {
+      "id": "location.station.ghost",
+      "title": "Geisterbahnhof",
+      "description": "Stillgelegter Bahnhof mit unzuverlässigen Zugängen zum Untergrund.",
+      "kind": "transit",
+      "position": {"x": 1, "y": 4}
+    },
+    {
+      "id": "location.archive.sublevel",
+      "title": "Unterarchiv",
+      "description": "Versiegelte Aktenräume unterhalb des alten Verwaltungsrings.",
+      "kind": "archive",
+      "position": {"x": 4, "y": 3}
+    },
+    {
+      "id": "location.neon.cellar_club",
+      "title": "Neon-Kellerclub",
+      "description": "Lauter Kellerclub, Treffpunkt des Neonrings und Ziel von Signal 9909.",
+      "kind": "club",
+      "position": {"x": 3, "y": 0}
+    }
+  ],
+  "connections": [
+    {
+      "id": "route.bunker.west_tunnel",
+      "from_location_id": "location.bunker.main",
+      "to_location_id": "location.tunnel.west",
+      "bidirectional": true,
+      "duration_steps": 1,
+      "costs": [
+        {"resource_id": "resource.money", "amount": 20},
+        {"resource_id": "resource.supply.general", "amount": 1}
+      ],
+      "requirements": []
+    },
+    {
+      "id": "route.west_tunnel.market",
+      "from_location_id": "location.tunnel.west",
+      "to_location_id": "location.market.black",
+      "bidirectional": true,
+      "duration_steps": 1,
+      "costs": [
+        {"resource_id": "resource.money", "amount": 15}
+      ],
+      "requirements": []
+    },
+    {
+      "id": "route.west_tunnel.neon",
+      "from_location_id": "location.tunnel.west",
+      "to_location_id": "location.neon.cellar_club",
+      "bidirectional": true,
+      "duration_steps": 1,
+      "costs": [
+        {"resource_id": "resource.money", "amount": 30}
+      ],
+      "requirements": []
+    },
+    {
+      "id": "route.market.ghost_station",
+      "from_location_id": "location.market.black",
+      "to_location_id": "location.station.ghost",
+      "bidirectional": true,
+      "duration_steps": 2,
+      "costs": [
+        {"resource_id": "resource.money", "amount": 25},
+        {"resource_id": "resource.supply.general", "amount": 1}
+      ],
+      "requirements": []
+    },
+    {
+      "id": "route.ghost_station.archive",
+      "from_location_id": "location.station.ghost",
+      "to_location_id": "location.archive.sublevel",
+      "bidirectional": true,
+      "duration_steps": 1,
+      "costs": [
+        {"resource_id": "resource.money", "amount": 35}
+      ],
+      "requirements": [
+        {"type": "flag_equals", "flag_id": "world.signal_9909.secured", "value": true}
+      ]
+    },
+    {
+      "id": "route.archive.neon",
+      "from_location_id": "location.archive.sublevel",
+      "to_location_id": "location.neon.cellar_club",
+      "bidirectional": true,
+      "duration_steps": 1,
+      "costs": [
+        {"resource_id": "resource.money", "amount": 20}
+      ],
+      "requirements": []
+    }
+  ]
+}
