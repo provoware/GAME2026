@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.4.0-world-iteration-a
+
+- datengetriebenen Stadtgraph mit sechs Orten ergänzt
+- bidirektionale Verbindungen, Reisekosten und stabile Routen-IDs implementiert
+- Reisevoraussetzungen über Kampagnenflags eingeführt
+- autoritativen Ortswechsel über Command und Effect umgesetzt
+- Reisebuchungen atomar mit Ressourcen, Journal und Domain Events gekoppelt
+- Welt- und Missionssystem über `world.location_entered` verbunden
+- direkte unzulässige Reisen ohne Zustandsänderung blockiert
+- Save-/Load-Roundtrip für die aktuelle Weltposition geprüft
+- vier WORLD-01-Selbsttests ergänzt
+
 ## 0.3.0-mission-iteration-c
 
 - Zustands- und Missionsschema auf Version 3 erweitert
