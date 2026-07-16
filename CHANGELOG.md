@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.3.0-mission-iteration-c
+
+- Zustands- und Missionsschema auf Version 3 erweitert
+- automatische Migration bestehender v1-/v2-Speicherstände ergänzt
+- Ergebnisqualität mit den Graden NONE, FRAGMENT, BRONZE, SILVER und GOLD implementiert
+- optionale und pfadabhängige Ziele in die Qualitätsberechnung aufgenommen
+- unveränderliche Missionshistorie für alle terminalen Ergebnisse ergänzt
+- sichere Wiederaufnahmepunkte beim Start, Phasenwechsel und bei Unterbrechungen eingeführt
+- kontrollierten Restore-Command mit Journal- und Domain-Event-Anbindung ergänzt
+- Abschluss, Teilerfolg, Fehlschlag und Abbruch einheitlich bewertet und archiviert
+- vier zusätzliche Iteration-C-Regressionsprüfungen ergänzt
+- deterministische Massensimulation mit 120 vollständigen Missionsdurchläufen ergänzt
+
 ## 0.2.0-mission-iteration-b
 
 - Missionsdefinition auf mehrstufige Phasen erweitert
