@@ -1,7 +1,7 @@
 class_name GameSessionState
 extends RefCounted
 
-const SCHEMA_VERSION := 2
+const SCHEMA_VERSION := 3
 
 var schema_version: int = SCHEMA_VERSION
 var campaign_id: String = "campaign-local"
@@ -12,6 +12,7 @@ var flags: Dictionary = {}
 var available_characters: Dictionary = {}
 var unlocked_abilities: Dictionary = {}
 var missions: Dictionary = {}
+var mission_history: Array = []
 var journal: Array = []
 var processed_transactions: Dictionary = {}
 
@@ -62,6 +63,14 @@ func get_mission(mission_id: String) -> MissionInstanceState:
 	return missions.get(mission_id) as MissionInstanceState
 
 
+func latest_mission_history(mission_id: String) -> Dictionary:
+	for index in range(mission_history.size() - 1, -1, -1):
+		var entry: Dictionary = mission_history[index]
+		if str(entry.get("mission_id", "")) == mission_id:
+			return entry.duplicate(true)
+	return {}
+
+
 func to_dict() -> Dictionary:
 	var mission_data: Dictionary = {}
 	for mission_id in missions:
@@ -78,6 +87,7 @@ func to_dict() -> Dictionary:
 		"available_characters": available_characters.duplicate(true),
 		"unlocked_abilities": unlocked_abilities.duplicate(true),
 		"missions": mission_data,
+		"mission_history": mission_history.duplicate(true),
 		"journal": journal.duplicate(true),
 		"processed_transactions": processed_transactions.duplicate(true),
 	}
@@ -108,6 +118,7 @@ func restore_from_dict(data: Dictionary) -> GameResult:
 		(data.get("unlocked_abilities", _default_unlocked_abilities()) as Dictionary)
 		. duplicate(true)
 	)
+	mission_history = (data.get("mission_history", []) as Array).duplicate(true)
 	journal = (data.get("journal", []) as Array).duplicate(true)
 	processed_transactions = (data.get("processed_transactions", {}) as Dictionary).duplicate(true)
 	missions.clear()
@@ -170,5 +181,22 @@ func validate_invariants() -> GameResult:
 		var result := mission.validate_invariants()
 		if not result.ok:
 			return result
+
+	for entry_value in mission_history:
+		if not entry_value is Dictionary:
+			return GameResult.failure(
+				GameError.new("MISSION-ERR-064", "Missionshistorie enthält einen ungültigen Eintrag.")
+			)
+		var entry: Dictionary = entry_value
+		var history_mission_id := str(entry.get("mission_id", ""))
+		var score := float(entry.get("quality_score", 0.0))
+		if history_mission_id.is_empty() or score < 0.0 or score > 1.0:
+			return GameResult.failure(
+				GameError.new(
+					"MISSION-ERR-065",
+					"Missionshistorie enthält inkonsistente Ergebnisdaten.",
+					{"entry": entry}
+				)
+			)
 
 	return GameResult.success()
