@@ -2,7 +2,7 @@
 
 ## Stand
 
-**Paket:** 0.2.0-mission-iteration-b  
+**Paket:** 0.3.0-mission-iteration-c  
 **Engineziel:** Godot 4.6.x, GL Compatibility  
 **Primärplattform:** Linux  
 **Sekundärplattform:** Windows
@@ -18,21 +18,22 @@
 - Domain-Event-Bus;
 - autoritativer Sitzungszustand;
 - atomare Speicherung mit SHA-256;
-- Save-Version 2 und vorbereitete Migration.
+- Save-Version 3 mit Migration älterer Zustände.
 
-### Missionen – Iteration A und B
+### Missionen – Iteration A bis C
 
-- JSON-basierte Missionsregistry;
-- striktes Schema;
-- mehrstufige Phasen;
-- alternative Lösungswege;
-- pfadabhängige Ziele;
-- neutrale Missionssignale;
-- absolute Fristen;
-- Erfolg, Teilerfolg, Fehlschlag und Abbruch;
+- JSON-basierte Missionsregistry und striktes Schema;
+- mehrstufige Phasen und alternative Lösungswege;
+- pfadabhängige Ziele und neutrale Missionssignale;
+- absolute Fristen, Erfolg, Teilerfolg, Fehlschlag und Abbruch;
 - Pause und Fortsetzung durch `Riss`;
+- Ergebnisqualität von NONE bis GOLD;
+- dauerhafte Missionshistorie mit Pfad-, Phasen- und Ergebnisdaten;
+- sichere Wiederaufnahmepunkte beim Start, Phasenwechsel und bei Unterbrechungen;
+- kontrollierte Wiederherstellung über Command und Effect;
 - Graybox-Missionstracker;
-- elf automatisierte Selbsttests.
+- 15 automatisierte Selbsttests;
+- Massensimulation mit 120 vollständigen Durchläufen.
 
 ### Werkzeuge
 
@@ -44,7 +45,8 @@
 
 ## Noch nicht implementiert
 
-- Mission Iteration C;
+- Missionstransformationen und Folgeaufträge;
+- vollständige Archivansicht im finalen UI;
 - Welt- und Stadtgraph;
 - Bunkerbasisverwaltung;
 - vollständige Figuren- und Beziehungssysteme;
@@ -58,23 +60,21 @@
 
 ## Fortschritt
 
-- Spezifikation und Architektur: 53 %
-- Codeimplementierung: 8 %
-- Validierungs- und Testinfrastruktur: 12 %
-- gewichteter Gesamtfortschritt: 30 %
+- Spezifikation und Architektur: 57 %
+- Codeimplementierung: 12 %
+- Validierungs- und Testinfrastruktur: 17 %
+- gewichteter Gesamtfortschritt: 34 %
 
 Die Werte beschreiben den gesamten Weg bis zu einem getesteten Release und nicht nur den Quellcodeumfang.
 
 ## Nächster Meilenstein
 
-**MISSION-01 – Iteration C**
+**WORLD-01 – Iteration A**
 
-- Missionstransformationen;
-- Folgeaufträge;
-- Ergebnisqualität;
-- Missionshistorie;
-- sichere Wiederaufnahmepunkte;
-- Contentmigration;
-- Massensimulation;
-- Performance- und Barrierefreiheitsabnahme;
-- Status `STABLE`.
+- datengetriebener Welt- und Stadtgraph;
+- erreichbare Orte, Verbindungen und Reisekosten;
+- autoritative Positionsverfolgung;
+- Missionstrigger beim Betreten eines Ortes;
+- Karten-Graybox mit tastaturbedienbarer Ortsauswahl;
+- positive und negative Routentests;
+- Save-/Load-Roundtrip für Weltzustände.
