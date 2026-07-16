@@ -29,6 +29,9 @@ func apply(state: GameSessionState) -> GameResult:
 
 	var old_status := instance.status
 	if pause:
+		instance.capture_checkpoint(
+			instance.current_phase_id, state.campaign_month_index, "mission_paused"
+		)
 		instance.status = MissionStatus.PAUSED
 		instance.pause_reason = reason
 		instance.paused_at_month = state.campaign_month_index
@@ -41,32 +44,27 @@ func apply(state: GameSessionState) -> GameResult:
 		instance.pause_reason = ""
 		instance.paused_at_month = -1
 
-	(
-		state
-		. journal
-		. append(
-			{
-				"type": "mission_pause_change",
-				"mission_id": mission_id,
-				"before": old_status,
-				"after": instance.status,
-				"reason": reason,
-				"deadline_month": instance.deadline_month,
-				"month_index": state.campaign_month_index,
-			}
-		)
+	state.journal.append(
+		{
+			"type": "mission_pause_change",
+			"mission_id": mission_id,
+			"before": old_status,
+			"after": instance.status,
+			"reason": reason,
+			"deadline_month": instance.deadline_month,
+			"checkpoint": instance.resume_checkpoint.duplicate(true),
+			"month_index": state.campaign_month_index,
+		}
 	)
 	var event_type := "MissionPaused" if pause else "MissionResumed"
-	var event := (
-		DomainEvent
-		. new(
-			event_type,
-			{
-				"mission_id": mission_id,
-				"reason": reason,
-				"deadline_month": instance.deadline_month,
-			},
-			state.campaign_month_index
-		)
+	var event := DomainEvent.new(
+		event_type,
+		{
+			"mission_id": mission_id,
+			"reason": reason,
+			"deadline_month": instance.deadline_month,
+			"checkpoint": instance.resume_checkpoint.duplicate(true),
+		},
+		state.campaign_month_index
 	)
 	return GameResult.success({"events": [event]})
