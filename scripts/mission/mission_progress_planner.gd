@@ -67,6 +67,7 @@ static func plan_objective_advance(
 		projected.current_phase_id = next_phase_id
 		if not projected.visited_phases.has(next_phase_id):
 			projected.visited_phases.append(next_phase_id)
+		projected.capture_checkpoint(next_phase_id, state.campaign_month_index, "phase_entered")
 
 		var next_phase := definition.phase_by_id(next_phase_id)
 		var start_effects_result := MissionEffectFactory.create_many(
@@ -77,11 +78,15 @@ static func plan_objective_advance(
 			return start_effects_result
 		effects.append_array(start_effects_result.value)
 	else:
+		var quality := MissionOutcomeEvaluator.evaluate(definition, projected)
 		effects.append(
-			SetMissionStatusEffect.new(definition.id, MissionStatus.COMPLETED, "success")
+			SetMissionStatusEffect.new(
+				definition.id, MissionStatus.COMPLETED, "success", quality
+			)
 		)
 		projected.status = MissionStatus.COMPLETED
 		projected.outcome_id = "success"
+		projected.outcome_quality = quality.duplicate(true)
 		projected.completed_month = state.campaign_month_index
 
 		var rewards_result := MissionEffectFactory.create_many(

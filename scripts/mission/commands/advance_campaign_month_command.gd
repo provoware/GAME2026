@@ -42,6 +42,7 @@ func build_effects(state: GameSessionState, context: Dictionary) -> GameResult:
 
 		var ratio := MissionRules.required_completion_ratio(definition, instance)
 		var threshold := definition.partial_success_threshold()
+		var quality := MissionOutcomeEvaluator.evaluate(definition, instance)
 		if (
 			threshold > 0.0
 			and ratio >= threshold
@@ -50,7 +51,10 @@ func build_effects(state: GameSessionState, context: Dictionary) -> GameResult:
 			effects.append(AddMissionFailureReasonEffect.new(definition.id, "deadline_partial"))
 			effects.append(
 				SetMissionStatusEffect.new(
-					definition.id, MissionStatus.PARTIAL_SUCCESS, "partial_deadline"
+					definition.id,
+					MissionStatus.PARTIAL_SUCCESS,
+					"partial_deadline",
+					quality
 				)
 			)
 			var partial_result := MissionEffectFactory.create_many(
@@ -62,7 +66,9 @@ func build_effects(state: GameSessionState, context: Dictionary) -> GameResult:
 		else:
 			effects.append(AddMissionFailureReasonEffect.new(definition.id, "deadline_expired"))
 			effects.append(
-				SetMissionStatusEffect.new(definition.id, MissionStatus.FAILED, "deadline_expired")
+				SetMissionStatusEffect.new(
+					definition.id, MissionStatus.FAILED, "deadline_expired", quality
+				)
 			)
 			var failure_result := MissionEffectFactory.create_many(
 				definition.failure_effects, "mission_failure:%s" % definition.id

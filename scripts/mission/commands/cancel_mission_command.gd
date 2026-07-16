@@ -34,12 +34,16 @@ func validate(state: GameSessionState, context: Dictionary) -> GameResult:
 	return GameResult.success()
 
 
-func build_effects(_state: GameSessionState, context: Dictionary) -> GameResult:
+func build_effects(state: GameSessionState, context: Dictionary) -> GameResult:
 	var registry: MissionRegistry = context["mission_registry"] as MissionRegistry
 	var definition := registry.get_definition(mission_id)
+	var instance := state.get_mission(mission_id)
+	var quality := MissionOutcomeEvaluator.evaluate(definition, instance)
 	var effects: Array = [
 		AddMissionFailureReasonEffect.new(mission_id, reason),
-		SetMissionStatusEffect.new(mission_id, MissionStatus.CANCELLED, "cancelled"),
+		SetMissionStatusEffect.new(
+			mission_id, MissionStatus.CANCELLED, "cancelled", quality
+		),
 	]
 	var cancel_effects_result := MissionEffectFactory.create_many(
 		definition.cancel_effects, "mission_cancel:%s" % mission_id
