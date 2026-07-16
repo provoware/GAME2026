@@ -7,7 +7,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST_PATH = ROOT / "MANIFEST.json"
-PACKAGE_VERSION = "0.2.0-mission-iteration-b"
+PACKAGE_VERSION = "0.4.0-world-iteration-a"
 EXCLUDED_PARTS = {".git", ".godot", ".runtime", "user", "__pycache__"}
 
 

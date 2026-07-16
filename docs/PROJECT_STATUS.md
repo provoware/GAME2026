@@ -2,7 +2,7 @@
 
 ## Stand
 
-**Paket:** 0.3.0-mission-iteration-c  
+**Paket:** 0.4.0-world-iteration-a  
 **Engineziel:** Godot 4.6.x, GL Compatibility  
 **Primärplattform:** Linux  
 **Sekundärplattform:** Windows
@@ -12,69 +12,68 @@
 ### Fundament
 
 - strukturierte Ergebnisse und Fehler;
-- Command-/Effect-Verarbeitung;
-- atomarer Rollback;
-- idempotente Transaktionen;
-- Domain-Event-Bus;
+- Command-/Effect-Verarbeitung mit atomarem Rollback;
+- idempotente Transaktionen und Domain-Event-Bus;
 - autoritativer Sitzungszustand;
 - atomare Speicherung mit SHA-256;
 - Save-Version 3 mit Migration älterer Zustände.
 
 ### Missionen – Iteration A bis C
 
-- JSON-basierte Missionsregistry und striktes Schema;
-- mehrstufige Phasen und alternative Lösungswege;
-- pfadabhängige Ziele und neutrale Missionssignale;
-- absolute Fristen, Erfolg, Teilerfolg, Fehlschlag und Abbruch;
-- Pause und Fortsetzung durch `Riss`;
+- mehrstufige Missionen, alternative Lösungswege und Fristen;
+- Erfolg, Teilerfolg, Fehlschlag und Abbruch;
 - Ergebnisqualität von NONE bis GOLD;
-- dauerhafte Missionshistorie mit Pfad-, Phasen- und Ergebnisdaten;
-- sichere Wiederaufnahmepunkte beim Start, Phasenwechsel und bei Unterbrechungen;
-- kontrollierte Wiederherstellung über Command und Effect;
-- Graybox-Missionstracker;
-- 15 automatisierte Selbsttests;
+- Missionshistorie und sichere Wiederaufnahmepunkte;
+- 15 automatisierte Missionstests;
 - Massensimulation mit 120 vollständigen Durchläufen.
+
+### Welt – Iteration A
+
+- datengetriebener Stadtgraph mit sechs Orten;
+- bidirektionale Verbindungen mit stabilen IDs;
+- Reisekosten für Kohle und Vorräte;
+- verbindliche Reisevoraussetzungen über Kampagnenflags;
+- autoritative Positionsverfolgung im Sitzungszustand;
+- atomarer Reise-Command und Reise-Effect;
+- Journal- und Domain-Event-Ausgabe für Ortswechsel;
+- automatische Missionsfortschreibung beim Betreten eines Ortes;
+- vier positive und negative Welt-Selbsttests;
+- Save-/Load-Roundtrip der aktuellen Position.
 
 ### Werkzeuge
 
-- Paketverifikation;
-- Manifest mit SHA-256-Prüfsummen;
+- Paketverifikation und deterministisches Manifest;
 - GDScript-Linting und optionale Formatierung;
 - automatische ZIP-Erstellung;
 - semantische Missionsgraphprüfung.
 
 ## Noch nicht implementiert
 
-- Missionstransformationen und Folgeaufträge;
-- vollständige Archivansicht im finalen UI;
-- Welt- und Stadtgraph;
+- Karten-Graybox mit eigenständiger Ortsauswahl;
+- Wegfindung über mehrere Verbindungen;
+- dynamische Sperrungen, Gefahren und Reiseereignisse;
 - Bunkerbasisverwaltung;
 - vollständige Figuren- und Beziehungssysteme;
-- Resonanzsystem;
-- Dialogsystem;
-- Wirtschaft;
-- Konfliktsystem;
+- Resonanz-, Dialog-, Wirtschafts- und Konfliktsystem;
 - Musik- und Medienproduktion;
-- finales UI und Art;
-- vollständige Kampagne.
+- finales UI, Art und vollständige Kampagne.
 
 ## Fortschritt
 
-- Spezifikation und Architektur: 57 %
-- Codeimplementierung: 12 %
-- Validierungs- und Testinfrastruktur: 17 %
-- gewichteter Gesamtfortschritt: 34 %
+- Spezifikation und Architektur: 60 %
+- Codeimplementierung: 16 %
+- Validierungs- und Testinfrastruktur: 20 %
+- gewichteter Gesamtfortschritt: 38 %
 
 Die Werte beschreiben den gesamten Weg bis zu einem getesteten Release und nicht nur den Quellcodeumfang.
 
 ## Nächster Meilenstein
 
-**WORLD-01 – Iteration A**
+**WORLD-01 – Iteration B**
 
-- datengetriebener Welt- und Stadtgraph;
-- erreichbare Orte, Verbindungen und Reisekosten;
-- autoritative Positionsverfolgung;
-- Missionstrigger beim Betreten eines Ortes;
 - Karten-Graybox mit tastaturbedienbarer Ortsauswahl;
-- positive und negative Routentests;
-- Save-/Load-Roundtrip für Weltzustände.
+- automatische Mehrschritt-Wegfindung;
+- Reisevorschau mit Kosten, Dauer und Sperrgrund;
+- dynamische Gefahren- und Kontrollereignisse;
+- responsive Darstellung ohne überdeckte Elemente;
+- Integration in den sichtbaren Spielablauf.
