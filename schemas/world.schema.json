@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://provoware.local/schemas/world.schema.json",
+  "title": "PPPOPPI Bunkerwahrheit WorldDefinition",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "title", "start_location_id", "locations", "connections"],
+  "properties": {
+    "id": {"type": "string", "minLength": 1},
+    "title": {"type": "string", "minLength": 1},
+    "start_location_id": {"type": "string", "minLength": 1},
+    "locations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/location"}
+    },
+    "connections": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/connection"}
+    }
+  },
+  "$defs": {
+    "location": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "title", "description", "kind", "position"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "title": {"type": "string", "minLength": 1},
+        "description": {"type": "string"},
+        "kind": {"type": "string", "minLength": 1},
+        "position": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["x", "y"],
+          "properties": {
+            "x": {"type": "number"},
+            "y": {"type": "number"}
+          }
+        }
+      }
+    },
+    "cost": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["resource_id", "amount"],
+      "properties": {
+        "resource_id": {"type": "string", "minLength": 1},
+        "amount": {"type": "integer", "minimum": 1}
+      }
+    },
+    "requirement": {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["resource_minimum", "flag_equals"]
+        },
+        "resource_id": {"type": "string"},
+        "amount": {"type": "integer", "minimum": 0},
+        "flag_id": {"type": "string"},
+        "value": {}
+      }
+    },
+    "connection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "from_location_id",
+        "to_location_id",
+        "bidirectional",
+        "duration_steps",
+        "costs",
+        "requirements"
+      ],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "from_location_id": {"type": "string", "minLength": 1},
+        "to_location_id": {"type": "string", "minLength": 1},
+        "bidirectional": {"type": "boolean"},
+        "duration_steps": {"type": "integer", "minimum": 1},
+        "costs": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/cost"}
+        },
+        "requirements": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/requirement"}
+        }
+      }
+    }
+  }
+}
