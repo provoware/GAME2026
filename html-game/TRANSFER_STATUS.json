@@ -1,0 +1,36 @@
+{
+  "project": "Gangland 1925 HTML",
+  "version": "1.5.0",
+  "edition": "Cinematic Visual & Motion",
+  "branch": "agent/html-v1.5.0-cinematic-visual",
+  "save_schema": 7,
+  "validation": "PASS",
+  "release_zip": {
+    "name": "MAFIA_1986_CLEANROOM_HTML_v1.5.0_CINEMATIC_PRO.zip",
+    "sha256": "a972e359595455891b9880c2e74f727fd89a3bdb5d17bc739c77abaf8afe1096"
+  },
+  "source_archive_without_generated_screenshots": {
+    "name": "source_no_artifacts.zip",
+    "sha256": "91d413a9c5add15d27d9e46a42e2fe9185ff85fa37018461cad57fd243de77dc"
+  },
+  "critical_files": {
+    "index.html": "7f319a2eae2d1b18869dfd3d12bc26bd106b7411034d495ebe9b8ba451ef8613",
+    "src/visuals.js": "a19086937c041d664146880d3500affb1217cbbc9257c12e1a571d578ff5f994",
+    "assets/css/styles.css": "c45851604308e5cf1dbdb31230969c304de8885be6435f326ced2fa1890c0fa2",
+    "src/ui.js": "caf5d31eb4a0fcfad54807b40fbbe9df6021a977b9771acaad5cd6b474086702",
+    "src/combat.js": "51c5938bb9006d01814eebb8e2c99c0010dbc23bfb966425913f9ba289f5144e",
+    "tests/browser_smoke.py": "41e1ecc30c3c91c48e96637e920bfad182e4a13988ff4e54748938e13cddaef0"
+  },
+  "checks": [
+    "JavaScript syntax",
+    "core and regression tests",
+    "HTML structure and local resources",
+    "local server self-test",
+    "Chromium smoke and responsive test",
+    "SVG building objects",
+    "SVG combat objects",
+    "motion toggle",
+    "information tabs",
+    "offline dependency gate"
+  ]
+}
