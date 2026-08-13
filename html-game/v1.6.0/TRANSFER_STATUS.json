@@ -1,0 +1,30 @@
+{
+  "project": "Gangland 1925 HTML",
+  "version": "1.6.0",
+  "edition": "Living City",
+  "branch": "agent/html-v1.6.0-living-city",
+  "save_schema": 8,
+  "validation": "PASS",
+  "fresh_zip_validation": "PASS",
+  "release_zip": {
+    "name": "MAFIA_1986_CLEANROOM_HTML_v1.6.0_LIVING_CITY_PRO.zip",
+    "sha256": "bd868d5f9b7e30adbf4a90f42fc4ac3ecc1dab6a4250a3e784e2ec845aa1f4c4"
+  },
+  "source_archive": {
+    "name": "GANGLAND_v1.6.0_SOURCE_NO_ARTIFACTS.zip",
+    "sha256": "1b02ec756e62d79022075961199aea81554bac6e2bc600becffee9a1119af047",
+    "github_blob_sha": "2d5951cc63e82c76ac90685bdb34c8c45b28d260"
+  },
+  "prepared_tree_sha": "9aba171cbe98aba48c9c3130fccab925cea91b91",
+  "prepared_commit_sha": "1a8bdc5a3f3cb8cd8bbd46f438d1186cf9b0298e",
+  "ref_promotion": "BLOCKED_BY_CONNECTOR_SECURITY_FILTER",
+  "features": [
+    "animated pedestrians",
+    "moving police patrols",
+    "district events with gameplay effects",
+    "visual business raids",
+    "illustrated building interiors",
+    "story cinematic sequences",
+    "combat cinematic layer"
+  ]
+}
