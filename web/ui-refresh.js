@@ -16,8 +16,13 @@
     pending=true;
     if(typeof requestAnimationFrame==='function')requestAnimationFrame(run);else setTimeout(run,0);
   }
-  document.addEventListener('click',schedule);
+  document.addEventListener('click',(event)=>{
+    if(event.target.closest?.('#mapZoomOut,#mapZoomReset,#mapZoomIn'))return;
+    schedule();
+  });
   document.addEventListener('keydown',(event)=>{
+    const mapViewport=event.target?.closest?.('#cityMap')&&['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','w','a','s','d','+','=','-','_','Home','0'].includes(event.key.length===1?event.key.toLowerCase():event.key);
+    if(mapViewport)return;
     if(['Enter',' ','ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Escape'].includes(event.key)||event.key.toLowerCase()==='e')schedule();
   });
   root.GAME_UI_REFRESH=Object.freeze({schedule});
