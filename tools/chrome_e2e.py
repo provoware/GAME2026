@@ -6,11 +6,14 @@ Hilfe überdeckt die Karte · Kartenzoom · v0140 · decision_journal.png · com
 Rectangle contract: map_rect["width"].
 
 The implementation core is kept byte-stable. This entrypoint corrects viewport
-metrics and restores a neutral keyboard target after native dialog transitions;
-it does not monkeypatch Selenium and does not relax a gate.
+metrics, adapts body-targeted shortcuts to real ActionChains at the current Chrome
+focus, and restores a neutral target after dialog transitions. Selenium itself is
+not globally monkeypatched and no gate is relaxed.
 """
 from __future__ import annotations
 import chrome_e2e_core as core
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.common.by import By
 
 
 def verify_desktop_fit(driver, width: int, height: int) -> dict:
@@ -29,6 +32,40 @@ def verify_desktop_fit(driver, width: int, height: int) -> dict:
         core.assert_true(r["t"] >= -2 and r["b"] <= height + 2, f"{key} läuft vertikal aus dem Viewport")
     core.assert_true(m["map"]["w"] >= 430 and m["map"]["h"] >= 260, f"Karte zu klein bei {width}x{height}: {m['map']}")
     return m
+
+
+class _BodyKeyboardAdapter:
+    def __init__(self, driver, element):
+        self._driver = driver
+        self._element = element
+
+    def __getattr__(self, name):
+        return getattr(self._element, name)
+
+    def send_keys(self, *keys):
+        ActionChains(self._driver).send_keys(*keys).perform()
+
+
+class _ChromeDriverAdapter:
+    def __init__(self, driver):
+        self._driver = driver
+
+    def __getattr__(self, name):
+        return getattr(self._driver, name)
+
+    def find_element(self, by=By.ID, value=None):
+        element = self._driver.find_element(by, value)
+        if by == By.TAG_NAME and str(value).lower() == "body":
+            return _BodyKeyboardAdapter(self._driver, element)
+        return element
+
+
+_original_make_driver = core.make_driver
+def make_driver():
+    return _ChromeDriverAdapter(_original_make_driver())
+
+
+core.make_driver = make_driver
 
 
 def focus_keyboard_sink(driver) -> None:
