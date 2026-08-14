@@ -23,10 +23,12 @@ Version **0.10.0-living-city-04** hebt die Browserfassung von einer umfangreiche
 
 ## Wartbare Revival-Architektur
 
-Die bereits qualifizierten 0.9-Kernmodule bleiben fachlich unverändert. LIVING-CITY-04 ergänzt sie über vier klar getrennte Module:
+Die bereits qualifizierten 0.9-Kernmodule bleiben fachlich unverändert. LIVING-CITY-04 ergänzt sie über sechs klar getrennte Revival-Module:
 
 - `web/revival-data.js` – neue Director-Datenverträge;
-- `web/revival-engine.js` – Missionen, Ereignisse, Rivalenpolitik, Prestige und Meilensteine;
+- `web/revival-missions.js` – Missionen, Fortschritt, Fristen und Folgeketten;
+- `web/revival-world.js` – Stadtereignisse, Rivalenpolitik, Prestige und Meilensteine;
+- `web/revival-engine.js` – kleiner Kompositionskern über der qualifizierten Basis-Engine;
 - `web/revival-ui.js` – additive Director-Oberfläche und Kartenmarker;
 - `web/revival.css` – ausschließlich die neue visuelle Ebene.
 
