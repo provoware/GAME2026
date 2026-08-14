@@ -8,7 +8,7 @@ Rectangle contract: map_rect["width"].
 The implementation core is kept byte-stable. This entrypoint corrects viewport
 metrics, adapts body-targeted shortcuts to real ActionChains at the current Chrome
 focus, restores a neutral target after dialog transitions, synchronizes additive
-UI layers, scrolls enabled dynamic controls into their real visible container
+UI layers, scrolls enabled dynamic controls through their nearest scroll container
 before clicking, and turns anonymous Selenium waits into actionable diagnostics.
 No release gate is relaxed and clicks remain real Selenium element clicks.
 """
@@ -136,15 +136,31 @@ def _is_visible_enabled(element) -> bool:
         return False
 
 
+def _scroll_target_into_visible_container(driver, element) -> None:
+    core.js(driver, """
+      const el=arguments[0];
+      let p=el.parentElement;
+      while(p){
+        const cs=getComputedStyle(p);
+        const scrollable=/(auto|scroll)/.test(cs.overflowY) && p.scrollHeight>p.clientHeight+1;
+        if(scrollable){
+          const er=el.getBoundingClientRect(),pr=p.getBoundingClientRect();
+          const delta=(er.top-pr.top)-Math.max(0,(p.clientHeight-er.height)/2);
+          p.scrollTop+=delta;
+          break;
+        }
+        p=p.parentElement;
+      }
+      el.scrollIntoView({block:'nearest',inline:'nearest'});
+    """, element)
+
+
 def safe_click(driver, selector: str, timeout: float = 6):
     last = None
     for _ in range(3):
         try:
-            # Dynamic game controls can be valid but outside an internally
-            # scrollable panel after reload. Find an enabled target first,
-            # scroll it into the actual visible area, then require visibility.
             element = WebDriverWait(driver, timeout).until(lambda d: _enabled_candidate(d, selector))
-            core.js(driver, "arguments[0].scrollIntoView({block:'center',inline:'nearest'});", element)
+            _scroll_target_into_visible_container(driver, element)
             WebDriverWait(driver, timeout).until(lambda _: _is_visible_enabled(element))
             element.click()
             break
