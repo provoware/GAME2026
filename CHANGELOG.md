@@ -1,5 +1,20 @@
 # Änderungsprotokoll
 
+## 0.13.0-living-city-07 – LIVING-CITY-07
+
+- echte Google-Chrome-Desktop-E2E-Abnahme über Selenium/ChromeDriver eingeführt;
+- Desktopgrößen 1280×720, 1366×768 und 1600×900 werden automatisiert auf Layout-Fit und Seitenüberlauf geprüft;
+- E2E prüft Hilfe ohne Kartenüberdeckung, Zoom/Pan, Innenraum/Dialog, Klang, Direktreise, v0130-Speichern/Reload und Kampf;
+- Screenshot- und JSON-Evidenz als GitHub-Actions-Artefakt ergänzt;
+- alle zwölf Orte besitzen nun eigene Innenraumaktionen;
+- neue Dialogketten für Geisterbahnhof, Unterarchiv, Casino und Altstadt ergänzt;
+- ortsübergreifende Story-Flags/Folgeketten mit bedingten Dialogoptionen eingeführt;
+- Audio um Effektlautstärke, Ducking und kurze lokale UI-Signale gehärtet;
+- Kampf-Tastatur 1/2/3 für Angriff/Deckung/Rückzug ergänzt;
+- Browser-Schema 8 und Save-Spiegel `v0130` mit Abwärtsmigration eingeführt;
+- LC07-Engine-Langlauf auf 2000 Züge erweitert;
+- lokaler Prüfvertrag auf 21/21 Blöcke erweitert.
+
 ## 0.12.0-living-city-06 – LIVING-CITY-06
 
 - Aufgaben-Kompass und nicht überdeckende Coach-Leiste ergänzt.

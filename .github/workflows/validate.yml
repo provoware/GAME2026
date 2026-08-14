@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   static-validation:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -25,8 +25,14 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Install validators
-        run: python -m pip install --upgrade jsonschema gdtoolkit
+      - name: Install validators and Chrome E2E driver library
+        run: python -m pip install --upgrade jsonschema gdtoolkit selenium==4.46.0
+
+      - name: Report real Chrome environment
+        run: |
+          google-chrome --version
+          chromedriver --version
+          python -c "import selenium; print('Selenium', selenium.__version__)"
 
       - name: Check shell syntax
         run: bash -n start.sh test.sh verify.sh package.sh START_GAME.sh PRUEFEN.sh
@@ -37,26 +43,31 @@ jobs:
           node --check web/revival-data.js
           node --check web/lc05-data.js
           node --check web/lc06-data.js
+          node --check web/lc07-data.js
           node --check web/engine.js
           node --check web/revival-missions.js
           node --check web/revival-world.js
           node --check web/revival-engine.js
           node --check web/lc05-engine.js
           node --check web/lc06-engine.js
+          node --check web/lc07-engine.js
           node --check web/app.js
           node --check web/repair-bootstrap.js
           node --check web/lc05-bootstrap.js
           node --check web/lc06-bootstrap.js
+          node --check web/lc07-bootstrap.js
           node --check web/repair-04a.js
           node --check web/revival-ui.js
           node --check web/lc05-ui.js
           node --check web/lc05b-ui.js
           node --check web/lc06-ui.js
+          node --check web/lc07-ui.js
           node --check web/ui-refresh.js
           node --check web/tests/engine.test.js
           node --check web/tests/revival-engine.test.js
           node --check web/tests/lc05-engine.test.js
           node --check web/tests/lc06-engine.test.js
+          node --check web/tests/lc07-engine.test.js
           node --check web/tests/director-simulation.test.js
           node --check web/tests/ui-smoke.test.js
           node --check web/tests/static-ui.test.js
@@ -66,6 +77,7 @@ jobs:
           node --check web/tests/performance-regression.test.js
           node --check web/tests/lc05b-contract.test.js
           node --check web/tests/lc06-contract.test.js
+          node --check web/tests/lc07-contract.test.js
 
       - name: Run qualified core tests
         run: node web/tests/engine.test.js
@@ -78,6 +90,9 @@ jobs:
 
       - name: Run LIVING-CITY-06 tests and 1500-turn simulation
         run: node web/tests/lc06-engine.test.js
+
+      - name: Run LIVING-CITY-07 tests and 2000-turn simulation
+        run: node web/tests/lc07-engine.test.js
 
       - name: Run Director simulation
         run: node web/tests/director-simulation.test.js
@@ -106,6 +121,21 @@ jobs:
       - name: Run LIVING-CITY-06 guidance and interaction contract
         run: node web/tests/lc06-contract.test.js
 
+      - name: Run LIVING-CITY-07 consequence and Chrome-E2E contract
+        run: node web/tests/lc07-contract.test.js
+
+      - name: Real Google Chrome desktop E2E
+        run: python tools/chrome_e2e.py --output evidence/chrome-e2e
+
+      - name: Publish Chrome E2E evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: PPPOPPI-Bunkerwahrheit-LIVING-CITY-07-Chrome-E2E
+          if-no-files-found: error
+          retention-days: 14
+          path: evidence/chrome-e2e/
+
       - name: Rebuild deterministic manifest
         run: python tools/build_manifest.py
 
@@ -115,17 +145,20 @@ jobs:
       - name: Check Python syntax
         run: python -m compileall -q tools
 
-      - name: Publish LIVING-CITY-06 source artifact
+      - name: Publish LIVING-CITY-07 source artifact
         uses: actions/upload-artifact@v4
         with:
-          name: PPPOPPI-Bunkerwahrheit-LIVING-CITY-06
+          name: PPPOPPI-Bunkerwahrheit-LIVING-CITY-07
           if-no-files-found: error
           retention-days: 14
           path: |
             web/
+            tools/chrome_e2e.py
+            evidence/chrome-e2e/
             README.md
             CHANGELOG.md
             docs/PROJECT_STATUS.md
+            docs/CHROME_E2E.md
             docs/REVIVAL_MASTER_PROMPT.md
             AGENTS.md
             START_GAME.sh

@@ -3,7 +3,7 @@ const assert=require('node:assert/strict');
 const fs=require('node:fs');const path=require('node:path');
 const root=path.join(__dirname,'..');const repo=path.join(root,'..');const read=(f)=>fs.readFileSync(f,'utf8');
 const html=read(path.join(root,'index.html')),data=read(path.join(root,'lc06-data.js')),engine=read(path.join(root,'lc06-engine.js')),ui=read(path.join(root,'lc06-ui.js')),css=read(path.join(root,'lc06.css')),bootstrap=read(path.join(root,'lc06-bootstrap.js')),refresh=read(path.join(root,'ui-refresh.js'));
-assert.ok(html.includes('0.12.0 LIVING-CITY-06')&&html.includes('Schema 7'),'LC06-Version oder Schema fehlt im sichtbaren UI.');
+assert.ok(html.includes('lc06-ui.js')&&html.includes('lc06.css'),'LC06-Funktionsschicht fehlt im aktuellen sichtbaren UI.');
 assert.ok(html.includes('id="coachRail"')&&html.includes('id="lc06AudioButton"'),'Coach-Leiste oder Klangschalter fehlt.');
 const order=['lc05-data.js','lc06-data.js','lc05-engine.js','lc06-engine.js','lc05-bootstrap.js','lc06-bootstrap.js','app.js','lc05-ui.js','lc05b-ui.js','lc06-ui.js','ui-refresh.js'].map((n)=>html.indexOf(`src="${n}"`));
 assert.ok(order.every((v)=>v>=0)&&order.every((v,i)=>i===0||order[i-1]<v),'LC06-Scriptreihenfolge ist nicht deterministisch.');
