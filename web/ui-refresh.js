@@ -17,7 +17,13 @@
     if(typeof requestAnimationFrame==='function')requestAnimationFrame(run);else setTimeout(run,0);
   }
   document.addEventListener('click',(event)=>{
-    if(event.target.closest?.('#mapZoomOut,#mapZoomReset,#mapZoomIn'))return;
+    const zoom=event.target.closest?.('#mapZoomOut,#mapZoomReset,#mapZoomIn');
+    if(zoom){
+      if(zoom.id==='mapZoomReset')root.LIVING_CITY_05B_UI?.fitMap?.();
+      else if(zoom.id==='mapZoomIn')root.LIVING_CITY_05B_UI?.zoomIn?.();
+      else root.LIVING_CITY_05B_UI?.zoomOut?.();
+      return;
+    }
     schedule();
   });
   document.addEventListener('keydown',(event)=>{

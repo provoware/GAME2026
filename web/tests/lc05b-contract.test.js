@@ -20,7 +20,7 @@ assert.ok(ui.includes('renderDashboard')&&ui.includes('primaryTask')&&ui.include
 assert.ok(ui.includes('cloneNode(true)')&&ui.includes('replaceWith'),'Alter modaler Hilfe-Handler wird nicht sicher entkoppelt.');
 assert.ok(!ui.includes('MutationObserver'),'LC05B darf keinen globalen DOM-Observer einführen.');
 assert.ok(refresh.includes('LIVING_CITY_05B_UI?.render?.()'),'Zentraler Refresh aktualisiert LC05B nicht.');
-assert.ok(refresh.includes("#mapZoomOut,#mapZoomReset,#mapZoomIn")&&refresh.includes("event.target?.closest?.('#cityMap')")&&refresh.includes('if(mapViewport)return'),'Zentraler UI-Refresh darf reine Karten-Zoom-/Pan-Aktionen nicht zurücksetzen.');
+assert.ok(refresh.includes("#mapZoomOut,#mapZoomReset,#mapZoomIn")&&refresh.includes('LIVING_CITY_05B_UI?.zoomIn?.()')&&refresh.includes('LIVING_CITY_05B_UI?.zoomOut?.()')&&refresh.includes('LIVING_CITY_05B_UI?.fitMap?.()')&&refresh.includes("event.target?.closest?.('#cityMap')")&&refresh.includes('if(mapViewport)return'),'Letzter UI-Arbiter muss sichtbare Zoomtasten kanonisch anwenden und reine Karten-Pan-Aktionen vom Voll-Render trennen.');
 const order=['lc05-ui.js','lc05b-ui.js','ui-refresh.js'].map((n)=>html.indexOf(`src="${n}"`));
 assert.ok(order.every((v)=>v>=0)&&order[0]<order[1]&&order[1]<order[2],'LC05B-Scriptreihenfolge falsch.');
 console.log('PASS: LIVING-CITY-05B Vertrag – Hilfe-Dock, Aufgaben-Dashboard, Reise, Zoom/Pan, Tastatur und Responsive Design geprüft.');
