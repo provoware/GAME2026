@@ -2,72 +2,67 @@
 
 ## Stand
 
-**Browser-Spielstand:** 0.10.0-living-city-04  
+**Browser-Spielstand:** 0.10.1-living-city-04a  
 **Browser-Schema:** 5  
 **Primärplattform:** Firefox / Chrome, offline-first  
 **GitHub-Strang:** `agent/html-gang-map-boss-dynamics`
 
-## Implementiert
+## Aktuelle Reparatur
 
-### Revival Director
+### Bedienbarkeit
 
-- dynamische, zustandsabhängige Missionsangebote;
-- bis zu drei aktive Aufträge parallel;
-- Fristen, Fortschritt, Belohnung, Fehlschlag und Archivierung;
-- Folgeaufträge/Missionsketten;
-- Ziele aus Territorium, Kampf, Firmen, Depot, Crewskills, Daueraufträgen, Netzwerken und Reisen;
-- Karriere-Meilensteine und Prestige;
-- deterministische 1000-Zug-Director-Massensimulation.
+- `Zug beenden` wieder dauerhaft sichtbar;
+- Tastenkürzel E;
+- vollständiger Simulationszyklus bei bewusstem Warten;
+- Sperre bei offenem Kampf/Poker;
+- Rivalen wieder als eigener Hauptbereich;
+- alle Haupttabs ohne horizontales Verstecken sichtbar.
 
-### Lebende Stadt
+### Karte
 
-- 12 Bezirke und sichtbare Gebietsbesitzer;
-- zeitlich begrenzte Stadtereignisse;
-- Ereignismarker direkt auf der SVG-Karte;
-- Stadtphasen Nacht, Morgengrauen, Tag und Abend;
-- Spannung/Chancen als berechnete Director-Werte.
+- stärkere visuelle Gebietsstruktur;
+- Besitzerflächen und Kontrollringe;
+- Bezirksarten als Icons;
+- Rivalen-/Polizeidruck direkt am Knoten;
+- direkte Wege und Bahnlinien hervorgehoben;
+- ausgewählte Verbindung separat markiert;
+- mehrstufige Routenplanung mit nächstem Halt;
+- direkte Reise aus der Kartenleiste;
+- Zoomsteuerung und bessere Callouts.
 
-### Rivalen
+### Konsistenz
 
-- drei Rivalengangs mit aggressiver, wirtschaftlicher und verdeckter Strategie;
-- Beziehungen zwischen allen Rivalenpaaren;
-- Zustände von offenem Krieg bis Pakt;
-- Rivalenkriege verändern Ressourcen und KI-Zielwahl.
+- 0.10-Speicherspiegel `v0100` ergänzt und mit dem bisherigen `v090`-Key kompatibel synchronisiert;
+- Migration alter Browserstände bleibt erhalten;
+- UI-Smoke und statischer UI-Vertrag verwenden jetzt die finale Revival-Engine;
+- eigener Regressionstest für Zugsteuerung, Rivalen, Karte und Speicher-Migration.
 
-### Bestehende Kernsysteme
+## Bestehende Systeme
 
-- detaillierte Crewprofile und praxisbasierte Skills;
-- autonome Daueraufträge;
-- Besitz mit Kauf/Ausbau/Verkauf/Crewbindung;
-- Bank, Firmenmarkt, Kurse, Anteile und Dividenden;
-- institutionelles Informationsnetz;
-- Casino mit Poker und drei Spielautomaten;
-- Schutz-/Taktikausrüstung und Kampfsport;
-- Bahn-/Stadtreisen;
-- taktische Kämpfe mit Crewbeiträgen, Gelände, Moral, Deckung, Verletzungsrisiko und Bezirksübernahme;
-- Autosave und Migration älterer Browserstände.
+Revival Director, Missionen, Stadtereignisse, Rivalenpolitik, Crewprofile/-aufträge, Besitz, Bank/Firmenmarkt, Casino, Kampfsport, Ausrüstung, institutionelles Netz, Reisen und taktische Kämpfe bleiben enthalten.
 
 ## Validierung lokal
 
 - JavaScript-Syntax: **PASS**;
-- 0.9-Kern: **52/52 PASS**;
-- Revival-Schicht: **15/15 PASS**;
-- bestehender 500-Zug-Stresstest: **PASS**;
-- zusätzlicher Revival-Director-1000-Zug-Langlauf: **PASS**;
+- Kern: **52/52 PASS**;
+- Revival: **15/15 PASS**;
+- 500-Zug-Kernlanglauf: **PASS**;
+- 1000-Zug-Director-Langlauf: **PASS**;
 - UI-Smoke: **PASS**;
-- statischer Kern-UI-Vertrag: **PASS**;
+- statischer UI-Vertrag: **PASS**;
+- Karten-/Bedien-Regression: **PASS**;
 - Revival-Modul-/Visual-Vertrag: **PASS**;
-- erkannte und behobene Invariante: maximal zwei aktive Stadtereignisse auch bei erzwungener Erzeugung;
-- reale Chromium-Ausführung in dieser Containerumgebung: D-Bus-Abhängigkeit verursacht Timeout; daher kein Desktop-E2E-PASS behauptet.
+- Shell-Syntax: **PASS**;
+- Chromium-Screenshot-E2E in dieser Containerumgebung weiterhin durch fehlenden D-Bus blockiert; kein falsches PASS.
 
 ## Fortschritt bis vollständigem Release
 
-- Spezifikation / Architektur: **88 %**
-- Codeimplementierung: **72 %**
-- UI / Spielbarkeit: **81 %**
-- Test-/Validierungsinfrastruktur: **78 %**
-- gewichteter Gesamtfortschritt: **77 %**
+- Spezifikation / Architektur: **89 %**
+- Codeimplementierung: **74 %**
+- UI / Spielbarkeit: **86 %**
+- Test-/Validierungsinfrastruktur: **83 %**
+- gewichteter Gesamtfortschritt: **80 %**
 
 ## Nächster sinnvoller Meilenstein
 
-**LIVING-CITY-05:** narrative Figurenbeziehungen und Erinnerungen, prozedurale Missionsdialoge aus dem Director, echte Bezirks-Innenansichten, Audio-/Sounddesign, Ausrüstungszustand sowie reale Firefox-/Chrome-E2E-Abnahme auf Desktop-Runner.
+**LIVING-CITY-05:** narrative Figurenbeziehungen, Innenansichten, Sounddesign, tiefere Missionsdialoge und reale Firefox-/Chrome-Desktop-E2E-Abnahme auf einem vollständigen Desktop-Runner.

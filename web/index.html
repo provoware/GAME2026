@@ -4,17 +4,18 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#07090d">
-  <meta name="description" content="PPPOPPI Bunkerwahrheit – LIVING-CITY-04 Revival-Simulation.">
-  <title>PPPOPPI – Bunkerwahrheit · LIVING-CITY-04</title>
+  <meta name="description" content="PPPOPPI Bunkerwahrheit – LIVING-CITY-04A Karten- und Bedienreparatur.">
+  <title>PPPOPPI – Bunkerwahrheit · 0.10.1 LIVING-CITY-04A</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="revival.css">
+  <link rel="stylesheet" href="repair-04a.css">
 </head>
 <body>
 <div class="app-shell">
   <header class="topbar glass">
-    <div class="brand"><div class="brand-mark">9909</div><div><h1>PPPOPPI · Bunkerwahrheit</h1><p>LIVING-CITY-04 · Revival Director · lebende Stadt · dynamische Aufträge</p></div></div>
+    <div class="brand"><div class="brand-mark">9909</div><div><h1>PPPOPPI · Bunkerwahrheit</h1><p>LIVING-CITY-04A · Karten- & Bedienreparatur · Revival Director</p></div></div>
     <div class="top-kpis" id="topKpis"></div>
-    <div class="top-actions"><button class="btn ghost" id="helpButton">Hilfe</button><button class="btn ghost" id="saveButton">Speichern</button></div>
+    <div class="top-actions"><button class="btn primary turn-button" id="endTurnButton" title="Zug beenden / bewusst warten (Taste E)"><span>Zug beenden</span><small>Warten</small></button><button class="btn ghost" id="helpButton">Hilfe</button><button class="btn ghost" id="saveButton">Speichern</button></div>
   </header>
 
   <main class="workspace">
@@ -29,8 +30,8 @@
     </aside>
 
     <section class="panel map-panel glass">
-      <div class="map-toolbar"><div><span class="eyebrow">LIVE-STADTKARTE</span><h2>Stadtsektor 9909</h2></div><div class="legend"><span><i class="dot player"></i>Du</span><span><i class="dot rival"></i>Rivalen</span><span><i class="dot neutral"></i>Neutral</span><span><i class="dot current"></i>Standort</span></div></div>
-      <div class="map-stage"><svg id="cityMap" viewBox="0 0 1000 700" role="img" aria-label="Interaktive Stadtkarte"></svg><div class="map-callout" id="mapCallout"></div></div>
+      <div class="map-toolbar"><div><span class="eyebrow">LIVE-STADTKARTE</span><h2>Stadtsektor 9909</h2></div><div class="map-toolbar-actions"><div class="legend"><span><i class="dot player"></i>Du</span><span><i class="dot rival"></i>Rivalen</span><span><i class="dot neutral"></i>Neutral</span><span><i class="dot current"></i>Standort</span><span><i class="route-key"></i>direkt erreichbar</span></div><div class="map-controls" aria-label="Kartenzoom"><button class="map-control" id="mapZoomOut" title="Karte verkleinern">−</button><button class="map-control" id="mapZoomReset" title="Gesamtkarte">◎</button><button class="map-control" id="mapZoomIn" title="Auswahl vergrößern">+</button></div></div></div>
+      <div class="map-stage"><svg id="cityMap" viewBox="0 0 1000 700" role="img" aria-label="Interaktive Stadtkarte"></svg><div class="map-quickbar" id="mapQuickbar"></div><div class="map-callout" id="mapCallout"></div></div>
       <div class="ticker"><span>LETZTE MELDUNG</span><strong id="tickerText">System bereit.</strong></div>
     </section>
 
@@ -41,6 +42,7 @@
         <button class="tab" data-tab="assets">Besitz</button>
         <button class="tab" data-tab="bank">Bank</button>
         <button class="tab" data-tab="network">Netz</button>
+        <button class="tab" data-tab="rivals">Rivalen</button>
         <button class="tab" data-tab="casino">Casino</button>
         <button class="tab" data-tab="log">Chronik</button>
       </nav>
@@ -50,18 +52,19 @@
         <section class="tab-panel" data-panel="assets" hidden><div id="assetsPanel"></div></section>
         <section class="tab-panel" data-panel="bank" hidden><div id="bankPanel"></div></section>
         <section class="tab-panel" data-panel="network" hidden><div id="networkPanel"></div></section>
+        <section class="tab-panel" data-panel="rivals" hidden><div id="rivalsPanel"></div></section>
         <section class="tab-panel" data-panel="casino" hidden><div id="casinoPanel"></div></section>
         <section class="tab-panel" data-panel="log" hidden><div id="logPanel"></div></section>
       </div>
     </aside>
   </main>
 
-  <footer class="footerbar glass"><span id="saveStatus">Automatisch lokal gespeichert</span><span>Version <strong>0.10.0</strong> · Schema 5</span><button class="text-button" id="resetButton">Neues Spiel</button></footer>
+  <footer class="footerbar glass"><span id="saveStatus">Automatisch lokal gespeichert</span><span class="turn-rule">Aktionen beenden meist automatisch einen Zug · <b>Zug beenden</b> = bewusst warten</span><span>Version <strong>0.10.1</strong> · Schema 5</span><button class="text-button" id="resetButton">Neues Spiel</button></footer>
 </div>
 
 <dialog id="personDialog" class="modal person-modal"><div class="modal-card"><button class="modal-close" data-close="personDialog">×</button><div id="personDialogContent"></div></div></dialog>
 <dialog id="combatDialog" class="modal combat-modal"><div class="modal-card wide"><button class="modal-close" data-close="combatDialog">×</button><div id="combatDialogContent"></div></div></dialog>
-<dialog id="helpDialog" class="modal"><div class="modal-card"><button class="modal-close" data-close="helpDialog">×</button><span class="eyebrow">KURZANLEITUNG</span><h2>LIVING-CITY-04</h2><div class="help-grid"><article><b>Direktor</b><p>Dynamische Aufträge, Stadtereignisse, Rivalenpolitik und Karriere im neuen Direktor-Bereich verfolgen.</p></article><article><b>Stadt</b><p>Bezirk wählen, reisen, Aktionen ausführen und Kontrolle sichern. Der Stadtpuls reagiert auf deine Entscheidungen.</p></article><article><b>Crew</b><p>Personenkarten öffnen, Daueraufträge setzen, Ausrüstung verteilen und Skills durch Praxis entwickeln.</p></article><article><b>Bank</b><p>Geld einzahlen, lokale Unternehmen analysieren, Anteile kaufen und Dividenden erhalten. Kurse folgen der simulierten Unternehmensentwicklung.</p></article><article><b>Netz</b><p>Maulwürfe und abstrakte Stadtoperationen verwalten. Alle Effekte bleiben reine Spielwerte.</p></article><article><b>Casino</b><p>Im Casino 9909 Poker selbst spielen oder drei unterschiedliche Automaten nutzen.</p></article><article><b>Kampf</b><p>Crew auswählen, Kräftebeiträge prüfen und rundenweise Angriff, Deckung oder Rückzug entscheiden.</p></article></div></div></dialog>
+<dialog id="helpDialog" class="modal"><div class="modal-card"><button class="modal-close" data-close="helpDialog">×</button><span class="eyebrow">KURZANLEITUNG</span><h2>LIVING-CITY-04A</h2><div class="help-grid"><article><b>Zug beenden</b><p>Mit dem gut sichtbaren Button oben rechts oder Taste E bewusst einen Zug verstreichen lassen. Dadurch laufen Crew-Aufträge, Betriebe, Markt, Rivalen und Stadtereignisse weiter.</p></article><article><b>Karte</b><p>Leuchtende Verbindungen sind direkt erreichbar. Bezirk anklicken, Reiseroute in der Kartenleiste wählen und bei Bedarf mit +/− zoomen.</p></article><article><b>Direktor</b><p>Dynamische Aufträge, Stadtereignisse, Rivalenpolitik und Karriere im neuen Direktor-Bereich verfolgen.</p></article><article><b>Stadt</b><p>Bezirk wählen, reisen, Aktionen ausführen und Kontrolle sichern. Der Stadtpuls reagiert auf deine Entscheidungen.</p></article><article><b>Crew</b><p>Personenkarten öffnen, Daueraufträge setzen, Ausrüstung verteilen und Skills durch Praxis entwickeln.</p></article><article><b>Bank</b><p>Geld einzahlen, lokale Unternehmen analysieren, Anteile kaufen und Dividenden erhalten. Kurse folgen der simulierten Unternehmensentwicklung.</p></article><article><b>Netz</b><p>Maulwürfe und abstrakte Stadtoperationen verwalten. Alle Effekte bleiben reine Spielwerte.</p></article><article><b>Casino</b><p>Im Casino 9909 Poker selbst spielen oder drei unterschiedliche Automaten nutzen.</p></article><article><b>Kampf</b><p>Crew auswählen, Kräftebeiträge prüfen und rundenweise Angriff, Deckung oder Rückzug entscheiden.</p></article></div></div></dialog>
 
 <script src="data.js"></script>
 <script src="revival-data.js"></script>
@@ -69,7 +72,9 @@
 <script src="revival-missions.js"></script>
 <script src="revival-world.js"></script>
 <script src="revival-engine.js"></script>
+<script src="repair-bootstrap.js"></script>
 <script src="app.js"></script>
 <script src="revival-ui.js"></script>
+<script src="repair-04a.js"></script>
 </body>
 </html>

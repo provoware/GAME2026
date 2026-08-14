@@ -1,46 +1,41 @@
-# PPPOPPI – Bunkerwahrheit · LIVING-CITY-04
+# PPPOPPI – Bunkerwahrheit · LIVING-CITY-04A
 
-Version **0.10.0-living-city-04** hebt die Browserfassung von einer umfangreichen Stadt-Sandbox zu einer verknüpften **Revival-Simulation mit dynamischem Director** an. Der Kern bleibt lokal, offline und ohne externe Bibliotheken spielbar.
+Version **0.10.1-living-city-04a** ist die Karten- und Bedienreparatur des 0.10-Revival-Stands. Sie beseitigt mehrere Sichtbarkeits- und Konsistenzprobleme, ohne die bewährten Fachsysteme zurückzubauen.
 
 ## Direkt starten
 
 `web/index.html` in Firefox oder Chrome öffnen oder unter Linux `./START_GAME.sh` ausführen.
 
-## Der Qualitätssprung in 0.10.0
+## Korrigiert und verbessert
 
-- **Revival Director** erzeugt Aufträge aus dem tatsächlichen Spielzustand statt aus einer starren Liste;
-- vier dynamische Auftragsangebote, bis zu drei parallele aktive Aufträge und Folgeaufträge;
-- Missionsziele reagieren auf Gebiete, Kämpfe, Beteiligungen, Firmenentwicklung, Crew-Skills, autonome Arbeit, Netzwerke und Reisen;
-- dynamische Stadtereignisse mit begrenzter Laufzeit und sichtbaren Kartenmarkern;
-- Tages-/Stadtphasen **Nacht, Morgengrauen, Tag, Abend** verändern die visuelle Atmosphäre;
-- Rivalengangs besitzen Beziehungen untereinander: Distanz, Feindschaft, Krieg, Zweckkontakt oder Pakt;
-- offene Rivalenkriege beeinflussen KI-Ziele und Ressourcen;
-- Karriere-Meilensteine und ein berechneter **Prestige-Wert** geben langfristige Orientierung;
-- neuer Director-Bereich bündelt aktive Aufträge, Angebote, Stadtereignisse, Rivalenpolitik und Karriere;
-- Karten- und Kampfvisualisierung wurden mit Ereignis-Halos, Phasenlicht, dynamischer Stimmung und stärkerem Feedback erweitert;
-- bestehende Systeme bleiben erhalten: 12 Bezirke, autonome Crew, Personenkarten, Bank/Unternehmensmarkt, Beteiligungen/Dividenden, Besitz, institutionelles Netz, Casino, Kampfsport, Ausrüstung, Reisen und taktische Kämpfe;
-- Migration aus Browserständen 0.9/0.8/0.7/0.6.
+- **Zug beenden** wieder als dauerhaft sichtbare Hauptaktion vorhanden; zusätzlich Tastenkürzel **E**;
+- bewusstes Warten löst den vollständigen Zugzyklus aus: autonome Crew, Betriebe, Markt, Maulwürfe, Rivalen, Polizei, Rekrutierung, Stadtereignisse, Missionen und Meilensteine;
+- Zugende wird während offenem Kampf oder laufender Pokerrunde gesperrt;
+- **Rivalen** wieder als eigener Haupt-Tab mit Strategie, Macht, Kasse, Territorien, letztem KI-Zug und Beziehungen;
+- Tabnavigation von verstecktem horizontalem Scrollen auf vollständig sichtbares Raster umgestellt;
+- Stadtkarte grafisch neu geordnet: stärkere Gebietsflächen, Besitzer-/Kontrollringe, Bezirksart, Rivalen-/Polizeidruck und Besitzmarker;
+- direkt erreichbare Straßen und Bahnlinien deutlich markiert;
+- mehrstufige Ziele erhalten eine berechnete Route mit nächstem Halt;
+- direkte Reise aus der Kartenleiste möglich;
+- Kartenzoom **− / Gesamtkarte / +** ergänzt;
+- neuer kanonischer 0.10-Speicherspiegel `v0100`; der bisherige `v090`-Key bleibt für verlustfreie Kompatibilität synchronisiert;
+- zusätzlicher Regressionstest verhindert künftig das Verschwinden von Zugsteuerung, Rivalenbereich und Kartenbedienung.
 
-## Wartbare Revival-Architektur
+## Wartbare 04A-Reparaturschicht
 
-Die bereits qualifizierten 0.9-Kernmodule bleiben fachlich unverändert. LIVING-CITY-04 ergänzt sie über sechs klar getrennte Revival-Module:
+Die großen, bereits qualifizierten 0.10-Kernmodule `app.js` und `styles.css` bleiben byte-stabil. Die Bedienreparatur liegt additiv in `repair-bootstrap.js`, `repair-04a.js` und `repair-04a.css`. Dadurch ist die Fehlerkorrektur leicht rückbaubar und reduziert das Regressionsrisiko.
 
-- `web/revival-data.js` – neue Director-Datenverträge;
-- `web/revival-missions.js` – Missionen, Fortschritt, Fristen und Folgeketten;
-- `web/revival-world.js` – Stadtereignisse, Rivalenpolitik, Prestige und Meilensteine;
-- `web/revival-engine.js` – kleiner Kompositionskern über der qualifizierten Basis-Engine;
-- `web/revival-ui.js` – additive Director-Oberfläche und Kartenmarker;
-- `web/revival.css` – ausschließlich die neue visuelle Ebene.
+## Bestehende Revival-Systeme
 
-Das hält Kopplung und Regressionsrisiko niedrig und ermöglicht spätere Revival-Module ohne erneutes Aufblähen der Kernlogik.
+Revival Director, dynamische Missionen, Stadtereignisse, Rivalenpolitik, Crew-Daueraufträge, Besitz, Bank/Unternehmensmarkt, Casino, Kampfsport, Ausrüstung, Reisen und taktische Kämpfe bleiben vollständig enthalten.
 
-## Tests
+## Prüfung
 
 ```bash
 ./PRUEFEN.sh
 ```
 
-Geprüft werden 52 unveränderte Kern-Regressionen inklusive 500-Zug-Langlauf, 15 neue Revival-Regressionen, eine deterministische 1000-Zug-Director-Simulation, UI-Smoke, statischer Kernvertrag und ein eigener Revival-Modul-/Visual-Vertrag.
+Der Prüfvertrag umfasst 52 Kern-Regressionen, 15 Revival-Regressionen, 500- und 1000-Zug-Langläufe, UI-Smoke, statischen UI-Vertrag, Karten-/Bedien-Regression und Revival-Visual-Vertrag.
 
 ## Simulationshinweis
 

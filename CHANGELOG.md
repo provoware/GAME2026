@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.10.1-living-city-04a
+
+- fehlenden sichtbaren **Zug beenden**-Button wieder eingeführt
+- manuellen Zugabschluss mit vollständigem Simulationszyklus implementiert
+- Zugende während Kampf/offener Pokerrunde gesperrt
+- Rivalen-Haupttab mit Strategien, Macht, Kasse, Territorien und Beziehungen wiederhergestellt
+- Haupttabs als sichtbares Raster statt horizontal versteckter Navigation
+- Stadtkarte mit Besitzerflächen, Kontrollringen, Bezirksicons sowie Rivalen-/Polizeidruck überarbeitet
+- direkt erreichbare Straßen-/Bahnlinien und ausgewählte Verbindung visuell getrennt
+- mehrstufige Routenplanung mit nächstem Halt ergänzt
+- direkte Reiseleiste und Kartenzoom ergänzt
+- Speicherkey auf `v0100` korrigiert, Migration aus `v090` und älteren Ständen erhalten
+- UI-Smoke auf finale Revival-Engine umgestellt
+- statischen UI-Vertrag auf finale Engine-Schicht korrigiert
+- neuen Karten-/Bedien-Regressionstest ergänzt
+
 ## 0.10.0-living-city-04
 
 - Revival Director als additive, getrennte Modulschicht eingeführt

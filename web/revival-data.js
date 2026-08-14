@@ -37,7 +37,7 @@
 
   return Object.freeze({
     ...BASE,
-    version:'0.10.0-living-city-04',
+    version:'0.10.1-living-city-04a',
     schema:5,
     world:{...BASE.world,id:'world.berlin_bunker_ring.living_city_04'},
     missionTemplates,

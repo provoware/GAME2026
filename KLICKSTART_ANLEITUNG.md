@@ -1,4 +1,4 @@
-# Klickstart – PPPOPPI Bunkerwahrheit 0.10.0 · LIVING-CITY-04
+# Klickstart – PPPOPPI Bunkerwahrheit 0.10.1 · LIVING-CITY-04A
 
 ## Linux / Kubuntu
 
@@ -24,4 +24,12 @@ Der Browser speichert automatisch lokal. Bestehende Browser-Spielstände aus 0.9
 
 ## Technische Prüfung
 
-`./PRUEFEN.sh` führt 11 reproduzierbare Prüfblöcke aus. Node.js ist nur für diese Entwicklerprüfung erforderlich, nicht zum Spielen.
+`./PRUEFEN.sh` führt 12 reproduzierbare Prüfblöcke aus. Node.js ist nur für diese Entwicklerprüfung erforderlich, nicht zum Spielen.
+
+
+## Wichtige Bedienung 0.10.1
+
+- **Zug beenden** steht immer oben rechts. Taste **E** funktioniert ebenfalls, solange kein Eingabefeld oder Dialog aktiv ist.
+- Die Karte markiert direkt erreichbare Wege cyan und geplante Mehr-Etappen-Routen gold.
+- Ein Klick auf einen Bezirk zeigt oben in der Karte die nächste sinnvolle Reiseetappe.
+- **Rivalen** ist wieder als eigener Hauptbereich sichtbar.
