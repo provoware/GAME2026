@@ -1,38 +1,59 @@
 # PPPOPPI – Bunkerwahrheit
 
-Professionelles Godot-Grundprojekt für die schrittweise, testbare Umsetzung des Spiels.
+Das Repository enthält zwei miteinander verbundene Entwicklungsstränge:
 
-## Aktueller implementierter Umfang
+- das bestehende Godot-Fundament mit Command-/Effect-Architektur, Missionen, Save-System und WORLD-01;
+- die neue direkt spielbare HTML-Browserfassung **Stadtsektor 9909** unter `web/`.
+
+## Browserfassung direkt starten
+
+`web/index.html` in Firefox oder Chrome öffnen. Es werden keine externen Bibliotheken benötigt; der Spielstand bleibt lokal im Browser.
+
+Die aktuelle Browserfassung enthält:
+
+- interaktive SVG-Stadtkarte mit neun Bezirken;
+- dynamische Bezirkswerte für Kontrolle, Rivalen, Polizei und Unruhe;
+- Boss-Werte, die sich durch konkrete Taten verändern;
+- automatisch entstehende Boss-Profile statt statischer Klassen;
+- sieben unterschiedliche Aktionen mit sozialen, wirtschaftlichen, aggressiven und verdeckten Folgen;
+- zufällige, vom Boss-Stil beeinflusste Gang-Rekrutierung;
+- Crew-Loyalität, Verletzungen, Gangstärke und mögliche Abgänge;
+- autonome Rivalenbewegungen und Polizeidruck;
+- Gebietseinnahmen, Chronik und lokales Autosave;
+- responsive Drei-Bereich-Oberfläche mit klarer Kartenpriorität und progressiv eingeblendeten Details.
+
+Browser-Engine testen:
+
+```bash
+node web/tests/engine.test.js
+```
+
+Weitere Hinweise: [web/README.md](web/README.md)
+
+## Godot-Fundament
 
 ### Fundament
 
-- typisierte Ergebnis- und Fehlerobjekte
-- Command-/Effect-Transaktionskette
-- vollständiger Rollback mehrteiliger Änderungen
-- Domain-Event-Bus
-- autoritativer `GameSessionState`
-- idempotente Transaktionen gegen Doppelbuchungen
-- atomarer JSON-Speicherstand mit SHA-256-Prüfsumme
-- Migration des Zustandsformats von Version 1 auf Version 2
+- typisierte Ergebnis- und Fehlerobjekte;
+- Command-/Effect-Transaktionskette;
+- vollständiger Rollback mehrteiliger Änderungen;
+- Domain-Event-Bus;
+- autoritativer `GameSessionState`;
+- idempotente Transaktionen gegen Doppelbuchungen;
+- atomarer JSON-Speicherstand mit SHA-256-Prüfsumme;
+- Save-Version 3 mit Migration älterer Zustände.
 
-### MISSION-01 · Iteration A und B
+### Missionen und Welt
 
-- datengetriebene Missionsregistry
-- striktes JSON-Schema für Missionscontent
-- mehrstufige Missionsphasen
-- alternative Lösungswege mit Voraussetzungen
-- pfadabhängige Pflicht- und optionale Ziele
-- neutrale Missionssignale für Welt, Dialog, Figuren und Resonanz
-- absolute Monatsfristen
-- voller Erfolg, Teilerfolg, Fehlschlag und Abbruch
-- sichere Missionspause und Fortsetzung
-- automatische Pause durch das Signal `resonance.riss_invoked`
-- Abbruch-, Fehlschlags- und Teilerfolgsfolgen
-- Missionsgraph- und Erreichbarkeitsprüfung
-- Missionstracker als Graybox-Oberfläche
-- elf automatisierte Selbsttests
+- datengetriebene Missionsregistry und striktes JSON-Schema;
+- mehrstufige Missionsphasen und alternative Lösungswege;
+- pfadabhängige Ziele und neutrale Missionssignale;
+- absolute Monatsfristen, Erfolg, Teilerfolg, Fehlschlag und Abbruch;
+- Missionshistorie und sichere Wiederaufnahmepunkte;
+- datengetriebener Bunker-Ring mit stabilen Orts- und Routen-IDs;
+- autoritative Reise- und Positionslogik.
 
-## Start unter Linux
+## Godot-Start unter Linux
 
 ```bash
 chmod +x start.sh
@@ -47,10 +68,8 @@ Das Startskript sucht `godot4`, `godot` oder eine lokale Godot-Binärdatei unter
 chmod +x test.sh verify.sh
 ./verify.sh
 ./test.sh
+node web/tests/engine.test.js
 ```
-
-- `verify.sh` erneuert das deterministische Manifest und prüft GDScript, JSON-Schema, Missionsgraphen, IDs, Ressourcenpfade und Prüfsummen.
-- `test.sh` führt die Godot-Selbsttests aus, sobald eine Godot-4-Binärdatei verfügbar ist.
 
 ## Paket erzeugen
 
@@ -59,35 +78,16 @@ chmod +x package.sh
 ./package.sh
 ```
 
-Der Ablauf formatiert den GDScript-Code, baut das Manifest neu auf, prüft das Projekt und erzeugt anschließend ein ZIP-Paket.
-
-## Vertikaler Referenzablauf
-
-```text
-Mission starten
-→ Lösungsweg wählen
-→ Welt- oder Dialogsignal empfangen
-→ Ziel automatisch fortschreiben
-→ Folgephase aktivieren
-→ Riss-Unterbrechung verarbeiten
-→ Frist oder Abschluss auflösen
-→ Folgen atomar buchen
-→ Zustand speichern und laden
-```
-
 ## Projektstruktur
 
 ```text
-content/missions/       Missionsdefinitionen als JSON
+content/                Datengetriebene Missions- und Weltinhalte
 schemas/                JSON-Schemas
 scenes/                 Godot-Szenen
-scripts/core/            Grundarchitektur
-scripts/mission/         Missionssystem
-scripts/save/            Speicherarchitektur
-scripts/ui/              Präsentationsschicht
-scripts/tests/           Selbsttests
-tools/                   Validierung und Paketautomatisierung
-docs/                    Spezifikationen und Iterationsberichte
+scripts/                Godot-Domain, Save, UI und Tests
+web/                    direkt spielbare HTML-Browserfassung
+tools/                  Validierung und Paketautomatisierung
+docs/                   Spezifikationen und Iterationsberichte
 ```
 
 ## Entwicklungsregel
@@ -98,9 +98,7 @@ Jede weitere Fachphase liefert parallel:
 2. ausführbaren Referenzcode,
 3. automatisierte Tests,
 4. aktualisierte Validierung,
-5. neues Downloadpaket.
-
-Der aktuelle Code ist ein belastbares vertikales Fundament, noch kein vollständiges Spiel.
+5. nachvollziehbare Dokumentation.
 
 ## Entwicklerdokumentation
 
@@ -111,6 +109,7 @@ Der aktuelle Code ist ein belastbares vertikales Fundament, noch kein vollständ
 - [Sicherheit und lokale Daten](docs/SECURITY_AND_DATA.md)
 - [Releaseprozess](docs/RELEASE_PROCESS.md)
 - [Aktueller Projektstatus](docs/PROJECT_STATUS.md)
+- [Browserfassung](web/README.md)
 - [Beitragsrichtlinien](CONTRIBUTING.md)
 
 ## GitHub-Arbeitsweise
