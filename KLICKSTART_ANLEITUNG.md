@@ -1,42 +1,38 @@
-# Klickstart – PPPOPPI Bunkerwahrheit 0.14.0 · LIVING-CITY-08
+# Klickstart – PPPOPPI Bunkerwahrheit 0.16.0 · LIVING-CITY-10
 
 ## Linux / Kubuntu
 
 1. ZIP vollständig entpacken.
-2. `START_GAME.sh` doppelklicken bzw. ausführen.
-3. Der Starter öffnet bevorzugt **Google Chrome**, danach Chromium. Firefox bleibt Reserve.
+2. `START_GAME.sh` doppelklicken oder ausführen.
+3. Der Starter bevorzugt **Google Chrome**, danach Chromium; Firefox bleibt Reserve.
+
+## Windows
+
+`START_GAME.bat` doppelklicken. Wenn Google Chrome installiert ist, wird es bevorzugt geöffnet.
 
 ## So findest du dich sofort zurecht
 
-- **Oben im Aufgaben-Dashboard** steht der wichtigste nächste Schritt.
-- **G** setzt den Tastaturfokus direkt auf diese Empfehlung.
-- **Hilfe** liegt neben/unter der Karte und verdeckt sie nicht.
+- **G** setzt den Fokus auf den aktuell sinnvollsten nächsten Schritt.
+- **L** öffnet die neue **Stadtlage** mit Bezirks-Trends und Crew-Initiativen.
+- **J** öffnet das Stadtgedächtnis mit früheren Entscheidungen und späteren Folgen.
+- **U** öffnet Stadt & Komfort mit Lesemodus und Wiederherstellungspunkten.
+- **Hilfe** liegt neben oder unter der Karte und verdeckt sie nicht.
 - **I** öffnet den Innenraum des aktuellen Ortes.
-- In Innenräumen zeigen große Aktionskarten sofort **Was passiert?**, **Was kostet es?** und **welcher Spielwert ändert sich?**
-- Bei verfügbaren Ortskontakten erscheinen Entscheidungen schrittweise statt als Textwand.
-- **K** öffnet den Klangmixer. Gesamt, Musik und Atmosphäre sind getrennt regelbar.
-- Im Kampf wird eine Empfehlung sichtbar hervorgehoben; du entscheidest weiterhin selbst.
+- **K** öffnet den Klangmixer; Klang startet nur nach einer Nutzeraktion.
+- **E** beendet bewusst einen Zug.
+
+## Stadtlage verstehen
+
+- **Druck** zeigt, wie belastet ein Bezirk aktuell ist.
+- **Stabilität** zeigt, wie ruhig und gefestigt die lokale Lage ist.
+- **Chancen** zeigen das aktuelle Entwicklungspotenzial.
+- **Momentum** zeigt die Richtung: positiv = Entwicklung verbessert sich relativ, negativ = Druck gewinnt relativ an Gewicht.
+- Crew-Initiativen können **unterstützt**, **beobachtet** oder **umgelenkt** werden. Die Wirkungen betreffen ausschließlich abstrakte Spielwerte.
 
 ## Karte & Reise
 
-- Bezirk anklicken oder Direktziel oberhalb der Karte wählen.
-- `R` startet die aktuell angebotene direkte Reise.
-- Maus ziehen / WASD / Pfeile = Karte verschieben.
-- Mausrad oder `+`/`-` = zoomen.
-- `Home` oder `0` = Gesamtkarte.
-- `M` = Kartenfokus.
-
-## Weitere Tasten
-
-- `E` – Zug beenden
-- `Alt+1` bis `Alt+9` – Spielbereich direkt wählen
-- `Tab` / `Enter` – normale Tastaturnavigation
+Bezirk oder Direktziel auswählen. `R` startet eine angebotene direkte Reise. Mausziehen, WASD oder Pfeile bewegen die Karte; Mausrad beziehungsweise `+/-` zoomt; `Home` oder `0` zeigt die Gesamtkarte; `M` setzt den Kartenfokus.
 
 ## Technische Prüfung
 
-`./PRUEFEN.sh` führt **23 reproduzierbare Prüfblöcke** aus. Node.js wird nur für die Entwicklerprüfung benötigt, nicht zum Spielen.
-
-
-## Neu in LIVING-CITY-08
-
-Mit **J** öffnest du das Stadtgedächtnis. Dort siehst du Entwicklungsbögen, frühere Entscheidungen und Folgen, die erst in späteren Zügen wirksam werden. Die Hauptansicht bleibt dadurch übersichtlich.
+`./PRUEFEN.sh` führt **27 reproduzierbare Prüfblöcke** aus. Node.js wird nur für die Entwicklerprüfung benötigt, nicht für den normalen Spielbetrieb.

@@ -2,61 +2,41 @@
 
 ## Stand
 
-**Browser-Spielstand:** 0.14.0-living-city-08  
-**Browser-Schema:** 9  
+**Browser-Spielstand:** 0.16.0-living-city-10  
+**Browser-Schema:** 11  
 **Primärplattform:** Google Chrome, offline-first; Chromium nachgelagerte Kompatibilität  
 **GitHub-Strang:** `agent/html-gang-map-boss-dynamics`
 
-## LIVING-CITY-08 – Stadtgedächtnis und nachvollziehbare Folgen
+## LIVING-CITY-10 – Bezirksdynamik und Crew-Eigeninitiative
 
 ### Spieltiefe
 
-- drei Entwicklungsbögen verbinden Entscheidungen über mehrere Orte und Züge;
-- wichtige Story-Flags können eine verzögerte Folge mit festem Fälligkeitszug planen;
-- Folgen verändern ausschließlich abstrakte Spielwerte wie Chancen, Spannung, Moral, Crewbindung oder Gebietskontrolle;
-- Dialoge, Innenraumaktionen, Reisen und Kampfresultate werden in einem gemeinsamen Entscheidungsjournal protokolliert;
-- Entwicklungsbogen-Abschlüsse besitzen einmalige Gesamtboni und werden nicht doppelt belohnt.
+- zwölf Stadtorte besitzen gespeicherte Trendwerte für Druck, Stabilität, Chancen und Momentum;
+- Trends werden aus Kontrolle, Rivalendruck, Polizei, Unruhe und Standortwert abgeleitet;
+- Reise, Innenraumentscheidung, Konfliktfolge und Crew-Initiative hinterlassen nachvollziehbare Trendursachen;
+- Crew-Eigeninitiativen entstehen deterministisch und werden höchstens drei gleichzeitig offen gehalten;
+- Unterstützen, Beobachten und Umlenken verändern ausschließlich abstrakte Spielwerte;
+- jede Crew-Entscheidung wird im Stadtgedächtnis protokolliert.
 
 ### Bedienung
 
-- neues **Stadtgedächtnis / Journal** per Taste `J`;
-- keine zusätzliche permanente Spalte oder überdeckende Dauerfläche;
-- drei kompakte Fortschrittskarten zeigen Entwicklungsbögen;
-- offene spätere Folgen zeigen transparent, wann sie wirksam werden;
-- Aufgaben-Kompass kann den nächsten Storyschritt empfehlen;
-- sichtbarer Tastaturfokus über `:focus-visible`;
-- ARIA-Live-Region meldet neu eingetretene späte Folgen.
+- `L` öffnet die progressive **Stadtlage**;
+- keine zusätzliche permanente Spalte;
+- Bezirkskarten zeigen drei kompakte Balken und die letzte Ursache;
+- `J` Stadtgedächtnis, `U` Stadt & Komfort, `G` Aufgaben-Kompass bleiben bestehen;
+- bestehende Kontrast-, Schrift- und Reduced-Motion-Profile bleiben erhalten.
 
 ### Speicher & Architektur
 
-- Browser-Schema 9;
-- kanonischer Save-Spiegel `pppoppi-bunkerwahrheit-html-v0140`;
-- Migration aus v0130/v0120/v0110/v0100/v090;
-- LC08 ausschließlich als additive Schicht über der qualifizierten LC07-Basis;
-- zentraler UI-Refresh um LC08 ergänzt;
-- keine globale DOM-Beobachtung und keine neue Render-Schleife.
-- Chrome-E2E auf einen einzelnen kanonischen Runner ohne globale Selenium-Monkeypatches konsolidiert.
+- Browser-Schema 11;
+- kanonischer Save-Spiegel `pppoppi-bunkerwahrheit-html-v0160`;
+- Migration aus v0150/v0140/v0130/v0120/v0110/v0100/v090;
+- LC10 additive Schicht über LC09;
+- keine neue DOM-Beobachtung und keine Render-Schleife.
 
-## Lokale Vorvalidierung
+## Abnahmestand
 
-- Kern: **52/52 PASS**;
-- Revival: **15/15 PASS**;
-- LC05: **20/20 PASS**;
-- LC06: **19/19 PASS**;
-- LC07: **19/19 PASS**;
-- LC08: **18/18 PASS**;
-- 500-/1000-/1200-/1500-/2000-/2500-Zug-Langläufe: **PASS**;
-- UI-, Karten-, Responsive-, Performance-, LC06-, LC07- und LC08-Verträge: **PASS**;
-- vollständiges lokales `PRUEFEN.sh`: **23/23 PASS**.
-
-## Fortschritt vor Remote-Abnahme
-
-- Spezifikation / Architektur: **99 %**
-- Codeimplementierung: **97 %**
-- UI / Spielbarkeit: **98 %**
-- Test-/Validierungsinfrastruktur: **99 %**
-- gewichteter Gesamtfortschritt: **98 %**
-
-## Nächstes Gate
-
-LC08 wird erst nach erfolgreichem echten Google-Chrome-E2E-Lauf auf dem exakten Remote-Head als qualifiziert betrachtet. Danach folgen Remote-Artefakt-Recheck, deterministisches Release-ZIP und SHA-256-Nachweis.
+- lokaler Prüfvertrag: **27/27 PASS**;
+- LC10-Engine: **12/12 PASS**, einschließlich 3000-Zug-Langlauf;
+- echter Google-Chrome-E2E-Pfad ist verpflichtendes Remote-Gate;
+- Release folgt ausschließlich aus einem erfolgreichen GitHub-Artefakt mit erneutem Entpack-/Prüflauf und SHA-256.

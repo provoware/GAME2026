@@ -3,7 +3,7 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 GAME="$ROOT/web/index.html"
 printf '\n============================================================\n'
-printf ' PPPOPPI – Bunkerwahrheit 0.14.0 · LIVING-CITY-08\n'
+printf ' PPPOPPI – Bunkerwahrheit 0.16.0 · LIVING-CITY-10\n'
 printf '============================================================\n'
 printf '[1/3] Spieldatei prüfen\n'
 [[ -f "$GAME" ]] || { echo 'FEHLER: web/index.html fehlt.'; exit 1; }

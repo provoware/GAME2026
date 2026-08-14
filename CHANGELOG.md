@@ -1,3 +1,15 @@
+# Änderungsverlauf
+
+## 0.16.0-living-city-10 – LIVING-CITY-10
+
+- Bezirksdynamik mit Druck, Stabilität, Chancen und Momentum ergänzt.
+- Deterministische Crew-Eigeninitiativen mit drei nachvollziehbaren Reaktionswegen ergänzt.
+- Stadtlage als progressive Detailansicht per `L` ergänzt.
+- Stadttrend-Historie und Journal-Verknüpfung für Ursachen/Folgen ergänzt.
+- Stadt-Puls liest Crew-Stress und Moral jetzt aus der kanonischen Crewstruktur.
+- Save-Spiegel auf v0160 / Schema 11 erweitert.
+- 3000-Zug-Langlauf und LC10-Vertragsprüfung ergänzt.
+
 # Änderungsprotokoll
 
 ## 0.14.0-living-city-08 – LIVING-CITY-08
