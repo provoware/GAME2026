@@ -7,12 +7,14 @@ Rectangle contract: map_rect["width"].
 
 The implementation core is kept byte-stable. This entrypoint corrects viewport
 metrics, adapts body-targeted shortcuts to real ActionChains at the current Chrome
-focus, restores a neutral target after dialog transitions, and turns anonymous
-Selenium wait timeouts into actionable browser-state diagnostics. Selenium itself
-is not globally monkeypatched and no release gate is relaxed.
+focus, restores a neutral target after dialog transitions, synchronizes additive
+UI layers, and turns anonymous Selenium wait timeouts into actionable browser-state
+diagnostics. Selenium itself is not globally monkeypatched and no release gate is
+relaxed.
 """
 from __future__ import annotations
 import json
+import time
 import chrome_e2e_core as core
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.action_chains import ActionChains
@@ -101,6 +103,8 @@ def wait_js(driver, code: str, timeout: float = 6):
             startPresent: !!start,
             startDisabled: start ? !!start.disabled : null,
             raidEnabled: !!q("[data-game-action='raid']:not([disabled])"),
+            effectsRange: !!q('#lc06AudioDock [data-audio-range="effects"]'),
+            ducking: !!q('#lc06AudioDock [data-audio-ducking]'),
             ticker: q('#tickerText')?.textContent || '',
             activeTag: document.activeElement?.tagName || null,
             activeId: document.activeElement?.id || null
@@ -115,6 +119,28 @@ def wait_js(driver, code: str, timeout: float = 6):
 _original_safe_click = core.safe_click
 def safe_click(driver, selector: str, timeout: float = 6):
     _original_safe_click(driver, selector, timeout)
+
+    # LC06 baut den Mixer synchron, LC07 ergänzt Effekte/Ducking additiv per Render.
+    # Der reale Test wartet auf die tatsächlich sichtbare Endfassung statt auf ein
+    # zufälliges requestAnimationFrame-/setTimeout-Timing.
+    if selector == "#lc06AudioButton":
+        core.wait_js(driver, "return !!document.querySelector('#lc06AudioDock [data-audio-range=\"effects\"]') && !!document.querySelector('#lc06AudioDock [data-audio-ducking]')", timeout)
+
+    # Der Kampfpfad wird in reale, diagnostizierbare Zustände zerlegt.
+    if "data-game-action='raid'" in selector:
+        core.wait_js(driver, "return !!document.querySelector('#combatDialog')?.open", timeout)
+    if "data-combat-start" in selector:
+        time.sleep(.05)
+        state = core.js(driver, """
+          return {
+            session: !!window.LIVING_CITY_08_ENGINE?.state?.combatSession,
+            decisions: document.querySelectorAll('#combatDialog [data-combat-decision]').length,
+            ticker: document.querySelector('#tickerText')?.textContent || '',
+            selectedCrew: document.querySelectorAll('#combatDialog .crew-select.selected').length
+          };
+        """)
+        core.assert_true(state["session"], "Kampfstart wurde abgelehnt: " + json.dumps(state, ensure_ascii=False, sort_keys=True))
+
     if "data-close" in selector or "data-lc08-close" in selector:
         dialog_id = None
         for candidate in ("sceneDialog", "lc08JournalDialog", "combatDialog"):
