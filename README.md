@@ -1,41 +1,45 @@
-# PPPOPPI – Bunkerwahrheit · LIVING-CITY-03
+# PPPOPPI – Bunkerwahrheit · LIVING-CITY-04
 
-Version **0.9.0-living-city-03** erweitert die spielbare HTML-Fassung zu einer vernetzten Stadt-, Crew-, Wirtschafts- und Taktiksimulation.
+Version **0.10.0-living-city-04** hebt die Browserfassung von einer umfangreichen Stadt-Sandbox zu einer verknüpften **Revival-Simulation mit dynamischem Director** an. Der Kern bleibt lokal, offline und ohne externe Bibliotheken spielbar.
 
 ## Direkt starten
 
 `web/index.html` in Firefox oder Chrome öffnen oder unter Linux `./START_GAME.sh` ausführen.
 
-## Neu in 0.9.0
+## Der Qualitätssprung in 0.10.0
 
-- 12 Stadtbezirke inklusive Casino 9909, Altstadt und Südhafen;
-- Geisterbahnhof mit Fernlinien in andere Stadtteile;
-- detaillierte Personenkarten mit 7 Skills, XP, Karriere, Ausrüstung und Kampfsport;
-- dauerhafte autonome Crewaufträge mit Ziel, Fortschritt und eigenständiger Skillentwicklung;
-- Skills steigen durch tatsächliche Handlungen, Entscheidungen, Kämpfe, Aufträge und Training;
-- Bankkonto, lokaler Unternehmensmarkt, Aktienanteile, Kursentwicklung und Dividenden;
-- Kurse reagieren auf simulierte Bezirks- und Unternehmensentwicklung;
-- Maulwurfnetz in sechs Institutionen mit Nutzen, Tarnung und Entdeckungsrisiko;
-- drei Rivalengangs mit verschiedenen Strategien;
-- taktische Kämpfe mit Crewbeiträgen, Gelände, Moral, Vorteil, Deckung, Verletzungsrisiko und Bezirksübernahme;
-- Casino mit selbst spielbarem 5-Card-Draw-Poker und drei Spielautomaten;
-- Schwarzmarkt/Eisenladen mit Schutz- und Taktikausrüstung;
-- Dojo in den Ostblöcken mit fünf Kampfsportarten;
-- abstrakte wiederkehrende Stadtoperationen und fiktive Rivalen-Auftragsjobs;
-- lokales Autosave und Migration aus v0.8/v0.7/v0.6.
+- **Revival Director** erzeugt Aufträge aus dem tatsächlichen Spielzustand statt aus einer starren Liste;
+- vier dynamische Auftragsangebote, bis zu drei parallele aktive Aufträge und Folgeaufträge;
+- Missionsziele reagieren auf Gebiete, Kämpfe, Beteiligungen, Firmenentwicklung, Crew-Skills, autonome Arbeit, Netzwerke und Reisen;
+- dynamische Stadtereignisse mit begrenzter Laufzeit und sichtbaren Kartenmarkern;
+- Tages-/Stadtphasen **Nacht, Morgengrauen, Tag, Abend** verändern die visuelle Atmosphäre;
+- Rivalengangs besitzen Beziehungen untereinander: Distanz, Feindschaft, Krieg, Zweckkontakt oder Pakt;
+- offene Rivalenkriege beeinflussen KI-Ziele und Ressourcen;
+- Karriere-Meilensteine und ein berechneter **Prestige-Wert** geben langfristige Orientierung;
+- neuer Director-Bereich bündelt aktive Aufträge, Angebote, Stadtereignisse, Rivalenpolitik und Karriere;
+- Karten- und Kampfvisualisierung wurden mit Ereignis-Halos, Phasenlicht, dynamischer Stimmung und stärkerem Feedback erweitert;
+- bestehende Systeme bleiben erhalten: 12 Bezirke, autonome Crew, Personenkarten, Bank/Unternehmensmarkt, Beteiligungen/Dividenden, Besitz, institutionelles Netz, Casino, Kampfsport, Ausrüstung, Reisen und taktische Kämpfe;
+- Migration aus Browserständen 0.9/0.8/0.7/0.6.
+
+## Wartbare Revival-Architektur
+
+Die bereits qualifizierten 0.9-Kernmodule bleiben fachlich unverändert. LIVING-CITY-04 ergänzt sie über vier klar getrennte Module:
+
+- `web/revival-data.js` – neue Director-Datenverträge;
+- `web/revival-engine.js` – Missionen, Ereignisse, Rivalenpolitik, Prestige und Meilensteine;
+- `web/revival-ui.js` – additive Director-Oberfläche und Kartenmarker;
+- `web/revival.css` – ausschließlich die neue visuelle Ebene.
+
+Das hält Kopplung und Regressionsrisiko niedrig und ermöglicht spätere Revival-Module ohne erneutes Aufblähen der Kernlogik.
 
 ## Tests
 
 ```bash
-node --check web/data.js
-node --check web/engine.js
-node --check web/app.js
-node web/tests/engine.test.js
-node web/tests/ui-smoke.test.js
+./PRUEFEN.sh
 ```
 
-Der Engine-Test enthält 52 deterministische Prüfungen inklusive 500-Zug-Stresstest. Der UI-Smoke-Test prüft Start-Render, Kernpanels, Karte und Autosave ohne externes Framework.
+Geprüft werden 52 unveränderte Kern-Regressionen inklusive 500-Zug-Langlauf, 15 neue Revival-Regressionen, eine deterministische 1000-Zug-Director-Simulation, UI-Smoke, statischer Kernvertrag und ein eigener Revival-Modul-/Visual-Vertrag.
 
-## Hinweis zur Simulation
+## Simulationshinweis
 
-Kriminalitäts-, Waffen-, Drogen-, Prostitutions- und Auftragsmechaniken sind ausschließlich abstrahierte Spielwerte. Das Projekt enthält keine realen Beschaffungs-, Umgehungs- oder Handlungsanleitungen.
+Konflikt-, Ausrüstungs-, institutionelle und Stadtoperationsmechaniken sind abstrahierte fiktionale Spielsysteme. Sie dienen ausschließlich dem Gameplay.

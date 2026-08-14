@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.10.0-living-city-04
+
+- Revival Director als additive, getrennte Modulschicht eingeführt
+- zustandsabhängige Missionsangebote ergänzt
+- bis zu drei aktive Aufträge mit Fortschritt, Frist, Erfolg und Fehlschlag
+- Folgeaufträge und dynamische Missionsketten implementiert
+- Missionsziele für Gebiete, Kampf, Firmenentwicklung, Depotwert, Crewskills, autonome Zyklen, Netzwerke und Reisen
+- zeitlich begrenzte Stadtereignisse mit sichtbaren Kartenmarkern ergänzt
+- Stadtphasen Nacht, Morgengrauen, Tag und Abend mit visueller Atmosphäre umgesetzt
+- Rivalenbeziehungen zwischen allen drei Gangs von Krieg bis Pakt ergänzt
+- Rivalenkrieg beeinflusst Ressourcen und KI-Zielwahl
+- Prestige- und Karriere-Meilensteinsystem eingeführt
+- neuer Direktor-Tab und kompakter Stadtpuls-Streifen über der Karte
+- Kampf- und Kartenvisualisierung mit zusätzlichem atmosphärischem Feedback erweitert
+- Browser-Schema auf 5 angehoben; Migration älterer Browserstände erhalten
+- 52 bestehende Kern-Regressionstests unverändert beibehalten
+- 15 zusätzliche Revival-Regressionstests ergänzt
+- zusätzliche deterministische 1000-Zug-Director-Massensimulation ergänzt
+- Event-Invariante gehärtet: höchstens zwei aktive Stadtereignisse gleichzeitig
+
 ## 0.9.0-living-city-03
 
 - 12 Bezirke mit Casino 9909, Altstadt und Südhafen
@@ -9,19 +29,12 @@
 - Skillaufbau durch Handlungen, Entscheidungen, Kämpfe und autonome Arbeit
 - Bankkonto und lokaler Aktienmarkt mit Anteilskauf/-verkauf
 - dynamische Firmenentwicklung, Kursverlauf, Depotwert und Dividenden
-- Maulwurfnetz mit sechs Institutionen, Tarnung und Entdeckungsrisiko
-- drei Rivalengangs und echte Gebietsbesitzer beibehalten/vertieft
+- institutionelles Informationsnetz mit sechs Institutionen und Risikowerten
+- drei Rivalengangs und echte Gebietsbesitzer vertieft
 - Kampf-HUD mit Crewbeiträgen, Gelände, Moral, Deckung, Vorteil und Verletzungsrisiko
 - 5-Card-Draw-Poker mit Halten/Ziehen/Showdown
 - drei visuell getrennte Spielautomaten
-- Schwarzmarkt-Ausrüstung und Dojo mit fünf Kampfsportarten
-- abstrakte Bordsteinschwalben-/Cannabisdealer-Netze und fiktiver Rivalen-Auftragsjob als reine Spielwerte
+- Schutz-/Taktikausrüstung und Dojo mit fünf Kampfsportarten
+- abstrakte wiederkehrende Stadtoperationen und fiktive Rivalen-Spezialaufträge als reine Spielwerte
 - Engine-Testumfang auf 52 Fälle inklusive 500-Zug-Stresstest erhöht
 - UI-Smoke-Test für Start-Render, Karte, Panels und Autosave ergänzt
-
-## 0.8.0-living-city-02
-
-- Besitz ausbauen/verkaufen und Crew zuweisen
-- drei Rivalengangs mit eigener Strategie
-- taktische Kämpfe mit Angriff, Deckung und Rückzug
-- echte Bezirksübernahmen

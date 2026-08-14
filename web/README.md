@@ -1,20 +1,37 @@
-# Browserfassung 0.9.0 – LIVING-CITY-03
+# Browserfassung 0.10.0 · LIVING-CITY-04
 
-Offline spielbare HTML-/CSS-/JavaScript-Fassung ohne externe Bibliotheken.
+Die Browserfassung läuft lokal über `index.html` und benötigt keine externen Bibliotheken.
 
 ## Architektur
 
-- `data.js` – Stadt, Aktionen, Firmen, Institutionen, Casino, Ausrüstung, Kampfsport, Crewprofile;
-- `engine.js` – deterministische Fachlogik und Speicherung kompatibler Zustände;
-- `app.js` – Darstellung, Interaktion und Autosave;
-- `styles.css` – responsive moderne Oberfläche und Animationen;
-- `tests/engine.test.js` – 52 Engine-/Regressions-/Langlauftests;
-- `tests/ui-smoke.test.js` – DOM-freier Start-/Render-Smoke-Test.
+- `data.js` – qualifizierter 0.9-Kerndatenstand;
+- `revival-data.js` – additive Missionstemplates, Stadtereignisse und Meilensteine;
+- `engine.js` – qualifizierte 0.9-Fachlogik;
+- `revival-missions.js` – Missionen und Auftragsketten;
+- `revival-world.js` – Stadtereignisse, Rivalenbeziehungen, Prestige und Meilensteine;
+- `revival-engine.js` – kleiner Kompositionskern, der die Revival-Module auf die Basis-Engine legt;
+- `app.js` – qualifizierte Kernoberfläche;
+- `revival-ui.js` – additive Director-Ansicht und Kartenfeedback;
+- `styles.css` – Kernlayout;
+- `revival.css` – Stadtphasen, Director-Komponenten und zusätzliche Animationen.
 
-## Kernsysteme
+## Revival Director
 
-Crewmitglieder besitzen Kampf, Tarnung, Geschäft, Sozial, Analyse, Fahren und Ausdauer. XP entsteht aus passenden Entscheidungen und Tätigkeiten; Training ist nur ein zusätzlicher Weg. Daueraufträge laufen autonom bei jedem Spielzug weiter.
+Der Director erstellt Aufträge aus dem tatsächlichen Zustand. Ein Auftrag speichert Ausgangswert, Zielwert, Frist, Belohnung und optional einen Folgeauftrag. Dadurch können sich Gebietsausbau, Crewentwicklung, Unternehmenswachstum oder Reisen zu kleinen dynamischen Ketten verbinden.
 
-Der Unternehmensmarkt berechnet Kurse aus lokaler Kontrolle, Unruhe, Polizei, Gebietsbesitz, eigenen Betrieben, Unternehmensumsatz, Momentum und Volatilität. Dividenden werden periodisch aus Kurs, Entwicklung und Unternehmensrate berechnet.
+Aktive Stadtereignisse sind zeitlich begrenzt, auf der SVG-Karte sichtbar und verändern lokale oder globale Werte. Rivalenbeziehungen laufen parallel von offenem Krieg bis Pakt und beeinflussen die Rivalen-KI.
 
-Maulwürfe sind abstrakte Risikopositionen in Polizei, Verwaltung, Bank, Bahn, Klinik oder Hafenlogistik. Casino, Straßenoperationen und Auftragsjobs bleiben vollständig fiktive Simulationsmechaniken.
+## Bedienung
+
+Der neue Tab **Direktor** zeigt aktive Missionen, neue Gelegenheiten, Stadtereignisse, Rivalenbeziehungen und Karriere-Meilensteine. Der kompakte Stadtpuls-Streifen oberhalb der Karte zeigt Stadtphase, Schlagzeile, Spannung und Chancen ohne zusätzlichen Informationsstapel.
+
+## Prüfung
+
+```bash
+node web/tests/engine.test.js
+node web/tests/revival-engine.test.js
+node web/tests/director-simulation.test.js
+node web/tests/ui-smoke.test.js
+node web/tests/static-ui.test.js
+node web/tests/revival-contract.test.js
+```

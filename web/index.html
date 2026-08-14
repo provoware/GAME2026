@@ -4,14 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#07090d">
-  <meta name="description" content="PPPOPPI Bunkerwahrheit – LIVING-CITY-03 Browser-Gangspiel.">
-  <title>PPPOPPI – Bunkerwahrheit · LIVING-CITY-03</title>
+  <meta name="description" content="PPPOPPI Bunkerwahrheit – LIVING-CITY-04 Revival-Simulation.">
+  <title>PPPOPPI – Bunkerwahrheit · LIVING-CITY-04</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="revival.css">
 </head>
 <body>
 <div class="app-shell">
   <header class="topbar glass">
-    <div class="brand"><div class="brand-mark">9909</div><div><h1>PPPOPPI · Bunkerwahrheit</h1><p>LIVING-CITY-03 · autonome Crew · Markt · Casino · Netzwerke</p></div></div>
+    <div class="brand"><div class="brand-mark">9909</div><div><h1>PPPOPPI · Bunkerwahrheit</h1><p>LIVING-CITY-04 · Revival Director · lebende Stadt · dynamische Aufträge</p></div></div>
     <div class="top-kpis" id="topKpis"></div>
     <div class="top-actions"><button class="btn ghost" id="helpButton">Hilfe</button><button class="btn ghost" id="saveButton">Speichern</button></div>
   </header>
@@ -55,15 +56,20 @@
     </aside>
   </main>
 
-  <footer class="footerbar glass"><span id="saveStatus">Automatisch lokal gespeichert</span><span>Version <strong>0.9.0</strong> · Schema 4</span><button class="text-button" id="resetButton">Neues Spiel</button></footer>
+  <footer class="footerbar glass"><span id="saveStatus">Automatisch lokal gespeichert</span><span>Version <strong>0.10.0</strong> · Schema 5</span><button class="text-button" id="resetButton">Neues Spiel</button></footer>
 </div>
 
 <dialog id="personDialog" class="modal person-modal"><div class="modal-card"><button class="modal-close" data-close="personDialog">×</button><div id="personDialogContent"></div></div></dialog>
 <dialog id="combatDialog" class="modal combat-modal"><div class="modal-card wide"><button class="modal-close" data-close="combatDialog">×</button><div id="combatDialogContent"></div></div></dialog>
-<dialog id="helpDialog" class="modal"><div class="modal-card"><button class="modal-close" data-close="helpDialog">×</button><span class="eyebrow">KURZANLEITUNG</span><h2>LIVING-CITY-03</h2><div class="help-grid"><article><b>Stadt</b><p>Bezirk wählen, reisen, Aktionen ausführen und Kontrolle sichern.</p></article><article><b>Crew</b><p>Personenkarten öffnen, Daueraufträge setzen, Ausrüstung verteilen und Skills durch Praxis entwickeln.</p></article><article><b>Bank</b><p>Geld einzahlen, lokale Unternehmen analysieren, Anteile kaufen und Dividenden erhalten. Kurse folgen der simulierten Unternehmensentwicklung.</p></article><article><b>Netz</b><p>Maulwürfe und abstrakte Stadtoperationen verwalten. Alle Effekte bleiben reine Spielwerte.</p></article><article><b>Casino</b><p>Im Casino 9909 Poker selbst spielen oder drei unterschiedliche Automaten nutzen.</p></article><article><b>Kampf</b><p>Crew auswählen, Kräftebeiträge prüfen und rundenweise Angriff, Deckung oder Rückzug entscheiden.</p></article></div></div></dialog>
+<dialog id="helpDialog" class="modal"><div class="modal-card"><button class="modal-close" data-close="helpDialog">×</button><span class="eyebrow">KURZANLEITUNG</span><h2>LIVING-CITY-04</h2><div class="help-grid"><article><b>Direktor</b><p>Dynamische Aufträge, Stadtereignisse, Rivalenpolitik und Karriere im neuen Direktor-Bereich verfolgen.</p></article><article><b>Stadt</b><p>Bezirk wählen, reisen, Aktionen ausführen und Kontrolle sichern. Der Stadtpuls reagiert auf deine Entscheidungen.</p></article><article><b>Crew</b><p>Personenkarten öffnen, Daueraufträge setzen, Ausrüstung verteilen und Skills durch Praxis entwickeln.</p></article><article><b>Bank</b><p>Geld einzahlen, lokale Unternehmen analysieren, Anteile kaufen und Dividenden erhalten. Kurse folgen der simulierten Unternehmensentwicklung.</p></article><article><b>Netz</b><p>Maulwürfe und abstrakte Stadtoperationen verwalten. Alle Effekte bleiben reine Spielwerte.</p></article><article><b>Casino</b><p>Im Casino 9909 Poker selbst spielen oder drei unterschiedliche Automaten nutzen.</p></article><article><b>Kampf</b><p>Crew auswählen, Kräftebeiträge prüfen und rundenweise Angriff, Deckung oder Rückzug entscheiden.</p></article></div></div></dialog>
 
 <script src="data.js"></script>
+<script src="revival-data.js"></script>
 <script src="engine.js"></script>
+<script src="revival-missions.js"></script>
+<script src="revival-world.js"></script>
+<script src="revival-engine.js"></script>
 <script src="app.js"></script>
+<script src="revival-ui.js"></script>
 </body>
 </html>

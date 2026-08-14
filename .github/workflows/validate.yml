@@ -34,20 +34,37 @@ jobs:
       - name: Check browser JavaScript syntax
         run: |
           node --check web/data.js
+          node --check web/revival-data.js
           node --check web/engine.js
+          node --check web/revival-missions.js
+          node --check web/revival-world.js
+          node --check web/revival-engine.js
           node --check web/app.js
+          node --check web/revival-ui.js
           node --check web/tests/engine.test.js
+          node --check web/tests/revival-engine.test.js
+          node --check web/tests/director-simulation.test.js
           node --check web/tests/ui-smoke.test.js
           node --check web/tests/static-ui.test.js
+          node --check web/tests/revival-contract.test.js
 
-      - name: Run LIVING-CITY-03 engine tests
+      - name: Run qualified 0.9 core tests
         run: node web/tests/engine.test.js
 
-      - name: Run LIVING-CITY-03 UI smoke
+      - name: Run LIVING-CITY-04 Revival tests
+        run: node web/tests/revival-engine.test.js
+
+      - name: Run LIVING-CITY-04 Director simulation
+        run: node web/tests/director-simulation.test.js
+
+      - name: Run LIVING-CITY-04 UI smoke
         run: node web/tests/ui-smoke.test.js
 
-      - name: Run LIVING-CITY-03 static UI contract
+      - name: Run core static UI contract
         run: node web/tests/static-ui.test.js
+
+      - name: Run Revival module and visual contract
+        run: node web/tests/revival-contract.test.js
 
       - name: Rebuild deterministic manifest
         run: python tools/build_manifest.py
@@ -58,10 +75,10 @@ jobs:
       - name: Check Python syntax
         run: python -m compileall -q tools
 
-      - name: Publish LIVING-CITY-03 source artifact
+      - name: Publish LIVING-CITY-04 source artifact
         uses: actions/upload-artifact@v4
         with:
-          name: PPPOPPI-Bunkerwahrheit-LIVING-CITY-03
+          name: PPPOPPI-Bunkerwahrheit-LIVING-CITY-04
           if-no-files-found: error
           retention-days: 14
           path: |
@@ -69,4 +86,5 @@ jobs:
             README.md
             CHANGELOG.md
             docs/PROJECT_STATUS.md
+            docs/REVIVAL_MASTER_PROMPT.md
             AGENTS.md
