@@ -1,35 +1,28 @@
-# Klickstart – PPPOPPI Bunkerwahrheit 0.10.1 · LIVING-CITY-04A
+# Klickstart – PPPOPPI Bunkerwahrheit 0.11.0 · LIVING-CITY-05
 
 ## Linux / Kubuntu
 
-1. Projektordner oder ZIP entpacken.
-2. `START_GAME.sh` doppelklicken oder im Terminal `./START_GAME.sh` ausführen.
-3. Alternativ `web/index.html` direkt in Firefox oder Chrome öffnen.
+1. ZIP vollständig entpacken.
+2. `START_GAME.sh` doppelklicken oder im Terminal `./START_GAME.sh` starten.
+3. Falls gefragt, Firefox bevorzugen.
 
 ## Windows
 
-`START_GAME.bat` doppelklicken oder `web/index.html` direkt öffnen.
+`START_GAME.bat` doppelklicken.
 
-## Was ist in 0.10 neu?
+## Im Spiel
 
-- **Direktor:** dynamische Missionen, Folgeaufträge, Stadtereignisse, Rivalenpolitik und Karriere-Meilensteine.
-- **Stadtpuls:** Nacht, Morgengrauen, Tag und Abend verändern Atmosphäre und Lage.
-- **Rivalenpolitik:** Rivalengangs können sich annähern, verfeinden, Krieg führen oder Pakte bilden.
-- **Karte:** aktive Stadtereignisse werden direkt sichtbar.
-- **Bestehende Systeme bleiben erhalten:** Crew-Daueraufträge, Personenkarten, Bank/Firmenmarkt, Casino, Besitz, Reisen, Ausrüstung, Kampfsport und taktische Kämpfe.
+- **Zug beenden** oben rechts lässt bewusst einen vollständigen Simulationszug verstreichen.
+- Auf der Karte zwischen **Gebiete / Druck / Wirtschaft / Ereignisse** umschalten.
+- Ort auswählen und **Innenansicht** öffnen, um die lokale Szene und Hotspots zu sehen.
+- Im Bereich **Crew** Beziehungen, Moral und Stress beobachten; Reden, Planen oder Sparring verändern die Crew-Chemie.
+- Im **Direktor** aktive Aufträge öffnen und das einmalige Briefing entscheiden.
+- **Atmosphäre** ist optional und wird erst nach einem Klick lokal im Browser erzeugt; es werden keine Audiodateien aus dem Internet geladen.
 
-## Spielstand
+## Spielstände
 
-Der Browser speichert automatisch lokal. Bestehende Browser-Spielstände aus 0.9/0.8/0.7/0.6 werden beim Laden ergänzt.
+0.11 verwendet den lokalen Speicher `v0110`. Vorhandene Stände aus 0.10/0.9 werden weiter übernommen.
 
 ## Technische Prüfung
 
-`./PRUEFEN.sh` führt 12 reproduzierbare Prüfblöcke aus. Node.js ist nur für diese Entwicklerprüfung erforderlich, nicht zum Spielen.
-
-
-## Wichtige Bedienung 0.10.1
-
-- **Zug beenden** steht immer oben rechts. Taste **E** funktioniert ebenfalls, solange kein Eingabefeld oder Dialog aktiv ist.
-- Die Karte markiert direkt erreichbare Wege cyan und geplante Mehr-Etappen-Routen gold.
-- Ein Klick auf einen Bezirk zeigt oben in der Karte die nächste sinnvolle Reiseetappe.
-- **Rivalen** ist wieder als eigener Hauptbereich sichtbar.
+`./PRUEFEN.sh` führt **15 reproduzierbare Prüfblöcke** aus. Node.js ist nur für diese Entwicklerprüfung erforderlich, nicht zum Spielen.

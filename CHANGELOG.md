@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.11.0-living-city-05
+
+- Crew-Beziehungsnetz mit Paarwert, Spannung, gemeinsamen Erfahrungen und verständlichen Zuständen ergänzt
+- Moral und Stress pro Crewmitglied eingeführt
+- autonome Stress-/Moralentwicklung im Zugzyklus ergänzt
+- Crew-Interaktionen Aussprache, Planung und Sparring mit Cooldown und Skillpraxis eingeführt
+- gemeinsame Kämpfe verändern Crewbindung und Belastung
+- verwaiste Beziehungsdaten ausgeschiedener Crew werden automatisch entfernt
+- strategische Missionsbriefings mit drei Entscheidungen und realen Folgen eingeführt
+- Director-Modifikatoren für Briefingfolgen dauerhaft und abklingend modelliert
+- acht individuelle Innenansichten wichtiger Orte plus Fallback-Szenen ergänzt
+- Ortsszenen zeigen Hotspots, lokale Wirtschaft, Gebietsstatus und Stadtereignisse
+- optionale lokale Web-Audio-Atmosphäre ohne externe Dateien ergänzt
+- Kartenebenen Gebiete, Druck, Wirtschaft und Ereignisse ergänzt
+- Personendetails um Moral, Stress und Beziehungen erweitert
+- Boss-Warnungen um Crew-Stress und Beziehungskonflikte erweitert
+- Speicherkey `v0110` mit Migration aus `v0100` und `v090` eingeführt
+- 20 neue Engine-Regressionen inklusive 1200-Zug-Langlauf und separater LC05-Modul-/Visual-Vertrag ergänzt
+
 ## 0.10.1-living-city-04a
 
 - fehlenden sichtbaren **Zug beenden**-Button wieder eingeführt

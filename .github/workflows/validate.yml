@@ -35,32 +35,41 @@ jobs:
         run: |
           node --check web/data.js
           node --check web/revival-data.js
+          node --check web/lc05-data.js
           node --check web/engine.js
           node --check web/revival-missions.js
           node --check web/revival-world.js
           node --check web/revival-engine.js
+          node --check web/lc05-engine.js
           node --check web/app.js
           node --check web/repair-bootstrap.js
+          node --check web/lc05-bootstrap.js
           node --check web/revival-ui.js
           node --check web/repair-04a.js
+          node --check web/lc05-ui.js
           node --check web/tests/engine.test.js
           node --check web/tests/revival-engine.test.js
+          node --check web/tests/lc05-engine.test.js
           node --check web/tests/director-simulation.test.js
           node --check web/tests/ui-smoke.test.js
           node --check web/tests/static-ui.test.js
           node --check web/tests/ui-regression.test.js
+          node --check web/tests/lc05-contract.test.js
           node --check web/tests/revival-contract.test.js
 
-      - name: Run qualified 0.9 core tests
+      - name: Run qualified core tests
         run: node web/tests/engine.test.js
 
-      - name: Run LIVING-CITY-04A Revival tests
+      - name: Run Revival tests
         run: node web/tests/revival-engine.test.js
 
-      - name: Run LIVING-CITY-04A Director simulation
+      - name: Run LIVING-CITY-05 tests and 1200-turn simulation
+        run: node web/tests/lc05-engine.test.js
+
+      - name: Run Director simulation
         run: node web/tests/director-simulation.test.js
 
-      - name: Run LIVING-CITY-04A UI smoke
+      - name: Run UI smoke
         run: node web/tests/ui-smoke.test.js
 
       - name: Run final static UI contract
@@ -68,6 +77,9 @@ jobs:
 
       - name: Run map and control regression
         run: node web/tests/ui-regression.test.js
+
+      - name: Run LIVING-CITY-05 module and visual contract
+        run: node web/tests/lc05-contract.test.js
 
       - name: Run Revival module and visual contract
         run: node web/tests/revival-contract.test.js
@@ -81,10 +93,10 @@ jobs:
       - name: Check Python syntax
         run: python -m compileall -q tools
 
-      - name: Publish LIVING-CITY-04A source artifact
+      - name: Publish LIVING-CITY-05 source artifact
         uses: actions/upload-artifact@v4
         with:
-          name: PPPOPPI-Bunkerwahrheit-LIVING-CITY-04A
+          name: PPPOPPI-Bunkerwahrheit-LIVING-CITY-05
           if-no-files-found: error
           retention-days: 14
           path: |

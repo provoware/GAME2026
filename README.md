@@ -1,33 +1,37 @@
-# PPPOPPI – Bunkerwahrheit · LIVING-CITY-04A
+# PPPOPPI – Bunkerwahrheit · LIVING-CITY-05
 
-Version **0.10.1-living-city-04a** ist die Karten- und Bedienreparatur des 0.10-Revival-Stands. Sie beseitigt mehrere Sichtbarkeits- und Konsistenzprobleme, ohne die bewährten Fachsysteme zurückzubauen.
+Version **0.11.0-living-city-05** vertieft den stabilisierten 0.10.1-Stand zu einer lebendigeren Stadt- und Figurensimulation. Die bewährten Kern-, Revival- und 04A-Reparaturmodule bleiben erhalten; die neuen Systeme liegen additiv darüber.
 
 ## Direkt starten
 
 `web/index.html` in Firefox oder Chrome öffnen oder unter Linux `./START_GAME.sh` ausführen.
 
-## Korrigiert und verbessert
+## Neu in LIVING-CITY-05
 
-- **Zug beenden** wieder als dauerhaft sichtbare Hauptaktion vorhanden; zusätzlich Tastenkürzel **E**;
-- bewusstes Warten löst den vollständigen Zugzyklus aus: autonome Crew, Betriebe, Markt, Maulwürfe, Rivalen, Polizei, Rekrutierung, Stadtereignisse, Missionen und Meilensteine;
-- Zugende wird während offenem Kampf oder laufender Pokerrunde gesperrt;
-- **Rivalen** wieder als eigener Haupt-Tab mit Strategie, Macht, Kasse, Territorien, letztem KI-Zug und Beziehungen;
-- Tabnavigation von verstecktem horizontalem Scrollen auf vollständig sichtbares Raster umgestellt;
-- Stadtkarte grafisch neu geordnet: stärkere Gebietsflächen, Besitzer-/Kontrollringe, Bezirksart, Rivalen-/Polizeidruck und Besitzmarker;
-- direkt erreichbare Straßen und Bahnlinien deutlich markiert;
-- mehrstufige Ziele erhalten eine berechnete Route mit nächstem Halt;
-- direkte Reise aus der Kartenleiste möglich;
-- Kartenzoom **− / Gesamtkarte / +** ergänzt;
-- neuer kanonischer 0.10-Speicherspiegel `v0100`; der bisherige `v090`-Key bleibt für verlustfreie Kompatibilität synchronisiert;
-- zusätzlicher Regressionstest verhindert künftig das Verschwinden von Zugsteuerung, Rivalenbereich und Kartenbedienung.
+- **Crew-Chemie:** Beziehungen zwischen Crewmitgliedern mit nachvollziehbaren Zuständen von Zerwürfnis bis Verbündet;
+- **Moral und Stress** pro Person; Daueraufträge, Verletzungen, Erholung und gemeinsame Erfahrungen verändern beide Werte;
+- **Crew-Interaktionen:** Aussprache, gemeinsame Planung und Sparring mit Kosten, Cooldown, Skillpraxis und Beziehungsfolgen;
+- **Missionsbriefings:** aktive Director-Aufträge erhalten einmalige strategische Entscheidungen – sicher planen, Tempo erhöhen oder Crew einbinden;
+- Entscheidungen verändern Frist, Belohnung, Director-Spannung/Chancen und Crewentwicklung;
+- **Innenansichten wichtiger Orte:** Kommandozentrale, Schwarzmarkt, Geisterbahnhof, Neon-Kellerclub, Dojo, Casino, Altstadt und Südhafen plus Fallback-Szenen;
+- Innenansichten zeigen Hotspots, Besitzer, Kontrolle, Polizei, Rivalendruck, Betriebe, lokale Unternehmen und Stadtereignisse;
+- **optionale synthetische Atmosphäre** per Web Audio – keine externen Audio-Dateien und kein Netzwerkzugriff;
+- **Kartenebenen:** Gebiete, Druck, Wirtschaft und Ereignisse lassen sich getrennt betrachten;
+- Personendetails wurden um Moral, Stress und individuelle Beziehungen ergänzt;
+- der Boss-Entscheidungsbereich warnt vor hohem Crew-Stress und angespannten Beziehungen;
+- neuer Speicherstand `v0110` mit Migration aus `v0100`/`v090`.
 
-## Wartbare 04A-Reparaturschicht
+## Wartbare Architektur
 
-Die großen, bereits qualifizierten 0.10-Kernmodule `app.js` und `styles.css` bleiben byte-stabil. Die Bedienreparatur liegt additiv in `repair-bootstrap.js`, `repair-04a.js` und `repair-04a.css`. Dadurch ist die Fehlerkorrektur leicht rückbaubar und reduziert das Regressionsrisiko.
+LIVING-CITY-05 ergänzt den bisherigen Stand über vier Fach-/Darstellungsmodule und einen kleinen Speicheradapter:
 
-## Bestehende Revival-Systeme
+- `web/lc05-data.js` – Innenräume, Briefingentscheidungen und Atmosphärenprofile;
+- `web/lc05-engine.js` – Crew-Beziehungen, Stress/Moral, Briefings und Ortsszenen;
+- `web/lc05-bootstrap.js` – additive Save-Migration auf `v0110`;
+- `web/lc05-ui.js` – Kartenebenen, Innenansichten, Crew-Chemie und Briefingdialoge;
+- `web/lc05.css` – ausschließlich der neue Visual Layer.
 
-Revival Director, dynamische Missionen, Stadtereignisse, Rivalenpolitik, Crew-Daueraufträge, Besitz, Bank/Unternehmensmarkt, Casino, Kampfsport, Ausrüstung, Reisen und taktische Kämpfe bleiben vollständig enthalten.
+Die großen Kernmodule bleiben dadurch weiterhin isoliert und leichter regressionsprüfbar.
 
 ## Prüfung
 
@@ -35,8 +39,8 @@ Revival Director, dynamische Missionen, Stadtereignisse, Rivalenpolitik, Crew-Da
 ./PRUEFEN.sh
 ```
 
-Der Prüfvertrag umfasst 52 Kern-Regressionen, 15 Revival-Regressionen, 500- und 1000-Zug-Langläufe, UI-Smoke, statischen UI-Vertrag, Karten-/Bedien-Regression und Revival-Visual-Vertrag.
+Der lokale Vertrag umfasst **15 Prüfschritte**: 52 Kern-Regressionen, 15 Revival-Regressionen, 20 LIVING-CITY-05-Regressionen, 500-/1000-/1200-Zug-Langläufe sowie UI-, Karten-, Speicher- und Visual-Verträge.
 
 ## Simulationshinweis
 
-Konflikt-, Ausrüstungs-, institutionelle und Stadtoperationsmechaniken sind abstrahierte fiktionale Spielsysteme. Sie dienen ausschließlich dem Gameplay.
+Konflikt-, Ausrüstungs-, institutionelle und Stadtoperationsmechaniken bleiben abstrahierte fiktionale Spielsysteme ohne reale Handlungsanleitungen.

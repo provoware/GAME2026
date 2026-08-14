@@ -1,29 +1,24 @@
-# Browserfassung 0.10.1 · LIVING-CITY-04A
+# Browserfassung – LIVING-CITY-05
 
-Die Browserfassung läuft lokal über `index.html` und benötigt keine externen Bibliotheken.
+Version **0.11.0-living-city-05**, Schema **6**.
 
-## Bedienreparatur
+## Schichten
 
-- sichtbarer **Zug beenden**-Button plus Taste E;
-- Rivalen wieder als eigener Haupt-Tab;
-- alle Haupttabs als sichtbares Raster statt horizontal versteckter Leiste;
-- Karte mit Kontrollringen, Bezirksarten, Druckwerten, Besitzerflächen und Ereignismarkern;
-- erreichbare Wege, ausgewählte Verbindung und mehrstufige Routen werden getrennt visualisiert;
-- direkte Kartenreise und Zoomsteuerung;
-- kanonischer 0.10-Speicherspiegel `pppoppi-bunkerwahrheit-html-v0100`; `v090` bleibt als kompatibler Alt-Key synchronisiert.
+1. `data.js` / `engine.js` / `app.js` / `styles.css` – qualifizierter Kern.
+2. `revival-*` – Director, Missionen, Stadtereignisse und Rivalenpolitik.
+3. `repair-04a.*` – Karten- und Bedienreparatur inklusive sichtbarem Zugende.
+4. `lc05-*` – Crew-Chemie, Innenansichten, Briefings, Kartenebenen und Atmosphäre.
 
-## Architektur
+## LC05-Systeme
 
-Die 0.9-Kernlogik bleibt in `data.js` / `engine.js`; die Revival-Schicht nutzt `revival-data.js`, `revival-missions.js`, `revival-world.js`, `revival-engine.js`, `revival-ui.js` und `revival.css`. Die Karten-/Bedienkorrektur ist additiv in `repair-bootstrap.js`, `repair-04a.js` und `repair-04a.css` gekapselt; `app.js` und `styles.css` bleiben als bereits qualifizierte Kernoberfläche byte-stabil. Nur der kleine `endTurn()`-Vertrag ergänzt den Revival-Kompositionskern.
+- Moral/Stress und paarweise Crew-Beziehungen;
+- zugbasierte Crewinteraktionen;
+- strategische Missionsbriefings;
+- Innenansichten mit Hotspots und lokalen Kennzahlen;
+- Kartenebenen für Gebiete, Druck, Wirtschaft und Ereignisse;
+- optionale synthetische Browser-Atmosphäre;
+- Save-Migration auf `v0110`.
 
-## Prüfung
+## Prüfen
 
-```bash
-node web/tests/engine.test.js
-node web/tests/revival-engine.test.js
-node web/tests/director-simulation.test.js
-node web/tests/ui-smoke.test.js
-node web/tests/static-ui.test.js
-node web/tests/ui-regression.test.js
-node web/tests/revival-contract.test.js
-```
+Im Projektstamm `./PRUEFEN.sh` ausführen.

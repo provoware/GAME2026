@@ -2,67 +2,66 @@
 
 ## Stand
 
-**Browser-Spielstand:** 0.10.1-living-city-04a  
-**Browser-Schema:** 5  
+**Browser-Spielstand:** 0.11.0-living-city-05  
+**Browser-Schema:** 6  
 **Primärplattform:** Firefox / Chrome, offline-first  
 **GitHub-Strang:** `agent/html-gang-map-boss-dynamics`
 
-## Aktuelle Reparatur
+## LIVING-CITY-05 – aktueller Qualitätssprung
 
-### Bedienbarkeit
+### Stadt & Darstellung
 
-- `Zug beenden` wieder dauerhaft sichtbar;
-- Tastenkürzel E;
-- vollständiger Simulationszyklus bei bewusstem Warten;
-- Sperre bei offenem Kampf/Poker;
-- Rivalen wieder als eigener Hauptbereich;
-- alle Haupttabs ohne horizontales Verstecken sichtbar.
+- bestehende 04A-Kartenreparatur vollständig erhalten;
+- vier umschaltbare Kartenebenen: Gebiete, Druck, Wirtschaft, Ereignisse;
+- acht individuelle Innenansichten wichtiger Orte plus Fallback-Szenen;
+- lokale Hotspots, Unternehmen, Besitz, Gebietsstatus und Ereignisse in der Ortsszene;
+- optionale, rein lokal synthetisierte Web-Audio-Atmosphäre ohne externe Assets.
 
-### Karte
+### Personen & Crew
 
-- stärkere visuelle Gebietsstruktur;
-- Besitzerflächen und Kontrollringe;
-- Bezirksarten als Icons;
-- Rivalen-/Polizeidruck direkt am Knoten;
-- direkte Wege und Bahnlinien hervorgehoben;
-- ausgewählte Verbindung separat markiert;
-- mehrstufige Routenplanung mit nächstem Halt;
-- direkte Reise aus der Kartenleiste;
-- Zoomsteuerung und bessere Callouts.
+- jede Person besitzt Moral und Stress;
+- Beziehungen werden paarweise gespeichert und verständlich klassifiziert;
+- Daueraufträge, Erholung, gemeinsame Arbeit und Kämpfe verändern Crew-Chemie;
+- Aussprache, gemeinsame Planung und Sparring als echte, zugbasierte Crewinteraktionen;
+- Personenkarten zeigen individuelle Beziehungen und Belastung;
+- ausgeschiedene Personen werden automatisch aus dem Beziehungsgraphen entfernt.
 
-### Konsistenz
+### Missionen & Director
 
-- 0.10-Speicherspiegel `v0100` ergänzt und mit dem bisherigen `v090`-Key kompatibel synchronisiert;
-- Migration alter Browserstände bleibt erhalten;
-- UI-Smoke und statischer UI-Vertrag verwenden jetzt die finale Revival-Engine;
-- eigener Regressionstest für Zugsteuerung, Rivalen, Karte und Speicher-Migration.
+- aktive Aufträge besitzen einmalige Missionsbriefings;
+- drei strategische Briefingwege mit Frist-, Belohnungs-, Director- und Crewfolgen;
+- Director-Modifikatoren klingen kontrolliert über weitere Züge ab;
+- bestehende Missionsketten, Stadtereignisse und Rivalenpolitik bleiben vollständig kompatibel.
 
-## Bestehende Systeme
+### Speicher & Migration
 
-Revival Director, Missionen, Stadtereignisse, Rivalenpolitik, Crewprofile/-aufträge, Besitz, Bank/Firmenmarkt, Casino, Kampfsport, Ausrüstung, institutionelles Netz, Reisen und taktische Kämpfe bleiben enthalten.
+- Browser-Schema 6;
+- kanonischer Save-Spiegel `pppoppi-bunkerwahrheit-html-v0110`;
+- Migration/Synchronisierung aus `v0100` und `v090` bleibt erhalten.
 
-## Validierung lokal
+## Lokale Validierung
 
-- JavaScript-Syntax: **PASS**;
-- Kern: **52/52 PASS**;
-- Revival: **15/15 PASS**;
+- Kern-Regressionen: **52/52 PASS**;
+- Revival-Regressionen: **15/15 PASS**;
+- LIVING-CITY-05-Regressionen: **20/20 PASS**;
 - 500-Zug-Kernlanglauf: **PASS**;
 - 1000-Zug-Director-Langlauf: **PASS**;
+- 1200-Zug-LC05-Langlauf: **PASS**;
 - UI-Smoke: **PASS**;
 - statischer UI-Vertrag: **PASS**;
 - Karten-/Bedien-Regression: **PASS**;
+- LC05-Modul-/Visual-Vertrag: **PASS**;
 - Revival-Modul-/Visual-Vertrag: **PASS**;
-- Shell-Syntax: **PASS**;
-- Chromium-Screenshot-E2E in dieser Containerumgebung weiterhin durch fehlenden D-Bus blockiert; kein falsches PASS.
+- realer Chromium-Screenshot-E2E bleibt in der Containerumgebung wegen fehlender D-Bus-Desktop-Sitzung offen; kein falsches PASS.
 
 ## Fortschritt bis vollständigem Release
 
-- Spezifikation / Architektur: **89 %**
-- Codeimplementierung: **74 %**
-- UI / Spielbarkeit: **86 %**
-- Test-/Validierungsinfrastruktur: **83 %**
-- gewichteter Gesamtfortschritt: **80 %**
+- Spezifikation / Architektur: **92 %**
+- Codeimplementierung: **81 %**
+- UI / Spielbarkeit: **90 %**
+- Test-/Validierungsinfrastruktur: **88 %**
+- gewichteter Gesamtfortschritt: **86 %**
 
 ## Nächster sinnvoller Meilenstein
 
-**LIVING-CITY-05:** narrative Figurenbeziehungen, Innenansichten, Sounddesign, tiefere Missionsdialoge und reale Firefox-/Chrome-Desktop-E2E-Abnahme auf einem vollständigen Desktop-Runner.
+**LIVING-CITY-06:** tiefere verzweigte Dialogketten und Konsequenzen, interaktive Innenraumaktionen statt reiner Hotspots, Sound-/Musikmixer, stärkere visuelle Kampfinszenierung und echte Firefox-/Chrome-Desktop-E2E-Abnahme.
