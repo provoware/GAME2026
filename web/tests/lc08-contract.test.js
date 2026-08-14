@@ -9,7 +9,8 @@ assert.ok(order.every(v=>v>=0)&&order.every((v,i)=>i===0||order[i-1]<v),'LC08-Sc
 assert.ok(html.indexOf('lc07.css')<html.indexOf('lc08.css'),'LC08-CSS muss nach LC07 geladen werden.');
 assert.ok(data.includes('storyArcs')&&data.includes('consequenceEchoes')&&data.includes('arc.line')&&data.includes('arc.routes')&&data.includes('arc.crew'),'LC08-Stadtgedächtnisdaten fehlen.');
 assert.ok(engine.includes('decisionJournal')&&engine.includes('pendingConsequences')&&engine.includes('evaluateStoryArcs')&&engine.includes('resolvePendingConsequences')&&engine.includes('getDecisionJournal'),'LC08-Enginevertrag unvollständig.');
-assert.ok(ui.includes('lc08JournalDialog')&&ui.includes('Stadtgedächtnis')&&ui.includes("e.key.toLowerCase()==='j'")&&ui.includes('aria-live'),'LC08-Journal-/Tastaturvertrag unvollständig.');
+assert.ok(ui.includes('lc08JournalDialog')&&ui.includes('Stadtgedächtnis')&&ui.includes("k==='j'")&&ui.includes('aria-live'),'LC08-Journal-/Tastaturvertrag unvollständig.');
+assert.ok(ui.includes("k==='i'")&&ui.includes('LIVING_CITY_06_UI?.renderInteriorEnhancement?.()'),'Innenraumaktionen müssen beim Öffnen synchron fertig gerendert werden.');
 assert.ok(css.includes(':focus-visible')&&css.includes('.lc08-arc-grid')&&css.includes('@media(prefers-reduced-motion:reduce)'),'LC08-Fokus-/Responsive-/Reduced-Motion-Vertrag fehlt.');
 assert.ok(css.includes('.scene-modal .modal-close{z-index:40')&&css.includes('.scene-modal .modal-card{isolation:isolate}'),'Innenraum-Schließen muss über der Szenengrafik klickbar bleiben.');
 assert.ok(bootstrap.includes('pppoppi-bunkerwahrheit-html-v0140')&&bootstrap.includes('__livingCity08Patched'),'LC08-Speichermigration fehlt.');
