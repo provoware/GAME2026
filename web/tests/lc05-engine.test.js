@@ -4,7 +4,7 @@ const DATA=require('../lc05-data.js');
 const {GameEngine,seededRandom}=require('../lc05-engine.js');
 const tests=[];const test=(n,f)=>tests.push({n,f});const make=(seed=1)=>new GameEngine({random:seededRandom(seed),data:DATA});
 
-test('LIVING-CITY-05 startet mit Schema 6',()=>{const e=make();assert.equal(e.state.schema,6);assert.equal(e.state.version,'0.11.0-living-city-05');assert.equal(e.data.interiorScenes['location.bunker.main'].title,'Kommandozentrale');});
+test('LIVING-CITY-05 startet mit Schema 6',()=>{const e=make();assert.equal(e.state.schema,6);assert.equal(e.state.version,'0.11.1-living-city-05a');assert.equal(e.data.interiorScenes['location.bunker.main'].title,'Kommandozentrale');});
 test('Startercrew erhält Stress, Moral und drei Beziehungen',()=>{const e=make();assert.equal(e.state.gang.length,3);e.state.gang.forEach((m)=>{assert.ok(Number.isFinite(m.stress));assert.ok(Number.isFinite(m.morale));});assert.equal(e.getCrewRelationsOverview().length,3);});
 test('Beziehungslabels decken das Spektrum ab',()=>{const e=make();assert.equal(e.relationLabel(90),'Verbündet');assert.equal(e.relationLabel(70),'Eng verbunden');assert.equal(e.relationLabel(52),'Stabil');assert.equal(e.relationLabel(20),'Angespannt');assert.equal(e.relationLabel(10),'Zerwürfnis');});
 test('Aussprache verbessert Beziehung und verbraucht einen Zug',()=>{const e=make(2),[a,b]=e.state.gang,before=e.getCrewRelation(a.id,b.id).value,turn=e.state.turn;e.state.resources.money=9999;const r=e.runCrewInteraction(a.id,b.id,'talk');assert.equal(r.ok,true);assert.equal(e.state.turn,turn+1);assert.ok(e.getCrewRelation(a.id,b.id).value>before);assert.equal(e.state.stats.crewInteractions,1);});

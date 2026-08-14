@@ -50,8 +50,6 @@
   $('#mapZoomOut')?.addEventListener('click',()=>{zoomIndex=Math.max(0,zoomIndex-1);applyViewBox();});
   $('#mapZoomReset')?.addEventListener('click',()=>{zoomIndex=0;applyViewBox();});
   document.addEventListener('keydown',(event)=>{const tag=event.target?.tagName;if(event.key.toLowerCase()==='e'&&!event.ctrlKey&&!event.metaKey&&!event.altKey&&!['INPUT','SELECT','TEXTAREA','BUTTON'].includes(tag)&&!document.querySelector('dialog[open]')){event.preventDefault();finishTurn();}});
-  const observer=new MutationObserver(()=>{if(!$('#cityMap .map-04a-marker'))queueMicrotask(renderMap04A);renderRivals();});
-  observer.observe(document.body,{childList:true,subtree:true});
   renderMap04A();renderRivals();persist();
   root.LIVING_CITY_04A={renderMap:renderMap04A,renderRivals,finishTurn};
 })(typeof globalThis!=='undefined'?globalThis:this);

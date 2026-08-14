@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.11.1-living-city-05a
+
+- Google Chrome als primären Linux-Klickstart festgelegt; Chromium zweite, Firefox optionale Reserve.
+- globale `MutationObserver` aus 04A- und LC05-UI entfernt; mögliche Render-Rückkopplung beseitigt.
+- zentralen frame-gedrosselten UI-Refresh eingeführt.
+- Revival-/LC05-Oberflächen rendern nicht mehr blind nach jedem Klick mehrfach.
+- Performance-Regressionstest und 16. Prüfblock ergänzt.
+
+
 ## 0.11.0-living-city-05
 
 - Crew-Beziehungsnetz mit Paarwert, Spannung, gemeinsamen Erfahrungen und verständlichen Zuständen ergänzt

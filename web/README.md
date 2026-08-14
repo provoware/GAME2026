@@ -1,6 +1,6 @@
-# Browserfassung – LIVING-CITY-05
+# Browserfassung – LIVING-CITY-05A
 
-Version **0.11.0-living-city-05**, Schema **6**.
+Version **0.11.1-living-city-05a**, Schema **6**.
 
 ## Schichten
 
@@ -22,3 +22,8 @@ Version **0.11.0-living-city-05**, Schema **6**.
 ## Prüfen
 
 Im Projektstamm `./PRUEFEN.sh` ausführen.
+
+
+## Performance-Härtung 0.11.1
+
+Chrome-first. Keine globalen MutationObserver mehr; UI-Erweiterungen werden über `ui-refresh.js` maximal einmal pro Benutzeraktion aktualisiert.

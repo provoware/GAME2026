@@ -63,7 +63,6 @@
     const decline=event.target.closest?.('[data-revival-decline]');
     if(accept){const result=engine.acceptMission(accept.dataset.revivalAccept);if(!result.ok)$('#tickerText').textContent=result.reason;else $('#tickerText').textContent=`Auftrag angenommen: ${result.mission.title}`;localStorage.setItem(STORAGE_KEY,engine.exportState());render();return;}
     if(decline){engine.declineMission(decline.dataset.revivalDecline);localStorage.setItem(STORAGE_KEY,engine.exportState());render();return;}
-    setTimeout(render,0);
   });
   window.addEventListener?.('revival-render',render);
   render();

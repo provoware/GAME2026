@@ -2,12 +2,12 @@
 
 ## Stand
 
-**Browser-Spielstand:** 0.11.0-living-city-05  
+**Browser-Spielstand:** 0.11.1-living-city-05a  
 **Browser-Schema:** 6  
-**Primärplattform:** Firefox / Chrome, offline-first  
+**Primärplattform:** Google Chrome (primär) / Chromium, Firefox nur Kompatibilitätsreserve, offline-first  
 **GitHub-Strang:** `agent/html-gang-map-boss-dynamics`
 
-## LIVING-CITY-05 – aktueller Qualitätssprung
+## LIVING-CITY-05A – Chrome-/Performance-Härtung
 
 ### Stadt & Darstellung
 
@@ -64,4 +64,4 @@
 
 ## Nächster sinnvoller Meilenstein
 
-**LIVING-CITY-06:** tiefere verzweigte Dialogketten und Konsequenzen, interaktive Innenraumaktionen statt reiner Hotspots, Sound-/Musikmixer, stärkere visuelle Kampfinszenierung und echte Firefox-/Chrome-Desktop-E2E-Abnahme.
+**LIVING-CITY-06:** auf der jetzt stabilisierten Chrome-first-Basis: tiefere verzweigte Dialogketten und Konsequenzen, interaktive Innenraumaktionen, Sound-/Musikmixer, stärkere Kampfinszenierung, geführte Aufgabenleitung, Popups/Hilfetexte und vollständige Tastatursteuerung.

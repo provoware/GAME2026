@@ -1,10 +1,10 @@
-# Klickstart – PPPOPPI Bunkerwahrheit 0.11.0 · LIVING-CITY-05
+# Klickstart – PPPOPPI Bunkerwahrheit 0.11.1 · LIVING-CITY-05A
 
 ## Linux / Kubuntu
 
 1. ZIP vollständig entpacken.
 2. `START_GAME.sh` doppelklicken oder im Terminal `./START_GAME.sh` starten.
-3. Falls gefragt, Firefox bevorzugen.
+3. **Google Chrome bevorzugen.** Der Linux-Klickstart nimmt automatisch zuerst Chrome, danach Chromium und nur als Reserve Firefox.
 
 ## Windows
 
@@ -25,4 +25,8 @@
 
 ## Technische Prüfung
 
-`./PRUEFEN.sh` führt **15 reproduzierbare Prüfblöcke** aus. Node.js ist nur für diese Entwicklerprüfung erforderlich, nicht zum Spielen.
+`./PRUEFEN.sh` führt **16 reproduzierbare Prüfblöcke** aus. Node.js ist nur für diese Entwicklerprüfung erforderlich, nicht zum Spielen.
+
+## Wenn die Oberfläche früher dauerhaft lud
+
+0.11.1 entfernt zwei globale DOM-Beobachter, die zu einer Render-Rückkopplung führen konnten. Wenn ein alter Tab noch hängt, diesen vollständig schließen und das Spiel mit `./START_GAME.sh` neu in Chrome öffnen.

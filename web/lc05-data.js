@@ -25,5 +25,5 @@
   const ambientProfiles={
     bunker:{label:'Tiefer Bunkerbrumm',tone:72,pulse:0.11},market:{label:'Marktneon',tone:112,pulse:0.18},station:{label:'Bahnhofhall',tone:88,pulse:0.14},club:{label:'Kellerpuls',tone:132,pulse:0.22},dojo:{label:'Ruhiger Trainingsraum',tone:96,pulse:0.1},casino:{label:'Casino-Schimmer',tone:124,pulse:0.16},oldtown:{label:'Altstadtstrom',tone:104,pulse:0.12},harbor:{label:'Hafenresonanz',tone:80,pulse:0.14},archive:{label:'Archivstille',tone:68,pulse:0.08},industrial:{label:'Werkhallenpuls',tone:84,pulse:0.16},lookout:{label:'Wind über den Dächern',tone:76,pulse:0.09}
   };
-  return Object.freeze({...BASE,version:'0.11.0-living-city-05',schema:6,interiorScenes,fallbackInteriors,briefingChoices,ambientProfiles});
+  return Object.freeze({...BASE,version:'0.11.1-living-city-05a',schema:6,interiorScenes,fallbackInteriors,briefingChoices,ambientProfiles});
 });

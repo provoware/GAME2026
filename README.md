@@ -1,10 +1,17 @@
-# PPPOPPI – Bunkerwahrheit · LIVING-CITY-05
+# PPPOPPI – Bunkerwahrheit · LIVING-CITY-05A
 
-Version **0.11.0-living-city-05** vertieft den stabilisierten 0.10.1-Stand zu einer lebendigeren Stadt- und Figurensimulation. Die bewährten Kern-, Revival- und 04A-Reparaturmodule bleiben erhalten; die neuen Systeme liegen additiv darüber.
+Version **0.11.1-living-city-05a** vertieft den stabilisierten 0.10.1-Stand zu einer lebendigeren Stadt- und Figurensimulation. Die bewährten Kern-, Revival- und 04A-Reparaturmodule bleiben erhalten; die neuen Systeme liegen additiv darüber.
 
 ## Direkt starten
 
-`web/index.html` in Firefox oder Chrome öffnen oder unter Linux `./START_GAME.sh` ausführen.
+`web/index.html` bevorzugt in **Google Chrome** öffnen oder unter Linux `./START_GAME.sh` ausführen. Firefox bleibt nur als optionale Kompatibilitätsreserve.
+
+## 0.11.1 – Chrome- und Performance-Reparatur
+
+- Google Chrome ist jetzt der primäre Klickstart-Browser; danach folgen Chrome Stable, Chromium und erst dann Firefox.
+- Zwei globale DOM-`MutationObserver` wurden entfernt. Sie konnten sich durch gegenseitige UI-Änderungen immer wieder selbst auslösen und den Browser-Hauptthread dauerhaft belasten.
+- UI-Erweiterungen werden jetzt über einen zentralen, `requestAnimationFrame`-gedrosselten Refresh maximal einmal pro Benutzeraktion synchronisiert.
+- Neuer Performance-Regressionstest verhindert die Rückkehr dieser Fehlerklasse.
 
 ## Neu in LIVING-CITY-05
 
@@ -39,7 +46,7 @@ Die großen Kernmodule bleiben dadurch weiterhin isoliert und leichter regressio
 ./PRUEFEN.sh
 ```
 
-Der lokale Vertrag umfasst **15 Prüfschritte**: 52 Kern-Regressionen, 15 Revival-Regressionen, 20 LIVING-CITY-05-Regressionen, 500-/1000-/1200-Zug-Langläufe sowie UI-, Karten-, Speicher- und Visual-Verträge.
+Der lokale Vertrag umfasst **16 Prüfschritte**: 52 Kern-Regressionen, 15 Revival-Regressionen, 20 LIVING-CITY-05-Regressionen, 500-/1000-/1200-Zug-Langläufe sowie UI-, Karten-, Speicher- und Visual-Verträge.
 
 ## Simulationshinweis
 
