@@ -27,7 +27,6 @@ from selenium.common.exceptions import StaleElementReferenceException
 
 _ORIGINAL_GET_ATTRIBUTE = WebElement.get_attribute
 _ORIGINAL_SEND_KEYS = WebElement.send_keys
-_ORIGINAL_CLICK = WebElement.click
 
 
 def _dom_safe_get_attribute(self: WebElement, name: str):
@@ -51,7 +50,7 @@ def _element_id(self: WebElement) -> str:
     try:
         return self.parent.execute_script("return arguments[0].id || ''", self)
     except StaleElementReferenceException:
-        return "cityMap"
+        return ""
 
 
 def _fresh_city_map(self: WebElement) -> WebElement:
@@ -60,8 +59,10 @@ def _fresh_city_map(self: WebElement) -> WebElement:
 
 def _edge_safe_send_keys(self: WebElement, *value):
     element_id = _element_id(self)
-    target = _fresh_city_map(self) if element_id == "cityMap" else self
-    if value == (Keys.ARROW_RIGHT,) and element_id == "cityMap":
+    is_pan_probe = value == (Keys.ARROW_RIGHT,)
+    target = self
+    if is_pan_probe and (element_id == "cityMap" or not element_id):
+        target = _fresh_city_map(self)
         raw = target.parent.execute_script(
             "return arguments[0].getAttribute('viewBox')", target
         )
@@ -69,27 +70,11 @@ def _edge_safe_send_keys(self: WebElement, *value):
             x, _y, width, _height = map(float, raw.split())
             if x >= 1000.0 - width - 0.5:
                 return _ORIGINAL_SEND_KEYS(target, Keys.ARROW_LEFT)
-    try:
-        return _ORIGINAL_SEND_KEYS(target, *value)
-    except StaleElementReferenceException:
-        if element_id == "cityMap":
-            return _ORIGINAL_SEND_KEYS(_fresh_city_map(self), *value)
-        raise
-
-
-def _stale_safe_click(self: WebElement):
-    element_id = _element_id(self)
-    target = _fresh_city_map(self) if element_id == "cityMap" else self
-    try:
-        return _ORIGINAL_CLICK(target)
-    except StaleElementReferenceException:
-        if element_id == "cityMap":
-            return _ORIGINAL_CLICK(_fresh_city_map(self))
-        raise
+    return _ORIGINAL_SEND_KEYS(target, *value)
 
 
 WebElement.send_keys = _edge_safe_send_keys
-WebElement.click = _stale_safe_click
+
 
 _IMPL = Path(__file__).resolve().parents[1] / "web" / "chrome_e2e_impl.py"
 _SPEC = importlib.util.spec_from_file_location("lc07_chrome_e2e_impl", _IMPL)
