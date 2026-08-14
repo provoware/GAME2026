@@ -8,17 +8,18 @@ Rectangle contract: map_rect["width"].
 The implementation core is kept byte-stable. This entrypoint corrects viewport
 metrics, adapts body-targeted shortcuts to real ActionChains at the current Chrome
 focus, restores a neutral target after dialog transitions, synchronizes additive
-UI layers, and turns anonymous Selenium wait timeouts into actionable browser-state
-diagnostics. Selenium itself is not globally monkeypatched and no release gate is
-relaxed.
+UI layers, uses the first actually visible/enabled element for dynamic repeated
+controls, and turns anonymous Selenium waits into actionable diagnostics. No
+release gate is relaxed and clicks remain real Selenium element clicks.
 """
 from __future__ import annotations
 import json
 import time
 import chrome_e2e_core as core
-from selenium.common.exceptions import TimeoutException
+from selenium.common.exceptions import ElementClickInterceptedException, StaleElementReferenceException, TimeoutException
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
 
 
 def verify_desktop_fit(driver, width: int, height: int) -> dict:
@@ -78,6 +79,29 @@ def focus_keyboard_sink(driver) -> None:
     core.js(driver, "document.body.setAttribute('tabindex','-1'); document.body.focus({preventScroll:true});")
 
 
+def browser_state(driver, selector: str | None = None) -> dict:
+    return core.js(driver, """
+      const selector=arguments[0], q=s=>document.querySelector(s);
+      const matches=selector?[...document.querySelectorAll(selector)].map((e,i)=>{
+        const r=e.getBoundingClientRect(),cs=getComputedStyle(e);
+        return {i,tag:e.tagName,id:e.id||'',hidden:e.hidden,disabled:!!e.disabled,display:cs.display,visibility:cs.visibility,opacity:cs.opacity,
+          rect:{x:r.x,y:r.y,w:r.width,h:r.height},text:(e.textContent||'').trim().slice(0,80)};
+      }):[];
+      return {
+        selector,matches,
+        location:window.LIVING_CITY_08_ENGINE?.state?.currentLocationId||null,
+        selected:window.LIVING_CITY_08_ENGINE?.state?.selectedLocationId||null,
+        combatSession:!!window.LIVING_CITY_08_ENGINE?.state?.combatSession,
+        combatOpen:!!q('#combatDialog')?.open,
+        crewChoices:document.querySelectorAll('#combatDialog [data-combat-select]').length,
+        combatDecisions:document.querySelectorAll('#combatDialog [data-combat-decision]').length,
+        ticker:q('#tickerText')?.textContent||'',
+        activeTag:document.activeElement?.tagName||null,
+        activeId:document.activeElement?.id||null
+      };
+    """, selector)
+
+
 _original_wait_ready = core.wait_ready
 def wait_ready(driver, timeout: float = 12) -> None:
     _original_wait_ready(driver, timeout)
@@ -89,57 +113,56 @@ def wait_js(driver, code: str, timeout: float = 6):
     try:
         return _original_wait_js(driver, code, timeout)
     except TimeoutException as exc:
-        diagnostic = core.js(driver, """
-          const q=s=>document.querySelector(s);
-          const combat=q('#combatDialog');
-          const start=q('#combatDialog [data-combat-start]');
-          return {
-            location: window.LIVING_CITY_08_ENGINE?.state?.currentLocationId || null,
-            selected: window.LIVING_CITY_08_ENGINE?.state?.selectedLocationId || null,
-            combatSession: !!window.LIVING_CITY_08_ENGINE?.state?.combatSession,
-            combatOpen: !!combat?.open,
-            crewChoices: document.querySelectorAll('#combatDialog [data-combat-select]').length,
-            combatDecisions: document.querySelectorAll('#combatDialog [data-combat-decision]').length,
-            startPresent: !!start,
-            startDisabled: start ? !!start.disabled : null,
-            raidEnabled: !!q("[data-game-action='raid']:not([disabled])"),
-            effectsRange: !!q('#lc06AudioDock [data-audio-range="effects"]'),
-            ducking: !!q('#lc06AudioDock [data-audio-ducking]'),
-            ticker: q('#tickerText')?.textContent || '',
-            activeTag: document.activeElement?.tagName || null,
-            activeId: document.activeElement?.id || null
-          };
-        """)
         raise AssertionError(
             "Chrome-Wartebedingung nicht erfüllt: " + code.replace("\n", " ").strip()[:260]
-            + " | Zustand=" + json.dumps(diagnostic, ensure_ascii=False, sort_keys=True)
+            + " | Zustand=" + json.dumps(browser_state(driver), ensure_ascii=False, sort_keys=True)
         ) from exc
 
 
-_original_safe_click = core.safe_click
-def safe_click(driver, selector: str, timeout: float = 6):
-    _original_safe_click(driver, selector, timeout)
+def _visible_enabled(driver, selector: str):
+    for element in driver.find_elements(By.CSS_SELECTOR, selector):
+        try:
+            if element.is_displayed() and element.is_enabled():
+                return element
+        except StaleElementReferenceException:
+            continue
+    return False
 
-    # LC06 baut den Mixer synchron, LC07 ergänzt Effekte/Ducking additiv per Render.
-    # Der reale Test wartet auf die tatsächlich sichtbare Endfassung statt auf ein
-    # zufälliges requestAnimationFrame-/setTimeout-Timing.
+
+def safe_click(driver, selector: str, timeout: float = 6):
+    last = None
+    for _ in range(3):
+        try:
+            element = WebDriverWait(driver, timeout).until(lambda d: _visible_enabled(d, selector))
+            core.js(driver, "arguments[0].scrollIntoView({block:'center',inline:'nearest'});", element)
+            element.click()
+            break
+        except StaleElementReferenceException as exc:
+            last = exc
+            time.sleep(.05)
+        except ElementClickInterceptedException as exc:
+            last = exc
+            time.sleep(.08)
+        except TimeoutException as exc:
+            raise AssertionError(
+                "Kein sichtbarer/aktivierter Klicktreffer: " + selector
+                + " | Zustand=" + json.dumps(browser_state(driver, selector), ensure_ascii=False, sort_keys=True)
+            ) from exc
+    else:
+        raise AssertionError(
+            "Klick blieb nach DOM-Erneuerung blockiert: " + selector
+            + " | Zustand=" + json.dumps(browser_state(driver, selector), ensure_ascii=False, sort_keys=True)
+        ) from last
+
     if selector == "#lc06AudioButton":
         core.wait_js(driver, "return !!document.querySelector('#lc06AudioDock [data-audio-range=\"effects\"]') && !!document.querySelector('#lc06AudioDock [data-audio-ducking]')", timeout)
 
-    # Der Kampfpfad wird in reale, diagnostizierbare Zustände zerlegt.
     if "data-game-action='raid'" in selector:
         core.wait_js(driver, "return !!document.querySelector('#combatDialog')?.open", timeout)
     if "data-combat-start" in selector:
         time.sleep(.05)
-        state = core.js(driver, """
-          return {
-            session: !!window.LIVING_CITY_08_ENGINE?.state?.combatSession,
-            decisions: document.querySelectorAll('#combatDialog [data-combat-decision]').length,
-            ticker: document.querySelector('#tickerText')?.textContent || '',
-            selectedCrew: document.querySelectorAll('#combatDialog .crew-select.selected').length
-          };
-        """)
-        core.assert_true(state["session"], "Kampfstart wurde abgelehnt: " + json.dumps(state, ensure_ascii=False, sort_keys=True))
+        state = browser_state(driver, selector)
+        core.assert_true(state["combatSession"], "Kampfstart wurde abgelehnt: " + json.dumps(state, ensure_ascii=False, sort_keys=True))
 
     if "data-close" in selector or "data-lc08-close" in selector:
         dialog_id = None
