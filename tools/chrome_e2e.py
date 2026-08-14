@@ -7,11 +7,14 @@ Rectangle contract: map_rect["width"].
 
 The implementation core is kept byte-stable. This entrypoint corrects viewport
 metrics, adapts body-targeted shortcuts to real ActionChains at the current Chrome
-focus, and restores a neutral target after dialog transitions. Selenium itself is
-not globally monkeypatched and no gate is relaxed.
+focus, restores a neutral target after dialog transitions, and turns anonymous
+Selenium wait timeouts into actionable browser-state diagnostics. Selenium itself
+is not globally monkeypatched and no release gate is relaxed.
 """
 from __future__ import annotations
+import json
 import chrome_e2e_core as core
+from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
 
@@ -79,6 +82,36 @@ def wait_ready(driver, timeout: float = 12) -> None:
     focus_keyboard_sink(driver)
 
 
+_original_wait_js = core.wait_js
+def wait_js(driver, code: str, timeout: float = 6):
+    try:
+        return _original_wait_js(driver, code, timeout)
+    except TimeoutException as exc:
+        diagnostic = core.js(driver, """
+          const q=s=>document.querySelector(s);
+          const combat=q('#combatDialog');
+          const start=q('#combatDialog [data-combat-start]');
+          return {
+            location: window.LIVING_CITY_08_ENGINE?.state?.currentLocationId || null,
+            selected: window.LIVING_CITY_08_ENGINE?.state?.selectedLocationId || null,
+            combatSession: !!window.LIVING_CITY_08_ENGINE?.state?.combatSession,
+            combatOpen: !!combat?.open,
+            crewChoices: document.querySelectorAll('#combatDialog [data-combat-select]').length,
+            combatDecisions: document.querySelectorAll('#combatDialog [data-combat-decision]').length,
+            startPresent: !!start,
+            startDisabled: start ? !!start.disabled : null,
+            raidEnabled: !!q("[data-game-action='raid']:not([disabled])"),
+            ticker: q('#tickerText')?.textContent || '',
+            activeTag: document.activeElement?.tagName || null,
+            activeId: document.activeElement?.id || null
+          };
+        """)
+        raise AssertionError(
+            "Chrome-Wartebedingung nicht erfüllt: " + code.replace("\n", " ").strip()[:260]
+            + " | Zustand=" + json.dumps(diagnostic, ensure_ascii=False, sort_keys=True)
+        ) from exc
+
+
 _original_safe_click = core.safe_click
 def safe_click(driver, selector: str, timeout: float = 6):
     _original_safe_click(driver, selector, timeout)
@@ -94,8 +127,8 @@ def safe_click(driver, selector: str, timeout: float = 6):
 
 
 core.wait_ready = wait_ready
+core.wait_js = wait_js
 core.safe_click = safe_click
-
 core.verify_desktop_fit = verify_desktop_fit
 
 if __name__ == "__main__":
