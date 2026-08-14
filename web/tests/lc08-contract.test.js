@@ -2,7 +2,7 @@
 const assert=require('node:assert/strict');
 const fs=require('node:fs'),path=require('node:path');
 const root=path.join(__dirname,'..'),repo=path.join(root,'..'),read=(f)=>fs.readFileSync(f,'utf8');
-const html=read(path.join(root,'index.html')),data=read(path.join(root,'lc08-data.js')),engine=read(path.join(root,'lc08-engine.js')),ui=read(path.join(root,'lc08-ui.js')),css=read(path.join(root,'lc08.css')),bootstrap=read(path.join(root,'lc08-bootstrap.js')),refresh=read(path.join(root,'ui-refresh.js')),e2e=read(path.join(repo,'tools/chrome_e2e.py'));
+const html=read(path.join(root,'index.html')),data=read(path.join(root,'lc08-data.js')),engine=read(path.join(root,'lc08-engine.js')),ui=read(path.join(root,'lc08-ui.js')),css=read(path.join(root,'lc08.css')),bootstrap=read(path.join(root,'lc08-bootstrap.js')),refresh=read(path.join(root,'ui-refresh.js')),e2e=read(path.join(repo,'tools/chrome_e2e.py')),e2eCore=read(path.join(repo,'tools/chrome_e2e_core.py')),chromeContract=e2e+'\n'+e2eCore;
 assert.ok(html.includes('lc08-data.js')&&html.includes('lc08-engine.js')&&html.includes('lc08-bootstrap.js')&&html.includes('lc08-ui.js'),'LC08-Funktionsschicht fehlt aus der aktuellen Fassung.');
 const order=['lc07-data.js','lc08-data.js','lc07-engine.js','lc08-engine.js','lc07-bootstrap.js','lc08-bootstrap.js','app.js','lc07-ui.js','lc08-ui.js','ui-refresh.js'].map(n=>html.indexOf(`src="${n}"`));
 assert.ok(order.every(v=>v>=0)&&order.every((v,i)=>i===0||order[i-1]<v),'LC08-Scriptreihenfolge falsch.');
@@ -17,8 +17,9 @@ assert.ok(css.includes(':focus-visible')&&css.includes('.lc08-arc-grid')&&css.in
 assert.ok(css.includes('.scene-modal .modal-close{z-index:40')&&css.includes('.scene-modal .modal-card{isolation:isolate}'),'Innenraum-Schließen muss über der Szenengrafik klickbar bleiben.');
 assert.ok(bootstrap.includes('pppoppi-bunkerwahrheit-html-v0140')&&bootstrap.includes('__livingCity08Patched'),'LC08-Speichermigration fehlt.');
 assert.ok(refresh.includes('LIVING_CITY_08_UI?.render?.()'),'Zentraler Refresh aktualisiert LC08 nicht.');
-assert.ok(e2e.includes('0.14.0-living-city-08')&&e2e.includes('v0140')&&e2e.includes('LC08 core'),'Chrome-E2E muss den qualifizierten LC08-Kompatibilitätskern weiterhin enthalten.');
-assert.ok(e2e.includes('focus_keyboard_sink')&&e2e.includes('data-lc08-close')&&e2e.includes('core.safe_click=safe_click'),'Chrome-E2E muss nach nativen Dialogen einen neutralen Tastaturfokus wiederherstellen.');
-assert.ok(e2e.includes('ActionChains')&&e2e.includes('_BodyKeyboardAdapter')&&e2e.includes('core.make_driver=make_driver'),'Chrome-E2E muss Body-Tastaturkürzel als reale ActionChains am aktuellen Chrome-Fokus senden.');
+assert.ok(chromeContract.includes('0.14.0-living-city-08')&&chromeContract.includes('v0140')&&chromeContract.includes('decision_journal.png')&&chromeContract.includes('combat_decision.png'),'Chrome-E2E muss den qualifizierten LC08-Kompatibilitätskern weiterhin enthalten.');
+assert.ok(e2e.includes('focus_keyboard_sink')&&e2e.includes('data-lc08-close')&&e2e.includes('core.safe_click=safe_click'),'Chrome-E2E-Wrapper muss nach nativen Dialogen einen neutralen Tastaturfokus wiederherstellen.');
+assert.ok(e2e.includes('ActionChains')&&e2e.includes('_BodyKeyboardAdapter')&&e2e.includes('core.make_driver=make_driver'),'Chrome-E2E-Wrapper muss Body-Tastaturkürzel als reale ActionChains am aktuellen Chrome-Fokus senden.');
+assert.ok(e2eCore.includes('Real Google-Chrome desktop E2E acceptance for LIVING-CITY-08'),'Byte-stabiler LC08-Browserkern fehlt.');
 assert.equal((css.match(/\{/g)||[]).length,(css.match(/\}/g)||[]).length,'LC08-CSS-Klammern unausgeglichen.');
 console.log('PASS: LIVING-CITY-08 Vertrag – historische Funktionsschicht, Stadtgedächtnis, Fokus, Speicher und Chrome-Kompatibilitätskern geprüft.');
