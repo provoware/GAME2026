@@ -1,3 +1,17 @@
+# Änderungsprotokoll
+
+## 0.12.0-living-city-06 – LIVING-CITY-06
+
+- Aufgaben-Kompass und nicht überdeckende Coach-Leiste ergänzt.
+- Interaktive Innenraumaktionen mit Kosten, Cooldowns und Effektvorschau eingeführt.
+- Mehrstufige Ortsdialoge mit gespeicherten Konsequenzen ergänzt.
+- Lokalen Sound-/Musikmixer mit vier Profilen und getrennten Reglern eingebaut.
+- Kampfoberfläche um Entscheidungshilfe und stärkere visuelle Hierarchie erweitert.
+- Schema 7 und Save-Spiegel `v0120` mit Abwärtsmigration eingeführt.
+- Vollseiten-Reload nach Crewinteraktionen entfernt.
+- Neuer LC06-Engine-Langlauf (1500 Züge) und eigener Integrationsvertrag.
+- Vollständige lokale Prüfung: 19/19 PASS.
+
 # Changelog
 
 ## 0.11.2-living-city-05b

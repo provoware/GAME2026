@@ -1,25 +1,20 @@
-# Browserfassung – LIVING-CITY-05B
+# Browserfassung – LIVING-CITY-06
 
-Version **0.11.2-living-city-05b**, Schema **6**, Chrome-first.
+Version **0.12.0-living-city-06**, Schema **7**, Chrome-first.
 
 ## Schichten
 
 1. `data.js` / `engine.js` / `app.js` / `styles.css` – qualifizierter Kern.
 2. `revival-*` – Director, Missionen, Stadtereignisse und Rivalenpolitik.
-3. `repair-04a.*` – Karten- und Bedienreparatur inklusive sichtbarem Zugende.
-4. `lc05-*` – Crew-Chemie, Innenansichten, Briefings, Kartenebenen und Atmosphäre.
-5. `lc05b-ui.js` / `lc05b.css` – nicht blockierende Hilfe, Aufgaben-Dashboard, vereinfachte Reise, freies Karten-Pan/Zoom und responsive Neuordnung.
-6. `ui-refresh.js` – zentraler gedrosselter UI-Refresh ohne globale MutationObserver.
+3. `repair-04a.*` – Karten-/Bedienreparatur und sichtbares Zugende.
+4. `lc05-*` – Crew-Chemie, visuelle Innenansichten, Briefings, Kartenebenen.
+5. `lc05b-ui.js` / `lc05b.css` – Kartenfokus, Reise, Hilfe-Dock, Pan/Zoom und responsives Layout.
+6. `lc06-*` – interaktive Innenräume, mehrstufige Dialoge, Aufgaben-Kompass, Klangmixer und Kampfentscheidungshilfe.
+7. `ui-refresh.js` – zentraler gedrosselter UI-Refresh ohne globale MutationObserver.
 
-## Kartenbedienung
+## Tastatur
 
-- Mausrad oder +/−: zoomen
-- Ziehen / WASD / Pfeile: verschieben
-- Doppelklick auf Bezirk: zentrieren
-- `M`: Kartenfokus
-- `H`: Hilfe-Dock
-- `R`: angebotene Reise starten
-- `Home` / `0`: Gesamtkarte
+`M` Karte · `H` Hilfe · `R` Reise · `E` Zugende · `G` nächster Schritt · `I` Innenraum · `K` Klang · `Alt+1–9` Spielbereiche · WASD/Pfeile bewegen · `+/-` zoomen.
 
 ## Prüfen
 

@@ -1,27 +1,37 @@
-# Klickstart – PPPOPPI Bunkerwahrheit 0.11.2 · LIVING-CITY-05B
+# Klickstart – PPPOPPI Bunkerwahrheit 0.12.0 · LIVING-CITY-06
 
 ## Linux / Kubuntu
 
 1. ZIP vollständig entpacken.
 2. `START_GAME.sh` doppelklicken bzw. ausführen.
-3. Der Starter öffnet bevorzugt **Google Chrome**, danach Chromium. Firefox ist nur Reserve.
+3. Der Starter öffnet bevorzugt **Google Chrome**, danach Chromium. Firefox bleibt Reserve.
 
-## Wichtigste Bedienung
+## So findest du dich sofort zurecht
 
-- **Oben** zeigt das Aufgaben-Dashboard immer den nächsten sinnvollen Schritt.
-- **Karte:** Bezirk anklicken. Direkt erreichbare Ziele stehen oberhalb der Karte.
-- **Reisen:** Ziel wählen und den hervorgehobenen Reisebutton verwenden.
-- **Karte bewegen:** Maus gedrückt ziehen oder WASD/Pfeile.
-- **Karte zoomen:** Mausrad oder +/−. `Gesamt` stellt die ganze Stadt wieder her.
-- **Hilfe:** `H` oder Hilfe-Button. Die Hilfe liegt neben/unter der Karte und verdeckt sie nie.
-- **M:** Karte fokussieren.
-- **R:** angebotene Reise starten.
-- **E:** Zug beenden.
+- **Oben im Aufgaben-Dashboard** steht der wichtigste nächste Schritt.
+- **G** setzt den Tastaturfokus direkt auf diese Empfehlung.
+- **Hilfe** liegt neben/unter der Karte und verdeckt sie nicht.
+- **I** öffnet den Innenraum des aktuellen Ortes.
+- In Innenräumen zeigen große Aktionskarten sofort **Was passiert?**, **Was kostet es?** und **welcher Spielwert ändert sich?**
+- Bei verfügbaren Ortskontakten erscheinen Entscheidungen schrittweise statt als Textwand.
+- **K** öffnet den Klangmixer. Gesamt, Musik und Atmosphäre sind getrennt regelbar.
+- Im Kampf wird eine Empfehlung sichtbar hervorgehoben; du entscheidest weiterhin selbst.
 
-## Wenn wenig Platz vorhanden ist
+## Karte & Reise
 
-Das Layout ordnet sich automatisch um: Die Karte bleibt zuerst sichtbar, Aktionen folgen danach, die Boss-Details werden kompakter. Die Hilfe wandert unter die Karte statt darüber.
+- Bezirk anklicken oder Direktziel oberhalb der Karte wählen.
+- `R` startet die aktuell angebotene direkte Reise.
+- Maus ziehen / WASD / Pfeile = Karte verschieben.
+- Mausrad oder `+`/`-` = zoomen.
+- `Home` oder `0` = Gesamtkarte.
+- `M` = Kartenfokus.
+
+## Weitere Tasten
+
+- `E` – Zug beenden
+- `Alt+1` bis `Alt+9` – Spielbereich direkt wählen
+- `Tab` / `Enter` – normale Tastaturnavigation
 
 ## Technische Prüfung
 
-`./PRUEFEN.sh` führt **17 reproduzierbare Prüfblöcke** aus. Node.js wird nur für die Entwicklerprüfung benötigt, nicht zum Spielen.
+`./PRUEFEN.sh` führt **19 reproduzierbare Prüfblöcke** aus. Node.js wird nur für die Entwicklerprüfung benötigt, nicht zum Spielen.

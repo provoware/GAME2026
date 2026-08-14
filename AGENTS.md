@@ -20,3 +20,8 @@
 18. Kritische Datenschutz-, Save- oder Ressourcenfehler stoppen die Iteration sofort.
 19. CI-Skripte müssen lokal reproduzierbar bleiben und dürfen keine versteckte Cloudabhängigkeit einführen.
 20. Neue Contenttypen benötigen Schema, Semantikprüfung, Positivtest und Negativtest.
+21. Hilfen, Coach-Hinweise und Zusatzpanels dürfen die Karte nicht überdecken; sie ordnen sich in den Layoutfluss ein.
+22. Neue UI-Schichten dürfen keine globalen `MutationObserver` oder ungedrosselten Voll-Render-Schleifen einführen.
+23. Tastaturpfade müssen dieselben Aktionen wie Mauspfade erreichen und sichtbaren Fokus besitzen.
+24. Audio bleibt optional, lokal erzeugt und darf ohne Nutzerinteraktion nicht automatisch starten.
+25. Kampf- und Konfliktinformationen bleiben abstrahierte Spielwerte ohne reale Handlungsanleitungen.

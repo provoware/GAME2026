@@ -2,72 +2,64 @@
 
 ## Stand
 
-**Browser-Spielstand:** 0.11.2-living-city-05b  
-**Browser-Schema:** 6  
-**Primärplattform:** Google Chrome (primär) / Chromium, Firefox nur Kompatibilitätsreserve, offline-first  
+**Browser-Spielstand:** 0.12.0-living-city-06  
+**Browser-Schema:** 7  
+**Primärplattform:** Google Chrome / Chromium, offline-first  
 **GitHub-Strang:** `agent/html-gang-map-boss-dynamics`
 
-## LIVING-CITY-05B – Kartenfokus, Reise und adaptive Spielführung
+## LIVING-CITY-06 – geführte Stadt, interaktive Orte und Kampfinszenierung
 
-### Stadt & Darstellung
+### Spielführung & Sichtbarkeit
 
-- bestehende 04A-Kartenreparatur vollständig erhalten;
-- Hilfe als nicht blockierendes Dock neben/unter der Karte;
-- freies Karten-Panning und kontinuierlicher Zoom mit Maus und Tastatur;
-- Direktziele und Reisestatus dauerhaft außerhalb der Kartenfläche sichtbar;
-- oberes Aufgaben-Dashboard priorisiert nächste Aktion, Standort, Reise und Warnstatus;
-- responsive Neuordnung über flexible Grids, MinMax-Regeln und Karten-Container-Query;
-- vier umschaltbare Kartenebenen: Gebiete, Druck, Wirtschaft, Ereignisse;
-- acht individuelle Innenansichten wichtiger Orte plus Fallback-Szenen;
-- lokale Hotspots, Unternehmen, Besitz, Gebietsstatus und Ereignisse in der Ortsszene;
-- optionale, rein lokal synthetisierte Web-Audio-Atmosphäre ohne externe Assets.
+- 05B-Karten-/Responsive-Basis vollständig erhalten;
+- Aufgaben-Kompass im oberen Dashboard priorisiert den nächsten sinnvollen Schritt aus dem realen Spielzustand;
+- nicht blockierende Coach-Leiste im Layoutfluss statt Popup über der Karte;
+- Tastaturkürzel `G`, `I`, `K` und `Alt+1–9` ergänzen Karte/Hilfe/Reise/Zugende;
+- Hilfe enthält die neuen Bedienwege in einfacher Sprache.
 
-### Personen & Crew
+### Interaktive Innenräume & Dialoge
 
-- jede Person besitzt Moral und Stress;
-- Beziehungen werden paarweise gespeichert und verständlich klassifiziert;
-- Daueraufträge, Erholung, gemeinsame Arbeit und Kämpfe verändern Crew-Chemie;
-- Aussprache, gemeinsame Planung und Sparring als echte, zugbasierte Crewinteraktionen;
-- Personenkarten zeigen individuelle Beziehungen und Belastung;
-- ausgeschiedene Personen werden automatisch aus dem Beziehungsgraphen entfernt.
+- Innenräume besitzen echte lokale Aktionskarten mit Verfügbarkeit, Kosten, Cooldown und Effektvorschau;
+- Aktionen verändern nur abstrahierte Spielwerte wie Chancen, Spannung, Crew-Stress/Moral, Kontrolle, Skills oder Vorrat;
+- Ortskontakte führen mehrstufige Dialoge mit verzweigten Entscheidungen;
+- Dialogstatus, Historie und Konsequenzen werden gespeichert;
+- abgeschlossene Gespräche besitzen einen Wiederholungsabstand statt beliebiger Sofortwiederholung.
 
-### Missionen & Director
+### Klang & Kampf
 
-- aktive Aufträge besitzen einmalige Missionsbriefings;
-- drei strategische Briefingwege mit Frist-, Belohnungs-, Director- und Crewfolgen;
-- Director-Modifikatoren klingen kontrolliert über weitere Züge ab;
-- bestehende Missionsketten, Stadtereignisse und Rivalenpolitik bleiben vollständig kompatibel.
+- lokaler Web-Audio-Mixer mit Gesamt-, Musik- und Atmosphärenregler;
+- vier Klangprofile, vollständig synthetisch und ohne externe Audiodateien;
+- Kampfoberfläche erhält verständliche Entscheidungsunterstützung und stärkere visuelle Hierarchie;
+- Empfehlung für Angriff, Deckung oder Rückzug basiert ausschließlich auf abstrakten Spielwerten.
 
-### Speicher & Migration
+### Speicher & Performance
 
-- Browser-Schema 6;
-- kanonischer Save-Spiegel `pppoppi-bunkerwahrheit-html-v0110`;
-- Migration/Synchronisierung aus `v0100` und `v090` bleibt erhalten.
+- Browser-Schema 7;
+- neuer Save-Spiegel `pppoppi-bunkerwahrheit-html-v0120` mit Migration aus `v0110`, `v0100` und `v090`;
+- keine neuen globalen DOM-Beobachter;
+- Crewinteraktion löst keinen Vollseiten-Reload mehr aus;
+- zentraler gedrosselter UI-Refresh bleibt einziger Zusatz-Renderpfad.
 
 ## Lokale Validierung
 
 - Kern-Regressionen: **52/52 PASS**;
 - Revival-Regressionen: **15/15 PASS**;
-- LIVING-CITY-05-Regressionen: **20/20 PASS**;
-- 500-Zug-Kernlanglauf: **PASS**;
-- 1000-Zug-Director-Langlauf: **PASS**;
-- 1200-Zug-LC05-Langlauf: **PASS**;
-- UI-Smoke: **PASS**;
-- statischer UI-Vertrag: **PASS**;
-- Karten-/Bedien-Regression: **PASS**;
-- LC05-Modul-/Visual-Vertrag: **PASS**;
-- Revival-Modul-/Visual-Vertrag: **PASS**;
-- LC05B-Vertrag für Hilfe-Dock, Aufgaben-Dashboard, Reise, Zoom/Pan, Tastatur und Responsive Design: **PASS**;
-- realer Chrome/Chromium-Screenshot-E2E wird erneut versucht; falls die Container-D-Bus-Grenze bleibt, wird kein falsches PASS behauptet.
+- LIVING-CITY-05: **20/20 PASS**;
+- LIVING-CITY-06: **19/19 PASS**;
+- 500-/1000-/1200-/1500-Zug-Langläufe: **PASS**;
+- UI-Smoke und finaler statischer UI-Vertrag: **PASS**;
+- Karten-/Bedien-, Chrome-/Performance- und 05B-Responsive-Verträge: **PASS**;
+- LC06 Führungs-/Innenraum-/Dialog-/Klang-/Kampf-Vertrag: **PASS**;
+- vollständiges `PRUEFEN.sh`: **19/19 PASS**.
 
-## Fortschritt bis vollständigem Release
+## Fortschritt
 
-- Spezifikation / Architektur: **92 %**
-- Codeimplementierung: **81 %**
-- UI / Spielbarkeit: **94 %**
-- Test-/Validierungsinfrastruktur: **90 %**
-- gewichteter Gesamtfortschritt: **89 %**
+- Spezifikation / Architektur: **95 %**
+- Codeimplementierung: **88 %**
+- UI / Spielbarkeit: **96 %**
+- Test-/Validierungsinfrastruktur: **94 %**
+- gewichteter Gesamtfortschritt: **93 %**
 
 ## Nächster sinnvoller Meilenstein
 
-**LIVING-CITY-06:** auf der vereinfachten 05B-Kartenbasis: interaktive Innenraumaktionen, tiefere Dialog-/Konsequenzketten, Sound-/Musikmixer, stärkere Kampfinszenierung und weiterführende geführte Aufgabenleitung.
+**LIVING-CITY-07:** echte Chrome-Desktop-E2E-Abnahme auf einem Desktop-Runner, weitere Story-/Dialogketten, zusätzliche Innenraumvarianten, Audio-Härtung und Release-Politur.

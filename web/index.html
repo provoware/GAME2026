@@ -4,21 +4,23 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#07090d">
-  <meta name="description" content="PPPOPPI Bunkerwahrheit – LIVING-CITY-05B Chrome-first, fokussierte Kartensteuerung, Aufgaben-Dashboard und responsive Bedienung.">
-  <title>PPPOPPI – Bunkerwahrheit · 0.11.2 LIVING-CITY-05B</title>
+  <meta name="description" content="PPPOPPI Bunkerwahrheit – LIVING-CITY-06 mit interaktiven Innenräumen, geführter Aufgabenleitung, Klangmixer und inszenierter Kampfoberfläche.">
+  <title>PPPOPPI – Bunkerwahrheit · 0.12.0 LIVING-CITY-06</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="revival.css">
   <link rel="stylesheet" href="repair-04a.css">
   <link rel="stylesheet" href="lc05.css">
   <link rel="stylesheet" href="lc05b.css">
+  <link rel="stylesheet" href="lc06.css">
 </head>
 <body>
 <div class="app-shell">
   <header class="topbar glass">
-    <div class="brand"><div class="brand-mark">9909</div><div><h1>PPPOPPI · Bunkerwahrheit</h1><p>LIVING-CITY-05B · Chrome-first · Kartenfokus · Aufgaben-Dashboard</p></div></div>
+    <div class="brand"><div class="brand-mark">9909</div><div><h1>PPPOPPI · Bunkerwahrheit</h1><p>LIVING-CITY-06 · Chrome-first · Geführte Stadt · Interaktive Orte</p></div></div>
     <div class="top-kpis" id="topKpis"></div>
-    <div class="top-actions"><button class="btn primary turn-button" id="endTurnButton" title="Zug beenden / bewusst warten (Taste E)"><span>Zug beenden</span><small>Warten</small></button><button class="btn ghost" id="helpButton" aria-controls="helpDock" aria-expanded="false">Hilfe</button><button class="btn ghost" id="saveButton">Speichern</button></div>
+    <div class="top-actions"><button class="btn primary turn-button" id="endTurnButton" title="Zug beenden / bewusst warten (Taste E)"><span>Zug beenden</span><small>Warten</small></button><button class="btn ghost" id="lc06AudioButton" title="Sound- und Musikmixer (Taste K)">Klang</button><button class="btn ghost" id="helpButton" aria-controls="helpDock" aria-expanded="false">Hilfe</button><button class="btn ghost" id="saveButton">Speichern</button></div>
     <section class="focus-dashboard" id="focusDashboard" aria-label="Aufgaben-Dashboard" aria-live="polite"></section>
+    <section class="coach-rail" id="coachRail" aria-live="polite" hidden></section>
   </header>
 
   <main class="workspace">
@@ -73,28 +75,32 @@
     </aside>
   </main>
 
-  <footer class="footerbar glass"><span id="saveStatus">Automatisch lokal gespeichert</span><span class="turn-rule">Aktionen beenden meist automatisch einen Zug · <b>Zug beenden</b> = bewusst warten</span><span>Version <strong>0.11.2</strong> · Schema 6</span><button class="text-button" id="resetButton">Neues Spiel</button></footer>
+  <footer class="footerbar glass"><span id="saveStatus">Automatisch lokal gespeichert</span><span class="turn-rule">Aktionen beenden meist automatisch einen Zug · <b>Zug beenden</b> = bewusst warten</span><span>Version <strong>0.12.0</strong> · Schema 7</span><button class="text-button" id="resetButton">Neues Spiel</button></footer>
 </div>
 
 <dialog id="personDialog" class="modal person-modal"><div class="modal-card"><button class="modal-close" data-close="personDialog">×</button><div id="personDialogContent"></div></div></dialog>
 <dialog id="combatDialog" class="modal combat-modal"><div class="modal-card wide"><button class="modal-close" data-close="combatDialog">×</button><div id="combatDialogContent"></div></div></dialog>
-<dialog id="helpDialog" class="modal"><div class="modal-card"><button class="modal-close" data-close="helpDialog">×</button><span class="eyebrow">KURZANLEITUNG</span><h2>LIVING-CITY-05B</h2><div class="help-grid"><article><b>Zug beenden</b><p>Mit dem gut sichtbaren Button oben rechts oder Taste E bewusst einen Zug verstreichen lassen. Dadurch laufen Crew-Aufträge, Betriebe, Markt, Rivalen und Stadtereignisse weiter.</p></article><article><b>Karte</b><p>Leuchtende Verbindungen sind direkt erreichbar. Zusätzlich zwischen Gebiets-, Druck-, Wirtschafts- und Ereignisebene umschalten.</p></article><article><b>Innenansichten</b><p>Wichtige Orte besitzen jetzt eigene visuelle Ortsszenen mit Hotspots, lokalen Kennzahlen und optionaler synthetischer Atmosphäre.</p></article><article><b>Direktor</b><p>Dynamische Aufträge, Stadtereignisse, Rivalenpolitik und Karriere verfolgen. Aktive Aufträge besitzen strategische Briefing-Entscheidungen.</p></article><article><b>Stadt</b><p>Bezirk wählen, reisen, Aktionen ausführen und Kontrolle sichern. Der Stadtpuls reagiert auf deine Entscheidungen.</p></article><article><b>Crew</b><p>Personenkarten öffnen, Daueraufträge setzen und Skills entwickeln. Moral, Stress und Beziehungen verändern sich durch gemeinsame Erfahrungen.</p></article><article><b>Bank</b><p>Geld einzahlen, lokale Unternehmen analysieren, Anteile kaufen und Dividenden erhalten. Kurse folgen der simulierten Unternehmensentwicklung.</p></article><article><b>Netz</b><p>Maulwürfe und abstrakte Stadtoperationen verwalten. Alle Effekte bleiben reine Spielwerte.</p></article><article><b>Casino</b><p>Im Casino 9909 Poker selbst spielen oder drei unterschiedliche Automaten nutzen.</p></article><article><b>Kampf</b><p>Crew auswählen, Kräftebeiträge prüfen und rundenweise Angriff, Deckung oder Rückzug entscheiden.</p></article></div></div></dialog>
+<dialog id="helpDialog" class="modal"><div class="modal-card"><button class="modal-close" data-close="helpDialog">×</button><span class="eyebrow">KURZANLEITUNG</span><h2>LIVING-CITY-06</h2><div class="help-grid"><article><b>Zug beenden</b><p>Mit dem gut sichtbaren Button oben rechts oder Taste E bewusst einen Zug verstreichen lassen. Dadurch laufen Crew-Aufträge, Betriebe, Markt, Rivalen und Stadtereignisse weiter.</p></article><article><b>Karte</b><p>Leuchtende Verbindungen sind direkt erreichbar. Zusätzlich zwischen Gebiets-, Druck-, Wirtschafts- und Ereignisebene umschalten.</p></article><article><b>Innenansichten</b><p>Wichtige Orte besitzen jetzt eigene visuelle Ortsszenen mit Hotspots, lokalen Kennzahlen und optionaler synthetischer Atmosphäre.</p></article><article><b>Direktor</b><p>Dynamische Aufträge, Stadtereignisse, Rivalenpolitik und Karriere verfolgen. Aktive Aufträge besitzen strategische Briefing-Entscheidungen.</p></article><article><b>Stadt</b><p>Bezirk wählen, reisen, Aktionen ausführen und Kontrolle sichern. Der Stadtpuls reagiert auf deine Entscheidungen.</p></article><article><b>Crew</b><p>Personenkarten öffnen, Daueraufträge setzen und Skills entwickeln. Moral, Stress und Beziehungen verändern sich durch gemeinsame Erfahrungen.</p></article><article><b>Bank</b><p>Geld einzahlen, lokale Unternehmen analysieren, Anteile kaufen und Dividenden erhalten. Kurse folgen der simulierten Unternehmensentwicklung.</p></article><article><b>Netz</b><p>Maulwürfe und abstrakte Stadtoperationen verwalten. Alle Effekte bleiben reine Spielwerte.</p></article><article><b>Casino</b><p>Im Casino 9909 Poker selbst spielen oder drei unterschiedliche Automaten nutzen.</p></article><article><b>Kampf</b><p>Crew auswählen, Kräftebeiträge prüfen und rundenweise Angriff, Deckung oder Rückzug entscheiden.</p></article></div></div></dialog>
 
 <script src="data.js"></script>
 <script src="revival-data.js"></script>
 <script src="lc05-data.js"></script>
+<script src="lc06-data.js"></script>
 <script src="engine.js"></script>
 <script src="revival-missions.js"></script>
 <script src="revival-world.js"></script>
 <script src="revival-engine.js"></script>
 <script src="lc05-engine.js"></script>
+<script src="lc06-engine.js"></script>
 <script src="repair-bootstrap.js"></script>
 <script src="lc05-bootstrap.js"></script>
+<script src="lc06-bootstrap.js"></script>
 <script src="app.js"></script>
 <script src="revival-ui.js"></script>
 <script src="repair-04a.js"></script>
 <script src="lc05-ui.js"></script>
 <script src="lc05b-ui.js"></script>
+<script src="lc06-ui.js"></script>
 <script src="ui-refresh.js"></script>
 </body>
 </html>

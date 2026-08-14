@@ -36,22 +36,27 @@ jobs:
           node --check web/data.js
           node --check web/revival-data.js
           node --check web/lc05-data.js
+          node --check web/lc06-data.js
           node --check web/engine.js
           node --check web/revival-missions.js
           node --check web/revival-world.js
           node --check web/revival-engine.js
           node --check web/lc05-engine.js
+          node --check web/lc06-engine.js
           node --check web/app.js
           node --check web/repair-bootstrap.js
           node --check web/lc05-bootstrap.js
+          node --check web/lc06-bootstrap.js
           node --check web/repair-04a.js
           node --check web/revival-ui.js
           node --check web/lc05-ui.js
           node --check web/lc05b-ui.js
+          node --check web/lc06-ui.js
           node --check web/ui-refresh.js
           node --check web/tests/engine.test.js
           node --check web/tests/revival-engine.test.js
           node --check web/tests/lc05-engine.test.js
+          node --check web/tests/lc06-engine.test.js
           node --check web/tests/director-simulation.test.js
           node --check web/tests/ui-smoke.test.js
           node --check web/tests/static-ui.test.js
@@ -60,6 +65,7 @@ jobs:
           node --check web/tests/revival-contract.test.js
           node --check web/tests/performance-regression.test.js
           node --check web/tests/lc05b-contract.test.js
+          node --check web/tests/lc06-contract.test.js
 
       - name: Run qualified core tests
         run: node web/tests/engine.test.js
@@ -69,6 +75,9 @@ jobs:
 
       - name: Run LIVING-CITY-05 tests and 1200-turn simulation
         run: node web/tests/lc05-engine.test.js
+
+      - name: Run LIVING-CITY-06 tests and 1500-turn simulation
+        run: node web/tests/lc06-engine.test.js
 
       - name: Run Director simulation
         run: node web/tests/director-simulation.test.js
@@ -82,7 +91,7 @@ jobs:
       - name: Run map and control regression
         run: node web/tests/ui-regression.test.js
 
-      - name: Run LIVING-CITY-05/05B module and visual contract
+      - name: Run LIVING-CITY-05 module and visual contract
         run: node web/tests/lc05-contract.test.js
 
       - name: Run Revival module and visual contract
@@ -94,6 +103,9 @@ jobs:
       - name: Run LIVING-CITY-05B map and responsive contract
         run: node web/tests/lc05b-contract.test.js
 
+      - name: Run LIVING-CITY-06 guidance and interaction contract
+        run: node web/tests/lc06-contract.test.js
+
       - name: Rebuild deterministic manifest
         run: python tools/build_manifest.py
 
@@ -103,10 +115,10 @@ jobs:
       - name: Check Python syntax
         run: python -m compileall -q tools
 
-      - name: Publish LIVING-CITY-05B source artifact
+      - name: Publish LIVING-CITY-06 source artifact
         uses: actions/upload-artifact@v4
         with:
-          name: PPPOPPI-Bunkerwahrheit-LIVING-CITY-05B
+          name: PPPOPPI-Bunkerwahrheit-LIVING-CITY-06
           if-no-files-found: error
           retention-days: 14
           path: |

@@ -1,36 +1,39 @@
-# PPPOPPI – Bunkerwahrheit · LIVING-CITY-05B
+# PPPOPPI – Bunkerwahrheit · LIVING-CITY-06
 
-Version **0.11.2-living-city-05b** ist die Chrome-first Karten-, Reise- und Bedienoptimierung des qualifizierten 0.11.1-Stands. Die Fachsysteme bleiben erhalten; die neue Schicht ordnet Sichtbarkeit, Aufgabenführung und Kartenbedienung neu.
+Version **0.12.0-living-city-06** baut auf der qualifizierten Chrome-first Kartenbasis 0.11.2 auf. Der Schwerpunkt liegt auf besserer Spielführung, interaktiven Orten, nachvollziehbaren Konsequenzen, lokaler Klangsteuerung und einer klarer inszenierten Kampfoberfläche.
 
 ## Direkt starten
 
-Unter Linux `./START_GAME.sh` ausführen. Google Chrome wird bevorzugt, Chromium dient als zweite Wahl. Alternativ `web/index.html` direkt in Chrome öffnen.
+Unter Linux `./START_GAME.sh` ausführen. Google Chrome wird bevorzugt, Chromium ist zweite Wahl. Alternativ `web/index.html` direkt in Chrome öffnen.
 
-## Was 0.11.2 verbessert
+## Was 0.12.0 neu macht
 
-- **Hilfe verdeckt die Karte nicht mehr:** Sie öffnet als eigenes Dock neben der Karte und wandert auf schmalen Fenstern automatisch darunter.
-- **Karte als eigener Arbeitsbereich:** Auswahl, Reisezustand und Direktziele liegen außerhalb der Kartenfläche.
-- **Freies Zoomen und Verschieben:** Mausrad, Ziehen mit der Maus, +/−, Gesamtansicht sowie WASD/Pfeiltasten.
-- **Direkte Reiseziele sichtbar:** erreichbare Orte stehen unmittelbar über der Karte; Ziel wählen und anschließend den großen Reisebutton benutzen.
-- **Aufgaben-Dashboard oben:** nächste sinnvolle Aktion, Standort, Reise und Warnung/Stadtstatus bleiben ständig sichtbar.
-- **Responsive Neuordnung:** breite, mittlere, kompakte und mobile Layoutstufen ordnen Karte, Aktionen, Boss-Bereich und Hilfe automatisch neu.
-- **Keine neuen globalen DOM-Beobachter:** die Chrome-Performance-Härtung aus 0.11.1 bleibt erhalten.
-- **Bestehende Systeme bleiben vollständig:** Director, Missionen, Crew-Chemie, Innenansichten, Besitz, Bank, Casino, Kampf und Kartenebenen.
+- **Aufgaben-Kompass im oberen Dashboard:** zeigt aus dem tatsächlichen Spielzustand immer den nächsten sinnvollen Schritt.
+- **Coach-Hinweise ohne Kartenüberdeckung:** kurze Hinweise erscheinen im Layoutfluss oberhalb des Arbeitsbereichs und können ausgeblendet werden.
+- **Interaktive Innenräume:** lokale Aktionen besitzen Kosten, Cooldowns und Auswirkungen auf Chancen, Spannung, Moral, Stress, Skills, Kontrolle oder Vorrat.
+- **Mehrstufige Dialoge:** Gespräche verzweigen über mehrere Entscheidungen; Ergebnisse werden im Spielstand gespeichert und wirken auf abstrakte Spielwerte.
+- **Sound-/Musikmixer:** Gesamtlautstärke, Musik und Atmosphäre getrennt regelbar; vier lokale Klangprofile, vollständig im Browser erzeugt.
+- **Kampfentscheidungshilfe:** aktive Kämpfe zeigen eine verständliche Empfehlung und Vorschau für Angriff, Deckung oder Rückzug.
+- **Keine neuen Render-Schleifen:** LC06 nutzt weiterhin den zentralen `requestAnimationFrame`-gedrosselten Refresh.
+- **Crew-Aktionen ohne Vollseiten-Neuladen:** alte `location.reload()`-Stelle entfernt.
 
 ## Tastatur
 
 - `M` – Karte fokussieren
 - `H` – Hilfe ein-/ausblenden
-- `R` – aktuell angebotene Reise starten
+- `R` – angebotene Reise starten
 - `E` – Zug beenden
-- `WASD` oder Pfeile – Karte verschieben, wenn sie fokussiert ist
-- `+` / `-` – Kartenzoom
+- `G` – nächsten sinnvollen Schritt fokussieren
+- `I` – Innenraum am aktuellen Ort öffnen
+- `K` – Klangmixer öffnen/schließen
+- `Alt+1` bis `Alt+9` – sichtbare Spielbereiche direkt wählen
+- `WASD` oder Pfeile – Karte bewegen
+- `+` / `-` – Karte zoomen
 - `Home` oder `0` – Gesamtkarte
-- `Tab` / `Enter` – normale Tastaturnavigation und Auswahl
 
-## Wartbare Architektur
+## Architektur
 
-LIVING-CITY-05B ergänzt den bestehenden Stand additiv über `web/lc05b-ui.js` und `web/lc05b.css`. `ui-refresh.js` bindet die neue Darstellung in den bereits gedrosselten zentralen Refresh ein. Engine- und Speicher-Schema bleiben unverändert bei Schema 6 / `v0110`.
+LC06 ergänzt den Stand additiv über `lc06-data.js`, `lc06-engine.js`, `lc06-bootstrap.js`, `lc06-ui.js` und `lc06.css`. Die 05B-Karten-/Responsive-Schicht bleibt erhalten. Browser-Schema ist **7**, kanonischer Save-Spiegel `pppoppi-bunkerwahrheit-html-v0120`.
 
 ## Prüfung
 
@@ -38,7 +41,7 @@ LIVING-CITY-05B ergänzt den bestehenden Stand additiv über `web/lc05b-ui.js` u
 ./PRUEFEN.sh
 ```
 
-Der Prüfvertrag umfasst **17 reproduzierbare Prüfschritte**: bestehende Kern-/Revival-/LC05-Regressionen und Langläufe plus Chrome-/Performance-Gate und einen eigenen 05B-Vertrag für Hilfe-Dock, Aufgaben-Dashboard, Reise, Zoom/Pan, Tastatur und responsive Layoutstufen.
+Der Prüfvertrag umfasst **19 reproduzierbare Blöcke**: alle bisherigen Regressionen und Langläufe plus LC06-Engine-Test mit 1500-Zug-Langlauf sowie einen eigenen Führungs-/Innenraum-/Dialog-/Klang-/Kampf-Vertrag.
 
 ## Simulationshinweis
 
