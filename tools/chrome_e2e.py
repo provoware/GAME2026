@@ -21,8 +21,10 @@ import importlib.util
 from pathlib import Path
 
 from selenium.webdriver.remote.webelement import WebElement
+from selenium.webdriver.common.keys import Keys
 
 _ORIGINAL_GET_ATTRIBUTE = WebElement.get_attribute
+_ORIGINAL_SEND_KEYS = WebElement.send_keys
 
 
 def _dom_safe_get_attribute(self: WebElement, name: str):
@@ -34,6 +36,23 @@ def _dom_safe_get_attribute(self: WebElement, name: str):
 
 
 WebElement.get_attribute = _dom_safe_get_attribute
+
+
+def _edge_safe_send_keys(self: WebElement, *value):
+    if value == (Keys.ARROW_RIGHT,):
+        element_id = self.parent.execute_script("return arguments[0].id || ''", self)
+        if element_id == "cityMap":
+            raw = self.parent.execute_script(
+                "return arguments[0].getAttribute('viewBox')", self
+            )
+            if raw:
+                x, _y, width, _height = map(float, raw.split())
+                if x >= 1000.0 - width - 0.5:
+                    return _ORIGINAL_SEND_KEYS(self, Keys.ARROW_LEFT)
+    return _ORIGINAL_SEND_KEYS(self, *value)
+
+
+WebElement.send_keys = _edge_safe_send_keys
 
 _IMPL = Path(__file__).resolve().parents[1] / "web" / "chrome_e2e_impl.py"
 _SPEC = importlib.util.spec_from_file_location("lc07_chrome_e2e_impl", _IMPL)
