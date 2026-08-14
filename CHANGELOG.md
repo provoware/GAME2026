@@ -1,5 +1,11 @@
 # Changelog
 
+## Unveröffentlicht
+
+- Kollisionen einer Transaktions-ID zwischen unterschiedlichen Commands werden abgewiesen
+- Verifikation prüft Python und `jsonschema` vor der Manifest-Erzeugung und nennt den Installationsbefehl
+- Regressionstest für kollidierende Transaktions-IDs ergänzt
+
 ## 0.3.0-mission-iteration-c
 
 - Zustands- und Missionsschema auf Version 3 erweitert

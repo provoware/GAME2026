@@ -50,7 +50,8 @@ Das Missionssystem enthält Tests für:
 8. Pause und Fortsetzung durch `Riss`;
 9. kontrollierten Abbruch;
 10. idempotente Commands;
-11. Save-/Load-Roundtrip.
+11. Ablehnung einer Transaktions-ID für einen anderen Command;
+12. Save-/Load-Roundtrip.
 
 ## 3. Kritische Invarianten
 

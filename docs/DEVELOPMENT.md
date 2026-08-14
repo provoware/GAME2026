@@ -18,6 +18,15 @@ Python-Abhängigkeiten:
 python3 -m pip install --user jsonschema gdtoolkit
 ```
 
+Falls `./verify.sh` meldet, dass `jsonschema` fehlt, genügt für die Pflichtprüfung:
+
+```bash
+python3 -m pip install --user jsonschema
+./verify.sh
+```
+
+Die Vorprüfung beendet sich bei einer fehlenden Abhängigkeit, bevor sie Dateien verändert.
+
 ## 2. Projektstart
 
 ```bash
