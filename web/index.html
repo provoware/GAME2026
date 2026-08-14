@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#090b10">
+  <meta name="description" content="PPPOPPI Bunkerwahrheit – lokales Browser-Gangspiel mit dynamischer Stadtkarte.">
+  <title>PPPOPPI – Bunkerwahrheit · Stadtsektor 9909</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app" id="app">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">9909</span>
+        <div><h1>PPPOPPI · Bunkerwahrheit</h1><p>Stadtsektor 9909 · Boss-Dynamik</p></div>
+      </div>
+      <div class="top-kpis" aria-label="Spielstatus">
+        <div class="kpi"><span>Zug</span><strong id="turnValue">1</strong></div>
+        <div class="kpi"><span>Geld</span><strong id="moneyValue">760 €</strong></div>
+        <div class="kpi"><span>Vorräte</span><strong id="suppliesValue">8</strong></div>
+        <div class="kpi"><span>Gang</span><strong id="gangValue">3</strong></div>
+      </div>
+      <div class="top-actions"><button class="button ghost" id="helpButton" type="button">Hilfe</button><button class="button ghost" id="saveButton" type="button">Speichern</button></div>
+    </header>
+
+    <main class="workspace">
+      <aside class="panel boss-panel" aria-label="Bossprofil">
+        <div class="panel-heading"><div><span class="eyebrow">BOSS-PROFIL</span><h2 id="bossTitle">Aufsteigender Boss</h2></div><span class="status-dot" id="bossStyle">Respekt</span></div>
+        <p class="panel-note" id="bossNote">Taten formen dein Profil.</p>
+        <div class="metric-list" id="bossMetrics"></div>
+        <div class="section-divider"></div>
+        <div class="mini-heading"><span>Stadtbilanz</span><strong id="cityControl">0 / 9</strong></div>
+        <div class="summary-grid">
+          <div><span>Ø Kontrolle</span><strong id="avgControl">0%</strong></div><div><span>Ø Rivalen</span><strong id="avgRival">0%</strong></div>
+          <div><span>Gangstärke</span><strong id="gangPower">0</strong></div><div><span>Fahndung</span><strong id="heatText">Ruhig</strong></div>
+        </div>
+        <div class="boss-tip"><span class="tip-icon">i</span><p>Keine Klasse auswählen: Dein Verhalten erzeugt den Boss-Typ automatisch.</p></div>
+      </aside>
+
+      <section class="panel map-panel" aria-label="Stadtkarte">
+        <div class="map-toolbar"><div><span class="eyebrow">LIVE-STADTKARTE</span><h2>Bunker-Ring / Stadtsektor 9909</h2></div><div class="legend" aria-label="Kartenlegende"><span><i class="legend-dot own"></i>Kontrolle</span><span><i class="legend-dot rival"></i>Rivalen</span><span><i class="legend-dot police"></i>Polizei</span></div></div>
+        <div class="map-stage">
+          <svg id="cityMap" viewBox="0 0 1000 700" role="img" aria-labelledby="mapSvgTitle mapSvgDesc"><title id="mapSvgTitle">Interaktive Karte des Stadtsektors 9909</title><desc id="mapSvgDesc">Wähle einen Bezirk aus, um Lagewerte und Aktionen anzuzeigen.</desc></svg>
+          <div class="map-callout" id="mapCallout" aria-live="polite"></div>
+        </div>
+        <div class="ticker" aria-live="polite"><span class="ticker-label">LETZTE MELDUNG</span><span id="tickerText">Die Crew sammelt sich im Hauptbunker.</span></div>
+      </section>
+
+      <aside class="panel action-panel" aria-label="Bezirk und Aktionen">
+        <div class="tabs" role="tablist" aria-label="Informationen">
+          <button class="tab active" data-tab="district" role="tab" aria-selected="true">Bezirk</button><button class="tab" data-tab="gang" role="tab" aria-selected="false">Gang</button><button class="tab" data-tab="log" role="tab" aria-selected="false">Chronik</button>
+        </div>
+        <section class="tab-content active" data-panel="district" role="tabpanel">
+          <div class="district-head"><div><span class="district-kind" id="districtKind">Basis</span><h2 id="districtTitle">Hauptbunker</h2></div><div class="control-badge" id="controlBadge">72%</div></div>
+          <p class="district-description" id="districtDescription"></p><div class="district-bars" id="districtBars"></div>
+          <div class="action-heading"><div><span class="eyebrow">NÄCHSTE TAT</span><h3>Was soll der Boss tun?</h3></div><span class="action-hint">Jede Tat verändert Werte.</span></div>
+          <div class="action-grid" id="actionGrid"></div>
+        </section>
+        <section class="tab-content" data-panel="gang" role="tabpanel" hidden>
+          <div class="section-title-row"><div><span class="eyebrow">CREW</span><h2>Gangmitglieder</h2></div><span class="pill" id="gangCountPill">3 Leute</span></div>
+          <p class="panel-note">Neue Leute können sich nach jedem Zug spontan anschließen. Respekt, Einfluss, Bezirk und Fahndung beeinflussen die Chance.</p><div class="roster" id="gangRoster"></div>
+        </section>
+        <section class="tab-content" data-panel="log" role="tabpanel" hidden>
+          <div class="section-title-row"><div><span class="eyebrow">CHRONIK</span><h2>Was passiert ist</h2></div><span class="pill">80 Meldungen max.</span></div><div class="event-log" id="eventLog"></div>
+        </section>
+      </aside>
+    </main>
+
+    <footer class="footerbar"><div><span class="footer-status" id="saveStatus">Automatisch lokal gespeichert</span></div><div class="footer-actions"><button class="text-button" id="resetButton" type="button">Neues Spiel</button><span>Version <strong>0.6.0</strong></span></div></footer>
+  </div>
+
+  <dialog id="helpDialog" class="help-dialog">
+    <form method="dialog">
+      <div class="help-head"><div><span class="eyebrow">KURZANLEITUNG</span><h2>So läuft der Stadtsektor</h2></div><button class="icon-button" value="close" aria-label="Hilfe schließen">×</button></div>
+      <div class="help-grid">
+        <article><strong>1 · Bezirk wählen</strong><p>Klicke auf der Karte einen Bezirk an. Rechts siehst du Kontrolle, Rivalen und Polizei.</p></article>
+        <article><strong>2 · Tat wählen</strong><p>Aktionen verändern Geld, Boss-Werte und die lokale Lage. Es gibt keine starre Klasse.</p></article>
+        <article><strong>3 · Stadt reagiert</strong><p>Nach jeder Tat kassierst du Gebietseinnahmen. Rivalen und Polizei handeln ebenfalls.</p></article>
+        <article><strong>4 · Gang wächst</strong><p>Neue Mitglieder können zufällig beitreten. Dein Ruf bestimmt, welche Typen du anziehst.</p></article>
+      </div>
+      <p class="help-note">Ziel dieses Entwicklungsstands: möglichst viele Bezirke stabil über 55 % Kontrolle bringen, ohne dass Fahndung und Rivalen die Gang zerlegen.</p>
+    </form>
+  </dialog>
+  <script src="data.js"></script><script src="engine.js"></script><script src="app.js"></script>
+</body>
+</html>
