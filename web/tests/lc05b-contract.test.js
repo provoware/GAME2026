@@ -23,3 +23,5 @@ assert.ok(refresh.includes('LIVING_CITY_05B_UI?.render?.()'),'Zentraler Refresh 
 const order=['lc05-ui.js','lc05b-ui.js','ui-refresh.js'].map((n)=>html.indexOf(`src="${n}"`));
 assert.ok(order.every((v)=>v>=0)&&order[0]<order[1]&&order[1]<order[2],'LC05B-Scriptreihenfolge falsch.');
 console.log('PASS: LIVING-CITY-05B Vertrag – Hilfe-Dock, Aufgaben-Dashboard, Reise, Zoom/Pan, Tastatur und Responsive Design geprüft.');
+
+assert.ok(ui.includes('function zoomCenter')&&ui.includes('installZoomControls')&&ui.includes("#mapZoomOut,#mapZoomReset,#mapZoomIn")&&ui.includes("zoomIn:()=>zoomCenter(1.22)"),'Kartenzoom muss robust über den SVG-Mittelpunkt und zentrale Steuerung gebunden sein.');
