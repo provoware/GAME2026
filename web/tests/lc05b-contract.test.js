@@ -25,4 +25,5 @@ const order=['lc05-ui.js','lc05b-ui.js','ui-refresh.js'].map((n)=>html.indexOf(`
 assert.ok(order.every((v)=>v>=0)&&order[0]<order[1]&&order[1]<order[2],'LC05B-Scriptreihenfolge falsch.');
 console.log('PASS: LIVING-CITY-05B Vertrag – Hilfe-Dock, Aufgaben-Dashboard, Reise, Zoom/Pan, Tastatur und Responsive Design geprüft.');
 
-assert.ok(ui.includes('function zoomCenter')&&ui.includes('installZoomControls')&&ui.includes("#mapZoomOut,#mapZoomReset,#mapZoomIn")&&ui.includes("zoomIn:()=>zoomCenter(1.22)"),'Kartenzoom muss robust über den SVG-Mittelpunkt und zentrale Steuerung gebunden sein.');
+assert.ok(ui.includes('function zoomCenter')&&ui.includes("if(!old||old.dataset.lc05bZoom)return")&&ui.includes("fresh.dataset.lc05bZoom='1'")&&ui.includes("fresh.addEventListener('click'")&&ui.includes('e.stopImmediatePropagation()')&&ui.includes("zoomIn:()=>zoomCenter(1.22)"),'Sichtbare Zoombuttons müssen Legacy-Handler durch Klonen entfernen und direkt an den kanonischen LC05B-Viewport gebunden sein.');
+assert.ok(!ui.includes('function installZoomControls'),'Die alte globale Zoom-Delegation darf nach direkter Buttonbindung nicht parallel aktiv bleiben.');
