@@ -1,42 +1,82 @@
 # HTML-Browserfassung – Stadtsektor 9909
 
-Diese Fassung ist ein eigenständig spielbarer Browser-Strang von **PPPOPPI – Bunkerwahrheit**. Sie läuft ohne externe Bibliotheken und speichert ausschließlich lokal im Browser.
+Version: **0.7.0-html-city-economy-combat**
 
 ## Start
 
-`web/index.html` in Firefox oder Chrome öffnen. Für lokale Entwicklung kann alternativ ein beliebiger statischer Webserver verwendet werden.
+`web/index.html` in Firefox oder Chrome öffnen.
 
-## Enthalten
+## Neu in 0.7.0
 
-- interaktive, skalierende SVG-Stadtkarte mit neun Bezirken;
-- Bezirkswerte für Kontrolle, Rivalen, Polizei und Unruhe;
-- Boss-Werte, die ausschließlich durch Taten und deren Folgen entstehen;
-- automatisch abgeleitetes Boss-Profil statt statischer Charakterklasse;
-- sieben Aktionen mit sozialen, wirtschaftlichen, aggressiven und verdeckten Folgen;
-- zufällige Gang-Rekrutierung mit boss- und bezirksabhängiger Wahrscheinlichkeit;
-- Gangstärke, Verletzungen, Loyalitätsentwicklung und mögliche Abgänge;
-- autonome Rivalenbewegungen;
-- dynamischer Polizeidruck und Razzienrisiko;
-- passive Gebietseinnahmen;
-- Chronik und lokale automatische Speicherung via `localStorage`;
-- responsive Drei-Bereich-Oberfläche mit progressiv eingeblendeten Details.
+### Handlungen
 
-## Spielidee dieses Stands
+13 Aktionen in drei Gruppen:
 
-Der Spieler soll Bezirke auf mindestens 55 % stabile Kontrolle bringen. Hohe Kontrolle steigert Einnahmen, zieht aber Gegenreaktionen nach sich. Ein Boss kann über Respekt, Furcht, Loyalität oder Einfluss wachsen; ein zu hoher Fahndungswert macht aggressive Expansion zunehmend teuer.
+- Geschäft;
+- Einfluss;
+- Konflikt.
+
+Aktionen zeigen Kosten und Hauptwirkung. Konfliktaktionen zeigen zusätzlich eine ungefähre Siegchance.
+
+### Besitz
+
+Kaufbar sind:
+
+- Hotel;
+- Lagerhaus;
+- Clubbeteiligung;
+- Werkstatt;
+- Spätkauf;
+- Funkzentrale;
+- Wohnblock-Anteil.
+
+Kaufpreis und Ertrag reagieren auf Standort und Bezirkslage. Eigener Besitz erzeugt laufenden Nettoertrag und kann zusätzliche Boni liefern.
+
+### Boss-Zentrale
+
+Angezeigt werden unter anderem:
+
+- Rang;
+- Vermögen;
+- Besitz-Cashflow;
+- lokales Risiko;
+- Rekrutierungschance;
+- Crew-Bereitschaft;
+- durchschnittliche Loyalität;
+- priorisierte Warnhinweise.
+
+### Kampf
+
+Die Engine berechnet vor Konfliktaktionen eine Erfolgsprognose aus Crew-, Boss- und Bezirkswerten. Nach dem Einsatz erscheint eine eigene animierte Darstellung mit Kräftevergleich, Phasen und Ergebnis.
+
+## Speicherung
+
+Aktueller Schlüssel:
+
+`pppoppi-bunkerwahrheit-html-v070`
+
+Vorhandene 0.6.0-Spielstände werden beim Start übernommen und ergänzt.
 
 ## Technik
 
-- `data.js`: Welt, Aktionen, Rekruten und Startcrew;
-- `engine.js`: deterministische Fachlogik ohne DOM-Abhängigkeit;
-- `app.js`: Darstellung, Interaktion und lokale Speicherung;
-- `styles.css`: responsive Oberfläche und Kartenvisualisierung;
-- `tests/engine.test.js`: Node-basierter Smoke-/Regressionscheck der Fachlogik.
+- `data.js`: Welt, Aktionen, Besitzarten und Rekruten;
+- `engine.js`: Fachlogik;
+- `app.js`: Darstellung und Bedienung;
+- `styles.css`: responsive Oberfläche, Karte und Kampfanimationen;
+- `tests/engine.test.js`: Regressionsprüfungen.
 
-## Test
+## Validierung
 
 ```bash
+node --check web/data.js
+node --check web/engine.js
+node --check web/app.js
 node web/tests/engine.test.js
 ```
 
-Geprüft werden Startzustand, Boss-Wertänderungen, Ressourcenprüfung, Rekrutierung, Wertebegrenzungen und Boss-Profilwechsel.
+Aktueller Stand:
+
+- 13/13 Engine-Tests PASS;
+- Syntaxprüfungen PASS;
+- DOM-ID-Abgleich PASS;
+- 500-Zug-Simulation PASS.

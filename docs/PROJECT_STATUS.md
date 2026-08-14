@@ -3,107 +3,88 @@
 ## Stand
 
 **Godot-Paket:** 0.3.0-mission-iteration-c  
-**Browser-Spielstand:** 0.6.0-html-city-dynamics  
+**Browser-Spielstand:** 0.7.0-html-city-economy-combat  
 **Primärplattform Browser:** Firefox / Chrome  
-**Primärplattform Godot:** Linux  
-**Sekundärplattform:** Windows
+**Primärplattform Godot:** Linux
 
-## Implementiert
+## Browser implementiert
 
-### Fundament
+### Stadt und Karte
 
-- strukturierte Ergebnisse und Fehler;
-- Command-/Effect-Verarbeitung im Godot-Strang;
-- atomarer Rollback und idempotente Transaktionen;
-- Domain-Event-Bus und autoritativer Sitzungszustand;
-- atomare Speicherung mit SHA-256 im Godot-Strang;
-- lokaler Browser-Spielstand über `localStorage` in der HTML-Fassung.
+- neun interaktive Bezirke;
+- Kontrolle, Rivalen, Polizei, Unruhe und Aufklärung;
+- Kartenmarker für Besitz und Aufklärung;
+- responsive SVG-Karte mit Tastaturauswahl.
 
-### Missionen – Iteration A bis C
+### Boss und Gang
 
-- JSON-basierte Missionsregistry und striktes Schema;
-- mehrstufige Phasen und alternative Lösungswege;
-- pfadabhängige Ziele und neutrale Missionssignale;
-- absolute Fristen, Erfolg, Teilerfolg, Fehlschlag und Abbruch;
-- Ergebnisqualität und Missionshistorie;
-- sichere Wiederaufnahmepunkte;
-- 15 automatisierte Selbsttests und Massensimulation.
+- dynamische Boss-Werte und Profile;
+- Rangsystem mit fünf Stufen;
+- Boss-Zentrale mit Vermögen, Cashflow, Risiko, Rekrutierung und Crew-Bereitschaft;
+- zufällige Rekrutierung;
+- Loyalität, Verletzungen und mögliche Abgänge.
 
-### Welt und Karte
+### Handlungen und Wirtschaft
 
-- kanonischer datengetriebener Bunker-Ring im Godot-Strang;
-- Browserkarte auf neun Bezirke erweitert;
-- interaktive skalierende SVG-Karte;
-- Bezirkswerte für Kontrolle, Rivalen, Polizei und Unruhe;
-- visuelle Verbindungen und selektierbare Bezirke;
-- Tastaturauswahl der Kartenorte;
-- responsive Kartenpriorität für Desktop und schmalere Ansichten.
+- 13 Handlungsoptionen in drei Gruppen;
+- kurzfristige Einnahmeaktionen;
+- sieben kaufbare Besitzarten;
+- standortabhängige Preise;
+- Unterhalt und Nettoertrag;
+- Portfolioübersicht und laufender Besitz-Cashflow;
+- Besitzboni für verschiedene Systeme.
 
-### Boss- und Gangdynamik
+### Kampf
 
-- Boss-Werte Respekt, Furcht, Loyalität, Einfluss, Fahndung und Bekanntheit;
-- jede Boss-Tat verändert mehrere miteinander verbundene Werte;
-- automatisch abgeleitete Boss-Profile wie Straßenpatron, Eiserne Hand oder Netzwerker;
-- sieben spielbare Aktionen mit unterschiedlichen Kosten und Folgen;
-- zufällige Gang-Rekrutierung abhängig von Ruf, Einfluss, Bezirkskontrolle und Fahndung;
-- Gangmitglieder mit Rolle, Merkmal, Macht, Loyalität und Herkunft;
-- Verletzungen, Loyalitätsentwicklung und mögliche Abgänge;
-- Gangstärke als aggregierter Spielwert.
+- Erfolgsprognose vor Konfliktaktionen;
+- Berechnung aus Crew-, Boss- und Bezirkswerten;
+- unterschiedliche Sieg- und Rückzugsfolgen;
+- animierte Kampfdarstellung mit Kräftevergleich, drei Phasen und Ergebnis.
 
-### Stadtsimulation
+### Simulation und Speicherung
 
-- passive Einnahmen aus kontrollierten Bezirken;
 - autonome Rivalenbewegungen;
-- lokaler Polizeidruck und Razzienrisiko;
-- Wechselwirkung zwischen Fahndung, Bezirk, Kontrolle und Ressourcen;
-- Ereignischronik mit maximal 80 Meldungen.
+- dynamischer Polizeidruck;
+- lokale Speicherung über `localStorage`;
+- Übernahme des Browserstands 0.6.0;
+- Chronik mit bis zu 100 Meldungen.
 
-### Bedienung und Darstellung
+## Validierung
 
-- modernes Drei-Bereich-Dashboard: Boss / Karte / Bezirk;
-- Kartenbereich als visuelles Zentrum;
-- Tabs für Bezirk, Gang und Chronik zur Reduktion der Informationsdichte;
-- große Statuswerte, kompakte Detailanzeigen und eindeutige Aktionskarten;
-- reduzierte Animationen über `prefers-reduced-motion`;
-- lokale Hilfe direkt im Spiel.
+- **13/13 Browser-Engine-Tests PASS**;
+- JavaScript-Syntaxprüfung PASS;
+- DOM-ID-Abgleich PASS;
+- **500-Zug-Simulation PASS**;
+- keine ungültigen `NaN`-/`Infinity`-Zustände im Langlauf.
 
-### Validierung
+## Noch offen
 
-- sechs deterministische Browser-Engine-Tests;
-- Syntaxprüfung der Browser-JavaScript-Dateien;
-- bestehende Godot-/Schema-/Missionsprüfungen bleiben erhalten.
-
-## Noch nicht implementiert
-
-- vollständige Missionseinbindung in die HTML-Stadtsimulation;
-- mehrere rivalisierende Gangs mit individuellen Persönlichkeiten und Territorien;
-- echte Wegfindung und Reisezeit auf der Browserkarte;
-- Gebäudeinnenräume und szenische Bezirksansichten;
-- vollständige Figurenbeziehungen und persönliche Aufgaben der Gangmitglieder;
-- langfristige Karriereleiter des Bosses;
-- Händler-, Ausrüstungs- und Produktionssystem;
-- Kampfsequenzen mit Vorschau und taktischen Entscheidungen;
-- Audio, Musik, Art-Pipeline und finale Kampagne;
-- vollständige Browser-End-to-End-Abnahme in Firefox und Chrome.
+- individuelle rivalisierende Gruppen mit eigenen Strategien;
+- echte Wegfindung und Reisezeit;
+- Gebäudeinnenräume;
+- Besitz ausbauen und verkaufen;
+- Crew-Mitglieder Betrieben zuweisen;
+- persönliche Aufgaben und Beziehungen;
+- taktische Mehrentscheidungs-Kämpfe;
+- vollständige Firefox-/Chrome-End-to-End-Abnahme;
+- finale Kampagne, Audio und Art-Pipeline.
 
 ## Fortschritt
 
-- Spezifikation und Architektur: **65 %**
-- Codeimplementierung: **28 %**
-- Validierungs- und Testinfrastruktur: **25 %**
-- UI-/Spielbarkeitsprototyp: **46 %**
-- gewichteter Gesamtfortschritt bis zu einem getesteten Release: **43 %**
-
-Die Werte beschreiben den gesamten Weg bis zu einem vollständigen, getesteten Release und nicht nur den sichtbaren Quellcodeumfang.
+- Spezifikation und Architektur: **69 %**
+- Codeimplementierung: **36 %**
+- Validierungs- und Testinfrastruktur: **32 %**
+- UI-/Spielbarkeitsprototyp: **57 %**
+- gewichteter Gesamtfortschritt bis zu einem getesteten Release: **48 %**
 
 ## Nächster Meilenstein
 
-**LIVING-CITY-01 – Rivalen, Missionen und dauerhafte Konsequenzen**
+**LIVING-CITY-02**
 
-1. drei eigenständige rivalisierende Gangs mit Strategieprofilen;
-2. Bezirksereignisse, die sich sichtbar auf der Karte ausbreiten;
-3. Missionen direkt aus Bezirk, Gangmitglied und Boss-Profil erzeugen;
-4. persönliche Gang-Aufgaben und Beziehungseffekte;
-5. Reise-/Positionssystem in der HTML-Fassung mit echten Routen;
-6. automatisierte Simulation über mindestens 500 Züge;
-7. Firefox-/Chrome-E2E-Prüfung für Karte, Autosave, Rekrutierung und responsive Oberfläche.
+1. individuelle Rivalengruppen mit Strategieprofilen und Bezirkszielen;
+2. Besitz ausbauen, verkaufen und zuweisen;
+3. Betriebe als Ereignis- und Missionsquellen nutzen;
+4. persönliche Crew-Aufgaben ergänzen;
+5. Kämpfe um Crew-Auswahl und Rückzugsentscheidung erweitern;
+6. Routen und Reisezeit integrieren;
+7. Browser-End-to-End-Abnahme automatisieren.

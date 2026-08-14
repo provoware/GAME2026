@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.7.0-html-city-economy-combat
+
+- Browser-Handlungen von 7 auf 13 erweitert und in drei Gruppen strukturiert
+- Stadtökonomie mit 7 kaufbaren Objektarten ergänzt
+- standortabhängige Kaufpreise, Unterhalt und Nettoertrag implementiert
+- Portfolioübersicht und laufender Besitz-Cashflow ergänzt
+- Boss-Zentrale mit Vermögen, Cashflow, Risiko, Rekrutierung und Crew-Bereitschaft erweitert
+- Boss-Rangsystem ergänzt
+- Kampfprognose aus Crew-, Boss- und Bezirkswerten implementiert
+- animierte Kampfdarstellung mit Kräftevergleich, Phasen und Ergebnis ergänzt
+- Kartenmarker für Besitz und Aufklärung ergänzt
+- Browserzustand auf Schema 2 / Version 0.7.0 erweitert
+- Engine-Regressionssuite auf 13 Tests erweitert
+- 500-Zug-Simulation und DOM-ID-Prüfung erfolgreich ausgeführt
+
 ## 0.6.0-html-city-dynamics
 
 - eigenständig spielbare HTML-Browserfassung unter `web/` ergänzt

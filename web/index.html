@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#090b10">
-  <meta name="description" content="PPPOPPI Bunkerwahrheit – lokales Browser-Gangspiel mit dynamischer Stadtkarte.">
+  <meta name="theme-color" content="#07090d">
+  <meta name="description" content="PPPOPPI Bunkerwahrheit – lokales Browser-Gangspiel mit Stadtökonomie, Immobilien und dynamischen Kämpfen.">
   <title>PPPOPPI – Bunkerwahrheit · Stadtsektor 9909</title>
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -13,75 +13,198 @@
     <header class="topbar">
       <div class="brand">
         <span class="brand-mark" aria-hidden="true">9909</span>
-        <div><h1>PPPOPPI · Bunkerwahrheit</h1><p>Stadtsektor 9909 · Boss-Dynamik</p></div>
+        <div>
+          <h1>PPPOPPI · Bunkerwahrheit</h1>
+          <p>Stadtsektor 9909 · Wirtschaft, Macht und Gebietskampf</p>
+        </div>
       </div>
       <div class="top-kpis" aria-label="Spielstatus">
         <div class="kpi"><span>Zug</span><strong id="turnValue">1</strong></div>
-        <div class="kpi"><span>Geld</span><strong id="moneyValue">760 €</strong></div>
+        <div class="kpi money"><span>Geld</span><strong id="moneyValue">1.180 €</strong></div>
         <div class="kpi"><span>Vorräte</span><strong id="suppliesValue">8</strong></div>
         <div class="kpi"><span>Gang</span><strong id="gangValue">3</strong></div>
+        <div class="kpi"><span>Besitz</span><strong id="assetValue">0</strong></div>
       </div>
-      <div class="top-actions"><button class="button ghost" id="helpButton" type="button">Hilfe</button><button class="button ghost" id="saveButton" type="button">Speichern</button></div>
+      <div class="top-actions">
+        <button class="button ghost" id="helpButton" type="button">Hilfe</button>
+        <button class="button ghost" id="saveButton" type="button">Speichern</button>
+      </div>
     </header>
 
     <main class="workspace">
-      <aside class="panel boss-panel" aria-label="Bossprofil">
-        <div class="panel-heading"><div><span class="eyebrow">BOSS-PROFIL</span><h2 id="bossTitle">Aufsteigender Boss</h2></div><span class="status-dot" id="bossStyle">Respekt</span></div>
-        <p class="panel-note" id="bossNote">Taten formen dein Profil.</p>
-        <div class="metric-list" id="bossMetrics"></div>
-        <div class="section-divider"></div>
-        <div class="mini-heading"><span>Stadtbilanz</span><strong id="cityControl">0 / 9</strong></div>
-        <div class="summary-grid">
-          <div><span>Ø Kontrolle</span><strong id="avgControl">0%</strong></div><div><span>Ø Rivalen</span><strong id="avgRival">0%</strong></div>
-          <div><span>Gangstärke</span><strong id="gangPower">0</strong></div><div><span>Fahndung</span><strong id="heatText">Ruhig</strong></div>
+      <aside class="panel boss-panel" aria-label="Bosszentrale">
+        <div class="panel-heading">
+          <div><span class="eyebrow">BOSS-ZENTRALE</span><h2 id="bossTitle">Aufsteigender Boss</h2></div>
+          <span class="status-dot" id="bossStyle">Respekt</span>
         </div>
-        <div class="boss-tip"><span class="tip-icon">i</span><p>Keine Klasse auswählen: Dein Verhalten erzeugt den Boss-Typ automatisch.</p></div>
+        <p class="panel-note" id="bossNote">Taten, Besitz und Beziehungen formen deinen Stil.</p>
+
+        <div class="rank-card">
+          <div><span>Rang</span><strong id="bossRank">Straßenboss</strong></div>
+          <small id="rankNext">Nächster Rang wird berechnet</small>
+        </div>
+
+        <div class="decision-grid" aria-label="Entscheidungsrelevante Bosswerte">
+          <div class="decision-card"><span>Vermögen</span><strong id="netWorth">0 €</strong><small>Geld + Kaufwerte</small></div>
+          <div class="decision-card positive"><span>Besitz-Cashflow</span><strong id="projectedIncome">0 €/Z</strong><small>aktuelle Prognose</small></div>
+          <div class="decision-card danger"><span>Razzia-Risiko</span><strong id="raidRisk">0%</strong><small>gewählter Bezirk</small></div>
+          <div class="decision-card"><span>Beitrittschance</span><strong id="recruitChance">0%</strong><small>nächster Zug</small></div>
+          <div class="decision-card"><span>Crew bereit</span><strong id="crewReady">3/3</strong><small>einsatzfähig</small></div>
+          <div class="decision-card"><span>Ø Crewtreue</span><strong id="avgLoyalty">0%</strong><small>Abwanderungsrisiko</small></div>
+        </div>
+
+        <div class="boss-alerts" id="bossAlerts" aria-live="polite"></div>
+
+        <details class="boss-details">
+          <summary>Charakterwerte und Stadtbilanz</summary>
+          <div class="metric-list" id="bossMetrics"></div>
+          <div class="section-divider"></div>
+          <div class="mini-heading"><span>Stadtbilanz</span><strong id="cityControl">0 / 9</strong></div>
+          <div class="summary-grid">
+            <div><span>Ø Kontrolle</span><strong id="avgControl">0%</strong></div>
+            <div><span>Ø Rivalen</span><strong id="avgRival">0%</strong></div>
+            <div><span>Gangstärke</span><strong id="gangPower">0</strong></div>
+            <div><span>Fahndung</span><strong id="heatText">Ruhig</strong></div>
+          </div>
+        </details>
       </aside>
 
       <section class="panel map-panel" aria-label="Stadtkarte">
-        <div class="map-toolbar"><div><span class="eyebrow">LIVE-STADTKARTE</span><h2>Bunker-Ring / Stadtsektor 9909</h2></div><div class="legend" aria-label="Kartenlegende"><span><i class="legend-dot own"></i>Kontrolle</span><span><i class="legend-dot rival"></i>Rivalen</span><span><i class="legend-dot police"></i>Polizei</span></div></div>
+        <div class="map-toolbar">
+          <div><span class="eyebrow">LIVE-STADTKARTE</span><h2>Bunker-Ring / Stadtsektor 9909</h2></div>
+          <div class="legend" aria-label="Kartenlegende">
+            <span><i class="legend-dot own"></i>Kontrolle</span>
+            <span><i class="legend-dot rival"></i>Rivalen</span>
+            <span><i class="legend-dot police"></i>Polizei</span>
+            <span><i class="legend-dot asset"></i>Besitz</span>
+          </div>
+        </div>
         <div class="map-stage">
-          <svg id="cityMap" viewBox="0 0 1000 700" role="img" aria-labelledby="mapSvgTitle mapSvgDesc"><title id="mapSvgTitle">Interaktive Karte des Stadtsektors 9909</title><desc id="mapSvgDesc">Wähle einen Bezirk aus, um Lagewerte und Aktionen anzuzeigen.</desc></svg>
+          <svg id="cityMap" viewBox="0 0 1000 700" role="img" aria-labelledby="mapSvgTitle mapSvgDesc">
+            <title id="mapSvgTitle">Interaktive Karte des Stadtsektors 9909</title>
+            <desc id="mapSvgDesc">Wähle einen Bezirk aus, um Lage, Geschäfte, Immobilien und Aktionen anzuzeigen.</desc>
+          </svg>
           <div class="map-callout" id="mapCallout" aria-live="polite"></div>
         </div>
-        <div class="ticker" aria-live="polite"><span class="ticker-label">LETZTE MELDUNG</span><span id="tickerText">Die Crew sammelt sich im Hauptbunker.</span></div>
+        <div class="ticker" aria-live="polite">
+          <span class="ticker-label">LETZTE MELDUNG</span>
+          <span id="tickerText">Die Crew sammelt sich im Hauptbunker.</span>
+        </div>
       </section>
 
-      <aside class="panel action-panel" aria-label="Bezirk und Aktionen">
+      <aside class="panel action-panel" aria-label="Bezirk, Besitz und Gang">
         <div class="tabs" role="tablist" aria-label="Informationen">
-          <button class="tab active" data-tab="district" role="tab" aria-selected="true">Bezirk</button><button class="tab" data-tab="gang" role="tab" aria-selected="false">Gang</button><button class="tab" data-tab="log" role="tab" aria-selected="false">Chronik</button>
+          <button class="tab active" data-tab="district" role="tab" aria-selected="true">Bezirk</button>
+          <button class="tab" data-tab="property" role="tab" aria-selected="false">Besitz</button>
+          <button class="tab" data-tab="gang" role="tab" aria-selected="false">Gang</button>
+          <button class="tab" data-tab="log" role="tab" aria-selected="false">Chronik</button>
         </div>
+
         <section class="tab-content active" data-panel="district" role="tabpanel">
-          <div class="district-head"><div><span class="district-kind" id="districtKind">Basis</span><h2 id="districtTitle">Hauptbunker</h2></div><div class="control-badge" id="controlBadge">72%</div></div>
-          <p class="district-description" id="districtDescription"></p><div class="district-bars" id="districtBars"></div>
-          <div class="action-heading"><div><span class="eyebrow">NÄCHSTE TAT</span><h3>Was soll der Boss tun?</h3></div><span class="action-hint">Jede Tat verändert Werte.</span></div>
-          <div class="action-grid" id="actionGrid"></div>
+          <div class="district-head">
+            <div><span class="district-kind" id="districtKind">Basis</span><h2 id="districtTitle">Hauptbunker</h2></div>
+            <div class="control-badge" id="controlBadge">72%</div>
+          </div>
+          <p class="district-description" id="districtDescription"></p>
+          <div class="district-bars" id="districtBars"></div>
+          <div class="opportunity-strip" id="districtOpportunity"></div>
+
+          <div class="action-heading">
+            <div><span class="eyebrow">HANDLUNGEN</span><h3>Was soll der Boss tun?</h3></div>
+            <span class="action-hint">Vorschau vor der Tat</span>
+          </div>
+          <div class="action-groups" id="actionGrid"></div>
         </section>
+
+        <section class="tab-content" data-panel="property" role="tabpanel" hidden>
+          <div class="section-title-row">
+            <div><span class="eyebrow">STADTÖKONOMIE</span><h2>Besitz & Investitionen</h2></div>
+            <span class="pill" id="propertyCountPill">0 Objekte</span>
+          </div>
+          <div class="portfolio-kpis">
+            <div><span>Kaufwerte</span><strong id="portfolioValue">0 €</strong></div>
+            <div><span>Netto / Zug</span><strong id="portfolioNet">0 €</strong></div>
+            <div><span>Hotels</span><strong id="hotelCount">0</strong></div>
+          </div>
+
+          <div class="subsection">
+            <div class="subsection-head"><h3 id="propertyDistrictTitle">Angebote im Hauptbunker</h3><small>Preise reagieren auf Lage und Kontrolle.</small></div>
+            <div class="property-grid" id="propertyOffers"></div>
+          </div>
+
+          <div class="subsection">
+            <div class="subsection-head"><h3>Eigener Besitz</h3><small>Laufende Erträge nach Unterhalt.</small></div>
+            <div class="portfolio-list" id="portfolioList"></div>
+          </div>
+        </section>
+
         <section class="tab-content" data-panel="gang" role="tabpanel" hidden>
-          <div class="section-title-row"><div><span class="eyebrow">CREW</span><h2>Gangmitglieder</h2></div><span class="pill" id="gangCountPill">3 Leute</span></div>
-          <p class="panel-note">Neue Leute können sich nach jedem Zug spontan anschließen. Respekt, Einfluss, Bezirk und Fahndung beeinflussen die Chance.</p><div class="roster" id="gangRoster"></div>
+          <div class="section-title-row">
+            <div><span class="eyebrow">CREW</span><h2>Gangmitglieder</h2></div>
+            <span class="pill" id="gangCountPill">3 Leute</span>
+          </div>
+          <p class="panel-note">Neue Leute können sich spontan anschließen. Besitz, Respekt, Einfluss, Bezirk und Fahndung verändern die Chance.</p>
+          <div class="roster" id="gangRoster"></div>
         </section>
+
         <section class="tab-content" data-panel="log" role="tabpanel" hidden>
-          <div class="section-title-row"><div><span class="eyebrow">CHRONIK</span><h2>Was passiert ist</h2></div><span class="pill">80 Meldungen max.</span></div><div class="event-log" id="eventLog"></div>
+          <div class="section-title-row">
+            <div><span class="eyebrow">CHRONIK</span><h2>Was passiert ist</h2></div>
+            <span class="pill">100 Meldungen max.</span>
+          </div>
+          <div class="event-log" id="eventLog"></div>
         </section>
       </aside>
     </main>
 
-    <footer class="footerbar"><div><span class="footer-status" id="saveStatus">Automatisch lokal gespeichert</span></div><div class="footer-actions"><button class="text-button" id="resetButton" type="button">Neues Spiel</button><span>Version <strong>0.6.0</strong></span></div></footer>
+    <footer class="footerbar">
+      <div><span class="footer-status" id="saveStatus">Automatisch lokal gespeichert</span></div>
+      <div class="footer-actions"><button class="text-button" id="resetButton" type="button">Neues Spiel</button><span>Version <strong>0.7.0</strong></span></div>
+    </footer>
+
+    <section class="combat-overlay" id="combatOverlay" hidden aria-live="assertive" aria-label="Kampfdarstellung">
+      <div class="combat-card" id="combatCard">
+        <div class="combat-top">
+          <div><span class="eyebrow">KONFLIKT</span><h2 id="combatTitle">Gebietskampf</h2><p id="combatLocation">Bezirk</p></div>
+          <button class="icon-button" id="combatClose" type="button" aria-label="Kampfdarstellung schließen">×</button>
+        </div>
+        <div class="combat-arena">
+          <div class="fighter crew">
+            <span class="fighter-label">DEINE CREW</span>
+            <div class="fighter-core"><i></i><i></i><i></i></div>
+            <strong id="combatAttack">0</strong>
+          </div>
+          <div class="combat-clash"><span>VS</span><i></i></div>
+          <div class="fighter rival">
+            <span class="fighter-label">RIVALEN</span>
+            <div class="fighter-core"><i></i><i></i><i></i></div>
+            <strong id="combatDefense">0</strong>
+          </div>
+        </div>
+        <div class="combat-odds"><span>Prognose vor Einsatz</span><div><i id="combatOddsBar"></i></div><strong id="combatOdds">0%</strong></div>
+        <div class="combat-phases" id="combatPhases"></div>
+        <div class="combat-result" id="combatResult"></div>
+      </div>
+    </section>
   </div>
 
   <dialog id="helpDialog" class="help-dialog">
     <form method="dialog">
       <div class="help-head"><div><span class="eyebrow">KURZANLEITUNG</span><h2>So läuft der Stadtsektor</h2></div><button class="icon-button" value="close" aria-label="Hilfe schließen">×</button></div>
       <div class="help-grid">
-        <article><strong>1 · Bezirk wählen</strong><p>Klicke auf der Karte einen Bezirk an. Rechts siehst du Kontrolle, Rivalen und Polizei.</p></article>
-        <article><strong>2 · Tat wählen</strong><p>Aktionen verändern Geld, Boss-Werte und die lokale Lage. Es gibt keine starre Klasse.</p></article>
-        <article><strong>3 · Stadt reagiert</strong><p>Nach jeder Tat kassierst du Gebietseinnahmen. Rivalen und Polizei handeln ebenfalls.</p></article>
-        <article><strong>4 · Gang wächst</strong><p>Neue Mitglieder können zufällig beitreten. Dein Ruf bestimmt, welche Typen du anziehst.</p></article>
+        <article><strong>1 · Bezirk wählen</strong><p>Karte anklicken. Rechts erscheinen Lage, Chancen und passende Handlungen.</p></article>
+        <article><strong>2 · Geld verdienen</strong><p>Deals, Schutzverträge, Lieferungen und Events bringen kurzfristige Einnahmen mit unterschiedlichen Risiken.</p></article>
+        <article><strong>3 · Besitz aufbauen</strong><p>Unter „Besitz“ Hotels, Lagerhäuser, Werkstätten und weitere Objekte kaufen. Sie erzeugen laufenden Cashflow.</p></article>
+        <article><strong>4 · Kämpfe abwägen</strong><p>Konfliktaktionen zeigen eine Siegprognose. Crewstärke, Aufklärung und Bezirkslage verändern die Chance.</p></article>
+        <article><strong>5 · Boss-Zentrale lesen</strong><p>Links siehst du Vermögen, Cashflow, Razzia-Risiko, Beitrittschance, Crew-Bereitschaft und Warnungen.</p></article>
+        <article><strong>6 · Stadt reagiert</strong><p>Nach jedem Zug handeln Rivalen und Polizei. Besitz und stabile Gebiete machen dich wirtschaftlich unabhängiger.</p></article>
       </div>
-      <p class="help-note">Ziel dieses Entwicklungsstands: möglichst viele Bezirke stabil über 55 % Kontrolle bringen, ohne dass Fahndung und Rivalen die Gang zerlegen.</p>
+      <p class="help-note">Ziel des Entwicklungsstands: ein wirtschaftlich tragfähiges Netz aus kontrollierten Bezirken und Besitz aufbauen, ohne Crew und Boss durch zu hohen Druck zu verlieren.</p>
     </form>
   </dialog>
-  <script src="data.js"></script><script src="engine.js"></script><script src="app.js"></script>
+
+  <script src="data.js"></script>
+  <script src="engine.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
