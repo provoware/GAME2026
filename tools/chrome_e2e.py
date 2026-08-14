@@ -201,7 +201,7 @@ def scenario(driver: webdriver.Chrome, url: str, output: Path) -> dict:
     WebDriverWait(driver, 5).until(lambda d: not d.find_element(By.ID, "helpDock").get_attribute("hidden"))
     map_rect = rect(driver, "#mapStage")
     help_rect = rect(driver, "#helpDock")
-    assert_true(map_rect["w"] >= 430 and map_rect["h"] >= 250, "Karte wird durch Hilfe unbrauchbar klein")
+    assert_true(map_rect["width"] >= 430 and map_rect["height"] >= 250, "Karte wird durch Hilfe unbrauchbar klein")
     assert_true(intersection_area(map_rect, help_rect) < 1, "Hilfe überdeckt die Karte")
     screenshot(driver, output, "help_docked_1366x768.png")
     click_visible(driver, "#helpDockClose")

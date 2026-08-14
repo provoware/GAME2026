@@ -17,5 +17,6 @@ assert.ok(bootstrap.includes('pppoppi-bunkerwahrheit-html-v0130')&&bootstrap.inc
 assert.ok(refresh.includes('LIVING_CITY_07_UI?.render?.()'),'Zentraler Refresh aktualisiert LC07 nicht.');
 assert.ok(e2e.includes('Google Chrome')&&e2e.includes('VIEWPORTS = [(1280, 720), (1366, 768), (1600, 900)]'),'Echter Chrome-Desktop-E2E-Vertrag fehlt.');
 assert.ok(e2e.includes('Hilfe überdeckt die Karte')&&e2e.includes('Kartenzoom')&&e2e.includes('v0130')&&e2e.includes('combat_decision.png'),'E2E-Nutzerpfade unvollständig.');
+assert.ok(e2e.includes('map_rect[\"width\"]')&&!e2e.includes('map_rect[\"w\"]'),'E2E-Hilfedock-Rechteckvertrag verwendet inkonsistente Schlüssel.');
 assert.equal((css.match(/\{/g)||[]).length,(css.match(/\}/g)||[]).length,'LC07-CSS-Klammern unausgeglichen.');
 console.log('PASS: LIVING-CITY-07 Vertrag – Chrome-E2E, Folgeketten, Innenräume, Audio, Kampf und Speicher geprüft.');
