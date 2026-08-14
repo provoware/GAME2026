@@ -32,9 +32,15 @@ _ORIGINAL_CLICK = WebElement.click
 
 def _dom_safe_get_attribute(self: WebElement, name: str):
     if name == "viewBox":
-        return self.parent.execute_script(
-            "return arguments[0].getAttribute('viewBox')", self
-        )
+        try:
+            return self.parent.execute_script(
+                "return arguments[0].getAttribute('viewBox')", self
+            )
+        except StaleElementReferenceException:
+            fresh = self.parent.find_element(By.ID, "cityMap")
+            return fresh.parent.execute_script(
+                "return arguments[0].getAttribute('viewBox')", fresh
+            )
     return _ORIGINAL_GET_ATTRIBUTE(self, name)
 
 
