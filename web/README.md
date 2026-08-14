@@ -1,6 +1,6 @@
-# Browserfassung – LIVING-CITY-05A
+# Browserfassung – LIVING-CITY-05B
 
-Version **0.11.1-living-city-05a**, Schema **6**.
+Version **0.11.2-living-city-05b**, Schema **6**, Chrome-first.
 
 ## Schichten
 
@@ -8,22 +8,19 @@ Version **0.11.1-living-city-05a**, Schema **6**.
 2. `revival-*` – Director, Missionen, Stadtereignisse und Rivalenpolitik.
 3. `repair-04a.*` – Karten- und Bedienreparatur inklusive sichtbarem Zugende.
 4. `lc05-*` – Crew-Chemie, Innenansichten, Briefings, Kartenebenen und Atmosphäre.
+5. `lc05b-ui.js` / `lc05b.css` – nicht blockierende Hilfe, Aufgaben-Dashboard, vereinfachte Reise, freies Karten-Pan/Zoom und responsive Neuordnung.
+6. `ui-refresh.js` – zentraler gedrosselter UI-Refresh ohne globale MutationObserver.
 
-## LC05-Systeme
+## Kartenbedienung
 
-- Moral/Stress und paarweise Crew-Beziehungen;
-- zugbasierte Crewinteraktionen;
-- strategische Missionsbriefings;
-- Innenansichten mit Hotspots und lokalen Kennzahlen;
-- Kartenebenen für Gebiete, Druck, Wirtschaft und Ereignisse;
-- optionale synthetische Browser-Atmosphäre;
-- Save-Migration auf `v0110`.
+- Mausrad oder +/−: zoomen
+- Ziehen / WASD / Pfeile: verschieben
+- Doppelklick auf Bezirk: zentrieren
+- `M`: Kartenfokus
+- `H`: Hilfe-Dock
+- `R`: angebotene Reise starten
+- `Home` / `0`: Gesamtkarte
 
 ## Prüfen
 
 Im Projektstamm `./PRUEFEN.sh` ausführen.
-
-
-## Performance-Härtung 0.11.1
-
-Chrome-first. Keine globalen MutationObserver mehr; UI-Erweiterungen werden über `ui-refresh.js` maximal einmal pro Benutzeraktion aktualisiert.

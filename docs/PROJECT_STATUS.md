@@ -2,16 +2,21 @@
 
 ## Stand
 
-**Browser-Spielstand:** 0.11.1-living-city-05a  
+**Browser-Spielstand:** 0.11.2-living-city-05b  
 **Browser-Schema:** 6  
 **Primärplattform:** Google Chrome (primär) / Chromium, Firefox nur Kompatibilitätsreserve, offline-first  
 **GitHub-Strang:** `agent/html-gang-map-boss-dynamics`
 
-## LIVING-CITY-05A – Chrome-/Performance-Härtung
+## LIVING-CITY-05B – Kartenfokus, Reise und adaptive Spielführung
 
 ### Stadt & Darstellung
 
 - bestehende 04A-Kartenreparatur vollständig erhalten;
+- Hilfe als nicht blockierendes Dock neben/unter der Karte;
+- freies Karten-Panning und kontinuierlicher Zoom mit Maus und Tastatur;
+- Direktziele und Reisestatus dauerhaft außerhalb der Kartenfläche sichtbar;
+- oberes Aufgaben-Dashboard priorisiert nächste Aktion, Standort, Reise und Warnstatus;
+- responsive Neuordnung über flexible Grids, MinMax-Regeln und Karten-Container-Query;
 - vier umschaltbare Kartenebenen: Gebiete, Druck, Wirtschaft, Ereignisse;
 - acht individuelle Innenansichten wichtiger Orte plus Fallback-Szenen;
 - lokale Hotspots, Unternehmen, Besitz, Gebietsstatus und Ereignisse in der Ortsszene;
@@ -52,16 +57,17 @@
 - Karten-/Bedien-Regression: **PASS**;
 - LC05-Modul-/Visual-Vertrag: **PASS**;
 - Revival-Modul-/Visual-Vertrag: **PASS**;
-- realer Chromium-Screenshot-E2E bleibt in der Containerumgebung wegen fehlender D-Bus-Desktop-Sitzung offen; kein falsches PASS.
+- LC05B-Vertrag für Hilfe-Dock, Aufgaben-Dashboard, Reise, Zoom/Pan, Tastatur und Responsive Design: **PASS**;
+- realer Chrome/Chromium-Screenshot-E2E wird erneut versucht; falls die Container-D-Bus-Grenze bleibt, wird kein falsches PASS behauptet.
 
 ## Fortschritt bis vollständigem Release
 
 - Spezifikation / Architektur: **92 %**
 - Codeimplementierung: **81 %**
-- UI / Spielbarkeit: **90 %**
-- Test-/Validierungsinfrastruktur: **88 %**
-- gewichteter Gesamtfortschritt: **86 %**
+- UI / Spielbarkeit: **94 %**
+- Test-/Validierungsinfrastruktur: **90 %**
+- gewichteter Gesamtfortschritt: **89 %**
 
 ## Nächster sinnvoller Meilenstein
 
-**LIVING-CITY-06:** auf der jetzt stabilisierten Chrome-first-Basis: tiefere verzweigte Dialogketten und Konsequenzen, interaktive Innenraumaktionen, Sound-/Musikmixer, stärkere Kampfinszenierung, geführte Aufgabenleitung, Popups/Hilfetexte und vollständige Tastatursteuerung.
+**LIVING-CITY-06:** auf der vereinfachten 05B-Kartenbasis: interaktive Innenraumaktionen, tiefere Dialog-/Konsequenzketten, Sound-/Musikmixer, stärkere Kampfinszenierung und weiterführende geführte Aufgabenleitung.

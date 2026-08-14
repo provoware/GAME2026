@@ -7,6 +7,7 @@
     root.LIVING_CITY_04A?.renderRivals?.();
     root.dispatchEvent?.(new Event('revival-render'));
     root.LIVING_CITY_05_UI?.render?.();
+    root.LIVING_CITY_05B_UI?.render?.();
   }
   function schedule(){
     if(pending)return;

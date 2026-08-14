@@ -1,13 +1,17 @@
 # Changelog
 
-## 0.11.1-living-city-05a
+## 0.11.2-living-city-05b
 
-- Google Chrome als primären Linux-Klickstart festgelegt; Chromium zweite, Firefox optionale Reserve.
-- globale `MutationObserver` aus 04A- und LC05-UI entfernt; mögliche Render-Rückkopplung beseitigt.
-- zentralen frame-gedrosselten UI-Refresh eingeführt.
-- Revival-/LC05-Oberflächen rendern nicht mehr blind nach jedem Klick mehrfach.
-- Performance-Regressionstest und 16. Prüfblock ergänzt.
-
+- Hilfe vom blockierenden Modal in ein nicht überdeckendes Karten-Dock verlagert
+- Karteninformationen und Reisebedienung aus der Kartenfläche in eine eigene Kommandoleiste verschoben
+- direkt erreichbare Ziele permanent sichtbar gemacht
+- freies Maus-Panning, Mausrad-Zoom und zentrierbaren Kartenviewport ergänzt
+- Kartensteuerung per WASD/Pfeilen, +/−, Home/0 sowie M/H/R ergänzt
+- oberes Aufgaben-Dashboard mit nächster Aufgabe, Standort, Reise und Warnstatus ergänzt
+- responsive Layoutarchitektur für breit, mittel, kompakt und mobil neu geordnet
+- Container-Query für den Kartenarbeitsbereich ergänzt
+- Chrome-/Performance-Härtung ohne globale MutationObserver erhalten
+- neuer LC05B-Vertrag gegen überdeckende Hilfe, fehlende Reisebedienung und starres Layout ergänzt
 
 ## 0.11.0-living-city-05
 

@@ -1,44 +1,36 @@
-# PPPOPPI – Bunkerwahrheit · LIVING-CITY-05A
+# PPPOPPI – Bunkerwahrheit · LIVING-CITY-05B
 
-Version **0.11.1-living-city-05a** vertieft den stabilisierten 0.10.1-Stand zu einer lebendigeren Stadt- und Figurensimulation. Die bewährten Kern-, Revival- und 04A-Reparaturmodule bleiben erhalten; die neuen Systeme liegen additiv darüber.
+Version **0.11.2-living-city-05b** ist die Chrome-first Karten-, Reise- und Bedienoptimierung des qualifizierten 0.11.1-Stands. Die Fachsysteme bleiben erhalten; die neue Schicht ordnet Sichtbarkeit, Aufgabenführung und Kartenbedienung neu.
 
 ## Direkt starten
 
-`web/index.html` bevorzugt in **Google Chrome** öffnen oder unter Linux `./START_GAME.sh` ausführen. Firefox bleibt nur als optionale Kompatibilitätsreserve.
+Unter Linux `./START_GAME.sh` ausführen. Google Chrome wird bevorzugt, Chromium dient als zweite Wahl. Alternativ `web/index.html` direkt in Chrome öffnen.
 
-## 0.11.1 – Chrome- und Performance-Reparatur
+## Was 0.11.2 verbessert
 
-- Google Chrome ist jetzt der primäre Klickstart-Browser; danach folgen Chrome Stable, Chromium und erst dann Firefox.
-- Zwei globale DOM-`MutationObserver` wurden entfernt. Sie konnten sich durch gegenseitige UI-Änderungen immer wieder selbst auslösen und den Browser-Hauptthread dauerhaft belasten.
-- UI-Erweiterungen werden jetzt über einen zentralen, `requestAnimationFrame`-gedrosselten Refresh maximal einmal pro Benutzeraktion synchronisiert.
-- Neuer Performance-Regressionstest verhindert die Rückkehr dieser Fehlerklasse.
+- **Hilfe verdeckt die Karte nicht mehr:** Sie öffnet als eigenes Dock neben der Karte und wandert auf schmalen Fenstern automatisch darunter.
+- **Karte als eigener Arbeitsbereich:** Auswahl, Reisezustand und Direktziele liegen außerhalb der Kartenfläche.
+- **Freies Zoomen und Verschieben:** Mausrad, Ziehen mit der Maus, +/−, Gesamtansicht sowie WASD/Pfeiltasten.
+- **Direkte Reiseziele sichtbar:** erreichbare Orte stehen unmittelbar über der Karte; Ziel wählen und anschließend den großen Reisebutton benutzen.
+- **Aufgaben-Dashboard oben:** nächste sinnvolle Aktion, Standort, Reise und Warnung/Stadtstatus bleiben ständig sichtbar.
+- **Responsive Neuordnung:** breite, mittlere, kompakte und mobile Layoutstufen ordnen Karte, Aktionen, Boss-Bereich und Hilfe automatisch neu.
+- **Keine neuen globalen DOM-Beobachter:** die Chrome-Performance-Härtung aus 0.11.1 bleibt erhalten.
+- **Bestehende Systeme bleiben vollständig:** Director, Missionen, Crew-Chemie, Innenansichten, Besitz, Bank, Casino, Kampf und Kartenebenen.
 
-## Neu in LIVING-CITY-05
+## Tastatur
 
-- **Crew-Chemie:** Beziehungen zwischen Crewmitgliedern mit nachvollziehbaren Zuständen von Zerwürfnis bis Verbündet;
-- **Moral und Stress** pro Person; Daueraufträge, Verletzungen, Erholung und gemeinsame Erfahrungen verändern beide Werte;
-- **Crew-Interaktionen:** Aussprache, gemeinsame Planung und Sparring mit Kosten, Cooldown, Skillpraxis und Beziehungsfolgen;
-- **Missionsbriefings:** aktive Director-Aufträge erhalten einmalige strategische Entscheidungen – sicher planen, Tempo erhöhen oder Crew einbinden;
-- Entscheidungen verändern Frist, Belohnung, Director-Spannung/Chancen und Crewentwicklung;
-- **Innenansichten wichtiger Orte:** Kommandozentrale, Schwarzmarkt, Geisterbahnhof, Neon-Kellerclub, Dojo, Casino, Altstadt und Südhafen plus Fallback-Szenen;
-- Innenansichten zeigen Hotspots, Besitzer, Kontrolle, Polizei, Rivalendruck, Betriebe, lokale Unternehmen und Stadtereignisse;
-- **optionale synthetische Atmosphäre** per Web Audio – keine externen Audio-Dateien und kein Netzwerkzugriff;
-- **Kartenebenen:** Gebiete, Druck, Wirtschaft und Ereignisse lassen sich getrennt betrachten;
-- Personendetails wurden um Moral, Stress und individuelle Beziehungen ergänzt;
-- der Boss-Entscheidungsbereich warnt vor hohem Crew-Stress und angespannten Beziehungen;
-- neuer Speicherstand `v0110` mit Migration aus `v0100`/`v090`.
+- `M` – Karte fokussieren
+- `H` – Hilfe ein-/ausblenden
+- `R` – aktuell angebotene Reise starten
+- `E` – Zug beenden
+- `WASD` oder Pfeile – Karte verschieben, wenn sie fokussiert ist
+- `+` / `-` – Kartenzoom
+- `Home` oder `0` – Gesamtkarte
+- `Tab` / `Enter` – normale Tastaturnavigation und Auswahl
 
 ## Wartbare Architektur
 
-LIVING-CITY-05 ergänzt den bisherigen Stand über vier Fach-/Darstellungsmodule und einen kleinen Speicheradapter:
-
-- `web/lc05-data.js` – Innenräume, Briefingentscheidungen und Atmosphärenprofile;
-- `web/lc05-engine.js` – Crew-Beziehungen, Stress/Moral, Briefings und Ortsszenen;
-- `web/lc05-bootstrap.js` – additive Save-Migration auf `v0110`;
-- `web/lc05-ui.js` – Kartenebenen, Innenansichten, Crew-Chemie und Briefingdialoge;
-- `web/lc05.css` – ausschließlich der neue Visual Layer.
-
-Die großen Kernmodule bleiben dadurch weiterhin isoliert und leichter regressionsprüfbar.
+LIVING-CITY-05B ergänzt den bestehenden Stand additiv über `web/lc05b-ui.js` und `web/lc05b.css`. `ui-refresh.js` bindet die neue Darstellung in den bereits gedrosselten zentralen Refresh ein. Engine- und Speicher-Schema bleiben unverändert bei Schema 6 / `v0110`.
 
 ## Prüfung
 
@@ -46,7 +38,7 @@ Die großen Kernmodule bleiben dadurch weiterhin isoliert und leichter regressio
 ./PRUEFEN.sh
 ```
 
-Der lokale Vertrag umfasst **16 Prüfschritte**: 52 Kern-Regressionen, 15 Revival-Regressionen, 20 LIVING-CITY-05-Regressionen, 500-/1000-/1200-Zug-Langläufe sowie UI-, Karten-, Speicher- und Visual-Verträge.
+Der Prüfvertrag umfasst **17 reproduzierbare Prüfschritte**: bestehende Kern-/Revival-/LC05-Regressionen und Langläufe plus Chrome-/Performance-Gate und einen eigenen 05B-Vertrag für Hilfe-Dock, Aufgaben-Dashboard, Reise, Zoom/Pan, Tastatur und responsive Layoutstufen.
 
 ## Simulationshinweis
 

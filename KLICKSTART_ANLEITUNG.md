@@ -1,32 +1,27 @@
-# Klickstart – PPPOPPI Bunkerwahrheit 0.11.1 · LIVING-CITY-05A
+# Klickstart – PPPOPPI Bunkerwahrheit 0.11.2 · LIVING-CITY-05B
 
 ## Linux / Kubuntu
 
 1. ZIP vollständig entpacken.
-2. `START_GAME.sh` doppelklicken oder im Terminal `./START_GAME.sh` starten.
-3. **Google Chrome bevorzugen.** Der Linux-Klickstart nimmt automatisch zuerst Chrome, danach Chromium und nur als Reserve Firefox.
+2. `START_GAME.sh` doppelklicken bzw. ausführen.
+3. Der Starter öffnet bevorzugt **Google Chrome**, danach Chromium. Firefox ist nur Reserve.
 
-## Windows
+## Wichtigste Bedienung
 
-`START_GAME.bat` doppelklicken.
+- **Oben** zeigt das Aufgaben-Dashboard immer den nächsten sinnvollen Schritt.
+- **Karte:** Bezirk anklicken. Direkt erreichbare Ziele stehen oberhalb der Karte.
+- **Reisen:** Ziel wählen und den hervorgehobenen Reisebutton verwenden.
+- **Karte bewegen:** Maus gedrückt ziehen oder WASD/Pfeile.
+- **Karte zoomen:** Mausrad oder +/−. `Gesamt` stellt die ganze Stadt wieder her.
+- **Hilfe:** `H` oder Hilfe-Button. Die Hilfe liegt neben/unter der Karte und verdeckt sie nie.
+- **M:** Karte fokussieren.
+- **R:** angebotene Reise starten.
+- **E:** Zug beenden.
 
-## Im Spiel
+## Wenn wenig Platz vorhanden ist
 
-- **Zug beenden** oben rechts lässt bewusst einen vollständigen Simulationszug verstreichen.
-- Auf der Karte zwischen **Gebiete / Druck / Wirtschaft / Ereignisse** umschalten.
-- Ort auswählen und **Innenansicht** öffnen, um die lokale Szene und Hotspots zu sehen.
-- Im Bereich **Crew** Beziehungen, Moral und Stress beobachten; Reden, Planen oder Sparring verändern die Crew-Chemie.
-- Im **Direktor** aktive Aufträge öffnen und das einmalige Briefing entscheiden.
-- **Atmosphäre** ist optional und wird erst nach einem Klick lokal im Browser erzeugt; es werden keine Audiodateien aus dem Internet geladen.
-
-## Spielstände
-
-0.11 verwendet den lokalen Speicher `v0110`. Vorhandene Stände aus 0.10/0.9 werden weiter übernommen.
+Das Layout ordnet sich automatisch um: Die Karte bleibt zuerst sichtbar, Aktionen folgen danach, die Boss-Details werden kompakter. Die Hilfe wandert unter die Karte statt darüber.
 
 ## Technische Prüfung
 
-`./PRUEFEN.sh` führt **16 reproduzierbare Prüfblöcke** aus. Node.js ist nur für diese Entwicklerprüfung erforderlich, nicht zum Spielen.
-
-## Wenn die Oberfläche früher dauerhaft lud
-
-0.11.1 entfernt zwei globale DOM-Beobachter, die zu einer Render-Rückkopplung führen konnten. Wenn ein alter Tab noch hängt, diesen vollständig schließen und das Spiel mit `./START_GAME.sh` neu in Chrome öffnen.
+`./PRUEFEN.sh` führt **17 reproduzierbare Prüfblöcke** aus. Node.js wird nur für die Entwicklerprüfung benötigt, nicht zum Spielen.
