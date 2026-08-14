@@ -11,6 +11,8 @@
     root.LIVING_CITY_06_UI?.render?.();
     root.LIVING_CITY_07_UI?.render?.();
     root.LIVING_CITY_08_UI?.render?.();
+    root.LIVING_CITY_09_UI?.render?.();
+    root.LIVING_CITY_10_UI?.render?.();
   }
   function schedule(){
     if(pending)return;

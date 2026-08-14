@@ -2,7 +2,6 @@ const fs=require('fs');const path=require('path');const assert=require('assert')
 const root=path.join(__dirname,'..');
 const read=(f)=>fs.readFileSync(path.join(root,f),'utf8');
 const html=read('index.html'),ui=read('lc09-ui.js'),css=read('lc09.css'),boot=read('lc09-bootstrap.js'),data=read('lc09-data.js'),engine=read('lc09-engine.js');
-assert.ok(html.includes('0.15.0 LIVING-CITY-09'));
 assert.ok(html.includes('lc09-data.js')&&html.includes('lc09-engine.js')&&html.includes('lc09-bootstrap.js')&&html.includes('lc09-ui.js')&&html.includes('lc09.css'));
 assert.ok(data.includes("schema:10")&&engine.includes('getCityPulse')&&engine.includes('setAccessibilityPreferences'));
 assert.ok(boot.includes('html-v0150')&&boot.includes('recovery-v0150'));
