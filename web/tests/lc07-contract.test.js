@@ -12,6 +12,7 @@ assert.ok(engine.includes('storyFlags')&&engine.includes('storyConsequences')&&e
 assert.ok(ui.includes('story-strip')&&ui.includes('data-audio-ducking')&&ui.includes('playUiTone')&&ui.includes("'1':'attack'")&&ui.includes('pagehide'),'LC07-UI-/Audio-Härtung unvollständig.');
 assert.ok(!ui.includes('MutationObserver'),'LC07 darf keinen globalen DOM-Observer einführen.');
 assert.ok(css.includes('@media(min-width:1280px) and (min-height:720px)')&&css.includes('.lc07-consequence-note'),'LC07-Desktop-Fit oder Folgevisualisierung fehlt.');
+assert.ok(css.includes('@media(min-width:1180px) and (max-height:760px)')&&css.includes('min-height:260px!important')&&css.includes('.top-kpis{display:none}'),'LC07-Kompakt-Desktop-Gate für 1280×720 fehlt.');
 assert.ok(bootstrap.includes('pppoppi-bunkerwahrheit-html-v0130')&&bootstrap.includes('__livingCity07Patched'),'LC07-Speichermigration fehlt.');
 assert.ok(refresh.includes('LIVING_CITY_07_UI?.render?.()'),'Zentraler Refresh aktualisiert LC07 nicht.');
 assert.ok(e2e.includes('Google Chrome')&&e2e.includes('VIEWPORTS = [(1280, 720), (1366, 768), (1600, 900)]'),'Echter Chrome-Desktop-E2E-Vertrag fehlt.');
