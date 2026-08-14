@@ -17,5 +17,6 @@ assert.ok(css.includes('.scene-modal .modal-close{z-index:40')&&css.includes('.s
 assert.ok(bootstrap.includes('pppoppi-bunkerwahrheit-html-v0140')&&bootstrap.includes('__livingCity08Patched'),'LC08-Speichermigration fehlt.');
 assert.ok(refresh.includes('LIVING_CITY_08_UI?.render?.()'),'Zentraler Refresh aktualisiert LC08 nicht.');
 assert.ok(e2e.includes('0.14.0-living-city-08')&&e2e.includes('v0140')&&e2e.includes('decision_journal.png'),'Chrome-E2E ist nicht auf LC08 erweitert.');
+assert.ok(e2e.includes('focus_keyboard_sink')&&e2e.includes('data-lc08-close')&&e2e.includes('core.safe_click = safe_click'),'Chrome-E2E muss nach nativen Dialogen einen neutralen Tastaturfokus wiederherstellen.');
 assert.equal((css.match(/\{/g)||[]).length,(css.match(/\}/g)||[]).length,'LC08-CSS-Klammern unausgeglichen.');
 console.log('PASS: LIVING-CITY-08 Vertrag – Stadtgedächtnis, Journal, Fokus, Speicher und Chrome-E2E geprüft.');

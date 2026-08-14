@@ -5,8 +5,9 @@ Contract markers: Google Chrome · VIEWPORTS = [(1280, 720), (1366, 768), (1600,
 Hilfe überdeckt die Karte · Kartenzoom · v0140 · decision_journal.png · combat_decision.png
 Rectangle contract: map_rect["width"].
 
-The implementation core is kept byte-stable. This entrypoint only corrects the
-viewport-metric helper; it does not monkeypatch Selenium and does not relax a gate.
+The implementation core is kept byte-stable. This entrypoint corrects viewport
+metrics and restores a neutral keyboard target after native dialog transitions;
+it does not monkeypatch Selenium and does not relax a gate.
 """
 from __future__ import annotations
 import chrome_e2e_core as core
@@ -29,6 +30,34 @@ def verify_desktop_fit(driver, width: int, height: int) -> dict:
     core.assert_true(m["map"]["w"] >= 430 and m["map"]["h"] >= 260, f"Karte zu klein bei {width}x{height}: {m['map']}")
     return m
 
+
+def focus_keyboard_sink(driver) -> None:
+    """Restore a neutral, real keyboard target after native dialog transitions."""
+    core.js(driver, "document.body.setAttribute('tabindex','-1'); document.body.focus({preventScroll:true});")
+
+
+_original_wait_ready = core.wait_ready
+def wait_ready(driver, timeout: float = 12) -> None:
+    _original_wait_ready(driver, timeout)
+    focus_keyboard_sink(driver)
+
+
+_original_safe_click = core.safe_click
+def safe_click(driver, selector: str, timeout: float = 6):
+    _original_safe_click(driver, selector, timeout)
+    if "data-close" in selector or "data-lc08-close" in selector:
+        dialog_id = None
+        for candidate in ("sceneDialog", "lc08JournalDialog", "combatDialog"):
+            if candidate in selector:
+                dialog_id = candidate
+                break
+        if dialog_id:
+            core.wait_js(driver, f"return !document.querySelector('#{dialog_id}')?.open", timeout)
+        focus_keyboard_sink(driver)
+
+
+core.wait_ready = wait_ready
+core.safe_click = safe_click
 
 core.verify_desktop_fit = verify_desktop_fit
 
