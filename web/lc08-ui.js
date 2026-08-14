@@ -1,6 +1,6 @@
 (function(root){
   'use strict';
-  const engine=root.GAME_ENGINE||root.LIVING_CITY_08_ENGINE;if(!engine)return;
+  const engine=root.LIVING_CITY_08_ENGINE||root.GAME_ENGINE;if(!engine)return;
   const $=(s)=>document.querySelector(s),esc=(v)=>String(v??'').replace(/[&<>"']/g,(m)=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
   let lastEchoId=null;
   function persist(){try{const raw=engine.exportState();['pppoppi-bunkerwahrheit-html-v0140','pppoppi-bunkerwahrheit-html-v0130','pppoppi-bunkerwahrheit-html-v0120'].forEach((k)=>localStorage.setItem(k,raw));}catch(_){} }

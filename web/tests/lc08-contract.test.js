@@ -10,6 +10,7 @@ assert.ok(html.indexOf('lc07.css')<html.indexOf('lc08.css'),'LC08-CSS muss nach 
 assert.ok(data.includes('storyArcs')&&data.includes('consequenceEchoes')&&data.includes('arc.line')&&data.includes('arc.routes')&&data.includes('arc.crew'),'LC08-Stadtgedächtnisdaten fehlen.');
 assert.ok(engine.includes('decisionJournal')&&engine.includes('pendingConsequences')&&engine.includes('evaluateStoryArcs')&&engine.includes('resolvePendingConsequences')&&engine.includes('getDecisionJournal'),'LC08-Enginevertrag unvollständig.');
 assert.ok(ui.includes('lc08JournalDialog')&&ui.includes('Stadtgedächtnis')&&ui.includes("k==='j'")&&ui.includes('aria-live'),'LC08-Journal-/Tastaturvertrag unvollständig.');
+assert.ok(ui.includes('const engine=root.LIVING_CITY_08_ENGINE||root.GAME_ENGINE'),'LC08-UI muss die laufende Engine-Instanz vor der Klassen-API verwenden.');
 assert.ok(ui.includes("k==='i'")&&ui.includes('LIVING_CITY_06_UI?.renderInteriorEnhancement?.()'),'Innenraumaktionen müssen beim Öffnen synchron fertig gerendert werden.');
 assert.ok(ui.includes("dialog[open]:not(#lc08JournalDialog)")&&ui.includes("}},true);"),'Journal-Shortcut muss global im Capture-Modus arbeiten und andere offene Modaldialoge respektieren.');
 assert.ok(css.includes(':focus-visible')&&css.includes('.lc08-arc-grid')&&css.includes('@media(prefers-reduced-motion:reduce)'),'LC08-Fokus-/Responsive-/Reduced-Motion-Vertrag fehlt.');
