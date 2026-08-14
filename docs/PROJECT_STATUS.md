@@ -3,88 +3,80 @@
 ## Stand
 
 **Godot-Paket:** 0.3.0-mission-iteration-c  
-**Browser-Spielstand:** 0.7.0-html-city-economy-combat  
+**Browser-Spielstand:** 0.8.0-living-city-02  
+**Browser-Schema:** 3  
 **Primärplattform Browser:** Firefox / Chrome  
-**Primärplattform Godot:** Linux
+**Betrieb:** lokal und offline ohne externe Bibliotheken
 
-## Browser implementiert
+## Implementiert
 
-### Stadt und Karte
+### Stadt und Territorien
 
-- neun interaktive Bezirke;
-- Kontrolle, Rivalen, Polizei, Unruhe und Aufklärung;
-- Kartenmarker für Besitz und Aufklärung;
-- responsive SVG-Karte mit Tastaturauswahl.
+- neun Bezirke mit dynamischen Lagewerten;
+- echter Bezirksbesitzer statt nur Prozentwert;
+- Spieler, neutral oder eine von drei Rivalengangs;
+- Gebietsübernahme und Gebietsverlust;
+- Besitzer, Besitz und Aufklärung direkt auf der Karte sichtbar.
 
-### Boss und Gang
+### Rivalengangs
 
-- dynamische Boss-Werte und Profile;
-- Rangsystem mit fünf Stufen;
-- Boss-Zentrale mit Vermögen, Cashflow, Risiko, Rekrutierung und Crew-Bereitschaft;
-- zufällige Rekrutierung;
-- Loyalität, Verletzungen und mögliche Abgänge.
+- **Rote Klingen:** aggressive Expansion;
+- **Graue Union:** wirtschaftliche Expansion;
+- **Neon-Geister:** verdeckte Unterwanderung;
+- eigene Macht, Kasse, Gebiete und letzter KI-Zug;
+- strategisch unterschiedliche Zielauswahl und Bezirksfolgen.
 
-### Handlungen und Wirtschaft
+### Besitz
 
-- 13 Handlungsoptionen in drei Gruppen;
-- kurzfristige Einnahmeaktionen;
-- sieben kaufbare Besitzarten;
+- sieben Objekttypen;
 - standortabhängige Preise;
-- Unterhalt und Nettoertrag;
-- Portfolioübersicht und laufender Besitz-Cashflow;
-- Besitzboni für verschiedene Systeme.
+- Ausbau bis Stufe 3;
+- Verkauf mit dynamischem Rückkaufswert;
+- bis zu zwei Crewmitglieder pro Betrieb;
+- Personalbonus auf Ertrag und Sicherheit;
+- Betriebspersonal steht nicht gleichzeitig im freien Kampfpool;
+- laufender Cashflow und Unterhalt.
 
-### Kampf
+### Kämpfe
 
-- Erfolgsprognose vor Konfliktaktionen;
-- Berechnung aus Crew-, Boss- und Bezirkswerten;
-- unterschiedliche Sieg- und Rückzugsfolgen;
-- animierte Kampfdarstellung mit Kräftevergleich, drei Phasen und Ergebnis.
+- freie Crew auswählen;
+- Kräfteprognose vor Start;
+- drei Kampfrunden;
+- **Angriff**, **Deckung** oder **Rückzug**;
+- Moral, taktischer Vorteil und Verletzungsrisiko;
+- Sieg/Niederlage/Rückzug mit wirtschaftlichen und territorialen Folgen;
+- erfolgreicher Kampf kann den Bezirksbesitzer real wechseln.
 
-### Simulation und Speicherung
+### Boss-Zentrale
 
-- autonome Rivalenbewegungen;
-- dynamischer Polizeidruck;
-- lokale Speicherung über `localStorage`;
-- Übernahme des Browserstands 0.6.0;
-- Chronik mit bis zu 100 Meldungen.
+- Rang;
+- Vermögen;
+- Besitz-Cashflow;
+- Razzia-Risiko;
+- Beitrittschance;
+- freie Einsatzcrew;
+- durchschnittliche Crewtreue;
+- priorisierte Warnhinweise;
+- Rohwerte weiterhin ausklappbar.
 
 ## Validierung
 
-- **13/13 Browser-Engine-Tests PASS**;
-- JavaScript-Syntaxprüfung PASS;
-- DOM-ID-Abgleich PASS;
-- **500-Zug-Simulation PASS**;
-- keine ungültigen `NaN`-/`Infinity`-Zustände im Langlauf.
+- JavaScript-Syntax: **PASS**.
+- DOM-ID-Abgleich: **PASS**; 63 verwendete Direktreferenzen vorhanden.
+- 21/21 Engine-Regressionstests: **PASS**.
+- 500-Zug-Stresstest: **PASS**.
+- Zustandswerte im Langlauf auf endliche Werte und gültige 0–100-Bereiche geprüft.
+- GitHub Actions des Vorgängerstands 0.7.0: Run #78 **PASS**.
+- Reale Chromium-Screenshot-E2E konnte in der aktuellen Ausführungsumgebung wegen fehlendem D-Bus nicht sauber beendet werden; deshalb wird keine reale Browser-E2E-Freigabe behauptet.
 
-## Noch offen
+## Fortschritt bis vollständigem Release
 
-- individuelle rivalisierende Gruppen mit eigenen Strategien;
-- echte Wegfindung und Reisezeit;
-- Gebäudeinnenräume;
-- Besitz ausbauen und verkaufen;
-- Crew-Mitglieder Betrieben zuweisen;
-- persönliche Aufgaben und Beziehungen;
-- taktische Mehrentscheidungs-Kämpfe;
-- vollständige Firefox-/Chrome-End-to-End-Abnahme;
-- finale Kampagne, Audio und Art-Pipeline.
+- Spezifikation / Architektur: **74 %**
+- Codeimplementierung: **45 %**
+- UI / Spielbarkeit: **62 %**
+- automatisierte Validierung: **42 %**
+- gewichteter Gesamtfortschritt: **55 %**
 
-## Fortschritt
+## Nächster sinnvoller Meilenstein
 
-- Spezifikation und Architektur: **69 %**
-- Codeimplementierung: **36 %**
-- Validierungs- und Testinfrastruktur: **32 %**
-- UI-/Spielbarkeitsprototyp: **57 %**
-- gewichteter Gesamtfortschritt bis zu einem getesteten Release: **48 %**
-
-## Nächster Meilenstein
-
-**LIVING-CITY-02**
-
-1. individuelle Rivalengruppen mit Strategieprofilen und Bezirkszielen;
-2. Besitz ausbauen, verkaufen und zuweisen;
-3. Betriebe als Ereignis- und Missionsquellen nutzen;
-4. persönliche Crew-Aufgaben ergänzen;
-5. Kämpfe um Crew-Auswahl und Rückzugsentscheidung erweitern;
-6. Routen und Reisezeit integrieren;
-7. Browser-End-to-End-Abnahme automatisieren.
+**LIVING-CITY-03:** Betriebe als Missionsquellen, individuelle Crew-Aufgaben, Ausrüstung, Reisezeit/Routen, Rivalenbeziehungen untereinander und reale Firefox-/Chrome-E2E-Abnahme.

@@ -1,82 +1,55 @@
-# HTML-Browserfassung – Stadtsektor 9909
+# PPPOPPI – Bunkerwahrheit · LIVING-CITY-02
 
-Version: **0.7.0-html-city-economy-combat**
+**Browser-Spielstand:** `0.8.0-living-city-02`
 
 ## Start
 
-`web/index.html` in Firefox oder Chrome öffnen.
+`web/index.html` direkt in Firefox oder Chrome öffnen.
 
-## Neu in 0.7.0
+Es werden keine externen Bibliotheken, Server oder Online-Dienste benötigt. Der Spielstand bleibt lokal im Browser.
 
-### Handlungen
+## Neu in LIVING-CITY-02
 
-13 Aktionen in drei Gruppen:
+- Besitz kaufen, auf bis zu Stufe 3 ausbauen und wieder verkaufen.
+- Bis zu zwei einsatzbereite Gangmitglieder einem Betrieb zuweisen.
+- Betriebspersonal verbessert Ertrag und Sicherheit, steht aber nicht für Kämpfe zur Verfügung.
+- Drei Rivalengangs mit unterschiedlichen Strategien:
+  - **Rote Klingen** – aggressiv und gebietsorientiert.
+  - **Graue Union** – wirtschaftlich und auf lukrative Bezirke fokussiert.
+  - **Neon-Geister** – verdeckt, stören Aufklärung und erhöhen Unruhe.
+- Bezirke besitzen nun einen tatsächlichen Besitzer.
+- Rivalen können Bezirke übernehmen; der Spieler kann sie durch erfolgreiche Kämpfe zurückholen.
+- Taktische Kämpfe: bis zu vier freie Crewmitglieder wählen, Kräfteverhältnis prüfen und pro Runde **Angriff**, **Deckung** oder **Rückzug** wählen.
+- Karte zeigt Gebietsbesitzer, eigenen Besitz und lokale Aufklärung.
+- Boss-Zentrale zeigt Vermögen, Cashflow, Razzia-Risiko, Beitrittschance, freie Crew, Crewtreue und priorisierte Hinweise.
 
-- Geschäft;
-- Einfluss;
-- Konflikt.
+## Spielprinzip
 
-Aktionen zeigen Kosten und Hauptwirkung. Konfliktaktionen zeigen zusätzlich eine ungefähre Siegchance.
+**Crew im Betrieb** → mehr Ertrag und Sicherheit, aber weniger Kampfkraft.  
+**Crew im Kampf** → stärkere Expansion, aber Betriebe laufen schwächer.  
+**Hoher Gebietsdruck** → mehr Einnahmen, gleichzeitig stärkere Reaktion der Rivalen und Polizei.
 
-### Besitz
+## Dateien
 
-Kaufbar sind:
+- `data.js` – Welt, Aktionen, Immobilien, Rivalengangs, Crew-Pool.
+- `engine.js` – deterministische Fachlogik.
+- `app.js` – Oberfläche, Interaktion und Autosave.
+- `styles.css` – responsive Darstellung und Kampfanimation.
+- `tests/engine.test.js` – Regressionen und 500-Zug-Stresstest.
 
-- Hotel;
-- Lagerhaus;
-- Clubbeteiligung;
-- Werkstatt;
-- Spätkauf;
-- Funkzentrale;
-- Wohnblock-Anteil.
-
-Kaufpreis und Ertrag reagieren auf Standort und Bezirkslage. Eigener Besitz erzeugt laufenden Nettoertrag und kann zusätzliche Boni liefern.
-
-### Boss-Zentrale
-
-Angezeigt werden unter anderem:
-
-- Rang;
-- Vermögen;
-- Besitz-Cashflow;
-- lokales Risiko;
-- Rekrutierungschance;
-- Crew-Bereitschaft;
-- durchschnittliche Loyalität;
-- priorisierte Warnhinweise.
-
-### Kampf
-
-Die Engine berechnet vor Konfliktaktionen eine Erfolgsprognose aus Crew-, Boss- und Bezirkswerten. Nach dem Einsatz erscheint eine eigene animierte Darstellung mit Kräftevergleich, Phasen und Ergebnis.
-
-## Speicherung
-
-Aktueller Schlüssel:
-
-`pppoppi-bunkerwahrheit-html-v070`
-
-Vorhandene 0.6.0-Spielstände werden beim Start übernommen und ergänzt.
-
-## Technik
-
-- `data.js`: Welt, Aktionen, Besitzarten und Rekruten;
-- `engine.js`: Fachlogik;
-- `app.js`: Darstellung und Bedienung;
-- `styles.css`: responsive Oberfläche, Karte und Kampfanimationen;
-- `tests/engine.test.js`: Regressionsprüfungen.
-
-## Validierung
+## Tests
 
 ```bash
+node web/tests/engine.test.js
 node --check web/data.js
 node --check web/engine.js
 node --check web/app.js
-node web/tests/engine.test.js
 ```
 
-Aktueller Stand:
+Aktueller lokaler Nachweis: **21/21 Engine-Tests PASS**.
 
-- 13/13 Engine-Tests PASS;
-- Syntaxprüfungen PASS;
-- DOM-ID-Abgleich PASS;
-- 500-Zug-Simulation PASS.
+## Speicherstand
+
+Aktueller Schlüssel: `pppoppi-bunkerwahrheit-html-v080`
+
+Vorhandene Stände aus `v070` und `v060` werden als Migrationsquelle gelesen und auf Schema 3 ergänzt.
