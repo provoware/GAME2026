@@ -1,55 +1,20 @@
-# PPPOPPI – Bunkerwahrheit · LIVING-CITY-02
+# Browserfassung 0.9.0 – LIVING-CITY-03
 
-**Browser-Spielstand:** `0.8.0-living-city-02`
+Offline spielbare HTML-/CSS-/JavaScript-Fassung ohne externe Bibliotheken.
 
-## Start
+## Architektur
 
-`web/index.html` direkt in Firefox oder Chrome öffnen.
+- `data.js` – Stadt, Aktionen, Firmen, Institutionen, Casino, Ausrüstung, Kampfsport, Crewprofile;
+- `engine.js` – deterministische Fachlogik und Speicherung kompatibler Zustände;
+- `app.js` – Darstellung, Interaktion und Autosave;
+- `styles.css` – responsive moderne Oberfläche und Animationen;
+- `tests/engine.test.js` – 52 Engine-/Regressions-/Langlauftests;
+- `tests/ui-smoke.test.js` – DOM-freier Start-/Render-Smoke-Test.
 
-Es werden keine externen Bibliotheken, Server oder Online-Dienste benötigt. Der Spielstand bleibt lokal im Browser.
+## Kernsysteme
 
-## Neu in LIVING-CITY-02
+Crewmitglieder besitzen Kampf, Tarnung, Geschäft, Sozial, Analyse, Fahren und Ausdauer. XP entsteht aus passenden Entscheidungen und Tätigkeiten; Training ist nur ein zusätzlicher Weg. Daueraufträge laufen autonom bei jedem Spielzug weiter.
 
-- Besitz kaufen, auf bis zu Stufe 3 ausbauen und wieder verkaufen.
-- Bis zu zwei einsatzbereite Gangmitglieder einem Betrieb zuweisen.
-- Betriebspersonal verbessert Ertrag und Sicherheit, steht aber nicht für Kämpfe zur Verfügung.
-- Drei Rivalengangs mit unterschiedlichen Strategien:
-  - **Rote Klingen** – aggressiv und gebietsorientiert.
-  - **Graue Union** – wirtschaftlich und auf lukrative Bezirke fokussiert.
-  - **Neon-Geister** – verdeckt, stören Aufklärung und erhöhen Unruhe.
-- Bezirke besitzen nun einen tatsächlichen Besitzer.
-- Rivalen können Bezirke übernehmen; der Spieler kann sie durch erfolgreiche Kämpfe zurückholen.
-- Taktische Kämpfe: bis zu vier freie Crewmitglieder wählen, Kräfteverhältnis prüfen und pro Runde **Angriff**, **Deckung** oder **Rückzug** wählen.
-- Karte zeigt Gebietsbesitzer, eigenen Besitz und lokale Aufklärung.
-- Boss-Zentrale zeigt Vermögen, Cashflow, Razzia-Risiko, Beitrittschance, freie Crew, Crewtreue und priorisierte Hinweise.
+Der Unternehmensmarkt berechnet Kurse aus lokaler Kontrolle, Unruhe, Polizei, Gebietsbesitz, eigenen Betrieben, Unternehmensumsatz, Momentum und Volatilität. Dividenden werden periodisch aus Kurs, Entwicklung und Unternehmensrate berechnet.
 
-## Spielprinzip
-
-**Crew im Betrieb** → mehr Ertrag und Sicherheit, aber weniger Kampfkraft.  
-**Crew im Kampf** → stärkere Expansion, aber Betriebe laufen schwächer.  
-**Hoher Gebietsdruck** → mehr Einnahmen, gleichzeitig stärkere Reaktion der Rivalen und Polizei.
-
-## Dateien
-
-- `data.js` – Welt, Aktionen, Immobilien, Rivalengangs, Crew-Pool.
-- `engine.js` – deterministische Fachlogik.
-- `app.js` – Oberfläche, Interaktion und Autosave.
-- `styles.css` – responsive Darstellung und Kampfanimation.
-- `tests/engine.test.js` – Regressionen und 500-Zug-Stresstest.
-
-## Tests
-
-```bash
-node web/tests/engine.test.js
-node --check web/data.js
-node --check web/engine.js
-node --check web/app.js
-```
-
-Aktueller lokaler Nachweis: **21/21 Engine-Tests PASS**.
-
-## Speicherstand
-
-Aktueller Schlüssel: `pppoppi-bunkerwahrheit-html-v080`
-
-Vorhandene Stände aus `v070` und `v060` werden als Migrationsquelle gelesen und auf Schema 3 ergänzt.
+Maulwürfe sind abstrakte Risikopositionen in Polizei, Verwaltung, Bank, Bahn, Klinik oder Hafenlogistik. Casino, Straßenoperationen und Auftragsjobs bleiben vollständig fiktive Simulationsmechaniken.

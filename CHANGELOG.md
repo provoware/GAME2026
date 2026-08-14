@@ -1,35 +1,27 @@
 # Changelog
 
+## 0.9.0-living-city-03
+
+- 12 Bezirke mit Casino 9909, Altstadt und Südhafen
+- Bahnreisen vom Geisterbahnhof in entfernte Stadtteile
+- Personenkarten mit Biografie, 7 Skills, XP, Karriere, Ausrüstung und Status
+- autonome dauerhafte Crewaufträge mit Ziel und Fortschritt
+- Skillaufbau durch Handlungen, Entscheidungen, Kämpfe und autonome Arbeit
+- Bankkonto und lokaler Aktienmarkt mit Anteilskauf/-verkauf
+- dynamische Firmenentwicklung, Kursverlauf, Depotwert und Dividenden
+- Maulwurfnetz mit sechs Institutionen, Tarnung und Entdeckungsrisiko
+- drei Rivalengangs und echte Gebietsbesitzer beibehalten/vertieft
+- Kampf-HUD mit Crewbeiträgen, Gelände, Moral, Deckung, Vorteil und Verletzungsrisiko
+- 5-Card-Draw-Poker mit Halten/Ziehen/Showdown
+- drei visuell getrennte Spielautomaten
+- Schwarzmarkt-Ausrüstung und Dojo mit fünf Kampfsportarten
+- abstrakte Bordsteinschwalben-/Cannabisdealer-Netze und fiktiver Rivalen-Auftragsjob als reine Spielwerte
+- Engine-Testumfang auf 52 Fälle inklusive 500-Zug-Stresstest erhöht
+- UI-Smoke-Test für Start-Render, Karte, Panels und Autosave ergänzt
+
 ## 0.8.0-living-city-02
 
-- Besitzverwaltung um Ausbau, Verkauf und Crew-Zuweisung erweitert.
-- Maximal zwei Gangmitglieder pro Betrieb; Personal erhöht Ertrag und Sicherheit.
-- Betriebspersonal wird aus dem verfügbaren Kampfpool genommen.
-- Rote Klingen, Graue Union und Neon-Geister als eigenständige Rivalengangs eingeführt.
-- Drei KI-Strategien implementiert: aggressiv, wirtschaftlich, verdeckt.
-- Echte Bezirksbesitzer und Gebietswechsel eingeführt.
-- Rivalen können schwache Bezirke übernehmen.
-- Erfolgreiche taktische Kämpfe können Bezirke real übernehmen.
-- Kampfvorbereitung mit Crew-Auswahl und Kräfteprognose ergänzt.
-- Mehrstufige Kampfentscheidungen Angriff / Deckung / Rückzug implementiert.
-- Deckung baut taktischen Vorteil auf und reduziert Risiko.
-- Kampfanimation und Live-Moralanzeige erweitert.
-- Karte zeigt Rivalenbesitzer, eigene Betriebe und Aufklärungsstufe.
-- Boss-Zentrale um Vermögen, Cashflow, Razzia-Risiko, freie Crew und Warnprioritäten erweitert.
-- Browser-Schema auf Version 3 und Speicherkey auf `v080` angehoben.
-- Migration aus `v070` und `v060` beibehalten.
-- Regressionstestumfang auf 21 Tests erweitert.
-- 500-Zug-Stresstest für Wertebereiche und Langzeitstabilität ergänzt.
-
-## 0.7.0-html-city-economy-combat
-
-- kaufbarer Besitz mit sieben Objektarten ergänzt
-- Portfolio- und Cashflowanzeige eingeführt
-- Kampfprognose und animierte Ergebnisdarstellung ergänzt
-- Boss-Zentrale um entscheidungsrelevante Kennzahlen erweitert
-
-## 0.6.0-html-city-dynamics
-
-- spielbare HTML-Browserfassung unter `web/` ergänzt
-- Bunker-Ring auf neun Bezirke erweitert
-- Boss-Dynamik, zufällige Gang-Rekrutierung, Rivalenbewegungen und Polizeidruck eingeführt
+- Besitz ausbauen/verkaufen und Crew zuweisen
+- drei Rivalengangs mit eigener Strategie
+- taktische Kämpfe mit Angriff, Deckung und Rückzug
+- echte Bezirksübernahmen

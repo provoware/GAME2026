@@ -1,64 +1,41 @@
-# PPPOPPI – Bunkerwahrheit
+# PPPOPPI – Bunkerwahrheit · LIVING-CITY-03
 
-Das Repository enthält das Godot-Fundament und die direkt spielbare HTML-Browserfassung **Stadtsektor 9909** unter `web/`.
+Version **0.9.0-living-city-03** erweitert die spielbare HTML-Fassung zu einer vernetzten Stadt-, Crew-, Wirtschafts- und Taktiksimulation.
 
-## Browserfassung 0.7.0
+## Direkt starten
 
-`web/index.html` in Firefox oder Chrome öffnen. Keine externen Bibliotheken erforderlich; Speicherung erfolgt lokal im Browser.
+`web/index.html` in Firefox oder Chrome öffnen oder unter Linux `./START_GAME.sh` ausführen.
 
-Aktueller Umfang:
+## Neu in 0.9.0
 
-- interaktive SVG-Stadtkarte mit neun Bezirken;
-- dynamische Bezirks- und Bosswerte;
-- 13 Handlungsoptionen in Geschäft, Einfluss und Konflikt;
-- kaufbare Stadtobjekte mit Kaufpreis, Unterhalt und laufendem Nettoertrag;
-- Hotel, Lagerhaus, Clubbeteiligung, Werkstatt, Spätkauf, Funkzentrale und Wohnblock-Anteil;
-- Portfolioübersicht und Besitz-Cashflow;
-- Boss-Zentrale mit Vermögen, Risiko, Rekrutierung, Crew-Bereitschaft und Rang;
-- Kampfprognose und animierte Kampfdarstellung;
-- zufällige Rekrutierung, Loyalität, Verletzungen und Abgänge;
-- Rivalen- und Polizeidruck;
-- lokales Autosave mit Übernahme des 0.6.0-Browserstands.
-
-Browser-Engine testen:
-
-```bash
-node web/tests/engine.test.js
-```
-
-Aktueller Browser-Teststand: **13/13 PASS**, zusätzlich Syntaxcheck, DOM-ID-Abgleich und 500-Zug-Simulation.
-
-Weitere Hinweise: [web/README.md](web/README.md)
-
-## Godot-Fundament
-
-Das bestehende Godot-Projekt enthält Command-/Effect-Architektur, Missionen, Save-System, Weltgraph, automatisierte Selbsttests und Paket-/Validierungswerkzeuge.
+- 12 Stadtbezirke inklusive Casino 9909, Altstadt und Südhafen;
+- Geisterbahnhof mit Fernlinien in andere Stadtteile;
+- detaillierte Personenkarten mit 7 Skills, XP, Karriere, Ausrüstung und Kampfsport;
+- dauerhafte autonome Crewaufträge mit Ziel, Fortschritt und eigenständiger Skillentwicklung;
+- Skills steigen durch tatsächliche Handlungen, Entscheidungen, Kämpfe, Aufträge und Training;
+- Bankkonto, lokaler Unternehmensmarkt, Aktienanteile, Kursentwicklung und Dividenden;
+- Kurse reagieren auf simulierte Bezirks- und Unternehmensentwicklung;
+- Maulwurfnetz in sechs Institutionen mit Nutzen, Tarnung und Entdeckungsrisiko;
+- drei Rivalengangs mit verschiedenen Strategien;
+- taktische Kämpfe mit Crewbeiträgen, Gelände, Moral, Vorteil, Deckung, Verletzungsrisiko und Bezirksübernahme;
+- Casino mit selbst spielbarem 5-Card-Draw-Poker und drei Spielautomaten;
+- Schwarzmarkt/Eisenladen mit Schutz- und Taktikausrüstung;
+- Dojo in den Ostblöcken mit fünf Kampfsportarten;
+- abstrakte wiederkehrende Stadtoperationen und fiktive Rivalen-Auftragsjobs;
+- lokales Autosave und Migration aus v0.8/v0.7/v0.6.
 
 ## Tests
 
 ```bash
-chmod +x test.sh verify.sh
-./verify.sh
-./test.sh
+node --check web/data.js
+node --check web/engine.js
+node --check web/app.js
 node web/tests/engine.test.js
+node web/tests/ui-smoke.test.js
 ```
 
-## Projektstruktur
+Der Engine-Test enthält 52 deterministische Prüfungen inklusive 500-Zug-Stresstest. Der UI-Smoke-Test prüft Start-Render, Kernpanels, Karte und Autosave ohne externes Framework.
 
-```text
-content/                Missions- und Weltinhalte
-schemas/                JSON-Schemas
-scenes/                 Godot-Szenen
-scripts/                Godot-Domain, Save, UI und Tests
-web/                    HTML-Browserfassung
-tools/                  Validierung und Paketautomatisierung
-docs/                   Spezifikationen und Status
-```
+## Hinweis zur Simulation
 
-## Entwicklerdokumentation
-
-- [Architektur](docs/ARCHITECTURE.md)
-- [Teststrategie](docs/TESTING.md)
-- [Aktueller Projektstatus](docs/PROJECT_STATUS.md)
-- [Browserfassung](web/README.md)
-- [Beitragsrichtlinien](CONTRIBUTING.md)
+Kriminalitäts-, Waffen-, Drogen-, Prostitutions- und Auftragsmechaniken sind ausschließlich abstrahierte Spielwerte. Das Projekt enthält keine realen Beschaffungs-, Umgehungs- oder Handlungsanleitungen.
