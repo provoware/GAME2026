@@ -1,21 +1,21 @@
-# Klickstart – PPPOPPI Bunkerwahrheit 0.13.0 · LIVING-CITY-07
+# Klickstart – PPPOPPI Bunkerwahrheit 0.14.0 · LIVING-CITY-08
 
 ## Linux / Kubuntu
 
 1. ZIP vollständig entpacken.
 2. `START_GAME.sh` doppelklicken bzw. ausführen.
-3. Der Starter öffnet bevorzugt **Google Chrome**, danach Chromium. Firefox bleibt nur Reserve.
+3. Der Starter öffnet bevorzugt **Google Chrome**, danach Chromium. Firefox bleibt Reserve.
 
-## Was du zuerst siehst
+## So findest du dich sofort zurecht
 
 - **Oben im Aufgaben-Dashboard** steht der wichtigste nächste Schritt.
 - **G** setzt den Tastaturfokus direkt auf diese Empfehlung.
 - **Hilfe** liegt neben/unter der Karte und verdeckt sie nicht.
 - **I** öffnet den Innenraum des aktuellen Ortes.
-- Entscheidungen aus Gesprächen können später an anderen Orten neue Antworten freischalten.
-- Die letzte wichtige Folge wird kompakt angezeigt, ohne die Karte zu überlagern.
-- **K** öffnet den Klangmixer. Gesamt, Musik, Atmosphäre und Effekte sind getrennt regelbar.
-- Im Kampf wird eine Empfehlung hervorgehoben; `1`, `2`, `3` wählen Angriff, Deckung oder Rückzug.
+- In Innenräumen zeigen große Aktionskarten sofort **Was passiert?**, **Was kostet es?** und **welcher Spielwert ändert sich?**
+- Bei verfügbaren Ortskontakten erscheinen Entscheidungen schrittweise statt als Textwand.
+- **K** öffnet den Klangmixer. Gesamt, Musik und Atmosphäre sind getrennt regelbar.
+- Im Kampf wird eine Empfehlung sichtbar hervorgehoben; du entscheidest weiterhin selbst.
 
 ## Karte & Reise
 
@@ -26,8 +26,17 @@
 - `Home` oder `0` = Gesamtkarte.
 - `M` = Kartenfokus.
 
+## Weitere Tasten
+
+- `E` – Zug beenden
+- `Alt+1` bis `Alt+9` – Spielbereich direkt wählen
+- `Tab` / `Enter` – normale Tastaturnavigation
+
 ## Technische Prüfung
 
-`./PRUEFEN.sh` führt **21 reproduzierbare lokale Prüfblöcke** aus. Node.js/Python werden nur für Entwicklerprüfungen benötigt, nicht zum Spielen.
+`./PRUEFEN.sh` führt **23 reproduzierbare Prüfblöcke** aus. Node.js wird nur für die Entwicklerprüfung benötigt, nicht zum Spielen.
 
-Auf GitHub läuft zusätzlich ein echter Google-Chrome-Test. Er öffnet das Spiel automatisiert, bedient die wichtigsten Wege und erstellt Screenshots bei 1280×720, 1366×768 und 1600×900.
+
+## Neu in LIVING-CITY-08
+
+Mit **J** öffnest du das Stadtgedächtnis. Dort siehst du Entwicklungsbögen, frühere Entscheidungen und Folgen, die erst in späteren Zügen wirksam werden. Die Hauptansicht bleibt dadurch übersichtlich.

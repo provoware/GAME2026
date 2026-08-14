@@ -10,6 +10,7 @@
     root.LIVING_CITY_05B_UI?.render?.();
     root.LIVING_CITY_06_UI?.render?.();
     root.LIVING_CITY_07_UI?.render?.();
+    root.LIVING_CITY_08_UI?.render?.();
   }
   function schedule(){
     if(pending)return;

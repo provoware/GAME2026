@@ -1,5 +1,21 @@
 # Änderungsprotokoll
 
+## 0.14.0-living-city-08 – LIVING-CITY-08
+
+- Stadtgedächtnis mit dauerhaftem Entscheidungsjournal eingeführt;
+- drei mehrstufige Entwicklungsbögen für Führungsstil, Stadtrouten und Crew-Zusammenhalt ergänzt;
+- verzögerte Konsequenzen lassen ausgewählte Entscheidungen mehrere Züge später erneut wirken;
+- Ursache/Folge-Ketten werden mit Zugnummer, Kategorie, Quelle und Detail nachvollziehbar protokolliert;
+- Reise-, Innenraum-, Dialog- und Kampfergebnisse fließen in dasselbe Journal ein;
+- Aufgaben-Kompass kann den nächsten offenen Story-/Entwicklungsschritt priorisieren;
+- Journal per Taste `J` als progressive Detailansicht statt zusätzlicher Dauerfläche;
+- globale `:focus-visible`-Politur und ARIA-Live-Hinweis für späte Folgen ergänzt;
+- Browser-Schema 9 und Save-Spiegel `v0140` mit Abwärtsmigration eingeführt;
+- echter Chrome-E2E-Pfad um Journal, v0140 und Fokus-/ARIA-Basis erweitert;
+- Chrome-E2E auf einen kanonischen Runner ohne globale Selenium-Monkeypatches konsolidiert; veraltete Wrapper-Implementierung entfernt;
+- LC08-Engine-Regressionssatz mit 18 Tests und 2500-Zug-Langlauf ergänzt;
+- lokaler Gesamtvertrag auf 23/23 Prüfblöcke erweitert.
+
 ## 0.13.0-living-city-07 – LIVING-CITY-07
 
 - echte Google-Chrome-Desktop-E2E-Abnahme über Selenium/ChromeDriver eingeführt;

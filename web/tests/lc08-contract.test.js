@@ -1,0 +1,18 @@
+'use strict';
+const assert=require('node:assert/strict');
+const fs=require('node:fs'),path=require('node:path');
+const root=path.join(__dirname,'..'),repo=path.join(root,'..'),read=(f)=>fs.readFileSync(f,'utf8');
+const html=read(path.join(root,'index.html')),data=read(path.join(root,'lc08-data.js')),engine=read(path.join(root,'lc08-engine.js')),ui=read(path.join(root,'lc08-ui.js')),css=read(path.join(root,'lc08.css')),bootstrap=read(path.join(root,'lc08-bootstrap.js')),refresh=read(path.join(root,'ui-refresh.js')),e2e=read(path.join(repo,'tools/chrome_e2e.py'));
+assert.ok(html.includes('0.14.0 LIVING-CITY-08')&&html.includes('Schema 9'),'LC08-Version oder Schema fehlt.');
+const order=['lc07-data.js','lc08-data.js','lc07-engine.js','lc08-engine.js','lc07-bootstrap.js','lc08-bootstrap.js','app.js','lc07-ui.js','lc08-ui.js','ui-refresh.js'].map(n=>html.indexOf(`src="${n}"`));
+assert.ok(order.every(v=>v>=0)&&order.every((v,i)=>i===0||order[i-1]<v),'LC08-Scriptreihenfolge falsch.');
+assert.ok(html.indexOf('lc07.css')<html.indexOf('lc08.css'),'LC08-CSS muss nach LC07 geladen werden.');
+assert.ok(data.includes('storyArcs')&&data.includes('consequenceEchoes')&&data.includes('arc.line')&&data.includes('arc.routes')&&data.includes('arc.crew'),'LC08-Stadtgedächtnisdaten fehlen.');
+assert.ok(engine.includes('decisionJournal')&&engine.includes('pendingConsequences')&&engine.includes('evaluateStoryArcs')&&engine.includes('resolvePendingConsequences')&&engine.includes('getDecisionJournal'),'LC08-Enginevertrag unvollständig.');
+assert.ok(ui.includes('lc08JournalDialog')&&ui.includes('Stadtgedächtnis')&&ui.includes("e.key.toLowerCase()==='j'")&&ui.includes('aria-live'),'LC08-Journal-/Tastaturvertrag unvollständig.');
+assert.ok(css.includes(':focus-visible')&&css.includes('.lc08-arc-grid')&&css.includes('@media(prefers-reduced-motion:reduce)'),'LC08-Fokus-/Responsive-/Reduced-Motion-Vertrag fehlt.');
+assert.ok(bootstrap.includes('pppoppi-bunkerwahrheit-html-v0140')&&bootstrap.includes('__livingCity08Patched'),'LC08-Speichermigration fehlt.');
+assert.ok(refresh.includes('LIVING_CITY_08_UI?.render?.()'),'Zentraler Refresh aktualisiert LC08 nicht.');
+assert.ok(e2e.includes('0.14.0-living-city-08')&&e2e.includes('v0140')&&e2e.includes('decision_journal.png'),'Chrome-E2E ist nicht auf LC08 erweitert.');
+assert.equal((css.match(/\{/g)||[]).length,(css.match(/\}/g)||[]).length,'LC08-CSS-Klammern unausgeglichen.');
+console.log('PASS: LIVING-CITY-08 Vertrag – Stadtgedächtnis, Journal, Fokus, Speicher und Chrome-E2E geprüft.');

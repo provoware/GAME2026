@@ -1,40 +1,43 @@
-# Google-Chrome-Desktop-E2E – LIVING-CITY-07
+# Google-Chrome-Desktop-E2E – LIVING-CITY-08
 
 ## Zweck
 
-Dieser Test prüft das Browser-Spiel in **echtem Google Chrome**. Er ersetzt keine Engine-Tests, sondern ergänzt sie um die reale Bedienoberfläche.
+Der Runner prüft das reale Browser-Spiel in **Google Chrome** und ergänzt die deterministischen Engine-Tests um tatsächliche DOM-, Layout-, Tastatur- und Speicherpfade.
+Er besteht aus **einem kanonischen Runner** (`tools/chrome_e2e.py`), fragt dynamische DOM-Elemente nach Renderwechseln neu ab und verwendet keine globalen Selenium-Monkeypatches.
 
-## Geprüfte Bildschirmgrößen
+## Bildschirmgrößen
 
 - 1280 × 720
 - 1366 × 768
 - 1600 × 900
 
-Für jede Größe wird geprüft, dass die Desktop-Hauptansicht keinen Seitenüberlauf erzeugt und Topbar, Arbeitsbereich, Karte, Bossbereich, Aktionsbereich und Footer innerhalb des Viewports bleiben.
+Für jede Größe werden Seitenüberlauf, Hauptbereiche und eine nutzbare Kartenfläche geprüft.
 
 ## Bedienpfad
 
-1. neues Spiel laden;
-2. Hilfe öffnen und sicherstellen, dass sie die Karte nicht überdeckt;
-3. Karte per Zoomknopf und Pfeiltaste bedienen;
-4. Innenraum des Hauptbunkers öffnen;
-5. verzweigten Ortsdialog führen und gespeicherte Folge prüfen;
-6. Klangmixer öffnen, Effektregler/Ducking prüfen und Klang ausdrücklich aktivieren;
-7. sichtbares Direktziel auswählen und tatsächlich reisen;
-8. kanonischen `v0130`-Spielstand speichern und Seite neu laden;
-9. im Rivalenbezirk Kampfvorbereitung öffnen, Crew wählen, Entscheidungsvorschau prüfen und Tastaturentscheidung auslösen;
-10. mit `G` den nächsten sinnvollen Schritt fokussieren;
-11. schwere Chrome-Konsolenfehler ausschließen.
+1. LC08 / Schema 9 frisch laden;
+2. Hilfe öffnen und Kartenüberdeckung ausschließen;
+3. sichtbaren Kartenzoom und Pfeiltasten-Pan prüfen;
+4. Innenraum öffnen und verzweigten Ortsdialog ausführen;
+5. gespeicherte Folge sichtbar machen;
+6. **Journal per `J` öffnen**, drei Entwicklungsbögen und Journalzeilen prüfen;
+7. Klangmixer ohne Autoplay öffnen und aktivieren;
+8. reale Reise zum Rivalenbezirk durchführen;
+9. kanonischen **v0140**-Spielstand speichern und Reload prüfen;
+10. Kampfvorbereitung, Vorschau und Tastatur `1/2/3` prüfen;
+11. mit `G` den Aufgaben-Kompass fokussieren;
+12. sichtbare Buttons auf zugängliche Benennung und ARIA-Live-Basis prüfen;
+13. schwere Chrome-Konsolenfehler ausschließen.
 
 ## Evidenz
 
-Der Runner schreibt nach `evidence/chrome-e2e/`:
+`evidence/chrome-e2e/` enthält Receipt und Screenshots, darunter:
 
-- `CHROME_E2E_RECEIPT.json`
-- Desktop-Screenshots für alle drei Auflösungen
-- Screenshot der angedockten Hilfe
-- Screenshot Innenraum/Dialog/Folgekette
-- Screenshot Klangmixer
-- Screenshot Kampfentscheidung
+- drei Desktopansichten;
+- Hilfe-Dock;
+- Innenraum/Dialog/Folge;
+- **decision_journal.png**;
+- Klangmixer;
+- Kampfentscheidung.
 
-GitHub Actions lädt diese Evidenz als separates Artefakt hoch. Das finale Release wird nur aus einem erfolgreichen Remote-Stand gebaut.
+Ein finales Release darf nur aus einem erfolgreichen Remote-Stand gebaut werden.
