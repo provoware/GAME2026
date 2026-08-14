@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.6.0-html-city-dynamics
+
+- eigenständig spielbare HTML-Browserfassung unter `web/` ergänzt
+- Bunker-Ring auf neun visuell verbundene Bezirke erweitert
+- skalierende interaktive SVG-Stadtkarte mit Kontrolle, Rivalen- und Polizeidruck implementiert
+- Boss-Werte Respekt, Furcht, Loyalität, Einfluss, Fahndung und Bekanntheit eingeführt
+- Boss-Profil wird nun aus tatsächlichem Verhalten und Folgen abgeleitet
+- sieben Bezirksaktionen mit Ressourcen-, Ruf-, Kontroll- und Fahndungseffekten ergänzt
+- zufällige Gang-Rekrutierung abhängig von Boss-Stil, Bezirk, Kontrolle und Fahndung umgesetzt
+- Gangmitglieder mit Rolle, Merkmal, Macht, Loyalität, Herkunft und Verletzungsstatus ergänzt
+- autonome Rivalenbewegungen und dynamischen Polizeidruck eingebaut
+- passive Gebietseinnahmen und lokale Bezirksökonomie ergänzt
+- lokale automatische Speicherung über `localStorage` integriert
+- dreigeteilte responsive Oberfläche mit Kartenpriorität, Tabs und progressiver Informationsdichte umgesetzt
+- Tastaturbedienung der Kartenorte und `prefers-reduced-motion` berücksichtigt
+- sechs deterministische Browser-Engine-Tests ergänzt
+
 ## 0.3.0-mission-iteration-c
 
 - Zustands- und Missionsschema auf Version 3 erweitert
