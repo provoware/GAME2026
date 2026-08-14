@@ -8,9 +8,9 @@ Rectangle contract: map_rect["width"].
 The implementation core is kept byte-stable. This entrypoint corrects viewport
 metrics, adapts body-targeted shortcuts to real ActionChains at the current Chrome
 focus, restores a neutral target after dialog transitions, synchronizes additive
-UI layers, uses the first actually visible/enabled element for dynamic repeated
-controls, and turns anonymous Selenium waits into actionable diagnostics. No
-release gate is relaxed and clicks remain real Selenium element clicks.
+UI layers, scrolls enabled dynamic controls into their real visible container
+before clicking, and turns anonymous Selenium waits into actionable diagnostics.
+No release gate is relaxed and clicks remain real Selenium element clicks.
 """
 from __future__ import annotations
 import json
@@ -119,22 +119,33 @@ def wait_js(driver, code: str, timeout: float = 6):
         ) from exc
 
 
-def _visible_enabled(driver, selector: str):
+def _enabled_candidate(driver, selector: str):
     for element in driver.find_elements(By.CSS_SELECTOR, selector):
         try:
-            if element.is_displayed() and element.is_enabled():
+            if element.is_enabled():
                 return element
         except StaleElementReferenceException:
             continue
     return False
 
 
+def _is_visible_enabled(element) -> bool:
+    try:
+        return element.is_displayed() and element.is_enabled()
+    except StaleElementReferenceException:
+        return False
+
+
 def safe_click(driver, selector: str, timeout: float = 6):
     last = None
     for _ in range(3):
         try:
-            element = WebDriverWait(driver, timeout).until(lambda d: _visible_enabled(d, selector))
+            # Dynamic game controls can be valid but outside an internally
+            # scrollable panel after reload. Find an enabled target first,
+            # scroll it into the actual visible area, then require visibility.
+            element = WebDriverWait(driver, timeout).until(lambda d: _enabled_candidate(d, selector))
             core.js(driver, "arguments[0].scrollIntoView({block:'center',inline:'nearest'});", element)
+            WebDriverWait(driver, timeout).until(lambda _: _is_visible_enabled(element))
             element.click()
             break
         except StaleElementReferenceException as exc:
@@ -145,7 +156,7 @@ def safe_click(driver, selector: str, timeout: float = 6):
             time.sleep(.08)
         except TimeoutException as exc:
             raise AssertionError(
-                "Kein sichtbarer/aktivierter Klicktreffer: " + selector
+                "Klicktreffer wurde nicht sichtbar/aktiv: " + selector
                 + " | Zustand=" + json.dumps(browser_state(driver, selector), ensure_ascii=False, sort_keys=True)
             ) from exc
     else:
