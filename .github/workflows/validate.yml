@@ -29,7 +29,7 @@ jobs:
         run: python -m pip install --upgrade jsonschema gdtoolkit
 
       - name: Check shell syntax
-        run: bash -n start.sh test.sh verify.sh package.sh
+        run: bash -n start.sh test.sh verify.sh package.sh START_GAME.sh PRUEFEN.sh
 
       - name: Check browser JavaScript syntax
         run: |
@@ -88,3 +88,7 @@ jobs:
             docs/PROJECT_STATUS.md
             docs/REVIVAL_MASTER_PROMPT.md
             AGENTS.md
+            START_GAME.sh
+            START_GAME.bat
+            PRUEFEN.sh
+            KLICKSTART_ANLEITUNG.md
