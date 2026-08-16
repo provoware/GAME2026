@@ -4,29 +4,36 @@
   "version": "0.17.5-living-city-11-visual-polish-5",
   "schema": 12,
   "base_remote_head": "e24bacbfb8ea756f81819cbca2160fc60dd4aa40",
-  "scope": [
-    "Premium-Ansicht mit mehr Spielfläche",
-    "klarere Drei-Bereich-Hierarchie",
-    "kontraststärkeres Farb- und Fokusmodell",
-    "hochwertigere Karte, Innenräume, Stadtleben und Kampf",
-    "verlustfreie CSS-Modulteilung für Repository-Transfer"
-  ],
   "gameplay_changed": false,
   "save_schema_changed": false,
-  "validation": {
-    "PRUEFEN.sh": "34/34 PASS nach Remote-Fix",
+  "local_validation": {
+    "PRUEFEN.sh": "34/34 PASS",
     "LC11_engine": "12/12 PASS",
     "long_run": "3500 Züge PASS",
-    "visual_polish_1_to_5_contracts": "PASS",
-    "remote_chrome_e2e": "NACHTEST AUSSTEHEND"
+    "visual_polish_1_to_5_contracts": "PASS"
   },
-  "remote_validation": {
-    "run_152": {
+  "remote_findings": [
+    {
+      "run_number": 152,
       "run_id": 31969697450,
-      "conclusion": "failure",
-      "finding": "Innenraumaktionen wurden nach Dialogöffnung asynchron nachgerendert."
+      "result": "FAIL",
+      "finding": "Innenraumaktionen waren nach synchroner Dialogöffnung erst in einem späteren Timer-Tick vorhanden."
     },
-    "fix": "Innenraumaktionen werden beim Tastatur-Öffnen synchron/atomar gerendert; Klickpfad erhält synchronen Render plus Nachlauf.",
-    "next_gate": "neuer Real-Chrome-E2E-Lauf"
-  }
+    {
+      "run_number": 153,
+      "run_id": 31969900846,
+      "result": "FAIL_LATER",
+      "confirmed_fix": "Innenraum, verzweigter Dialog und gespeicherte Folge funktionieren.",
+      "finding": "Audio-Ducking/Effektregler wurden nach Öffnen des LC06-Mixers erst in einem späteren LC07-Timer-Tick ergänzt."
+    }
+  ],
+  "hardening": {
+    "strategy": "additive post-bubble atomic UI layer",
+    "file": "web/lc11-browser-hardening.js",
+    "historical_lc06_restored": true,
+    "historical_lc06_source_artifact": 9268368208,
+    "historical_lc06_git_blob": "669c1a6f4b4a5890e3de0f1273e9967effb0bd68",
+    "historical_lc06_contract_git_blob": "0ade6b25cd7c662226807ada89f5682395c3f755"
+  },
+  "remote_chrome_e2e": "NACHTEST AUSSTEHEND"
 }
