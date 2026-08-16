@@ -12,3 +12,16 @@
 @media(max-width:620px){.lc11-header{padding-right:50px}.lc11-overview-grid,.lc11-form-grid{grid-template-columns:1fr}.lc11-form-grid label:last-child{grid-column:auto}.lc11-cards{grid-template-columns:repeat(5,1fr);gap:4px}.lc11-cards button{min-height:82px}.lc11-cards button b,.lc11-cards button span{font-size:15px}.lc11-owned-gear,.lc11-destination{grid-template-columns:1fr}.lc11-gear-actions,.lc11-training-summary{align-items:stretch;flex-direction:column}.lc11-train-line{display:none}.lc11-context-dock>button{grid-template-columns:auto 1fr}.lc11-context-dock small{display:none}}
 @media(prefers-reduced-motion:reduce){.lc11-context-dock>button:after,.lc11-slot.spinning .lc11-reels i,.lc11-train-line i{animation:none!important}.lc11-cards button{transition:none}}
 body.lc09-reduced-motion .lc11-context-dock>button:after,body.lc09-reduced-motion .lc11-slot.spinning .lc11-reels i,body.lc09-reduced-motion .lc11-train-line i{animation:none!important}
+/* LC11 low-height desktop hardening: keep legacy interior dialogues fully actionable. */
+@media (max-height:800px) and (min-width:900px){
+  .scene-modal .modal-card.wide{max-height:96dvh;padding:12px 14px}
+  .scene-modal .scene-hero{height:clamp(190px,27dvh,220px);min-height:190px}
+  .scene-modal .scene-summary{gap:5px;margin-top:7px}
+  .scene-modal .lc06-interactive-panel{gap:7px;margin-top:8px;padding-top:8px}
+  .scene-modal .interior-action-grid{gap:5px}
+  .scene-modal .interior-action{padding:6px;grid-template-columns:32px minmax(0,1fr)}
+  .scene-modal .interior-action>i{width:32px;height:32px}
+  .scene-modal .lc06-dialogue{padding:8px}
+  .scene-modal .dialogue-line{margin:5px 0;padding:6px}
+  .scene-modal .dialogue-options button{padding:6px}
+}
