@@ -1,6 +1,6 @@
 {
   "status": "PASS",
-  "release_status": "REPOSITORY-KANDIDAT – Remote-Chrome-E2E ausstehend",
+  "release_status": "REPOSITORY-KANDIDAT – Remote-Chrome-E2E-Nachprüfung ausstehend",
   "version": "0.17.5-living-city-11-visual-polish-5",
   "schema": 12,
   "base_remote_head": "e24bacbfb8ea756f81819cbca2160fc60dd4aa40",
@@ -14,10 +14,19 @@
   "gameplay_changed": false,
   "save_schema_changed": false,
   "validation": {
-    "PRUEFEN.sh": "34/34 PASS",
+    "PRUEFEN.sh": "34/34 PASS nach Remote-Fix",
     "LC11_engine": "12/12 PASS",
     "long_run": "3500 Züge PASS",
     "visual_polish_1_to_5_contracts": "PASS",
-    "remote_chrome_e2e": "AUSSTEHEND"
+    "remote_chrome_e2e": "NACHTEST AUSSTEHEND"
+  },
+  "remote_validation": {
+    "run_152": {
+      "run_id": 31969697450,
+      "conclusion": "failure",
+      "finding": "Innenraumaktionen wurden nach Dialogöffnung asynchron nachgerendert."
+    },
+    "fix": "Innenraumaktionen werden beim Tastatur-Öffnen synchron/atomar gerendert; Klickpfad erhält synchronen Render plus Nachlauf.",
+    "next_gate": "neuer Real-Chrome-E2E-Lauf"
   }
 }

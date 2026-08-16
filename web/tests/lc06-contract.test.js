@@ -12,6 +12,8 @@ assert.ok(data.includes('interiorActions')&&data.includes('dialogues')&&data.inc
 assert.ok(engine.includes('performInteriorAction')&&engine.includes('chooseDialogue')&&engine.includes('setAudioMixer')&&engine.includes('getGuidance')&&engine.includes('getCombatDecisionGuide'),'LC06-Enginevertrag unvollständig.');
 assert.ok(ui.includes('renderInteriorEnhancement')&&ui.includes('renderDialogue')&&ui.includes('renderAudioDock')&&ui.includes('renderCombatEnhancement')&&ui.includes('renderGuide'),'LC06-UI-Systeme fehlen.');
 assert.ok(ui.includes("k==='g'")&&ui.includes("k==='i'")&&ui.includes("k==='k'")&&ui.includes('event.altKey'),'LC06-Tastaturführung unvollständig.');
+assert.ok(ui.includes("renderScene?.(activeInteriorId);renderInteriorEnhancement();"),'Innenraumaktionen müssen beim Tastatur-Öffnen atomar mit dem Dialog gerendert werden.');
+assert.ok(ui.includes("activeInteriorId=t.dataset.openInterior;renderInteriorEnhancement();setTimeout(renderInteriorEnhancement,0);"),'Innenraumaktionen brauchen beim Klick einen synchronen Render plus robusten Nachlauf.');
 assert.ok(!ui.includes('MutationObserver'),'LC06 darf keinen globalen DOM-Observer einführen.');
 assert.ok(ui.includes("[data-crew-interaction]")&&ui.includes('stopImmediatePropagation'),'LC06 muss Crewinteraktionen vor dem alten Vollseiten-Reload abfangen.');
 assert.ok(css.includes('.coach-rail')&&css.includes('.interior-action-grid')&&css.includes('.audio-dock')&&css.includes('.lc06-combat-coach'),'LC06-Visualvertrag unvollständig.');
