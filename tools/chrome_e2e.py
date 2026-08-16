@@ -103,11 +103,19 @@ def _scroll_target_into_visible_container(driver,element):
     """,element)
 
 
+def _visible_enabled_candidate(driver,selector):
+    for element in driver.find_elements(By.CSS_SELECTOR,selector):
+        try:
+            if _is_visible_enabled(driver,element): return element
+        except StaleElementReferenceException: continue
+    return False
+
+
 def safe_click(driver,selector,timeout=6):
     last=None
     for _ in range(3):
         try:
-            element=WebDriverWait(driver,timeout).until(lambda d:_enabled_candidate(d,selector));_scroll_target_into_visible_container(driver,element);WebDriverWait(driver,timeout).until(lambda d:_is_visible_enabled(d,element));element.click();break
+            element=WebDriverWait(driver,timeout).until(lambda d:_enabled_candidate(d,selector));_scroll_target_into_visible_container(driver,element);element=WebDriverWait(driver,timeout).until(lambda d:_visible_enabled_candidate(d,selector));_scroll_target_into_visible_container(driver,element);element.click();break
         except (StaleElementReferenceException,ElementClickInterceptedException,ElementNotInteractableException) as exc:last=exc;time.sleep(.08)
         except TimeoutException as exc:raise AssertionError('Klicktreffer wurde nicht sichtbar/aktiv: '+selector+' | Zustand='+json.dumps(browser_state(driver,selector),ensure_ascii=False,sort_keys=True)) from exc
     else:raise AssertionError('Klick blieb nach DOM-Erneuerung blockiert: '+selector+' | Zustand='+json.dumps(browser_state(driver,selector),ensure_ascii=False,sort_keys=True)) from last
