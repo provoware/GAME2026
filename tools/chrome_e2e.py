@@ -12,7 +12,7 @@ import sys
 import time
 from pathlib import Path
 import chrome_e2e_core as core
-from selenium.common.exceptions import ElementClickInterceptedException, StaleElementReferenceException, TimeoutException
+from selenium.common.exceptions import ElementClickInterceptedException, ElementNotInteractableException, StaleElementReferenceException, TimeoutException
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -84,8 +84,14 @@ def _enabled_candidate(driver,selector):
     return False
 
 
-def _is_visible_enabled(element):
-    try:return element.is_displayed() and element.is_enabled()
+def _is_visible_enabled(driver,element):
+    try:
+        if not element.is_enabled(): return False
+        return bool(core.js(driver,"""
+          const e=arguments[0],cs=getComputedStyle(e),r=e.getBoundingClientRect();
+          return !e.hidden && !e.disabled && cs.display!=='none' && cs.visibility!=='hidden' && Number(cs.opacity||1)>0
+            && r.width>0 && r.height>0 && r.right>0 && r.bottom>0 && r.left<innerWidth && r.top<innerHeight;
+        """,element))
     except StaleElementReferenceException:return False
 
 
@@ -101,8 +107,8 @@ def safe_click(driver,selector,timeout=6):
     last=None
     for _ in range(3):
         try:
-            element=WebDriverWait(driver,timeout).until(lambda d:_enabled_candidate(d,selector));_scroll_target_into_visible_container(driver,element);WebDriverWait(driver,timeout).until(lambda _:_is_visible_enabled(element));element.click();break
-        except (StaleElementReferenceException,ElementClickInterceptedException) as exc:last=exc;time.sleep(.08)
+            element=WebDriverWait(driver,timeout).until(lambda d:_enabled_candidate(d,selector));_scroll_target_into_visible_container(driver,element);WebDriverWait(driver,timeout).until(lambda d:_is_visible_enabled(d,element));element.click();break
+        except (StaleElementReferenceException,ElementClickInterceptedException,ElementNotInteractableException) as exc:last=exc;time.sleep(.08)
         except TimeoutException as exc:raise AssertionError('Klicktreffer wurde nicht sichtbar/aktiv: '+selector+' | Zustand='+json.dumps(browser_state(driver,selector),ensure_ascii=False,sort_keys=True)) from exc
     else:raise AssertionError('Klick blieb nach DOM-Erneuerung blockiert: '+selector+' | Zustand='+json.dumps(browser_state(driver,selector),ensure_ascii=False,sort_keys=True)) from last
     if selector=='#lc06AudioButton':core.wait_js(driver,"return !!document.querySelector('#lc06AudioDock [data-audio-range=\"effects\"]') && !!document.querySelector('#lc06AudioDock [data-audio-ducking]')",timeout)
