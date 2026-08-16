@@ -58,3 +58,6 @@ Die Hauptansicht priorisiert Spielfläche und Entscheidungsklarheit: kompakter K
 
 ### Visual-Polish VI
 Die Stadtkarte erhält eine stärkere räumliche Bühne mit ortsspezifischer Bezirkscodierung, klareren Routen-/Fokuszuständen und hochwertigeren Aktionsflächen. Casino, Training, Schutz und Bahnhof wirken materieller und unterscheidbarer; Innenräume und Kampf erhalten zusätzliche Tiefen-, Licht- und Bühnenebenen. Die Schicht bleibt rein präsentational: **Schema 12, Save-Spiegel v0170 und Gameplaylogik bleiben unverändert**. Der lokale Gesamtvertrag umfasst nun **35/35 Prüfblöcke**.
+
+### Visual-Polish VI-A – Lesbarkeits- und Dichtepass
+Die bestehende 0.17.6-Präsentationsschicht wurde gezielt nachgeschärft: Sekundärtexte, Tabs, Fokuszustände, Standort-/Tickerflächen und niedrige Desktop-Höhen sind klarer lesbar. Bei 720–800 px Höhe wird Leerraum reduziert statt Schrift zu verkleinern. Gameplay, Schema 12 und Save-Spiegel v0170 bleiben unverändert. Der bestehende Gesamtvertrag bleibt bei **35/35 PASS** und prüft die neuen Lesbarkeitsmarker mit.
