@@ -1,0 +1,15 @@
+const fs=require('fs');const path=require('path');const assert=require('assert');const root=path.join(__dirname,'..');const read=(f)=>fs.readFileSync(path.join(root,f),'utf8');
+const html=read('index.html'),css=read('lc11-visual-polish-4.css'),ui=read('lc11-ui.js'),data=read('lc11-data.js');
+assert.ok(html.includes('lc11-visual-polish-4.css'));
+assert.ok(html.indexOf('lc11-visual-polish-3.css')<html.indexOf('lc11-visual-polish-4.css'));
+assert.ok(html.includes('0.17.5 LIVING-CITY-11 VISUAL-POLISH-V'));
+assert.ok(data.includes("version:'0.17.5-living-city-11-visual-polish-5'"));
+assert.ok(ui.includes('0.17.5 · Schema 12'));
+[':root{','.workspace{grid-template-columns','.legend span{','.map-workbench.help-open{','.help-dock{','.tab.active{','.footerbar{','.input-line input','.route-state.ready','.lc11-nav.active{'].forEach(x=>assert.ok(css.includes(x),x));
+assert.ok(css.includes('--vp4-muted:#b8c4d3'));
+assert.ok(css.includes('button:focus-visible'));
+assert.ok(css.includes('@media(max-width:1120px)'));
+assert.ok(css.includes('@media(prefers-reduced-motion:reduce)'));
+assert.ok(css.includes('body.lc09-reduced-motion'));
+assert.ok(!css.includes('pointer-events:auto'));
+console.log('PASS: Visual-Polish IV – Layout, Erscheinungsbild, Kontrastfarben, Lesbarkeit, Hilfe-Dock und Reduced-Motion geprüft.');

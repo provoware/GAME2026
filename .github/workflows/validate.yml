@@ -51,7 +51,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: PPPOPPI-Bunkerwahrheit-LIVING-CITY-11-Chrome-E2E
+          name: PPPOPPI-Bunkerwahrheit-0.17.5-VISUAL-POLISH-5-Chrome-E2E
           if-no-files-found: error
           retention-days: 14
           path: evidence/chrome-e2e/
@@ -63,10 +63,10 @@ jobs:
       - name: Check Python syntax
         run: python -m compileall -q tools
 
-      - name: Publish LIVING-CITY-11 source artifact
+      - name: Publish 0.17.5 Visual-Polish-V source artifact
         uses: actions/upload-artifact@v4
         with:
-          name: PPPOPPI-Bunkerwahrheit-LIVING-CITY-11
+          name: PPPOPPI-Bunkerwahrheit-0.17.5-VISUAL-POLISH-5
           if-no-files-found: error
           retention-days: 14
           path: |
@@ -76,6 +76,7 @@ jobs:
             tools/chrome_e2e_lc10.py
             tools/chrome_e2e_lc11.py
             evidence/chrome-e2e/
+            evidence/visual-polish-5/
             README.md
             CHANGELOG.md
             docs/PROJECT_STATUS.md

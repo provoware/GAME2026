@@ -2,7 +2,7 @@
 
 ## Stand
 
-**Browser-Spielstand:** 0.17.0-living-city-11  
+**Browser-Spielstand:** 0.17.5-living-city-11-visual-polish-5  
 **Browser-Schema:** 12  
 **Primärplattform:** Chrome/Chromium, offline-first  
 **GitHub-Strang:** `agent/html-gang-map-boss-dynamics`
@@ -35,7 +35,7 @@
 
 ## Abnahmestand lokal
 
-- Gesamtvertrag: **29/29 PASS**;
+- Gesamtvertrag: **34/34 PASS**;
 - LC11-Engine: **12/12 PASS**;
 - 3500-Zug-Langlauf: **PASS**;
 - historische LC03–LC10-Regressionen: **PASS**;
@@ -44,3 +44,14 @@
 ## Nächstes Remote-Gate
 
 GitHub Actions muss den neuen Commit erneut prüfen. Ein finaler Release-/ZIP-Stand wird erst aus einem erfolgreichen Remote-Artefakt qualifiziert.
+
+### Visual-Polish III
+Die Darstellung kommuniziert Bezirksdruck und aktive Ereignisse direkt auf der Karte. Die Schicht bleibt rein präsentational; Schema 12 und Gameplaylogik bleiben unverändert.
+
+
+### Visual-Polish IV
+Die Oberfläche wurde kontraststärker, spürbar klarer gegliedert und in Tabs, KPIs, Formularen, Kartenhilfen und Footer besser lesbar gemacht. Das Hilfe-Dock ordnet sich sauberer ein; Schema 12 und Gameplaylogik bleiben unverändert.
+
+
+### Visual-Polish V
+Die Hauptansicht priorisiert Spielfläche und Entscheidungsklarheit: kompakter Kopfbereich, dominantere Karte, ruhigere Seitenleisten, stärkere Kontrastlogik und eine spielartigere Kampf-/Stadtleben-Inszenierung. Gameplay und Schema 12 bleiben unverändert. Der lokale Gesamtvertrag steht bei **34/34 PASS**; das Remote-Chrome-E2E-Gate ist noch ausstehend.

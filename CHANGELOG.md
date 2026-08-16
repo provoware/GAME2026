@@ -1,3 +1,51 @@
+## 0.17.5-living-city-11-visual-polish-5
+
+- Premium-Ansicht mit deutlich kompakterem Kopfbereich und größerer nutzbarer Spielfläche.
+- Karte als dominante Spielbühne: klarerer Rahmen, hochwertigere Tiefe, stärkere Standort-/Routenlesbarkeit.
+- Boss- und Aktionsseitenleiste visuell beruhigt und funktional deutlicher gewichtet.
+- Tabs, Buttons, Karten, Formulare und Zustandsfarben auf ein konsistenteres Kontrastsystem angehoben.
+- Stadtleben-Übersicht mit stärkerer visueller Rhythmik und klarer Ortsidentität.
+- Kampfansicht mit größeren Figurenmarkern, Frontlinie, weniger Leerraum und besserer Lichtdramaturgie.
+- Desktop-Ansicht 720–900 px Höhe gezielt verdichtet, ohne wichtige Aktionen auszublenden.
+- Reduced-Motion-Vertrag auf alle neuen Übergänge erweitert.
+- Gameplay und Browser-Schema bleiben unverändert.
+
+## 0.17.4-living-city-11-visual-polish-4
+
+- vierte professionelle Grafikstufe mit Fokus auf Layout, Erscheinungsbild und Kontrast.
+- kontraststärkere Farben und besser lesbare Sekundärtexte, KPIs, Tabs, Eingabefelder und Fußleiste.
+- klarere Spaltenhierarchie für Boss-, Karten- und Aktionsbereich.
+- besser gegliederte Kartenhilfe mit saubererem Hilfe-Dock und hochwertigeren Quickbar-/Callout-Flächen.
+- stärkere Sichtbarkeit von Zuständen, Fokus, Hover und deaktivierten Elementen.
+- LC11-Stadtleben, Navbar und modale Flächen erhalten hochwertigere Oberflächen und konsistentere Abstände.
+- neuer Layout-/Kontrast-Vertrag als Prüfblock 33.
+- Gameplay und Schema 12 bleiben unverändert.
+
+## 0.17.3-living-city-11-visual-polish-3
+
+- Dritte professionelle Grafikstufe mit zustandsbewusster Living-City-Atmosphäre.
+- Bezirke visualisieren hohe Rivalen-, Polizei- und Unruhewerte direkt über abgestufte Kartenspannung.
+- Aktive Stadtereignisse erhalten dezente Kartenpulse; erreichbare und geplante Routen werden ruhiger animiert.
+- Kartenmarker, Kartenhintergrund, Callouts und Eigentums-/Statuslesbarkeit weiter präzisiert.
+- Innenräume stärker in Vorder-, Mittel- und Hintergrund gestaffelt.
+- Kampfinszenierung mit getrennten Lichtzonen, klarerer Aktionsrichtung und besser lesbaren Crew-/Gegnerflächen.
+- Revival Director, Missionen, Ereignisse, Crew-, Besitz- und Rivalenkarten optisch vereinheitlicht.
+- Taktile Button-, Fokus- und Karteninteraktionen verfeinert; Reduced-Motion vollständig erweitert.
+- Gameplay und Browser-Schema bleiben unverändert.
+
+# CHANGELOG
+
+## 0.17.2-living-city-11-visual-polish-2
+
+- zweite additive Grafikpolitur ohne Gameplay- oder Save-Schema-Änderung
+- klarere Drei-Spalten-Hierarchie mit visuellen Ankern für Boss, Karte und Aktionen
+- Stadtkarte mit stärkerer Kartografie, Standort-/Auswahlgewichtung, Route- und Ziel-Chips
+- Innenräume mit verbessertem Lichtmodell, Vignette, Tiefenstaffelung und Hotspot-Rückmeldung
+- Kampfansicht mit klar getrennten Spieler-/Gegner-Lichtzonen und zentraler Spannungsachse
+- Stadtleben erhält ortsspezifische Atmosphären für Casino, Training, Schutz und Bahnhof
+- Buttons, deaktivierte Zustände, Fokus, Fortschrittsanzeigen und Footer harmonisiert
+- Reduced-Motion-Vertrag erweitert; neuer Visual-Polish-II-Test als Prüfblock 31
+
 # Änderungsverlauf
 
 ## 0.17.0-living-city-11 – LIVING-CITY-11

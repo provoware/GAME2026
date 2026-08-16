@@ -1,12 +1,14 @@
 const fs=require('fs');const path=require('path');const assert=require('assert');const root=path.join(__dirname,'..');const read=(f)=>fs.readFileSync(path.join(root,f),'utf8');
-const html=read('index.html'),data=read('lc11-data.js'),engine=read('lc11-engine.js'),boot=read('lc11-bootstrap.js'),ui=read('lc11-ui.js'),css=read('lc11.css'),refresh=read('ui-refresh.js');
-assert.ok(html.includes('0.17.0 LIVING-CITY-11'));
-['lc11-data.js','lc11-engine.js','lc11-bootstrap.js','lc11-ui.js','lc11.css'].forEach((x)=>assert.ok(html.includes(x),x));
+const html=read('index.html'),data=read('lc11-data.js'),engine=read('lc11-engine.js'),boot=read('lc11-bootstrap.js'),ui=read('lc11-ui.js'),css=read('lc11.css'),polish=read('lc11-visual-polish.css'),polish2=read('lc11-visual-polish-2.css'),polish3=read('lc11-visual-polish-3.css'),refresh=read('ui-refresh.js');
+assert.ok(html.includes('0.17.5 LIVING-CITY-11 VISUAL-POLISH-V'));
+['lc11-data.js','lc11-engine.js','lc11-bootstrap.js','lc11-ui.js','lc11.css','lc11-visual-polish.css','lc11-visual-polish-2.css','lc11-visual-polish-2b.css','lc11-visual-polish-3.css','lc11-visual-polish-4.css','lc11-visual-polish-5.css','lc11-visual-polish-5b.css'].forEach((x)=>assert.ok(html.includes(x),x));
 assert.ok(data.includes("schema:12")&&data.includes('intercityDestinations')&&data.includes('trainingPrograms')&&data.includes('casinoChallenges'));
 ['getCasinoFloor','trainMemberProgram','serviceGear','takeIntercityTrip','registerInteriorVisit'].forEach((x)=>assert.ok(engine.includes(x),x));
 assert.ok(boot.includes('html-v0170')&&boot.includes('recovery-v0170'));
 ['Casino','Training','Schutz','Bahnhof','data-lc11-spin','data-lc11-trip'].forEach((x)=>assert.ok(ui.includes(x),x));
 assert.ok(css.includes('@keyframes lc11Reel')&&css.includes('prefers-reduced-motion')&&css.includes('lc11-destinations'));
-assert.ok(refresh.includes('LIVING_CITY_11_UI'));
+assert.ok(polish.includes('@keyframes vpNodePulse')&&polish.includes('.map-stage::before')&&polish.includes('.lc11-feature.casino')&&polish.includes('prefers-reduced-motion'));
+assert.ok(html.indexOf('lc11.css')<html.indexOf('lc11-visual-polish.css'));assert.ok(html.indexOf('lc11-visual-polish.css')<html.indexOf('lc11-visual-polish-2.css'));assert.ok(html.indexOf('lc11-visual-polish-2.css')<html.indexOf('lc11-visual-polish-2b.css')&&html.indexOf('lc11-visual-polish-2b.css')<html.indexOf('lc11-visual-polish-3.css'));assert.ok(html.indexOf('lc11-visual-polish-3.css')<html.indexOf('lc11-visual-polish-4.css'));assert.ok(html.indexOf('lc11-visual-polish-4.css')<html.indexOf('lc11-visual-polish-5.css'));assert.ok(html.indexOf('lc11-visual-polish-5.css')<html.indexOf('lc11-visual-polish-5b.css'));
+assert.ok(polish3.includes('.district-node.pressure-critical')&&polish3.includes('.map-panel[data-map-alert="critical"]'));assert.ok(refresh.includes('LIVING_CITY_11_UI'));
 assert.ok(html.indexOf('lc11-data.js')<html.indexOf('lc11-engine.js'));assert.ok(html.indexOf('lc11-engine.js')<html.indexOf('app.js'));assert.ok(html.indexOf('lc11-bootstrap.js')<html.indexOf('app.js'));assert.ok(html.indexOf('lc11-ui.js')>html.indexOf('app.js'));
 console.log('PASS: LIVING-CITY-11 Vertrag – Casino, Training, Schutz, Fernreisen, Animationen, v0170 und Startreihenfolge geprüft.');

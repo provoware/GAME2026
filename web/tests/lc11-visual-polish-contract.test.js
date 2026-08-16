@@ -1,0 +1,10 @@
+const fs=require('fs');const path=require('path');const assert=require('assert');const root=path.join(__dirname,'..');const read=(f)=>fs.readFileSync(path.join(root,f),'utf8');
+const html=read('index.html'),css=read('lc11-visual-polish.css');
+assert.ok(html.includes('lc11-visual-polish.css'));
+assert.ok(html.indexOf('lc11.css')<html.indexOf('lc11-visual-polish.css'));
+['body::before','.topbar::before','.map-stage::before','.district-node.current .zone','.action-card::before','.lc11-feature.casino','.lc11-feature.training','.lc11-feature.gear','.lc11-feature.station','.combat-stage'].forEach((x)=>assert.ok(css.includes(x),x));
+['vpBrandSweep','vpRouteGlow','vpNodePulse','vpCasinoCabinet'].forEach((x)=>assert.ok(css.includes('@keyframes '+x),x));
+assert.ok(css.includes('@media(prefers-reduced-motion:reduce)'));
+assert.ok(css.includes('.lc09-reduced-motion'));
+assert.ok(!css.includes('position:fixed;inset:0;pointer-events:auto'));
+console.log('PASS: LC11 Visual-Polish – Hierarchie, Tiefenwirkung, Karte, Ortsidentität, Mikroanimationen und Reduced-Motion geprüft.');

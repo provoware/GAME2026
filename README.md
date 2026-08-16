@@ -1,6 +1,6 @@
 # PPPOPPI – Bunkerwahrheit · LIVING-CITY-11
 
-Version **0.17.0-living-city-11**, Browser-Schema **12**. LC11 baut additiv auf dem qualifizierten LC10-Stadtmodell auf und macht vier bisher vorhandene Grundsysteme zu eigenständigen Gameplay-Schleifen: **Casino, Kampfsporttraining, Schutz/Ausrüstung und Bahnhof-Fernreisen**. Parallel erhält das Spiel einen konsistenten Visual- und Animationspass.
+Version **0.17.5-living-city-11-visual-polish-5**, Browser-Schema **12**. LC11 baut additiv auf dem qualifizierten LC10-Stadtmodell auf und macht vier bisher vorhandene Grundsysteme zu eigenständigen Gameplay-Schleifen: **Casino, Kampfsporttraining, Schutz/Ausrüstung und Bahnhof-Fernreisen**. Darauf liegen fünf additive Visual-Polish-Stufen; Visual Polish V priorisiert Spielfläche, Kontrast, Kartenlesbarkeit und Kampfdramaturgie, ohne Gameplay oder Save-Schema zu verändern.
 
 ## Neu in LIVING-CITY-11
 
@@ -12,6 +12,15 @@ Version **0.17.0-living-city-11**, Browser-Schema **12**. LC11 baut additiv auf 
 - **Stärker inszenierte Innenräume:** eigene Vollansicht „Stadtleben“ mit Ortslicht, Karten, Szenenflächen, Automaten-/Gleisanimationen und klarer visueller Hierarchie;
 - **Barrierefreiheit:** Animationen respektieren `prefers-reduced-motion` sowie den vorhandenen LC09-Ruhemodus;
 - **Speicher:** neuer Spiegel `v0170`, Schema 12, automatische Migration aus LC10 und älteren Ständen.
+
+## Visual Polish V – 0.17.5
+
+- kompakterer Kopfbereich und mehr sichtbare Karten-/Spielfläche;
+- klarere Drei-Bereich-Hierarchie: Führung links, Spielbühne Mitte, Entscheidungen rechts;
+- kontraststärkeres Farb- und Fokusmodell mit klarer Zustandskodierung;
+- hochwertigere Stadtkarte, Innenräume, Stadtleben-Ansicht und Kampfinszenierung;
+- vollständiger Reduced-Motion-/Ruhemodus-Vertrag für die neuen Übergänge;
+- Gameplay und Browser-Schema bleiben unverändert.
 
 ## Schnellstart
 
@@ -35,7 +44,7 @@ Die LC11-Vollansicht zeigt **Casino / Training / Schutz / Bahnhof** nur auf Abru
 ./PRUEFEN.sh
 ```
 
-Der lokale Vertrag umfasst **29 reproduzierbare Prüfblöcke**. LC11 selbst besitzt **12/12 Engine-Tests** einschließlich eines **3500-Zug-Langlaufs** sowie einen eigenen UI-/Animations-/Speichervertrag. Alle historischen LC03–LC10-Regressionssätze bleiben aktiv.
+Der lokale Vertrag umfasst **34 reproduzierbare Prüfblöcke**. LC11 selbst besitzt **12/12 Engine-Tests** einschließlich eines **3500-Zug-Langlaufs** sowie einen eigenen UI-/Animations-/Speichervertrag. Alle historischen LC03–LC10-Regressionssätze bleiben aktiv.
 
 ## Architektur
 
