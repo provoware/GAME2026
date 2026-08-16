@@ -1,34 +1,23 @@
-# Google-Chrome-Desktop-E2E – LIVING-CITY-10
+# Google-Chrome-Desktop-E2E – LIVING-CITY-11
 
 ## Zweck
 
-Die Release-Abnahme prüft das reale Browser-Spiel in **Google Chrome** zusätzlich zu den deterministischen Engine- und Vertragstests. Der qualifizierte LC09-Browserpfad bleibt erhalten; `tools/chrome_e2e_lc10.py` erweitert ihn um LC10-spezifische Prüfungen.
+LC11 erweitert den qualifizierten LC10-Browserpfad additiv. Alle bisherigen Karten-, Hilfe-, Dialog-, Journal-, Recovery-, Save-, Audio- und Kampfprüfungen bleiben aktiv. `tools/chrome_e2e_lc11.py` ergänzt die neue Stadtleben-Schicht.
 
-## Bildschirmgrößen
+## Geprüfte Desktopgrößen
 
 - 1280 × 720
 - 1366 × 768
 - 1600 × 900
 
-Geprüft werden Seitenüberlauf, Hauptbereiche und eine praktisch nutzbare Kartenfläche.
+## LC11-Zusatzprüfungen
 
-## Reale Bedienpfade
+- Version `0.17.0-living-city-11` / Schema 12;
+- Save-Spiegel `v0170`;
+- Stadtleben-Button und modale Vollansicht;
+- vier Gameplay-Bereiche Casino, Training, Schutz und Bahnhof;
+- Responsive-Fit der LC11-Vollansicht ohne horizontalen Überlauf;
+- vorhandene Reduced-Motion-Präferenz bleibt erreichbar;
+- Screenshot `living_city_11_hub.png` als sichtbare Evidenz.
 
-Der Browserlauf prüft unter anderem:
-
-1. Laden und Versions-/Schema-Vertrag;
-2. Hilfe ohne Kartenüberdeckung;
-3. sichtbaren Kartenzoom und Pfeiltasten-Pan;
-4. Innenraum, Dialog und gespeicherte Folge;
-5. Stadtgedächtnis per `J`;
-6. Klangmixer ohne unerwünschtes Autoplay;
-7. reale Reise;
-8. Speichern und Reload;
-9. Kampfvorbereitung und Tastatur `1/2/3`;
-10. Aufgaben-Kompass per `G`;
-11. LC10 **Stadtlage** mit zwölf Bezirken;
-12. `v0160`, Schema 11, Druck-/Momentum-Auswertung sowie Crew-Stress/Moral.
-
-## Evidenz
-
-GitHub Actions lädt Screenshots und `CHROME_E2E_RECEIPT.json` als separates LC10-Evidenzartefakt hoch. Ein fehlgeschlagener realer Browserpfad blockiert das Release auch dann, wenn alle statischen Tests grün sind.
+Die detaillierten Mechaniken werden zusätzlich deterministisch in `lc11-engine.test.js` geprüft; der reale Chrome-Lauf konzentriert sich auf Integration, Bedienbarkeit, Layout und tatsächliche DOM-Ausführung.

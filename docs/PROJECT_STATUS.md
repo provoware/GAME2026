@@ -2,41 +2,45 @@
 
 ## Stand
 
-**Browser-Spielstand:** 0.16.0-living-city-10  
-**Browser-Schema:** 11  
-**Primärplattform:** Google Chrome, offline-first; Chromium nachgelagerte Kompatibilität  
+**Browser-Spielstand:** 0.17.0-living-city-11  
+**Browser-Schema:** 12  
+**Primärplattform:** Chrome/Chromium, offline-first  
 **GitHub-Strang:** `agent/html-gang-map-boss-dynamics`
 
-## LIVING-CITY-10 – Bezirksdynamik und Crew-Eigeninitiative
+## LIVING-CITY-11 – Gameplay & Visual Update
 
-### Spieltiefe
+### Gameplay
 
-- zwölf Stadtorte besitzen gespeicherte Trendwerte für Druck, Stabilität, Chancen und Momentum;
-- Trends werden aus Kontrolle, Rivalendruck, Polizei, Unruhe und Standortwert abgeleitet;
-- Reise, Innenraumentscheidung, Konfliktfolge und Crew-Initiative hinterlassen nachvollziehbare Trendursachen;
-- Crew-Eigeninitiativen entstehen deterministisch und werden höchstens drei gleichzeitig offen gehalten;
-- Unterstützen, Beobachten und Umlenken verändern ausschließlich abstrakte Spielwerte;
-- jede Crew-Entscheidung wird im Stadtgedächtnis protokolliert.
+- Casino 9909: Automaten, Jackpot-Töpfe, Sessionwerte, Casino-Aufgaben und 5-Card-Draw-Poker;
+- Dojo Ostblock: Kampfsport, Intensität, Rangfortschritt, Stress und Trainingshistorie;
+- Eisenladen: Schutzkleidung mit Zustandswert, wirksamer Abnutzung und Wartung;
+- Geisterbahnhof: vier Fernziele mit Ticketkosten, Dauer und protokollierter Rückkehr;
+- Innenräume werden als progressive Vollansicht dargestellt statt die Hauptoberfläche weiter zu verdichten.
 
-### Bedienung
+### Design & Animation
 
-- `L` öffnet die progressive **Stadtlage**;
-- keine zusätzliche permanente Spalte;
-- Bezirkskarten zeigen drei kompakte Balken und die letzte Ursache;
-- `J` Stadtgedächtnis, `U` Stadt & Komfort, `G` Aufgaben-Kompass bleiben bestehen;
-- bestehende Kontrast-, Schrift- und Reduced-Motion-Profile bleiben erhalten.
+- neuer LC11-Visual-Layer mit klarer Ortscodierung;
+- animierte Slot-Walzen, Gleisbewegung und dezente Licht-/Sweep-Effekte;
+- größere Kartenflächen und bessere visuelle Priorisierung innerhalb der Vollansicht;
+- Responsive-Breakpoints für Desktop und schmale Ansichten;
+- `prefers-reduced-motion` und vorhandener Ruhemodus schalten Animationen zuverlässig ab.
 
 ### Speicher & Architektur
 
-- Browser-Schema 11;
-- kanonischer Save-Spiegel `pppoppi-bunkerwahrheit-html-v0160`;
-- Migration aus v0150/v0140/v0130/v0120/v0110/v0100/v090;
-- LC10 additive Schicht über LC09;
-- keine neue DOM-Beobachtung und keine Render-Schleife.
+- Schema 12;
+- Save-Spiegel `pppoppi-bunkerwahrheit-html-v0170`;
+- Migration aus v0160 und älteren Ständen;
+- additive LC11-Schicht über LC10;
+- keine globale DOM-Beobachtung und keine ungedrosselte Render-Schleife.
 
-## Abnahmestand
+## Abnahmestand lokal
 
-- lokaler Prüfvertrag: **27/27 PASS**;
-- LC10-Engine: **12/12 PASS**, einschließlich 3000-Zug-Langlauf;
-- echter Google-Chrome-E2E-Pfad ist verpflichtendes Remote-Gate;
-- Release folgt ausschließlich aus einem erfolgreichen GitHub-Artefakt mit erneutem Entpack-/Prüflauf und SHA-256.
+- Gesamtvertrag: **29/29 PASS**;
+- LC11-Engine: **12/12 PASS**;
+- 3500-Zug-Langlauf: **PASS**;
+- historische LC03–LC10-Regressionen: **PASS**;
+- LC11 UI-/Animations-/v0170-Vertrag: **PASS**.
+
+## Nächstes Remote-Gate
+
+GitHub Actions muss den neuen Commit erneut prüfen. Ein finaler Release-/ZIP-Stand wird erst aus einem erfolgreichen Remote-Artefakt qualifiziert.

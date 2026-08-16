@@ -3,13 +3,13 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$ROOT"
 
-echo '===== LIVING-CITY-10 STADTDYNAMIK-, CREW-, BROWSER- & RELEASE-VORPRÜFUNG ====='
+echo '===== LIVING-CITY-11 GAMEPLAY-, VISUAL-, BROWSER- & RELEASE-VORPRÜFUNG ====='
 command -v node >/dev/null 2>&1 || { echo 'Node.js fehlt. Für das Spielen ist Node nicht nötig; nur für diese Prüfung.'; exit 2; }
 
-echo '[1/27] Basis-Daten Syntax'
+echo '[1/29] Basis-Daten Syntax'
 node --check web/data.js
 
-echo '[2/27] Revival-/05-/06-/07-/08-/09-Daten Syntax'
+echo '[2/29] Revival-/05-/06-/07-/08-/09-Daten Syntax'
 node --check web/revival-data.js
 node --check web/lc05-data.js
 node --check web/lc06-data.js
@@ -17,32 +17,35 @@ node --check web/lc07-data.js
 node --check web/lc08-data.js
 node --check web/lc09-data.js
 node --check web/lc10-data.js
+node --check web/lc11-data.js
 
-echo '[3/27] Basis-Engine Syntax'
+echo '[3/29] Basis-Engine Syntax'
 node --check web/engine.js
 
-echo '[4/27] Revival-Engine Syntax'
+echo '[4/29] Revival-Engine Syntax'
 node --check web/revival-missions.js
 node --check web/revival-world.js
 node --check web/revival-engine.js
 
-echo '[5/27] 04A-Reparatur Syntax'
+echo '[5/29] 04A-Reparatur Syntax'
 node --check web/repair-bootstrap.js
 node --check web/repair-04a.js
 
-echo '[6/27] LIVING-CITY-05/06/07/08/09 Syntax'
+echo '[6/29] LIVING-CITY-05/06/07/08/09 Syntax'
 node --check web/lc05-engine.js
 node --check web/lc06-engine.js
 node --check web/lc07-engine.js
 node --check web/lc08-engine.js
 node --check web/lc09-engine.js
 node --check web/lc10-engine.js
+node --check web/lc11-engine.js
 node --check web/lc05-bootstrap.js
 node --check web/lc06-bootstrap.js
 node --check web/lc07-bootstrap.js
 node --check web/lc08-bootstrap.js
 node --check web/lc09-bootstrap.js
 node --check web/lc10-bootstrap.js
+node --check web/lc11-bootstrap.js
 node --check web/lc05-ui.js
 node --check web/lc05b-ui.js
 node --check web/lc06-ui.js
@@ -50,72 +53,79 @@ node --check web/lc07-ui.js
 node --check web/lc08-ui.js
 node --check web/lc09-ui.js
 node --check web/lc10-ui.js
+node --check web/lc11-ui.js
 node --check web/ui-refresh.js
 
-echo '[7/27] Basis-/Revival-UI Syntax'
+echo '[7/29] Basis-/Revival-UI Syntax'
 node --check web/app.js
 node --check web/revival-ui.js
 
-echo '[8/27] Kern-Regression / 500 Züge'
+echo '[8/29] Kern-Regression / 500 Züge'
 node web/tests/engine.test.js
 
-echo '[9/27] Revival-Regression'
+echo '[9/29] Revival-Regression'
 node web/tests/revival-engine.test.js
 
-echo '[10/27] LIVING-CITY-05 Regression / 1200 Züge'
+echo '[10/29] LIVING-CITY-05 Regression / 1200 Züge'
 node web/tests/lc05-engine.test.js
 
-echo '[11/27] LIVING-CITY-06 Regression / 1500 Züge'
+echo '[11/29] LIVING-CITY-06 Regression / 1500 Züge'
 node web/tests/lc06-engine.test.js
 
-echo '[12/27] LIVING-CITY-07 Regression / 2000 Züge'
+echo '[12/29] LIVING-CITY-07 Regression / 2000 Züge'
 node web/tests/lc07-engine.test.js
 
-echo '[13/27] LIVING-CITY-08 Regression / 2500 Züge'
+echo '[13/29] LIVING-CITY-08 Regression / 2500 Züge'
 node web/tests/lc08-engine.test.js
 
-echo '[14/27] LIVING-CITY-09 Stadt-Puls-/Bedienprofil-Regression'
+echo '[14/29] LIVING-CITY-09 Stadt-Puls-/Bedienprofil-Regression'
 node web/tests/lc09-engine.test.js
 
-echo '[15/27] LIVING-CITY-10 Bezirks-/Crew-Regression / 3000 Züge'
+echo '[15/29] LIVING-CITY-10 Bezirks-/Crew-Regression / 3000 Züge'
 node web/tests/lc10-engine.test.js
 
-echo '[16/27] Revival-Director / 1000 Züge'
+echo '[16/29] LIVING-CITY-11 Gameplay-Regression / 3500 Züge'
+node web/tests/lc11-engine.test.js
+
+echo '[17/29] Revival-Director / 1000 Züge'
 node web/tests/director-simulation.test.js
 
-echo '[17/27] UI-Smoke + finaler statischer UI-Vertrag'
+echo '[18/29] UI-Smoke + finaler statischer UI-Vertrag'
 node web/tests/ui-smoke.test.js
 node web/tests/static-ui.test.js
 
-echo '[18/27] Karten-/Bedien-Regression'
+echo '[19/29] Karten-/Bedien-Regression'
 node web/tests/ui-regression.test.js
 
-echo '[19/27] LIVING-CITY-05 Modul-/Visual-Vertrag'
+echo '[20/29] LIVING-CITY-05 Modul-/Visual-Vertrag'
 node web/tests/lc05-contract.test.js
 
-echo '[20/27] Revival-Modul-/Visual-Vertrag'
+echo '[21/29] Revival-Modul-/Visual-Vertrag'
 node web/tests/revival-contract.test.js
 
-echo '[21/27] Chrome-/Performance-Regression'
+echo '[22/29] Chrome-/Performance-Regression'
 node web/tests/performance-regression.test.js
 
-echo '[22/27] LIVING-CITY-05B Karten-/Responsive-Vertrag'
+echo '[23/29] LIVING-CITY-05B Karten-/Responsive-Vertrag'
 node web/tests/lc05b-contract.test.js
 
-echo '[23/27] LIVING-CITY-06 Führungs-/Innenraum-/Klang-/Kampf-Vertrag'
+echo '[24/29] LIVING-CITY-06 Führungs-/Innenraum-/Klang-/Kampf-Vertrag'
 node web/tests/lc06-contract.test.js
 
-echo '[24/27] LIVING-CITY-07 Folgeketten-/Chrome-Basisvertrag'
+echo '[25/29] LIVING-CITY-07 Folgeketten-/Chrome-Basisvertrag'
 node web/tests/lc07-contract.test.js
 
-echo '[25/27] LIVING-CITY-08 Stadtgedächtnis-/Journal-/Fokusvertrag'
+echo '[26/29] LIVING-CITY-08 Stadtgedächtnis-/Journal-/Fokusvertrag'
 node web/tests/lc08-contract.test.js
 
-echo '[26/27] LIVING-CITY-09 Recovery-/Lesemodus-Vertrag'
+echo '[27/29] LIVING-CITY-09 Recovery-/Lesemodus-Vertrag'
 node web/tests/lc09-contract.test.js
 
-echo '[27/27] LIVING-CITY-10 Bezirksdynamik-/Crew-/v0160-Vertrag + Python-Syntax'
+echo '[28/29] LIVING-CITY-10 Bezirksdynamik-/Crew-/v0160-Vertrag + Python-Syntax'
 node web/tests/lc10-contract.test.js
-python3 -m py_compile tools/chrome_e2e.py tools/chrome_e2e_core.py tools/chrome_e2e_lc10.py
+python3 -m py_compile tools/chrome_e2e.py tools/chrome_e2e_core.py tools/chrome_e2e_lc10.py tools/chrome_e2e_lc11.py
+
+echo '[29/29] LIVING-CITY-11 Casino-/Training-/Schutz-/Fernreise-/Animationsvertrag'
+node web/tests/lc11-contract.test.js
 
 echo 'ERGEBNIS: PASS'

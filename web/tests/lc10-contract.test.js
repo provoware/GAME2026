@@ -1,6 +1,6 @@
 const fs=require('fs');const path=require('path');const assert=require('assert');const root=path.join(__dirname,'..');const read=(f)=>fs.readFileSync(path.join(root,f),'utf8');
 const html=read('index.html'),ui=read('lc10-ui.js'),css=read('lc10.css'),boot=read('lc10-bootstrap.js'),data=read('lc10-data.js'),engine=read('lc10-engine.js'),refresh=read('ui-refresh.js');
-assert.ok(html.includes('0.16.0 LIVING-CITY-10'));
+assert.ok(html.includes('lc10-data.js')&&html.includes('lc10-engine.js')&&html.includes('lc10-bootstrap.js')&&html.includes('lc10-ui.js')); // LC10 bleibt als historische Basisschicht eingebunden
 ['lc10-data.js','lc10-engine.js','lc10-bootstrap.js','lc10-ui.js','lc10.css'].forEach((x)=>assert.ok(html.includes(x),x));
 assert.ok(data.includes("schema:11")&&data.includes('initiativeChoices')&&data.includes('districtBands'));
 assert.ok(engine.includes('getCityTrends')&&engine.includes('resolveCrewInitiative')&&engine.includes('3000')===false);

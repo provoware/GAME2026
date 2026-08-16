@@ -45,13 +45,13 @@ jobs:
         run: ./PRUEFEN.sh
 
       - name: Real Google Chrome desktop E2E
-        run: python tools/chrome_e2e_lc10.py --output evidence/chrome-e2e
+        run: python tools/chrome_e2e_lc11.py --output evidence/chrome-e2e
 
       - name: Publish Chrome E2E evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: PPPOPPI-Bunkerwahrheit-LIVING-CITY-10-Chrome-E2E
+          name: PPPOPPI-Bunkerwahrheit-LIVING-CITY-11-Chrome-E2E
           if-no-files-found: error
           retention-days: 14
           path: evidence/chrome-e2e/
@@ -63,10 +63,10 @@ jobs:
       - name: Check Python syntax
         run: python -m compileall -q tools
 
-      - name: Publish LIVING-CITY-10 source artifact
+      - name: Publish LIVING-CITY-11 source artifact
         uses: actions/upload-artifact@v4
         with:
-          name: PPPOPPI-Bunkerwahrheit-LIVING-CITY-10
+          name: PPPOPPI-Bunkerwahrheit-LIVING-CITY-11
           if-no-files-found: error
           retention-days: 14
           path: |
@@ -74,6 +74,7 @@ jobs:
             tools/chrome_e2e.py
             tools/chrome_e2e_core.py
             tools/chrome_e2e_lc10.py
+            tools/chrome_e2e_lc11.py
             evidence/chrome-e2e/
             README.md
             CHANGELOG.md

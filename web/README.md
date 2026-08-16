@@ -1,5 +1,7 @@
-# Browserfassung – LIVING-CITY-10
+# Browser-Spiel
 
-Version **0.16.0-living-city-10**, Schema **11**, Chrome-first.
+Aktueller Stand: **0.17.0-living-city-11 / Schema 12**.
 
-LC10 ergänzt die vorhandene Living-City-Kette additiv um Bezirks-Trends und Crew-Eigeninitiative. Die Hauptansicht bleibt kompakt; Details liegen in der Stadtlage (`L`). Der kanonische lokale Save-Spiegel ist `pppoppi-bunkerwahrheit-html-v0160`.
+Startdatei: `index.html`. LC11 erweitert die additive Schichtenfolge um `lc11-data.js`, `lc11-engine.js`, `lc11-bootstrap.js`, `lc11-ui.js` und `lc11.css`.
+
+Taste **V** öffnet Casino, Training, Schutz/Ausrüstung und Bahnhof-Fernreisen.

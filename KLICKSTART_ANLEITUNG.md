@@ -1,38 +1,34 @@
-# Klickstart – PPPOPPI Bunkerwahrheit 0.16.0 · LIVING-CITY-10
+# Klickstart – PPPOPPI Bunkerwahrheit 0.17.0 · LIVING-CITY-11
 
 ## Linux / Kubuntu
 
-1. ZIP vollständig entpacken.
-2. `START_GAME.sh` doppelklicken oder ausführen.
-3. Der Starter bevorzugt **Google Chrome**, danach Chromium; Firefox bleibt Reserve.
+1. Projekt vollständig entpacken.
+2. `START_GAME.sh` doppelklicken oder im Projektordner ausführen.
+3. Das Spiel öffnet Chrome/Chromium, alternativ Firefox.
 
 ## Windows
 
-`START_GAME.bat` doppelklicken. Wenn Google Chrome installiert ist, wird es bevorzugt geöffnet.
+`START_GAME.bat` doppelklicken.
 
-## So findest du dich sofort zurecht
+## Neu: Stadtleben
 
-- **G** setzt den Fokus auf den aktuell sinnvollsten nächsten Schritt.
-- **L** öffnet die neue **Stadtlage** mit Bezirks-Trends und Crew-Initiativen.
-- **J** öffnet das Stadtgedächtnis mit früheren Entscheidungen und späteren Folgen.
-- **U** öffnet Stadt & Komfort mit Lesemodus und Wiederherstellungspunkten.
-- **Hilfe** liegt neben oder unter der Karte und verdeckt sie nicht.
-- **I** öffnet den Innenraum des aktuellen Ortes.
-- **K** öffnet den Klangmixer; Klang startet nur nach einer Nutzeraktion.
-- **E** beendet bewusst einen Zug.
+Mit **V** öffnest du die neue große LC11-Ansicht. Dort liegen vier Bereiche:
 
-## Stadtlage verstehen
+- **Casino:** Automaten drehen oder Poker selbst spielen.
+- **Training:** im Dojo Crew, Kampfsport und Intensität wählen.
+- **Schutz:** am Schwarzmarkt Schutzkleidung kaufen, ausrüsten und warten.
+- **Bahnhof:** am Geisterbahnhof Fernreisen in andere Städte starten.
 
-- **Druck** zeigt, wie belastet ein Bezirk aktuell ist.
-- **Stabilität** zeigt, wie ruhig und gefestigt die lokale Lage ist.
-- **Chancen** zeigen das aktuelle Entwicklungspotenzial.
-- **Momentum** zeigt die Richtung: positiv = Entwicklung verbessert sich relativ, negativ = Druck gewinnt relativ an Gewicht.
-- Crew-Initiativen können **unterstützt**, **beobachtet** oder **umgelenkt** werden. Die Wirkungen betreffen ausschließlich abstrakte Spielwerte.
+Die Funktionen zeigen selbst an, wenn du noch nicht am passenden Ort bist.
 
-## Karte & Reise
+## Wichtige Tasten
 
-Bezirk oder Direktziel auswählen. `R` startet eine angebotene direkte Reise. Mausziehen, WASD oder Pfeile bewegen die Karte; Mausrad beziehungsweise `+/-` zoomt; `Home` oder `0` zeigt die Gesamtkarte; `M` setzt den Kartenfokus.
+`V` Stadtleben · `G` nächster Schritt · `L` Stadtlage · `J` Stadtgedächtnis · `U` Stadt & Komfort · `M` Karte · `H` Hilfe · `R` Reise · `E` Zug beenden · `I` Innenraum · `K` Klang.
+
+## Für besseres Lesen
+
+Unter **Stadt & Komfort** stehen größere Schrift, hoher Kontrast und reduzierte Bewegung zur Verfügung. LC11 respektiert diese Einstellung auch bei Automaten- und Bahnhofanimationen.
 
 ## Technische Prüfung
 
-`./PRUEFEN.sh` führt **27 reproduzierbare Prüfblöcke** aus. Node.js wird nur für die Entwicklerprüfung benötigt, nicht für den normalen Spielbetrieb.
+`./PRUEFEN.sh` führt **29 Prüfblöcke** aus. Node.js wird nur für Entwicklerprüfungen benötigt, nicht zum normalen Spielen.

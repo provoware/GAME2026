@@ -13,6 +13,7 @@
     root.LIVING_CITY_08_UI?.render?.();
     root.LIVING_CITY_09_UI?.render?.();
     root.LIVING_CITY_10_UI?.render?.();
+    root.LIVING_CITY_11_UI?.render?.();
   }
   function schedule(){
     if(pending)return;

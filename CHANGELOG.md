@@ -1,5 +1,17 @@
 # Änderungsverlauf
 
+## 0.17.0-living-city-11 – LIVING-CITY-11
+
+- Casino 9909 um animierte Spielautomaten, Sessionbilanz, Jackpots und Casino-Aufgaben erweitert.
+- 5-Card-Draw-Poker in die neue LC11-Spielhallenansicht integriert.
+- Dojo Ostblock mit Crew-/Kampfsport-/Intensitätswahl, Rangfortschritt und Trainingshistorie ergänzt.
+- Schutzkleidung erhält Zustandswert, Abnutzung im Konflikt und Wartung im Eisenladen.
+- Geisterbahnhof um vier mehrzügige Fernreisen in andere Städte ergänzt.
+- Progressive Vollansicht „Stadtleben“ per Taste V eingeführt.
+- Neuer Visual-Layer mit Slot-, Gleis- und Lichtanimationen sowie Responsive-/Reduced-Motion-Regeln.
+- Save-Spiegel auf v0170 / Schema 12 erweitert.
+- Lokaler Prüfvertrag auf 29/29 Blöcke und LC11-Langlauf auf 3500 Züge erweitert.
+
 ## 0.16.0-living-city-10 – LIVING-CITY-10
 
 - Bezirksdynamik mit Druck, Stabilität, Chancen und Momentum ergänzt.
