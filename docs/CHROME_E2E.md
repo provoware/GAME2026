@@ -12,7 +12,7 @@ LC11 erweitert den qualifizierten LC10-Browserpfad additiv. Alle bisherigen Kart
 
 ## LC11-Zusatzprüfungen
 
-- Version `0.17.5-living-city-11-visual-polish-5` / Schema 12;
+- Version `0.17.6-living-city-11-visual-polish-6` / Schema 12;
 - Save-Spiegel `v0170`;
 - Stadtleben-Button und modale Vollansicht;
 - vier Gameplay-Bereiche Casino, Training, Schutz und Bahnhof;

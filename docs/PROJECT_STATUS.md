@@ -2,7 +2,7 @@
 
 ## Stand
 
-**Browser-Spielstand:** 0.17.5-living-city-11-visual-polish-5  
+**Browser-Spielstand:** 0.17.6-living-city-11-visual-polish-6  
 **Browser-Schema:** 12  
 **Primärplattform:** Chrome/Chromium, offline-first  
 **GitHub-Strang:** `agent/html-gang-map-boss-dynamics`
@@ -35,7 +35,7 @@
 
 ## Abnahmestand lokal
 
-- Gesamtvertrag: **34/34 PASS**;
+- Gesamtvertrag: **35/35 PASS**;
 - LC11-Engine: **12/12 PASS**;
 - 3500-Zug-Langlauf: **PASS**;
 - historische LC03–LC10-Regressionen: **PASS**;
@@ -54,4 +54,7 @@ Die Oberfläche wurde kontraststärker, spürbar klarer gegliedert und in Tabs, 
 
 
 ### Visual-Polish V
-Die Hauptansicht priorisiert Spielfläche und Entscheidungsklarheit: kompakter Kopfbereich, dominantere Karte, ruhigere Seitenleisten, stärkere Kontrastlogik und eine spielartigere Kampf-/Stadtleben-Inszenierung. Gameplay und Schema 12 bleiben unverändert. Der lokale Gesamtvertrag steht bei **34/34 PASS**; das Remote-Chrome-E2E-Gate ist noch ausstehend.
+Die Hauptansicht priorisiert Spielfläche und Entscheidungsklarheit: kompakter Kopfbereich, dominantere Karte, ruhigere Seitenleisten, stärkere Kontrastlogik und eine spielartigere Kampf-/Stadtleben-Inszenierung. Gameplay und Schema 12 bleiben unverändert. Der bisherige Visual-Polish-V-Gesamtvertrag stand bei **34/34 PASS**.
+
+### Visual-Polish VI
+Die Stadtkarte erhält eine stärkere räumliche Bühne mit ortsspezifischer Bezirkscodierung, klareren Routen-/Fokuszuständen und hochwertigeren Aktionsflächen. Casino, Training, Schutz und Bahnhof wirken materieller und unterscheidbarer; Innenräume und Kampf erhalten zusätzliche Tiefen-, Licht- und Bühnenebenen. Die Schicht bleibt rein präsentational: **Schema 12, Save-Spiegel v0170 und Gameplaylogik bleiben unverändert**. Der lokale Gesamtvertrag umfasst nun **35/35 Prüfblöcke**.

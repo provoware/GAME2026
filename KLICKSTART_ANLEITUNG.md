@@ -1,4 +1,4 @@
-# Klickstart – PPPOPPI Bunkerwahrheit 0.17.5 · LIVING-CITY-11 VISUAL-POLISH-V
+# Klickstart – PPPOPPI Bunkerwahrheit 0.17.6 · LIVING-CITY-11 VISUAL-POLISH-VI
 
 ## Linux / Kubuntu
 
@@ -31,4 +31,4 @@ Unter **Stadt & Komfort** stehen größere Schrift, hoher Kontrast und reduziert
 
 ## Technische Prüfung
 
-`./PRUEFEN.sh` führt **34 Prüfblöcke** aus. Node.js wird nur für Entwicklerprüfungen benötigt, nicht zum normalen Spielen.
+`./PRUEFEN.sh` führt **35 Prüfblöcke** aus. Node.js wird nur für Entwicklerprüfungen benötigt, nicht zum normalen Spielen.

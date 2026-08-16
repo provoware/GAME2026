@@ -10,6 +10,6 @@ assert.ok(map.includes('pressureClass'));
 assert.ok(map.includes("mapPanel.dataset.mapAlert"));
 assert.ok(map.includes("mapPanel.dataset.mapOwner"));
 assert.ok(map.includes("event?'event-hot':''"));
-assert.ok(ui.includes('0.17.5 · Schema 12'));
+assert.ok(ui.includes('0.17.6 · Schema 12'));
 assert.ok(!css.includes('pointer-events:auto'));
 console.log('PASS: Visual-Polish III – dynamische Bezirksatmosphäre, Kartenstatus, Stadtereignisse, Innenraumtiefe, Kampfdramaturgie und Reduced-Motion geprüft.');

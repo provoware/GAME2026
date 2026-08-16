@@ -25,5 +25,5 @@
     residential:{title:'Dojo Ostblock',accent:'lime',description:'Trainingsmatten, Rangfortschritt und Crew-Entwicklung.'},
     market:{title:'Eisenladen',accent:'gold',description:'Schutzkleidung, Ausrüstung und Wartung mit Zustandswert.'}
   };
-  return Object.freeze({...BASE,version:'0.17.5-living-city-11-visual-polish-5',schema:12,trainingPrograms,intercityDestinations,casinoChallenges,interiorScenes});
+  return Object.freeze({...BASE,version:'0.17.6-living-city-11-visual-polish-6',schema:12,trainingPrograms,intercityDestinations,casinoChallenges,interiorScenes});
 });

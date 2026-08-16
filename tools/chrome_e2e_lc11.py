@@ -22,7 +22,7 @@ def scenario(driver,url,out,result):
     base_scenario(driver,url,out,result)
     version=raw_js(driver,"return window.LIVING_CITY_11_ENGINE?.state?.version")
     schema=raw_js(driver,"return window.LIVING_CITY_11_ENGINE?.state?.schema")
-    core.assert_true(version=='0.17.5-living-city-11-visual-polish-5' and schema==12,f'LC11 Version/Schema falsch: {version}/{schema}')
+    core.assert_true(version=='0.17.6-living-city-11-visual-polish-6' and schema==12,f'LC11 Version/Schema falsch: {version}/{schema}')
     core.assert_true(bool(raw_js(driver,"return localStorage.getItem('pppoppi-bunkerwahrheit-html-v0170')")),'v0170-Speicherspiegel fehlt')
     core.safe_click(driver,'#lc11Button')
     core.wait_js(driver,"return !!document.querySelector('#lc11Dialog')?.open")
@@ -54,7 +54,7 @@ if __name__=='__main__':
         p=receipt_path()
         if p.exists():
             receipt=json.loads(p.read_text(encoding='utf-8'))
-            receipt['version']='0.17.5-living-city-11-visual-polish-5';receipt['schema']=12
+            receipt['version']='0.17.6-living-city-11-visual-polish-6';receipt['schema']=12
             receipt['compatibility_core']='LC10 qualified real-browser scenario retained and extended'
             p.write_text(json.dumps(receipt,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     raise SystemExit(rc)

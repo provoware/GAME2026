@@ -2,9 +2,9 @@ const fs=require('fs');const path=require('path');const assert=require('assert')
 const html=read('index.html'),css=read('lc11-visual-polish-4.css'),ui=read('lc11-ui.js'),data=read('lc11-data.js');
 assert.ok(html.includes('lc11-visual-polish-4.css'));
 assert.ok(html.indexOf('lc11-visual-polish-3.css')<html.indexOf('lc11-visual-polish-4.css'));
-assert.ok(html.includes('0.17.5 LIVING-CITY-11 VISUAL-POLISH-V'));
-assert.ok(data.includes("version:'0.17.5-living-city-11-visual-polish-5'"));
-assert.ok(ui.includes('0.17.5 · Schema 12'));
+assert.ok(html.includes('0.17.6 LIVING-CITY-11 VISUAL-POLISH-VI'));
+assert.ok(data.includes("version:'0.17.6-living-city-11-visual-polish-6'"));
+assert.ok(ui.includes('0.17.6 · Schema 12'));
 [':root{','.workspace{grid-template-columns','.legend span{','.map-workbench.help-open{','.help-dock{','.tab.active{','.footerbar{','.input-line input','.route-state.ready','.lc11-nav.active{'].forEach(x=>assert.ok(css.includes(x),x));
 assert.ok(css.includes('--vp4-muted:#b8c4d3'));
 assert.ok(css.includes('button:focus-visible'));

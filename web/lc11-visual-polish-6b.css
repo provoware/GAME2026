@@ -1,0 +1,230 @@
+/* LIVING-CITY-11 · Visual Polish VI · Spezialbühnen
+   Innenräume, Kampf, Casino, Training, Schutz und Bahnhof. */
+
+/* 1. Modale Bühnen: bessere Trennung von Hintergrund und Interaktionsraum. */
+.modal::backdrop{
+  background:
+    radial-gradient(ellipse at 50% 12%,rgba(121,241,255,.055),transparent 28%),
+    radial-gradient(ellipse at 50% 100%,rgba(199,166,255,.035),transparent 34%),
+    rgba(0,0,0,.865)!important;
+  backdrop-filter:blur(12px) saturate(.72)!important;
+}
+.modal-card,.lc11-card{
+  overflow:hidden;
+  background:
+    radial-gradient(ellipse at 50% -10%,rgba(121,241,255,.045),transparent 32%),
+    linear-gradient(158deg,#101a27,#070c13 68%,#05080d)!important;
+}
+.modal-card::after,.lc11-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+  border-radius:inherit;
+  background:
+    linear-gradient(90deg,rgba(121,241,255,.025),transparent 16%,transparent 84%,rgba(199,166,255,.02)),
+    linear-gradient(180deg,rgba(255,255,255,.02),transparent 18%);
+}
+.modal-card>*,.lc11-card>*{position:relative;z-index:1}
+
+/* 2. LC11 Stadtleben: vier Bereiche wie eigene Spielräume statt gleichförmiger Kacheln. */
+.lc11-header{
+  position:relative;
+  border-bottom-color:rgba(218,236,255,.11)!important;
+  background:linear-gradient(90deg,rgba(121,241,255,.035),transparent 44%)!important;
+}
+.lc11-header::after{
+  content:"CITY SYSTEM // 9909";
+  position:absolute;
+  right:74px;
+  bottom:9px;
+  color:rgba(121,241,255,.28);
+  font-size:6px;
+  font-weight:900;
+  letter-spacing:.20em;
+  pointer-events:none;
+}
+.lc11-version{
+  border-color:rgba(121,241,255,.20)!important;
+  background:rgba(121,241,255,.045)!important;
+  box-shadow:inset 0 1px rgba(255,255,255,.035)!important;
+}
+.lc11-navbar{
+  background:rgba(2,7,12,.66)!important;
+  border-color:rgba(218,236,255,.10)!important;
+  box-shadow:inset 0 -1px rgba(255,255,255,.02)!important;
+}
+.lc11-nav{
+  position:relative;
+  overflow:hidden;
+}
+.lc11-nav.active{
+  border-color:rgba(121,241,255,.38)!important;
+  background:linear-gradient(180deg,rgba(121,241,255,.12),rgba(121,241,255,.045))!important;
+  box-shadow:0 0 20px rgba(121,241,255,.07)!important;
+}
+.lc11-nav.active::after{
+  content:"";
+  position:absolute;
+  left:18%;right:18%;bottom:1px;height:2px;
+  border-radius:99px;
+  background:var(--vp6-cyan);
+  box-shadow:0 0 10px rgba(121,241,255,.34);
+}
+.lc11-overview-grid{gap:11px!important}
+.lc11-feature{
+  position:relative;
+  isolation:isolate;
+  min-height:158px!important;
+  overflow:hidden;
+  border-color:rgba(218,236,255,.14)!important;
+  box-shadow:0 13px 30px rgba(0,0,0,.16),inset 0 1px rgba(255,255,255,.04)!important;
+  transition:transform .18s var(--vp6-ease),border-color .18s ease,box-shadow .18s ease!important;
+}
+.lc11-feature::before{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  width:210px;
+  height:210px;
+  right:-72px;
+  top:-92px;
+  border-radius:50%;
+  opacity:.65;
+  filter:blur(4px);
+  pointer-events:none;
+}
+.lc11-feature::after{
+  position:absolute!important;
+  right:14px!important;
+  top:12px!important;
+  width:auto!important;
+  height:auto!important;
+  border:0!important;
+  border-radius:0!important;
+  background:none!important;
+  color:rgba(255,255,255,.16)!important;
+  font-size:26px!important;
+  font-weight:950!important;
+  letter-spacing:-.06em!important;
+  line-height:1!important;
+}
+.lc11-feature:hover{
+  transform:translateY(-2px);
+  border-color:rgba(218,236,255,.24)!important;
+  box-shadow:0 17px 38px rgba(0,0,0,.22),inset 0 1px rgba(255,255,255,.055)!important;
+}
+.lc11-feature.casino{background:linear-gradient(145deg,rgba(94,61,130,.42),rgba(10,14,22,.96))!important}
+.lc11-feature.casino::before{background:radial-gradient(circle,rgba(199,166,255,.52),transparent 64%)}
+.lc11-feature.training{background:linear-gradient(145deg,rgba(70,91,20,.42),rgba(10,14,20,.96))!important}
+.lc11-feature.training::before{background:radial-gradient(circle,rgba(227,255,99,.48),transparent 64%)}
+.lc11-feature.gear{background:linear-gradient(145deg,rgba(108,80,33,.43),rgba(12,14,18,.96))!important}
+.lc11-feature.gear::before{background:radial-gradient(circle,rgba(255,210,122,.50),transparent 64%)}
+.lc11-feature.station{background:linear-gradient(145deg,rgba(24,89,102,.42),rgba(8,14,20,.96))!important}
+.lc11-feature.station::before{background:radial-gradient(circle,rgba(121,241,255,.50),transparent 64%)}
+.lc11-feature h3{font-size:16px!important;letter-spacing:-.02em}
+.lc11-feature>span{font-weight:900;letter-spacing:.14em}
+.lc11-feature button{box-shadow:0 8px 20px rgba(0,0,0,.20),inset 0 1px rgba(255,255,255,.05)!important}
+.lc11-current-scene{
+  position:relative;
+  overflow:hidden;
+  border-color:rgba(121,241,255,.24)!important;
+  background:linear-gradient(100deg,rgba(121,241,255,.065),rgba(255,255,255,.015) 42%,rgba(199,166,255,.02))!important;
+  box-shadow:inset 3px 0 rgba(121,241,255,.52),0 10px 24px rgba(0,0,0,.12)!important;
+}
+.lc11-current-scene::after{
+  content:"CURRENT LOCATION";
+  position:absolute;
+  right:15px;
+  top:12px;
+  color:rgba(121,241,255,.18);
+  font-size:7px;
+  font-weight:900;
+  letter-spacing:.18em;
+}
+
+/* 3. Casino: Automat und Poker bekommen materiellere Oberfläche. */
+.lc11-casino-head,.lc11-slot,.lc11-poker,.lc11-challenge{
+  border-color:rgba(199,166,255,.18)!important;
+}
+.lc11-slot{
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 88% 12%,rgba(199,166,255,.08),transparent 32%),
+    linear-gradient(155deg,rgba(39,27,57,.82),rgba(8,12,18,.96))!important;
+  box-shadow:inset 0 1px rgba(255,255,255,.045),0 14px 30px rgba(0,0,0,.18)!important;
+}
+.lc11-slot::before{
+  content:"";
+  position:absolute;
+  left:10px;right:10px;top:10px;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(199,166,255,.36),transparent);
+  pointer-events:none;
+}
+.lc11-reels{
+  padding:7px!important;
+  border:1px solid rgba(223,229,242,.18);
+  border-radius:12px;
+  background:linear-gradient(180deg,#06080e,#11131b 50%,#05070c);
+  box-shadow:inset 0 10px 22px rgba(0,0,0,.48),inset 0 -8px 20px rgba(0,0,0,.40)!important;
+}
+.lc11-reel{
+  border-color:rgba(255,255,255,.18)!important;
+  background:linear-gradient(180deg,#f3f5f8,#cbd1d9 48%,#f9fbfd)!important;
+  box-shadow:inset 0 5px 10px rgba(255,255,255,.62),inset 0 -8px 12px rgba(0,0,0,.13),0 6px 12px rgba(0,0,0,.18)!important;
+}
+.lc11-slot.spinning .lc11-reels{box-shadow:inset 0 10px 22px rgba(0,0,0,.48),inset 0 -8px 20px rgba(0,0,0,.40),0 0 22px rgba(199,166,255,.14)!important}
+.lc11-poker{
+  background:
+    radial-gradient(ellipse at center,rgba(34,124,75,.27),rgba(5,21,13,.88) 62%),
+    linear-gradient(180deg,#0b1712,#07100c)!important;
+  box-shadow:inset 0 0 40px rgba(0,0,0,.28),0 14px 30px rgba(0,0,0,.16)!important;
+}
+.lc11-cards button{
+  position:relative;
+  background:linear-gradient(145deg,#fff,#e8ecf1 72%,#d9dee5)!important;
+  box-shadow:0 10px 22px rgba(0,0,0,.28),inset 0 1px #fff!important;
+}
+.lc11-cards button.held{
+  box-shadow:0 14px 30px rgba(0,0,0,.30),0 0 0 2px rgba(227,255,99,.55),0 0 20px rgba(227,255,99,.13)!important;
+}
+
+/* 4. Training: Fortschritt als klarer Trainingsraum. */
+.lc11-training-stage{
+  overflow:hidden;
+  background:
+    linear-gradient(120deg,rgba(227,255,99,.055),transparent 46%),
+    linear-gradient(160deg,rgba(255,255,255,.035),rgba(7,12,17,.88))!important;
+}
+.lc11-training-hero{
+  position:relative;
+  min-height:112px;
+  border:1px solid rgba(227,255,99,.14);
+  border-radius:14px;
+  background:
+    radial-gradient(circle at 26% 50%,rgba(227,255,99,.14),transparent 28%),
+    linear-gradient(110deg,#101a17,#091017)!important;
+  box-shadow:inset 0 0 44px rgba(0,0,0,.28)!important;
+}
+.lc11-training-hero::after{
+  content:"DOJO // TECHNIK · AUSDAUER · DISZIPLIN";
+  position:absolute;
+  right:12px;
+  bottom:10px;
+  color:rgba(227,255,99,.22);
+  font-size:6px;
+  font-weight:900;
+  letter-spacing:.16em;
+}
+.lc11-progress{
+  height:8px!important;
+  border:1px solid rgba(255,255,255,.08);
+  background:rgba(0,0,0,.28)!important;
+  box-shadow:inset 0 1px 3px rgba(0,0,0,.42)!important;
+}
+.lc11-progress i{
+  background:linear-gradient(90deg,#97cf42,var(--vp6-lime),#f4ffae)!important;
+  box-shadow:0 0 12px rgba(227,255,99,.30)!important;
+}

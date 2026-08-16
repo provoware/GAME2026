@@ -1,7 +1,7 @@
 const assert=require('assert');const DATA=require('../lc11-data.js');const API=require('../lc11-engine.js');let pass=0;
 function test(name,fn){try{fn();pass++;}catch(error){console.error('FAIL:',name);throw error;}}
 function engine(random=()=>0.17){return new API.GameEngine({random});}
-test('Version und Schema',()=>{assert.equal(DATA.version,'0.17.5-living-city-11-visual-polish-5');assert.equal(DATA.schema,12);assert.equal(API.SCHEMA,12);});
+test('Version und Schema',()=>{assert.equal(DATA.version,'0.17.6-living-city-11-visual-polish-6');assert.equal(DATA.schema,12);assert.equal(API.SCHEMA,12);});
 test('LC11 Zustand wird vollständig angelegt',()=>{const e=engine();assert.ok(e.state.casinoFloor);assert.ok(Array.isArray(e.state.externalTravelHistory));assert.ok(Array.isArray(e.state.trainingHistory));assert.equal(Object.keys(e.state.casinoFloor.jackpots).length,DATA.casino.slotMachines.length);});
 test('Casino-Automat ist spielbar und zählt Session',()=>{const e=engine(()=>0.2);e.state.currentLocationId='location.casino.9909';e.state.resources.money=1000;const r=e.spinSlot(DATA.casino.slotMachines[0].id,10);assert.equal(r.ok,true);assert.equal(e.getCasinoFloor().session.spins,1);});
 test('Poker läuft bis Showdown und zählt Session',()=>{const e=engine(()=>0.31);e.state.currentLocationId='location.casino.9909';e.state.resources.money=1000;assert.equal(e.startPoker(50).ok,true);e.togglePokerHold(0);assert.equal(e.drawPoker().ok,true);const r=e.finishPoker();assert.equal(r.ok,true);assert.equal(e.getCasinoFloor().session.pokerHands,1);});
