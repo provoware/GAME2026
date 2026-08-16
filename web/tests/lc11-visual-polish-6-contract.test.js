@@ -21,7 +21,12 @@ assert.ok(ui.includes('0.17.6 · Schema 12'));
   '.combat-stage{',
   '@keyframes vp6SceneSweep',
   '@media(prefers-reduced-motion:reduce)',
-  'body.lc09-reduced-motion'
+  'body.lc09-reduced-motion',
+  '--vp6-text-secondary:#c4d2df',
+  '.tab.active{',
+  '.btn:focus-visible',
+  '@media (min-width:1100px) and (max-height:800px)',
+  'Kleine Desktop-Höhen: weniger Leerraum statt kleinere Schrift'
 ].forEach((x)=>assert.ok(css.includes(x),x));
 assert.ok(css.includes('button:focus-visible')&&css.includes('.district-node:focus-visible'),'Fokuszustände müssen sichtbar bleiben.');
 assert.ok(!css.includes('pointer-events:auto'),'Visual Polish VI darf keine eigene aktive Interaktionsebene erzwingen.');
