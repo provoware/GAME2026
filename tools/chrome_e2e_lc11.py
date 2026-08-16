@@ -24,7 +24,7 @@ def scenario(driver,url,out,result):
     schema=raw_js(driver,"return window.LIVING_CITY_11_ENGINE?.state?.schema")
     core.assert_true(version=='0.17.0-living-city-11' and schema==12,f'LC11 Version/Schema falsch: {version}/{schema}')
     core.assert_true(bool(raw_js(driver,"return localStorage.getItem('pppoppi-bunkerwahrheit-html-v0170')")),'v0170-Speicherspiegel fehlt')
-    previous.safe_click(driver,'#lc11Button')
+    core.safe_click(driver,'#lc11Button')
     core.wait_js(driver,"return !!document.querySelector('#lc11Dialog')?.open")
     features=driver.find_elements(By.CSS_SELECTOR,'.lc11-feature')
     core.assert_true(len(features)==4,f'LC11 Übersicht zeigt {len(features)} statt 4 Gameplay-Bereiche')
@@ -37,7 +37,7 @@ def scenario(driver,url,out,result):
     for selector in ('.lc11-card','.lc11-navbar','#lc11Body'):
         r=core.rect(driver,selector);core.assert_true(bool(r) and r['left']>=-2 and r['right']<=driver.execute_script('return innerWidth')+2,f'LC11-Layout läuft aus dem Viewport: {selector}')
     core.screenshot(driver,out,'living_city_11_hub.png')
-    previous.safe_click(driver,'[data-lc11-close]')
+    core.safe_click(driver,'[data-lc11-close]')
     core.append(result,'LC11 Stadtleben, vier Gameplay-Bereiche, v0170 und Responsive-Vollansicht funktionieren')
 core.scenario=scenario
 
