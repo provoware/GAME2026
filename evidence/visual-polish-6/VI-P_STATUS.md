@@ -16,7 +16,14 @@ Die vorhandenen Innenraum-Aktionskarten werden ohne neue UI-Fläche so gewichtet
 - lokale Vorqualifikation `PRUEFEN.sh`: **35/35 PASS**
 - LC11-Engine: **12/12 PASS**
 - 3500-Zug-Langlauf: **PASS**
-- Remote-Gate: nach Branch-Aktualisierung ausstehend
+
+## Remote-Härtung
+- erster VI-P-Gate-Lauf #202 / `32038705933`: statischer Vertrag PASS, echter Chrome-E2E FAIL
+- konkrete Ursache: Nach dynamischem Aufgaben-Kompass-Re-Render konnte ein bereits fokussierter Guide-Button ersetzt werden und dadurch den Tastaturfokus verlieren
+- Reparatur: `renderGuide()` erkennt Fokus innerhalb der Guide-Karte vor dem Re-Render und setzt ihn auf den neu erzeugten Guide-Button zurück
+- Fokus-Erhalt ist zusätzlich im Visual-Polish-VI-Vertrag abgesichert
+- lokale Revalidierung nach Reparatur: **35/35 PASS**, LC11 **12/12 PASS**, 3500-Zug-Langlauf **PASS**
+- finales Remote-Gate: ausstehend
 
 ## Repository-Hygiene
 Keine ZIP-, `__pycache__`- oder `.pyc`-Dateien und keine beabsichtigten Löschungen.
