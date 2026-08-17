@@ -17,9 +17,10 @@
     document.body.dataset.livingCity='06';
   }
   function switchTab(name){const btn=$(`[data-tab="${name}"]`);if(btn)btn.click();}
-  function showCoach(title,text,tone='info'){
+  function showCoach(title,text,tone='info',outcome=null){
     const rail=$('#coachRail');if(!rail)return;rail.hidden=false;rail.dataset.tone=tone;
-    rail.innerHTML=`<div class="coach-orb">?</div><div class="coach-copy"><span>SPIELFÜHRUNG</span><strong>${esc(title)}</strong><small>${esc(text)}</small></div><button class="mini-btn" data-coach-close>Ausblenden</button>`;
+    const outcomeHtml=outcome?` <span class="coach-outcome" aria-label="Aktionsbilanz"><span data-kind="benefit"><b>ERGEBNIS</b> ${esc(outcome.result||'situativer Effekt')}</span><span class="coach-outcome-sep" aria-hidden="true"> · </span><span data-kind="cost"><b>KOSTEN</b> ${esc(outcome.cost||'keine')}</span></span>`:'';
+    rail.innerHTML=`<div class="coach-orb">?</div><div class="coach-copy"><span>SPIELFÜHRUNG</span><strong>${esc(title)}</strong><small>${esc(text)}${outcomeHtml}</small></div><button class="mini-btn" data-coach-close>Ausblenden</button>`;
   }
   function renderGuide(){
     const box=$('#focusDashboard');if(!box)return;const g=engine.getGuidance(),p=g.priority;
@@ -105,7 +106,7 @@
     if(t.dataset.audioClose!==undefined){toggleAudioDock(false);return;}
     if(t.dataset.audioPreset){engine.setAudioMixer({preset:t.dataset.audioPreset});persist();syncAudio();renderAudioDock();showCoach('Klangprofil geändert',`Profil „${DATA.audioPresets[t.dataset.audioPreset].label}“ ist aktiv.`);return;}
     if(t.dataset.audioEnabled!==undefined){engine.setAudioMixer({enabled:t.dataset.audioEnabled==='1'});persist();syncAudio();renderAudioDock();return;}
-    if(t.dataset.lc06InteriorAction){const r=engine.performInteriorAction(t.dataset.locationId,t.dataset.lc06InteriorAction);$('#tickerText').textContent=r.ok?`Ort: ${r.action.title}`:r.reason;if(r.ok){persist();showCoach('Ort genutzt',`${r.action.title} abgeschlossen. Der Aufgaben-Kompass wurde aktualisiert.`,'success');root.GAME_UI_REFRESH?.schedule?.();}else renderInteriorEnhancement();return;}
+    if(t.dataset.lc06InteriorAction){const r=engine.performInteriorAction(t.dataset.locationId,t.dataset.lc06InteriorAction);$('#tickerText').textContent=r.ok?`Ort: ${r.action.title}`:r.reason;if(r.ok){persist();showCoach('Ort genutzt',`${r.action.title} abgeschlossen.`,'success',{result:effectSummary(r.action.effects),cost:r.action.cost?money(r.action.cost):'keine'});root.GAME_UI_REFRESH?.schedule?.();}else renderInteriorEnhancement();return;}
     if(t.dataset.dialogueStart){const r=engine.startDialogue(t.dataset.dialogueStart);if(!r.ok){showCoach('Gespräch noch nicht möglich',r.reason,'warn');return;}renderDialogue(engine.state.currentLocationId,r.dialogue);persist();return;}
     if(t.dataset.dialogueChoice){const r=engine.chooseDialogue(t.dataset.dialogueId,t.dataset.dialogueChoice);if(!r.ok){showCoach('Dialogaktion nicht möglich',r.reason,'warn');return;}persist();renderDialogue(engine.state.currentLocationId,r.dialogue);showCoach(r.done?'Entscheidung wirkt nach':'Gespräch geht weiter',r.done?r.ending:'Wähle den nächsten Gesprächsschritt.','success');root.GAME_UI_REFRESH?.schedule?.();return;}
     if(t.dataset.combatDecision||'combatStart' in t.dataset)setTimeout(renderCombatEnhancement,0);
