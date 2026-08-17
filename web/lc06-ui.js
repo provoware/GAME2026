@@ -23,10 +23,12 @@
   }
   function renderGuide(){
     const box=$('#focusDashboard');if(!box)return;const g=engine.getGuidance(),p=g.priority;
+    const active=document.activeElement,restoreGuideFocus=!!active&&box.contains(active)&&!!active.closest?.('.lc06-guide-card');
     const existing=box.querySelectorAll('.lc06-guide-card');existing.forEach((n)=>n.remove());
     const card=document.createElement('article');card.className='focus-card priority lc06-guide-card';
     card.innerHTML=`<div class="focus-icon">${esc(p.icon)}</div><div class="focus-copy"><span>NÄCHSTER SCHRITT</span><b>${esc(p.title)}</b><small>${esc(p.detail)}</small></div><button class="mini-btn good" data-guide-kind="${esc(p.kind)}">${esc(p.action)}</button>`;
     box.prepend(card);
+    if(restoreGuideFocus)card.querySelector('button')?.focus();
     const key=`${engine.state.turn}|${p.kind}|${p.title}`;
     if(engine.state.preferences.guidance&&key!==lastCoachKey){lastCoachKey=key;showCoach('Nächster sinnvoller Schritt',`${p.title} — ${p.detail}`,'guide');}
   }
