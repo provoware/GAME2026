@@ -6,9 +6,11 @@
   function renderInteriorDelta(){
     const receipt=root.LIVING_CITY_06_ENGINE?.getLastInteriorActionReceipt?.(),outcome=document.querySelector('#coachRail[data-tone="success"] .coach-outcome');
     if(!receipt?.keys?.length||!outcome||outcome.querySelector('.coach-deltas'))return;
-    const meta={money:['Bargeld','money'],supplies:['Vorrat','count'],tension:['Spannung','score'],opportunity:['Chancen','score'],districtControl:['Kontrolle','percent'],districtPolice:['Polizeidruck','percent'],districtRival:['Rivalendruck','percent'],crewStress:['Ø Stress','percent'],crewMorale:['Ø Moral','percent']};
+    const meta={money:['Bargeld','money',1],supplies:['Vorrat','count',1],tension:['Spannung','score',-1],opportunity:['Chancen','score',1],districtControl:['Kontrolle','percent',1],districtPolice:['Polizeidruck','percent',-1],districtRival:['Rivalendruck','percent',-1],crewStress:['Ø Stress','percent',-1],crewMorale:['Ø Moral','percent',1]};
     const format=(value,unit)=>unit==='money'?money(value):unit==='percent'?`${value}%`:String(value);
-    const deltas=receipt.keys.map((key)=>{const [label,unit]=meta[key]||[key,'score'];return`<span class="coach-delta" data-metric="${esc(key)}"><b>${esc(label)}</b> <span data-before>${esc(format(receipt.before[key],unit))}</span><i aria-hidden="true">→</i><span data-after>${esc(format(receipt.after[key],unit))}</span></span>`;}).join(' · ');
+    const impact=(before,after,polarity)=>{const delta=Number(after)-Number(before);if(!Number.isFinite(delta)||delta===0)return'neutral';return delta*polarity>0?'benefit':'risk';};
+    const impactLabel={benefit:'vorteilhaft',risk:'nachteilig',neutral:'neutral'};
+    const deltas=receipt.keys.map((key)=>{const [label,unit,polarity=1]=meta[key]||[key,'score',1],before=receipt.before[key],after=receipt.after[key],tone=impact(before,after,polarity);return`<span class="coach-delta" data-metric="${esc(key)}" data-impact="${tone}" aria-label="${esc(`${label}: ${format(before,unit)} zu ${format(after,unit)}, ${impactLabel[tone]}`)}"><b>${esc(label)}</b> <span data-before>${esc(format(before,unit))}</span><i aria-hidden="true">→</i><span data-after>${esc(format(after,unit))}</span></span>`;}).join(' · ');
     outcome.insertAdjacentHTML('beforeend',` <span class="coach-deltas" aria-label="Vorher-Nachher-Veränderung">${deltas}</span>`);
   }
   window.addEventListener('keydown',(event)=>{
@@ -26,5 +28,5 @@
     }
     if(target.dataset.lc06InteriorAction!==undefined){renderInteriorDelta();}
   });
-  root.LIVING_CITY_11_BROWSER_HARDENING=Object.freeze({version:'1.1',mode:'post-bubble-atomic-ui'});
+  root.LIVING_CITY_11_BROWSER_HARDENING=Object.freeze({version:'1.2',mode:'post-bubble-atomic-ui'});
 })(typeof globalThis!=='undefined'?globalThis:this);
