@@ -72,3 +72,9 @@ Die zentrale Stadtkarte priorisiert Besitz, Gefahr und Reisewege jetzt klarer: S
 
 ### Visual-Polish VI-E – Kartenleseschlüssel
 Legende, Lagehinweis, Schnellaktionen und direkt erreichbare Ziele werden jetzt als zusammenhängende, kompakte Lesekette geführt. Besitz- und Standortlegende erhält klarere Chips, der aktuelle Kartenhinweis eine eindeutige Lage-Markierung und Direktziele bleiben horizontal schnell erfassbar, ohne die Karte zu verkleinern. Responsive- und Reduced-Motion-Regeln sind enthalten. Die Änderung ist rein präsentational; Gameplay, Browser-Schema 12 und Save-Spiegel v0170 bleiben unverändert.
+
+### Visual-Polish VI-F – Bezirksmarker
+Bezirksname, Kontrolle, Druck und lokale Statusindikatoren sind direkt am Marker stärker hierarchisiert. Aktueller und ausgewählter Bezirk bleiben klar unterscheidbar; die Änderung ist rein präsentational und geometrieneutral. Gameplay, Browser-Schema 12 und Save-Spiegel v0170 bleiben unverändert.
+
+### Visual-Polish VI-G – Straßen-, Bahn- und Routenhierarchie
+Straßen, Bahnlinien, direkt erreichbare Verbindungen, geplante Etappen und das konkret gewählte Reiseziel besitzen nun klar getrennte visuelle Signaturen. Straßen bleiben ruhig und durchgezogen, Bahnlinien gepunktet, geplante Routen goldfarben und das gewählte Ziel limefarben priorisiert. Die dezente Routenbewegung wird durch Reduced-Motion und Ruhemodus vollständig deaktiviert. Gameplay, Browser-Schema 12 und Save-Spiegel v0170 bleiben unverändert.

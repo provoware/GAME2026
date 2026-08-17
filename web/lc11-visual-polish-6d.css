@@ -130,3 +130,67 @@ body.lc09-reduced-motion .direct-target{transition:none!important}
   .district-node .node-kind,.district-node .node-label,.district-node .node-pressure{transition:none!important}
 }
 body.lc09-reduced-motion .district-node .node-kind,body.lc09-reduced-motion .district-node .node-label,body.lc09-reduced-motion .district-node .node-pressure{transition:none!important}
+
+/* Visual Polish VI-G · Straßen-, Bahn- und Routenhierarchie */
+/* Geometrieneutral: bestehende SVG-Verbindungen werden nur über Kontur, Muster, Leuchtstärke und Bewegung unterschieden. */
+.route,.train-route{
+  vector-effect:non-scaling-stroke;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.route{
+  stroke:rgba(132,157,179,.30)!important;
+  stroke-width:2.15!important;
+  stroke-dasharray:none!important;
+  filter:drop-shadow(0 1px 2px rgba(0,0,0,.28));
+}
+.train-route{
+  stroke:rgba(193,157,255,.48)!important;
+  stroke-width:2.05!important;
+  stroke-dasharray:3 7!important;
+  filter:drop-shadow(0 0 3px rgba(193,157,255,.18));
+}
+.route.reachable{
+  stroke:#79f1ff!important;
+  stroke-width:3.15!important;
+  stroke-dasharray:none!important;
+  opacity:.96!important;
+  filter:drop-shadow(0 0 5px rgba(121,241,255,.34));
+}
+.train-route.reachable{
+  stroke:#c7a6ff!important;
+  stroke-width:3.05!important;
+  stroke-dasharray:4 6!important;
+  opacity:.98!important;
+  filter:drop-shadow(0 0 6px rgba(199,166,255,.34));
+}
+.route.planned{
+  stroke:#ffd27a!important;
+  stroke-width:3.35!important;
+  stroke-dasharray:11 7!important;
+  opacity:1!important;
+  filter:drop-shadow(0 0 6px rgba(255,210,122,.30));
+  animation:vp6RouteFlow 2.6s linear infinite;
+}
+.train-route.planned{
+  stroke:#ffd27a!important;
+  stroke-width:3.35!important;
+  stroke-dasharray:4 6!important;
+  opacity:1!important;
+  filter:drop-shadow(0 0 6px rgba(255,210,122,.30));
+  animation:vp6RailFlow 2.2s linear infinite;
+}
+.route.chosen,.train-route.chosen{
+  stroke:#e3ff63!important;
+  stroke-width:4.15!important;
+  opacity:1!important;
+  filter:drop-shadow(0 0 7px rgba(227,255,99,.42)) drop-shadow(0 0 2px rgba(255,255,255,.24));
+}
+.route.chosen{stroke-dasharray:none!important}
+.train-route.chosen{stroke-dasharray:4 5!important}
+@keyframes vp6RouteFlow{to{stroke-dashoffset:-36}}
+@keyframes vp6RailFlow{to{stroke-dashoffset:-20}}
+@media(prefers-reduced-motion:reduce){
+  .route.planned,.train-route.planned{animation:none!important}
+}
+body.lc09-reduced-motion .route.planned,body.lc09-reduced-motion .train-route.planned{animation:none!important}
