@@ -38,9 +38,21 @@ GitHub Actions **#223 / 32054593325: SUCCESS** auf Head `63f856469ba56ca28d842b4
 - deterministischer Manifest-Neubau: **PASS**
 - Paketvalidierung: **PASS**
 
-Remote-Artefakte des Implementierungs-Heads:
+Implementierungs-Artefakte:
 - Source: `9295944990`, `sha256:a1475009f7c15c38370e3207f42a4302dfe61f95edc4dc1acdde0c53e0ac50a5`
 - Chrome-E2E: `9295943440`, `sha256:d56d6e1b60c1e121febeaedf3a78313d042eca9740193d1f77a5fae744899a50`
+
+## Dokumentations-Gate
+GitHub Actions **#224 / 32054709636: SUCCESS** auf Head `fb470daf44fc4634bb00a65147ea65d63c51c8bb`.
+- qualifizierter Vertragslauf: **PASS**
+- echter Google Chrome Desktop E2E: **PASS**
+- deterministischer Manifest-Neubau: **PASS**
+- Paketvalidierung: **PASS**
+- Python-Syntax: **PASS**
+
+Remote-Artefakte des dokumentierten Heads:
+- Source: `9295986410`, `sha256:3a925d28f04039f9f28aadeb657eb589eb29dbf744dbc8037d9c7f484690fb6a`
+- Chrome-E2E: `9295984256`, `sha256:c83463cbf35c4ece1d07b23eb568c3235463bb1b6e7af5c17d9721ede7dd1541`
 
 ## Repository-Hygiene
 - keine beabsichtigten Löschungen
@@ -49,6 +61,3 @@ Remote-Artefakte des Implementierungs-Heads:
 - Branch bleibt `agent/html-gang-map-boss-dynamics`
 - Branch-Aktualisierung sequenziell und nicht-forciert
 - PR #6 bleibt Draft, offen und ungemergt
-
-## Finales Remote-Gate
-Nach dieser Nachweisaktualisierung erneut auf dem finalen Dokumentations-Head zu prüfen.
