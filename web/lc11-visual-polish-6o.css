@@ -1,0 +1,46 @@
+/* Visual Polish VI-X · Vorher→Nachher-Werte im Innenraum-Aktionsfeedback */
+/* Geometrieneutral: reale Aktionswerte werden innerhalb der vorhandenen Coach-Bilanz lesbar gegenübergestellt. */
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-deltas{
+  color:rgba(216,233,255,.76)!important;
+  font-variant-numeric:tabular-nums!important;
+}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta{
+  background:linear-gradient(90deg,rgba(174,238,255,.035),rgba(159,255,208,.045))!important;
+  border-bottom:1px solid rgba(174,238,255,.18)!important;
+  border-radius:.28rem!important;
+  box-shadow:inset 0 -1px 0 rgba(159,255,208,.045)!important;
+  animation:vp6DeltaReveal .72s ease-out both;
+}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta b{
+  color:var(--vp6-decision-info)!important;
+  letter-spacing:.045em!important;
+}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta [data-before]{
+  color:rgba(216,233,255,.62)!important;
+}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta i{
+  color:var(--vp6-decision-info)!important;
+  font-style:normal!important;
+  text-shadow:0 0 9px rgba(174,238,255,.12)!important;
+}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta [data-after]{
+  color:var(--vp6-decision-benefit)!important;
+  font-weight:950!important;
+  text-shadow:0 0 10px rgba(79,255,190,.10)!important;
+}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-metric="money"] [data-after]{color:var(--vp6-decision-cost)!important}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-metric="tension"] [data-after],
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-metric="districtPolice"] [data-after],
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-metric="districtRival"] [data-after],
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-metric="crewStress"] [data-after]{
+  color:var(--vp6-decision-risk)!important;
+}
+@keyframes vp6DeltaReveal{
+  0%{opacity:.54;filter:saturate(.78) brightness(.94)}
+  42%{opacity:1;filter:saturate(1.06) brightness(1.03)}
+  100%{opacity:1;filter:none}
+}
+@media(prefers-reduced-motion:reduce){
+  body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta{animation:none!important;filter:none!important}
+}
+body.lc09-reduced-motion:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta{animation:none!important;filter:none!important}

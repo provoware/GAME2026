@@ -74,18 +74,36 @@
         return{...clone(def),available:!reason,reason,remaining};
       });
     }
+    captureInteriorActionMetrics(locationId=this.state.currentLocationId){
+      const district=this.getDistrict(locationId),crew=this.state.gang.filter((m)=>m.status!=='left');
+      const average=(key)=>crew.length?Math.round(crew.reduce((sum,m)=>sum+Number(m[key]||0),0)/crew.length):0;
+      return{
+        money:Number(this.state.resources.money||0),supplies:Number(this.state.resources.supplies||0),
+        tension:Number(this.state.directorModifiers?.tension||0),opportunity:Number(this.state.directorModifiers?.opportunity||0),
+        districtControl:Number(district?.control||0),districtPolice:Number(district?.police||0),districtRival:Number(district?.rival||0),
+        crewStress:average('stress'),crewMorale:average('morale')
+      };
+    }
     performInteriorAction(locationId,actionId){
       const action=this.getInteriorActions(locationId).find((x)=>x.id===actionId);
       if(!action)return{ok:false,reason:'Innenraumaktion unbekannt.'};
       if(!action.available)return{ok:false,reason:action.reason};
+      const before=this.captureInteriorActionMetrics(locationId);
       if(action.cost)this.state.resources.money-=action.cost;
       this.applyLivingCity06Effects(action.effects);
+      const after=this.captureInteriorActionMetrics(locationId),keys=[];
+      const effectKeys={money:'money',supplies:'supplies',tension:'tension',opportunity:'opportunity',districtControl:'districtControl',districtPolice:'districtPolice',districtRival:'districtRival',crewStress:'crewStress',crewMorale:'crewMorale'};
+      if(action.cost||Number.isFinite(action.effects?.money))keys.push('money');
+      Object.keys(action.effects||{}).forEach((key)=>{const metric=effectKeys[key];if(metric&&!keys.includes(metric))keys.push(metric);});
+      const receipt={before,after,keys:keys.filter((key)=>before[key]!==after[key])};
+      this.lastInteriorActionReceipt=receipt;
       this.state.interiorActionTurns[`${locationId}|${action.id}`]=this.state.turn;
       this.state.stats.interiorActions+=1;
       this.log('scene',`${this.getLocation(locationId).title}: ${action.title}.`);
       if(action.consumeTurn!==false)this.advanceTurn();
-      return{ok:true,action:clone(action),turn:this.state.turn};
+      return{ok:true,action:clone(action),turn:this.state.turn,receipt};
     }
+    getLastInteriorActionReceipt(){return this.lastInteriorActionReceipt?clone(this.lastInteriorActionReceipt):null;}
     getDialogueForLocation(locationId=this.state.currentLocationId){
       const dialogueId=this.data.locationDialogues?.[locationId];
       if(!dialogueId)return null;
