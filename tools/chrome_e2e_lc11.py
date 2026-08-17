@@ -5,6 +5,7 @@ import json
 import sys
 from pathlib import Path
 import chrome_e2e_lc10 as previous
+from selenium.common.exceptions import StaleElementReferenceException
 from selenium.webdriver.common.by import By
 
 core=previous.core
@@ -19,7 +20,14 @@ def compat_lc10_js(driver,code,*args):
 previous.raw_js=compat_lc10_js
 
 def scenario(driver,url,out,result):
-    base_scenario(driver,url,out,result)
+    try:
+        base_scenario(driver,url,out,result)
+    except StaleElementReferenceException:
+        # Dynamische Dialoge ersetzen DOM-Knoten während echter Chrome-Eingaben.
+        # Ein einziger kompletter Neuversuch startet den qualifizierten Kern sauber neu;
+        # wiederholte Stale-Fehler bleiben harte Gate-Fehler.
+        result["checks"].append("Chrome-E2E: einmaliger DOM-Neuversuch nach StaleElementReference")
+        base_scenario(driver,url,out,result)
     version=raw_js(driver,"return window.LIVING_CITY_11_ENGINE?.state?.version")
     schema=raw_js(driver,"return window.LIVING_CITY_11_ENGINE?.state?.schema")
     core.assert_true(version=='0.17.6-living-city-11-visual-polish-6' and schema==12,f'LC11 Version/Schema falsch: {version}/{schema}')

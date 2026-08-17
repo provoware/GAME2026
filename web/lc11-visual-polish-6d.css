@@ -1,54 +1,201 @@
 /* LIVING-CITY-11 · Visual Polish VI-E · Kartenleseschlüssel */
 /* Rein präsentational und geometrieneutral: keine zusätzliche intrinsische Höhe/Breite. */
-.map-toolbar-actions{filter:drop-shadow(0 6px 16px rgba(0,0,0,.10));}
-.legend{color:#c6d6e4!important;text-shadow:0 1px 6px rgba(0,0,0,.34);}
-.legend>span{color:#cbd8e5!important;font-weight:850!important;}
-.legend .dot,.legend .route-key{filter:drop-shadow(0 0 5px currentColor);}
+.map-toolbar-actions{
+  filter:drop-shadow(0 6px 16px rgba(0,0,0,.10));
+}
+.legend{
+  color:#c6d6e4!important;
+  text-shadow:0 1px 6px rgba(0,0,0,.34);
+}
+.legend>span{
+  color:#cbd8e5!important;
+  font-weight:850!important;
+}
+.legend .dot,.legend .route-key{
+  filter:drop-shadow(0 0 5px currentColor);
+}
 .legend .dot.player{box-shadow:0 0 8px rgba(227,255,99,.18)}
 .legend .dot.rival{box-shadow:0 0 8px rgba(255,113,136,.20)}
-.legend .dot.current{box-shadow:0 0 0 2px rgba(121,241,255,.16),0 0 12px rgba(121,241,255,.30)!important;}
-.map-commandbar{background:linear-gradient(155deg,rgba(6,12,18,.28),rgba(121,241,255,.012))!important;box-shadow:inset 0 1px rgba(121,241,255,.06),0 8px 22px rgba(0,0,0,.06)!important;}
-.map-callout{position:relative;border-color:rgba(121,241,255,.22)!important;background:linear-gradient(145deg,rgba(121,241,255,.060),rgba(8,14,20,.88))!important;box-shadow:inset 3px 0 rgba(121,241,255,.34),0 10px 24px rgba(0,0,0,.16)!important;}
-.map-callout::before{content:"LAGE";position:absolute;right:7px;top:4px;color:rgba(147,233,244,.62);font-size:6px;font-weight:950;letter-spacing:.15em;line-height:1;pointer-events:none;}
-.map-callout strong,.map-callout b{color:#f5fbff!important}.map-callout span{color:#b8c9d8!important}
-.map-quickbar{border-color:rgba(218,236,255,.11)!important;background:linear-gradient(145deg,rgba(255,255,255,.027),rgba(121,241,255,.014))!important;box-shadow:inset 0 1px rgba(255,255,255,.025)!important;}
-.map-direct-targets{scrollbar-color:rgba(121,241,255,.26) transparent;}.direct-label{color:#9fb8c9!important;text-shadow:0 1px 5px rgba(0,0,0,.35);}
-.direct-target{border-color:rgba(121,241,255,.16)!important;background:linear-gradient(145deg,rgba(121,241,255,.045),rgba(255,255,255,.018))!important;color:#d9e7f2!important;font-weight:800!important;}
-.direct-target:hover:not(:disabled),.direct-target:focus-visible{border-color:rgba(227,255,99,.38)!important;background:linear-gradient(145deg,rgba(227,255,99,.09),rgba(121,241,255,.028))!important;color:#f7ffdf!important;}
-.map-controls{background:rgba(5,10,15,.78)!important;box-shadow:inset 0 1px rgba(255,255,255,.025),0 7px 18px rgba(0,0,0,.10)!important;}.map-control:hover{border-color:rgba(121,241,255,.28)!important}
-@media (min-width:1100px) and (max-height:800px){.map-callout::before{opacity:.52}.map-commandbar{box-shadow:inset 0 1px rgba(121,241,255,.05)!important}}
-@media(prefers-reduced-motion:reduce){.direct-target{transition:none!important}}body.lc09-reduced-motion .direct-target{transition:none!important}
+.legend .dot.current{
+  box-shadow:0 0 0 2px rgba(121,241,255,.16),0 0 12px rgba(121,241,255,.30)!important;
+}
+.map-commandbar{
+  background:linear-gradient(155deg,rgba(6,12,18,.28),rgba(121,241,255,.012))!important;
+  box-shadow:inset 0 1px rgba(121,241,255,.06),0 8px 22px rgba(0,0,0,.06)!important;
+}
+.map-callout{
+  position:relative;
+  border-color:rgba(121,241,255,.22)!important;
+  background:linear-gradient(145deg,rgba(121,241,255,.060),rgba(8,14,20,.88))!important;
+  box-shadow:inset 3px 0 rgba(121,241,255,.34),0 10px 24px rgba(0,0,0,.16)!important;
+}
+.map-callout::before{
+  content:"LAGE";
+  position:absolute;
+  right:7px;
+  top:4px;
+  color:rgba(147,233,244,.62);
+  font-size:6px;
+  font-weight:950;
+  letter-spacing:.15em;
+  line-height:1;
+  pointer-events:none;
+}
+.map-callout strong,.map-callout b{color:#f5fbff!important}
+.map-callout span{color:#b8c9d8!important}
+.map-quickbar{
+  border-color:rgba(218,236,255,.11)!important;
+  background:linear-gradient(145deg,rgba(255,255,255,.027),rgba(121,241,255,.014))!important;
+  box-shadow:inset 0 1px rgba(255,255,255,.025)!important;
+}
+.map-direct-targets{
+  scrollbar-color:rgba(121,241,255,.26) transparent;
+}
+.direct-label{
+  color:#9fb8c9!important;
+  text-shadow:0 1px 5px rgba(0,0,0,.35);
+}
+.direct-target{
+  border-color:rgba(121,241,255,.16)!important;
+  background:linear-gradient(145deg,rgba(121,241,255,.045),rgba(255,255,255,.018))!important;
+  color:#d9e7f2!important;
+  font-weight:800!important;
+}
+.direct-target:hover:not(:disabled),.direct-target:focus-visible{
+  border-color:rgba(227,255,99,.38)!important;
+  background:linear-gradient(145deg,rgba(227,255,99,.09),rgba(121,241,255,.028))!important;
+  color:#f7ffdf!important;
+}
+.map-controls{
+  background:rgba(5,10,15,.78)!important;
+  box-shadow:inset 0 1px rgba(255,255,255,.025),0 7px 18px rgba(0,0,0,.10)!important;
+}
+.map-control:hover{border-color:rgba(121,241,255,.28)!important}
+
+/* Kartenhöhe-Vertrag: VI-E verändert bei niedrigen Desktops keinerlei Maße. */
+@media (min-width:1100px) and (max-height:800px){
+  .map-callout::before{opacity:.52}
+  .map-commandbar{box-shadow:inset 0 1px rgba(121,241,255,.05)!important}
+}
+@media(prefers-reduced-motion:reduce){
+  .direct-target{transition:none!important}
+}
+body.lc09-reduced-motion .direct-target{transition:none!important}
 
 /* Visual Polish VI-F · Bezirksmarker als kompakte Lageinstrumente */
-.district-node .node-label{fill:#eef7ff!important;font-weight:950;paint-order:stroke;stroke:rgba(4,9,14,.94);stroke-width:3px;stroke-linejoin:round;}
-.district-node .node-pressure{fill:#9fb6c8!important;font-weight:850;paint-order:stroke;stroke:rgba(4,9,14,.9);stroke-width:2.4px;}
-.district-node.pressure-watch .node-pressure{fill:#ffd18a!important}.district-node.pressure-critical .node-pressure{fill:#ff8da0!important;font-weight:950}
-.district-node .node-control{fill:#f7fbff!important;font-weight:950;paint-order:stroke;stroke:rgba(3,8,13,.92);stroke-width:2.2px;}
-.district-node .node-kind{fill:#dff8ff!important;filter:drop-shadow(0 0 4px rgba(121,241,255,.24));}
-.district-node.current .node-label{fill:#e3ff63!important}.district-node.selected .node-label{fill:#79f1ff!important}.district-node.current.selected .node-label{fill:#f4ffd0!important}
+/* Geometrieneutral: nur Farbe, Kontur, Gewichtung und optische Tiefe bestehender SVG-Elemente. */
+.district-node .node-label{
+  fill:#eef7ff!important;
+  font-weight:950;
+  paint-order:stroke;
+  stroke:rgba(4,9,14,.94);
+  stroke-width:3px;
+  stroke-linejoin:round;
+}
+.district-node .node-pressure{
+  fill:#9fb6c8!important;
+  font-weight:850;
+  paint-order:stroke;
+  stroke:rgba(4,9,14,.9);
+  stroke-width:2.4px;
+}
+.district-node.pressure-watch .node-pressure{fill:#ffd18a!important}
+.district-node.pressure-critical .node-pressure{fill:#ff8da0!important;font-weight:950}
+.district-node .node-control{
+  fill:#f7fbff!important;
+  font-weight:950;
+  paint-order:stroke;
+  stroke:rgba(3,8,13,.92);
+  stroke-width:2.2px;
+}
+.district-node .node-kind{
+  fill:#dff8ff!important;
+  filter:drop-shadow(0 0 4px rgba(121,241,255,.24));
+}
+.district-node.current .node-label{fill:#e3ff63!important}
+.district-node.selected .node-label{fill:#79f1ff!important}
+.district-node.current.selected .node-label{fill:#f4ffd0!important}
 .district-node.event-hot .node-pressure{filter:drop-shadow(0 0 4px rgba(255,209,91,.28))}
-.district-node .asset-count{fill:#e3ff63!important;font-weight:950;paint-order:stroke;stroke:#071018;stroke-width:2.5px;}
-.district-node .train-pin{fill:#79f1ff!important;filter:drop-shadow(0 0 4px rgba(121,241,255,.34))}.district-node .intel-pin{filter:drop-shadow(0 0 5px rgba(121,241,255,.28))}
+.district-node .asset-count{
+  fill:#e3ff63!important;
+  font-weight:950;
+  paint-order:stroke;
+  stroke:#071018;
+  stroke-width:2.5px;
+}
+.district-node .train-pin{fill:#79f1ff!important;filter:drop-shadow(0 0 4px rgba(121,241,255,.34))}
+.district-node .intel-pin{filter:drop-shadow(0 0 5px rgba(121,241,255,.28))}
 .district-node:hover .node-label,.district-node:focus-visible .node-label{filter:drop-shadow(0 0 5px rgba(121,241,255,.28))}
-@media(prefers-reduced-motion:reduce){.district-node .node-kind,.district-node .node-label,.district-node .node-pressure{transition:none!important}}
+@media(prefers-reduced-motion:reduce){
+  .district-node .node-kind,.district-node .node-label,.district-node .node-pressure{transition:none!important}
+}
 body.lc09-reduced-motion .district-node .node-kind,body.lc09-reduced-motion .district-node .node-label,body.lc09-reduced-motion .district-node .node-pressure{transition:none!important}
 
 /* Visual Polish VI-G · Straßen-, Bahn- und Routenhierarchie */
-.route,.train-route{vector-effect:non-scaling-stroke;stroke-linecap:round;stroke-linejoin:round;}
-.route{stroke:rgba(132,157,179,.30)!important;stroke-width:2.15!important;stroke-dasharray:none!important;filter:drop-shadow(0 1px 2px rgba(0,0,0,.28));}
-.train-route{stroke:rgba(193,157,255,.48)!important;stroke-width:2.05!important;stroke-dasharray:3 7!important;filter:drop-shadow(0 0 3px rgba(193,157,255,.18));}
-.route.reachable{stroke:#79f1ff!important;stroke-width:3.15!important;stroke-dasharray:none!important;opacity:.96!important;filter:drop-shadow(0 0 5px rgba(121,241,255,.34));}
-.train-route.reachable{stroke:#c7a6ff!important;stroke-width:3.05!important;stroke-dasharray:4 6!important;opacity:.98!important;filter:drop-shadow(0 0 6px rgba(199,166,255,.34));}
-.route.planned{stroke:#ffd27a!important;stroke-width:3.35!important;stroke-dasharray:11 7!important;opacity:1!important;filter:drop-shadow(0 0 6px rgba(255,210,122,.30));animation:vp6RouteFlow 2.6s linear infinite;}
-.train-route.planned{stroke:#ffd27a!important;stroke-width:3.35!important;stroke-dasharray:4 6!important;opacity:1!important;filter:drop-shadow(0 0 6px rgba(255,210,122,.30));animation:vp6RailFlow 2.2s linear infinite;}
-.route.chosen,.train-route.chosen{stroke:#e3ff63!important;stroke-width:4.15!important;opacity:1!important;filter:drop-shadow(0 0 7px rgba(227,255,99,.42)) drop-shadow(0 0 2px rgba(255,255,255,.24));}
-.route.chosen{stroke-dasharray:none!important}.train-route.chosen{stroke-dasharray:4 5!important}
-@keyframes vp6RouteFlow{to{stroke-dashoffset:-36}}@keyframes vp6RailFlow{to{stroke-dashoffset:-20}}
-@media(prefers-reduced-motion:reduce){.route.planned,.train-route.planned{animation:none!important}}
+/* Geometrieneutral: bestehende SVG-Verbindungen werden nur über Kontur, Muster, Leuchtstärke und Bewegung unterschieden. */
+.route,.train-route{
+  vector-effect:non-scaling-stroke;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.route{
+  stroke:rgba(132,157,179,.30)!important;
+  stroke-width:2.15!important;
+  stroke-dasharray:none!important;
+  filter:drop-shadow(0 1px 2px rgba(0,0,0,.28));
+}
+.train-route{
+  stroke:rgba(193,157,255,.48)!important;
+  stroke-width:2.05!important;
+  stroke-dasharray:3 7!important;
+  filter:drop-shadow(0 0 3px rgba(193,157,255,.18));
+}
+.route.reachable{
+  stroke:#79f1ff!important;
+  stroke-width:3.15!important;
+  stroke-dasharray:none!important;
+  opacity:.96!important;
+  filter:drop-shadow(0 0 5px rgba(121,241,255,.34));
+}
+.train-route.reachable{
+  stroke:#c7a6ff!important;
+  stroke-width:3.05!important;
+  stroke-dasharray:4 6!important;
+  opacity:.98!important;
+  filter:drop-shadow(0 0 6px rgba(199,166,255,.34));
+}
+.route.planned{
+  stroke:#ffd27a!important;
+  stroke-width:3.35!important;
+  stroke-dasharray:11 7!important;
+  opacity:1!important;
+  filter:drop-shadow(0 0 6px rgba(255,210,122,.30));
+  animation:vp6RouteFlow 2.6s linear infinite;
+}
+.train-route.planned{
+  stroke:#ffd27a!important;
+  stroke-width:3.35!important;
+  stroke-dasharray:4 6!important;
+  opacity:1!important;
+  filter:drop-shadow(0 0 6px rgba(255,210,122,.30));
+  animation:vp6RailFlow 2.2s linear infinite;
+}
+.route.chosen,.train-route.chosen{
+  stroke:#e3ff63!important;
+  stroke-width:4.15!important;
+  opacity:1!important;
+  filter:drop-shadow(0 0 7px rgba(227,255,99,.42)) drop-shadow(0 0 2px rgba(255,255,255,.24));
+}
+.route.chosen{stroke-dasharray:none!important}
+.train-route.chosen{stroke-dasharray:4 5!important}
+@keyframes vp6RouteFlow{to{stroke-dashoffset:-36}}
+@keyframes vp6RailFlow{to{stroke-dashoffset:-20}}
+@media(prefers-reduced-motion:reduce){
+  .route.planned,.train-route.planned{animation:none!important}
+}
 body.lc09-reduced-motion .route.planned,body.lc09-reduced-motion .train-route.planned{animation:none!important}
 
 /* Visual Polish VI-H · Ereignis- und Gefahrenlagen ohne zusätzliche Kartenebene */
-/* Bestehende Zustandsklassen werden ausschließlich optisch priorisiert; Kartenmaße und Interaktion bleiben unverändert. */
 .district-node.event-hot .zone{stroke:#ffd27a!important;stroke-width:2.8px!important;filter:drop-shadow(0 0 7px rgba(255,210,122,.34));}
 .district-node.event-hot .node-core{stroke:#ffd27a!important;filter:drop-shadow(0 0 8px rgba(255,210,122,.42));animation:vp6EventPulse 2.4s ease-in-out infinite;}
 .district-node.pressure-watch .zone{stroke:#ffbd6a!important;filter:drop-shadow(0 0 5px rgba(255,189,106,.24));}
@@ -60,3 +207,14 @@ body.lc09-reduced-motion .route.planned,body.lc09-reduced-motion .train-route.pl
 @keyframes vp6EventPulse{0%,100%{opacity:.88}50%{opacity:1}}
 @media(prefers-reduced-motion:reduce){.district-node.event-hot .node-core{animation:none!important}}
 body.lc09-reduced-motion .district-node.event-hot .node-core{animation:none!important}
+
+/* Visual Polish VI-I · Marker-Priorität und optische Ruhe */
+/* Aktiver Standort bleibt dominant; sekundäre Pins werden in kritischen Lagen eindeutiger codiert, ohne Geometrieänderung. */
+.district-node.current:not(.event-hot) .node-core{filter:drop-shadow(0 0 10px rgba(227,255,99,.42))!important;}
+.district-node.selected:not(.current):not(.event-hot) .node-core{filter:drop-shadow(0 0 8px rgba(121,241,255,.34));}
+.district-node:not(.current):not(.selected) .asset-pin,.district-node:not(.current):not(.selected) .intel-pin,.district-node:not(.current):not(.selected) .train-pin{opacity:.82;}
+.district-node.pressure-critical .asset-pin,.district-node.pressure-critical .intel-pin,.district-node.pressure-critical .train-pin{filter:drop-shadow(0 0 5px rgba(255,113,136,.38));opacity:1;}
+.district-node.event-hot .asset-pin,.district-node.event-hot .intel-pin,.district-node.event-hot .train-pin{filter:drop-shadow(0 0 5px rgba(255,210,122,.36));opacity:1;}
+.district-node.current.event-hot .node-label{fill:#f2ffd0!important;text-shadow:none;}
+@media(prefers-reduced-motion:reduce){.district-node .asset-pin,.district-node .intel-pin,.district-node .train-pin{transition:none!important}}
+body.lc09-reduced-motion .district-node .asset-pin,body.lc09-reduced-motion .district-node .intel-pin,body.lc09-reduced-motion .district-node .train-pin{transition:none!important}
