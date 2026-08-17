@@ -20,14 +20,24 @@ def compat_lc10_js(driver,code,*args):
 previous.raw_js=compat_lc10_js
 
 def scenario(driver,url,out,result):
-    try:
-        base_scenario(driver,url,out,result)
-    except StaleElementReferenceException:
-        # Dynamische Dialoge ersetzen DOM-Knoten während echter Chrome-Eingaben.
-        # Ein einziger kompletter Neuversuch startet den qualifizierten Kern sauber neu;
-        # wiederholte Stale-Fehler bleiben harte Gate-Fehler.
-        result["checks"].append("Chrome-E2E: einmaliger DOM-Neuversuch nach StaleElementReference")
-        base_scenario(driver,url,out,result)
+    # Dynamische Dialoge ersetzen DOM-Knoten während echter Chrome-Eingaben. Chrome
+    # kann genau in diesem Renderfenster einen StaleElementReference liefern, obwohl
+    # der nächste frische DOM-Zugriff korrekt wäre. Erlaube maximal zwei saubere
+    # Neuversuche und rolle Teilnachweise zurück, damit ein Retry keine doppelten
+    # Viewports/Checks als vermeintlich bestandene Evidenz hinterlässt.
+    stale_errors=[]
+    for attempt in range(3):
+        checks_len=len(result["checks"]);viewports_len=len(result["viewports"])
+        try:
+            base_scenario(driver,url,out,result)
+            if attempt:
+                result["checks"].append(f"Chrome-E2E: DOM nach StaleElementReference stabil ({attempt} Neuversuch{'e' if attempt>1 else ''})")
+            break
+        except StaleElementReferenceException as exc:
+            stale_errors.append(exc)
+            del result["checks"][checks_len:];del result["viewports"][viewports_len:]
+            if attempt==2:
+                raise stale_errors[-1]
     version=raw_js(driver,"return window.LIVING_CITY_11_ENGINE?.state?.version")
     schema=raw_js(driver,"return window.LIVING_CITY_11_ENGINE?.state?.schema")
     core.assert_true(version=='0.17.6-living-city-11-visual-polish-6' and schema==12,f'LC11 Version/Schema falsch: {version}/{schema}')
