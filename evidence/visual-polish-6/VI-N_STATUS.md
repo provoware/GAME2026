@@ -8,4 +8,6 @@
 - Geometrie: keine neuen Maße, Grids, Paddings oder dauerhaften Flächen.
 - Kompatibilität: kein Gameplay-, Engine-, Schema- oder Save-Eingriff; Schema 12 / v0170 unverändert.
 - Lokale Validierung: `PRUEFEN.sh` **35/35 PASS**, LC11-Engine **12/12 PASS**, 3500-Zug-Langlauf **PASS**, Python-Syntax **PASS**.
-- Remote-Qualifikation: ausstehend bis erfolgreichem GitHub-Actions-/Chrome-E2E-Gate des finalen Heads.
+- Remote-Implementierungsqualifikation: GitHub Actions **#195 / 32029645103 SUCCESS** auf Head `25e182593a734499dda2d107589de65135ea5f98`; echter Google-Chrome-Desktop-E2E, Vertragslauf, Manifest-Neubau, Paketvalidierung und Python-Syntax **PASS**.
+- Implementierungsartefakte: Source `9288399839` (`sha256:5eb52c6591c80cbe0e5cbbd8c6b6247c9db21bba5726760e61d6e4591c530376`), Chrome-E2E `9288397500` (`sha256:de03f5069006b47d37f8e2881b218e82a6af9cbacb1e54ccd4c4cf839c308f00`).
+- Dieser Nachweis-Commit ändert ausschließlich die Statusdokumentation und wird als finaler Branch-Head erneut durch dasselbe Remote-Gate qualifiziert.
