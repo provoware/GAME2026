@@ -218,3 +218,34 @@ body.lc09-reduced-motion .district-node.event-hot .node-core{animation:none!impo
 .district-node.current.event-hot .node-label{fill:#f2ffd0!important;text-shadow:none;}
 @media(prefers-reduced-motion:reduce){.district-node .asset-pin,.district-node .intel-pin,.district-node .train-pin{transition:none!important}}
 body.lc09-reduced-motion .district-node .asset-pin,body.lc09-reduced-motion .district-node .intel-pin,body.lc09-reduced-motion .district-node .train-pin{transition:none!important}
+
+/* Visual Polish VI-J · Kombinationslagen mit eindeutiger Priorität */
+/* Ausgewählt + Rivalenbesitz + Ereignis/Kritik wird ohne neue Geometrie in klarer Reihenfolge codiert. */
+.district-node.selected .owner-ring.owner-rival{
+  stroke:#ff8ca0!important;
+  filter:drop-shadow(0 0 6px rgba(255,113,136,.34));
+}
+.district-node.selected.event-hot .owner-ring.owner-rival{
+  stroke:#ffd27a!important;
+  filter:drop-shadow(0 0 6px rgba(255,210,122,.34)) drop-shadow(0 0 4px rgba(255,113,136,.24));
+}
+.district-node.selected.pressure-critical .owner-ring.owner-rival{
+  stroke:#ff7188!important;
+  stroke-width:9!important;
+  filter:drop-shadow(0 0 8px rgba(255,113,136,.46));
+}
+.district-node.selected.event-hot.pressure-critical .owner-ring.owner-rival{
+  stroke:#ffb36f!important;
+  stroke-dasharray:6 4!important;
+  filter:drop-shadow(0 0 9px rgba(255,113,136,.40)) drop-shadow(0 0 6px rgba(255,210,122,.30));
+}
+.district-node.selected.event-hot.pressure-critical .node-label{
+  fill:#fff1d2!important;
+}
+.district-node.current.selected.event-hot.pressure-critical .node-label{
+  fill:#f4ffd0!important;
+}
+@media(prefers-reduced-motion:reduce){
+  .district-node.selected .owner-ring.owner-rival{animation:none!important}
+}
+body.lc09-reduced-motion .district-node.selected .owner-ring.owner-rival{animation:none!important}
