@@ -48,3 +48,14 @@ body.lc09-reduced-motion .scene-modal[open] .scene-hotspot,body.lc09-reduced-mot
 .theme-dojo .interior-action:hover:not(:disabled),.theme-dojo .interior-action:focus-within{border-color:rgba(227,255,99,.46)!important}
 .theme-market .interior-action:hover:not(:disabled),.theme-market .interior-action:focus-within{border-color:rgba(79,255,190,.44)!important;box-shadow:inset 4px 0 rgba(79,255,190,.54),0 14px 30px rgba(0,0,0,.20),0 0 20px rgba(79,255,190,.06)!important}
 .theme-station .interior-action:hover:not(:disabled),.theme-station .interior-action:focus-within{border-color:rgba(199,166,255,.46)!important;box-shadow:inset 4px 0 rgba(199,166,255,.56),0 14px 30px rgba(0,0,0,.20),0 0 20px rgba(199,166,255,.065)!important}
+
+/* Visual Polish VI-P · Entscheidungszeile in realen Innenraum-Aktionskarten präzisiert */
+/* Rein präsentational und geometrieneutral: vorhandene Titel-, Beschreibung-, Ergebnis- und Sperrtexte werden semantisch gewichtet. */
+.scene-modal[open] .interior-action>i{color:#9fefff!important;filter:saturate(1.08) brightness(1.06)}
+.scene-modal[open] .interior-action:not(:disabled)>i{text-shadow:0 0 14px rgba(121,241,255,.18)}
+.scene-modal[open] .interior-action em{color:#8fffc7!important;font-weight:850!important;text-shadow:0 0 12px rgba(79,255,190,.10)}
+.scene-modal[open] .interior-action u{color:#ff9aae!important;font-weight:900!important;text-decoration:none!important;text-shadow:0 0 12px rgba(255,109,138,.10)}
+.scene-modal[open] .interior-action:disabled b{color:#d4dde7!important;text-shadow:none!important}
+.scene-modal[open] .interior-action:disabled small{color:#91a0af!important}
+.scene-modal[open] .interior-action:disabled u{color:#ff9aae!important;filter:saturate(1.12) brightness(1.06)}
+.scene-modal[open] .interior-action:hover:not(:disabled) em,.scene-modal[open] .interior-action:focus-visible em{color:#b4ffd8!important;text-shadow:0 0 16px rgba(79,255,190,.16)}
