@@ -1,0 +1,30 @@
+/* Visual Polish VI-W · Kosten- und Ergebnisbilanz nach Innenraumaktionen */
+/* Rein präsentational und geometrieneutral: vorhandenes Erfolgsfeedback zeigt Wirkung und Aufwand semantisch getrennt. */
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-outcome{
+  color:#d9f8eb!important;
+  animation:vp6OutcomeReveal .68s ease-out both;
+}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-outcome [data-kind="benefit"]{
+  color:var(--vp6-decision-benefit)!important;
+  text-shadow:0 0 10px rgba(79,255,190,.12)!important;
+}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-outcome [data-kind="cost"]{
+  color:var(--vp6-decision-cost)!important;
+  text-shadow:0 0 10px rgba(255,210,122,.10)!important;
+}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-outcome b{
+  font-weight:950!important;
+  letter-spacing:.055em!important;
+}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-outcome-sep{
+  color:rgba(216,233,255,.48)!important;
+}
+@keyframes vp6OutcomeReveal{
+  0%{opacity:.58;filter:saturate(.82) brightness(.94)}
+  38%{opacity:1;filter:saturate(1.08) brightness(1.04)}
+  100%{opacity:1;filter:none}
+}
+@media(prefers-reduced-motion:reduce){
+  body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-outcome{animation:none!important;filter:none!important}
+}
+body.lc09-reduced-motion:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-outcome{animation:none!important;filter:none!important}
