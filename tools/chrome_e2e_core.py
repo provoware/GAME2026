@@ -333,7 +333,7 @@ def scenario(driver: webdriver.Chrome, url: str, out: Path, result: dict) -> Non
     append(result, "Kampfvorbereitung, Vorschau und Tastatur 1/2/3 funktionieren")
     close = driver.find_elements(By.CSS_SELECTOR, "#combatDialog [data-close='combatDialog']")
     if close:
-        close[0].click()
+        safe_click(driver, "#combatDialog [data-close='combatDialog']")
 
     # Nach dem dynamischen Kampf-Render kann noch ein bereits geplanter UI-Refresh
     # auslaufen. Erst danach prüfen wir den realen Tastaturfokus; bei einem
