@@ -35,10 +35,15 @@ assert.ok(ui.includes('0.17.6 · Schema 12'));
   '.boss-panel .decision-card::before',
   '.boss-panel .warning:first-child',
   '.boss-panel .detail-box[open]',
-  '.boss-panel .location-now{'
+  '.boss-panel .location-now{',
+  'Visual-Polish VI-D: Stadtkarte mit klarer Besitz-, Gefahren- und Routenhierarchie',
+  '.district-node .owner-ring.owner-player',
+  '.district-node.pressure-critical .zone',
+  '.district-node.event-hot .node-core',
+  '.district-node:focus-visible .zone'
 ].forEach((x)=>assert.ok(css.includes(x),x));
 assert.ok(css.includes('button:focus-visible')&&css.includes('.district-node:focus-visible'),'Fokuszustände müssen sichtbar bleiben.');
 assert.ok(!css.includes('pointer-events:auto'),'Visual Polish VI darf keine eigene aktive Interaktionsebene erzwingen.');
 const pointerAuto=(closeCss.match(/pointer-events:auto/g)||[]).length;assert.equal(pointerAuto,1,'Nur Close-Control darf pointer-events:auto explizit setzen.');
 assert.ok(closeCss.includes('z-index:120!important')&&closeCss.includes('visibility:visible!important'));
-console.log('PASS: Visual-Polish VI – räumliche Kartenbühne, Spezialorte, Aktionsleiste, Boss-Zentrale, Innenräume, Kampf und Reduced-Motion geprüft.');
+console.log('PASS: Visual-Polish VI – räumliche Kartenbühne, Spezialorte, Aktionsleiste, Boss-Zentrale, Kartenlage, Innenräume, Kampf und Reduced-Motion geprüft.');

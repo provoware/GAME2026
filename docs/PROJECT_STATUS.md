@@ -67,3 +67,5 @@ Die rechte Aktionsleiste besitzt jetzt eine deutlichere Entscheidungshierarchie:
 ### Visual-Polish VI-C – Boss-Zentrale
 Die linke Boss-Zentrale ist jetzt klar als Lage- und Führungsbereich priorisiert: Entscheidungswerte sind stärker gewichtet, Warnungen als eigener Lageblock gebündelt, der erste Warnhinweis erhält höhere Dringlichkeit und Skills/Details sind kontrastreicher gegliedert. Der aktuelle Standort bleibt auf großen Desktop-Ansichten sichtbar, fällt bei schmaleren Layouts aber bewusst in den normalen Dokumentfluss zurück. Die Änderung ist rein präsentational; Gameplay, Schema 12 und Save-Spiegel v0170 bleiben unverändert.
 
+### Visual-Polish VI-D – Kartenlage
+Die zentrale Stadtkarte priorisiert Besitz, Gefahr und Reisewege jetzt klarer: Spieler-, Rivalen- und neutrale Bezirke sind eindeutiger getrennt, Druckstufen und aktive Ereignisse treten gezielt hervor und inaktive Routen werden bewusst zurückgenommen. Fokus- und Auswahlzustände bleiben tastaturlesbar. Die Änderung ist rein präsentational; Gameplay, Schema 12 und Save-Spiegel v0170 bleiben unverändert.

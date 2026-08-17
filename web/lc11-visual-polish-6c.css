@@ -416,3 +416,85 @@ body.lc09-reduced-motion .interior-action{transition:none!important}
   .action-panel .action-card{transition:none!important}
 }
 body.lc09-reduced-motion .action-panel .action-card{transition:none!important}
+
+/* Visual-Polish VI-D: Stadtkarte mit klarer Besitz-, Gefahren- und Routenhierarchie. */
+.map-stage{
+  background:
+    radial-gradient(ellipse at 50% 46%,rgba(121,241,255,.075),transparent 42%),
+    radial-gradient(circle at 18% 76%,rgba(255,113,136,.035),transparent 24%),
+    linear-gradient(180deg,#07131e 0%,#03080e 72%,#020509 100%)!important;
+}
+.map-stage::before{
+  background:
+    linear-gradient(180deg,rgba(121,241,255,.028),transparent 20%,transparent 74%,rgba(0,0,0,.44)),
+    repeating-linear-gradient(0deg,transparent 0 41px,rgba(121,241,255,.012) 42px),
+    repeating-linear-gradient(90deg,transparent 0 41px,rgba(121,241,255,.010) 42px),
+    repeating-linear-gradient(135deg,transparent 0 82px,rgba(255,255,255,.006) 83px 84px),
+    radial-gradient(circle at 50% 50%,transparent 30%,rgba(0,0,0,.18) 76%)!important;
+}
+.route,.train-route{
+  opacity:.62;
+  stroke-linecap:round;
+}
+.route{stroke:rgba(142,170,192,.26)!important;stroke-width:2.35!important}
+.train-route{stroke:rgba(199,166,255,.40)!important;stroke-width:2.1!important;filter:drop-shadow(0 0 3px rgba(199,166,255,.10))}
+.route.reachable,.train-route.reachable{opacity:.94!important}
+.route.planned,.train-route.planned{opacity:1!important}
+.district-node .zone{
+  stroke-width:2.15!important;
+  filter:drop-shadow(0 8px 12px rgba(0,0,0,.18));
+}
+.district-node .owner-ring.owner-player{
+  stroke:#dff86d!important;
+  filter:drop-shadow(0 0 6px rgba(227,255,99,.24));
+}
+.district-node .owner-ring.owner-rival{
+  stroke:#ff7188!important;
+  filter:drop-shadow(0 0 6px rgba(255,113,136,.20));
+}
+.district-node .owner-ring.owner-neutral{
+  stroke:#8093a5!important;
+  opacity:.72;
+}
+.district-node .control-ring{
+  stroke-width:3.2!important;
+  opacity:.94!important;
+}
+.district-node.pressure-watch .zone{
+  stroke:rgba(255,210,122,.42)!important;
+  fill:rgba(255,210,122,.045)!important;
+}
+.district-node.pressure-critical .zone{
+  stroke:rgba(255,113,136,.58)!important;
+  fill:rgba(255,113,136,.060)!important;
+  filter:drop-shadow(0 0 12px rgba(255,113,136,.11)) drop-shadow(0 8px 12px rgba(0,0,0,.20));
+}
+.district-node.event-hot .node-core{
+  stroke:rgba(255,210,122,.78)!important;
+  filter:drop-shadow(0 0 9px rgba(255,210,122,.26));
+}
+.district-node.current .node-label{
+  fill:#f6ffd4!important;
+  stroke:#071006!important;
+}
+.district-node.selected:not(.current) .node-label{fill:#d8f9ff!important}
+.district-node:focus-visible .zone{
+  stroke-width:3.1!important;
+  stroke:rgba(121,241,255,.80)!important;
+  filter:drop-shadow(0 0 10px rgba(121,241,255,.18));
+}
+.map-callout{
+  border-color:rgba(121,241,255,.20)!important;
+  background:linear-gradient(145deg,rgba(7,16,24,.94),rgba(4,9,14,.94))!important;
+}
+.map-callout strong{font-size:12px!important;color:#f7fbff!important}
+.map-callout span{color:#b8c8d8!important;line-height:1.45!important}
+@media(prefers-reduced-motion:reduce){
+  .district-node .zone,.district-node .owner-ring,.district-node .control-ring,.district-node .node-core,.route,.train-route{transition:none!important}
+}
+body.lc09-reduced-motion .district-node .zone,
+body.lc09-reduced-motion .district-node .owner-ring,
+body.lc09-reduced-motion .district-node .control-ring,
+body.lc09-reduced-motion .district-node .node-core,
+body.lc09-reduced-motion .route,
+body.lc09-reduced-motion .train-route{transition:none!important}
