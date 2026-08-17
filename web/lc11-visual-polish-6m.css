@@ -1,0 +1,41 @@
+/* Visual Polish VI-V · Warn- und Blockadefeedback für Innenraumaktionen */
+/* Rein präsentational und geometrieneutral: Warnungen und gesperrte Aktionen werden sofort von Erfolg unterschieden. */
+body:has(.scene-modal[open]) #coachRail[data-tone="warn"]{
+  border-color:rgba(255,154,174,.46)!important;
+  box-shadow:0 10px 28px rgba(0,0,0,.24),0 0 22px rgba(255,96,128,.10),inset 0 0 0 1px rgba(255,210,122,.045)!important;
+  animation:vp6ActionWarning .72s cubic-bezier(.18,.82,.2,1) both;
+}
+body:has(.scene-modal[open]) #coachRail[data-tone="warn"] .coach-orb{
+  color:var(--vp6-decision-risk)!important;
+  text-shadow:0 0 14px rgba(255,96,128,.28)!important;
+}
+body:has(.scene-modal[open]) #coachRail[data-tone="warn"] .coach-copy>span,
+body:has(.scene-modal[open]) #coachRail[data-tone="warn"] .coach-copy>strong{
+  color:var(--vp6-decision-risk)!important;
+}
+body:has(.scene-modal[open]) #coachRail[data-tone="warn"] .coach-copy>small{
+  color:#ffe1e7!important;
+}
+.scene-modal[open] .interior-action:disabled{
+  border-color:rgba(255,154,174,.20)!important;
+  box-shadow:inset 0 0 0 1px rgba(255,154,174,.055)!important;
+  filter:saturate(.72) brightness(.92)!important;
+}
+.scene-modal[open] .interior-action:disabled u{
+  color:var(--vp6-decision-risk)!important;
+  text-decoration-color:rgba(255,154,174,.62)!important;
+  text-shadow:0 0 10px rgba(255,96,128,.10)!important;
+}
+.scene-modal[open] .interior-action:disabled i{
+  color:#ffb2c1!important;
+  opacity:.72!important;
+}
+@keyframes vp6ActionWarning{
+  0%{filter:brightness(1);transform:translateY(0)}
+  30%{filter:brightness(1.07) saturate(1.08);transform:translateY(-1px)}
+  100%{filter:brightness(1);transform:translateY(0)}
+}
+@media(prefers-reduced-motion:reduce){
+  body:has(.scene-modal[open]) #coachRail[data-tone="warn"]{animation:none!important;filter:none!important}
+}
+body.lc09-reduced-motion:has(.scene-modal[open]) #coachRail[data-tone="warn"]{animation:none!important;filter:none!important}
