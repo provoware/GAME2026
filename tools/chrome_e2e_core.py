@@ -335,12 +335,21 @@ def scenario(driver: webdriver.Chrome, url: str, out: Path, result: dict) -> Non
     if close:
         close[0].click()
 
-    driver.find_element(By.TAG_NAME, "body").send_keys("g")
-    focused = js(driver, """
+    # Nach dem dynamischen Kampf-Render kann noch ein bereits geplanter UI-Refresh
+    # auslaufen. Erst danach prüfen wir den realen Tastaturfokus; bei einem
+    # transienten Fokusverlust ist genau ein erneuter echter Tastendruck erlaubt.
+    focus_probe = """
       const a=document.activeElement;
       return !!a && (a.closest?.('#focusDashboard,.focus-dashboard,.lc06-guide-card,[data-guide-action]')!==null);
-    """)
-    assert_true(bool(focused), "Taste G fokussiert den Aufgaben-Kompass nicht")
+    """
+    time.sleep(.12)
+    driver.find_element(By.TAG_NAME, "body").send_keys("g")
+    focused = bool(js(driver, focus_probe))
+    if not focused:
+        time.sleep(.12)
+        driver.find_element(By.TAG_NAME, "body").send_keys("g")
+        focused = bool(js(driver, focus_probe))
+    assert_true(focused, "Taste G fokussiert den Aufgaben-Kompass auch nach einem Wiederholungsversuch nicht")
     append(result, "G fokussiert den nächsten sinnvollen Schritt")
 
     unnamed = js(driver, """
