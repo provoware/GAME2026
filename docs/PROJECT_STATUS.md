@@ -64,3 +64,6 @@ Die bestehende 0.17.6-Präsentationsschicht wurde gezielt nachgeschärft: Sekund
 
 ### Visual-Polish VI-B – Aktions-/Entscheidungsleiste
 Die rechte Aktionsleiste besitzt jetzt eine deutlichere Entscheidungshierarchie: Gruppenüberschriften werden visuell getrennt, Aktionskarten erhalten größere Trefferflächen, klarere Kosten-Chips, stärkere Hover-/Fokuszustände und besser lesbare Beschreibungen. Die Tabs bleiben auf hohen Desktop-Ansichten im Aktionsbereich sichtbar; bei schmalen Ansichten fällt diese Fixierung bewusst weg. Die Änderung bleibt rein präsentational; Gameplay, Schema 12 und Save-Spiegel v0170 bleiben unverändert.
+### Visual-Polish VI-C – Boss-Zentrale
+Die linke Boss-Zentrale ist jetzt klar als Lage- und Führungsbereich priorisiert: Entscheidungswerte sind stärker gewichtet, Warnungen als eigener Lageblock gebündelt, der erste Warnhinweis erhält höhere Dringlichkeit und Skills/Details sind kontrastreicher gegliedert. Der aktuelle Standort bleibt auf großen Desktop-Ansichten sichtbar, fällt bei schmaleren Layouts aber bewusst in den normalen Dokumentfluss zurück. Die Änderung ist rein präsentational; Gameplay, Schema 12 und Save-Spiegel v0170 bleiben unverändert.
+
