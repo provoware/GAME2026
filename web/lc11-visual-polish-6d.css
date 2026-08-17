@@ -81,3 +81,52 @@
   .direct-target{transition:none!important}
 }
 body.lc09-reduced-motion .direct-target{transition:none!important}
+
+/* Visual Polish VI-F · Bezirksmarker als kompakte Lageinstrumente */
+/* Geometrieneutral: nur Farbe, Kontur, Gewichtung und optische Tiefe bestehender SVG-Elemente. */
+.district-node .node-label{
+  fill:#eef7ff!important;
+  font-weight:950;
+  paint-order:stroke;
+  stroke:rgba(4,9,14,.94);
+  stroke-width:3px;
+  stroke-linejoin:round;
+}
+.district-node .node-pressure{
+  fill:#9fb6c8!important;
+  font-weight:850;
+  paint-order:stroke;
+  stroke:rgba(4,9,14,.9);
+  stroke-width:2.4px;
+}
+.district-node.pressure-watch .node-pressure{fill:#ffd18a!important}
+.district-node.pressure-critical .node-pressure{fill:#ff8da0!important;font-weight:950}
+.district-node .node-control{
+  fill:#f7fbff!important;
+  font-weight:950;
+  paint-order:stroke;
+  stroke:rgba(3,8,13,.92);
+  stroke-width:2.2px;
+}
+.district-node .node-kind{
+  fill:#dff8ff!important;
+  filter:drop-shadow(0 0 4px rgba(121,241,255,.24));
+}
+.district-node.current .node-label{fill:#e3ff63!important}
+.district-node.selected .node-label{fill:#79f1ff!important}
+.district-node.current.selected .node-label{fill:#f4ffd0!important}
+.district-node.event-hot .node-pressure{filter:drop-shadow(0 0 4px rgba(255,209,91,.28))}
+.district-node .asset-count{
+  fill:#e3ff63!important;
+  font-weight:950;
+  paint-order:stroke;
+  stroke:#071018;
+  stroke-width:2.5px;
+}
+.district-node .train-pin{fill:#79f1ff!important;filter:drop-shadow(0 0 4px rgba(121,241,255,.34))}
+.district-node .intel-pin{filter:drop-shadow(0 0 5px rgba(121,241,255,.28))}
+.district-node:hover .node-label,.district-node:focus-visible .node-label{filter:drop-shadow(0 0 5px rgba(121,241,255,.28))}
+@media(prefers-reduced-motion:reduce){
+  .district-node .node-kind,.district-node .node-label,.district-node .node-pressure{transition:none!important}
+}
+body.lc09-reduced-motion .district-node .node-kind,body.lc09-reduced-motion .district-node .node-label,body.lc09-reduced-motion .district-node .node-pressure{transition:none!important}
