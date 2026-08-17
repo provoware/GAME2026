@@ -54,6 +54,25 @@ Remote-Artefakte des dokumentierten Heads:
 - Source: `9295986410`, `sha256:3a925d28f04039f9f28aadeb657eb589eb29dbf744dbc8037d9c7f484690fb6a`
 - Chrome-E2E: `9295984256`, `sha256:c83463cbf35c4ece1d07b23eb568c3235463bb1b6e7af5c17d9721ede7dd1541`
 
+## Chrome-E2E-Nachhärtung
+GitHub Actions **#225 / 32054857720** zeigte ausschließlich im echten Chrome-E2E einen `StaleElementReferenceException`; alle statischen Verträge waren bereits PASS. Das veröffentlichte Fehler-Artefakt zeigte den Fehler nach dynamischem Dialog-Neurendering. `tools/chrome_e2e_lc11.py` wurde deshalb gezielt gehärtet:
+- maximal zwei saubere Neuversuche nach transientem StaleElementReference
+- vor jedem Retry werden Teil-Checks und Viewport-Nachweise des fehlgeschlagenen Versuchs zurückgerollt
+- wiederholtes Versagen nach drei Gesamtversuchen bleibt ein harter Gate-Fehler
+
+Die lokale Revalidierung nach der Härtung blieb **35/35 PASS**, LC11 **12/12 PASS**, 3500-Zug-Langlauf PASS und Python-Syntax PASS.
+
+GitHub Actions **#226 / 32055105203: SUCCESS** auf Head `8511b760a68ec1b6be59998a3b787d9eb5d937a2`.
+- qualifizierter Vertragslauf: **PASS**
+- echter Google Chrome Desktop E2E: **PASS**
+- deterministischer Manifest-Neubau: **PASS**
+- Paketvalidierung: **PASS**
+- Python-Syntax: **PASS**
+
+Remote-Artefakte des gehärteten Heads:
+- Source: `9296121750`, `sha256:579acbcca8376cf953018cb9b48f49b2a6ea97764d5d5d8105068737558b0328`
+- Chrome-E2E: `9296119505`, `sha256:445591814872db4abb1230db01b2a0f5a5063d7570a72fc90918e8eee76bbc2c`
+
 ## Repository-Hygiene
 - keine beabsichtigten Löschungen
 - keine `__pycache__`- oder `.pyc`-Dateien hinzugefügt
@@ -61,3 +80,6 @@ Remote-Artefakte des dokumentierten Heads:
 - Branch bleibt `agent/html-gang-map-boss-dynamics`
 - Branch-Aktualisierung sequenziell und nicht-forciert
 - PR #6 bleibt Draft, offen und ungemergt
+
+## Abschließendes Head-Gate
+Der aktualisierte Statusnachweis wird auf seinem finalen Head erneut vollständig validiert.
