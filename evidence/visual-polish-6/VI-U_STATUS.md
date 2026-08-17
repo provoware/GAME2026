@@ -28,4 +28,12 @@ Visual Polish VI-U verbessert das unmittelbare visuelle Feedback nach einer erfo
 ## Qualifikation
 - lokale Vorqualifikation: **35/35 PASS**
 - LC11-Engine: **12/12 PASS**, 3500-Zug-Langlauf PASS
-- Remote-Qualifikation: ausstehend bis GitHub Actions und echter Chrome-E2E für den finalen Head abgeschlossen sind
+- Implementierungs-/Dokumentations-Gate **#231 / 32059969131: SUCCESS** auf Head `c9a00edb035614ba3c74e15d1bf4defd25000f4e`
+- qualifizierter Vertragslauf: **PASS**
+- echter Google Chrome Desktop E2E: **PASS**
+- Shell-/Browser-JavaScript-/Python-Syntax: **PASS**
+- deterministischer Manifest-Neubau: **PASS**
+- Paketvalidierung: **PASS**
+- Source-Artefakt `9297784187`, Digest `sha256:cd41033d56e66ec996f5925393b14ded4d3fbc2d903552967cba6129da9105f3`
+- Chrome-E2E-Artefakt `9297781891`, Digest `sha256:f6553fdc727201afdfd164a8fdfd79107939e3e0a0a2089a5f79faeb642f0670`
+- finale Head-Qualifikation folgt auf dem dokumentierten End-Head dieses Nachweises
