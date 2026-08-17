@@ -69,3 +69,6 @@ Die linke Boss-Zentrale ist jetzt klar als Lage- und Führungsbereich priorisier
 
 ### Visual-Polish VI-D – Kartenlage
 Die zentrale Stadtkarte priorisiert Besitz, Gefahr und Reisewege jetzt klarer: Spieler-, Rivalen- und neutrale Bezirke sind eindeutiger getrennt, Druckstufen und aktive Ereignisse treten gezielt hervor und inaktive Routen werden bewusst zurückgenommen. Fokus- und Auswahlzustände bleiben tastaturlesbar. Die Änderung ist rein präsentational; Gameplay, Schema 12 und Save-Spiegel v0170 bleiben unverändert.
+
+### Visual-Polish VI-E – Kartenleseschlüssel
+Legende, Lagehinweis, Schnellaktionen und direkt erreichbare Ziele werden jetzt als zusammenhängende, kompakte Lesekette geführt. Besitz- und Standortlegende erhält klarere Chips, der aktuelle Kartenhinweis eine eindeutige Lage-Markierung und Direktziele bleiben horizontal schnell erfassbar, ohne die Karte zu verkleinern. Responsive- und Reduced-Motion-Regeln sind enthalten. Die Änderung ist rein präsentational; Gameplay, Browser-Schema 12 und Save-Spiegel v0170 bleiben unverändert.
