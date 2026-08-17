@@ -37,3 +37,39 @@
 body.lc09-reduced-motion .scene-modal[open] .modal-card.wide,
 body.lc09-reduced-motion .scene-modal[open] .scene-hero,
 body.lc09-reduced-motion .scene-modal[open] .scene-sign{animation:none!important;transform:none!important;filter:none!important}
+
+/* Visual Polish VI-N · Fokusführung Ortslabel → Hotspots → Hauptaktion */
+/* Rein präsentational und geometrieneutral: gestaffelte Licht-/Kontrastführung ohne neue UI-Flächen oder Interaktion. */
+.scene-modal[open] .scene-hotspot{
+  animation:vp6HotspotGuide .38s .16s cubic-bezier(.2,.72,.2,1) both;
+}
+.scene-modal[open] .interior-action{
+  animation:vp6PrimaryGuide .46s .28s cubic-bezier(.16,.78,.2,1) both;
+}
+.scene-modal[open] .scene-hotspot:focus-within,
+.scene-modal[open] .scene-hotspot:hover{
+  animation:none;
+}
+.scene-modal[open] .interior-action:focus-within,
+.scene-modal[open] .interior-action:hover:not(:disabled){
+  animation:none;
+}
+.theme-casino .interior-action{border-color:rgba(255,210,122,.25)!important}
+.theme-dojo .interior-action{border-color:rgba(227,255,99,.24)!important}
+.theme-market .interior-action{border-color:rgba(79,255,190,.23)!important}
+.theme-station .interior-action{border-color:rgba(199,166,255,.24)!important}
+@keyframes vp6HotspotGuide{
+  from{opacity:.80;filter:saturate(.82) brightness(.82)}
+  62%{opacity:1;filter:saturate(1.08) brightness(1.08)}
+  to{opacity:1;filter:none}
+}
+@keyframes vp6PrimaryGuide{
+  from{opacity:.82;filter:saturate(.84) brightness(.82);box-shadow:inset 3px 0 rgba(227,255,99,.18),0 8px 18px rgba(0,0,0,.10)}
+  58%{opacity:1;filter:saturate(1.12) brightness(1.10);box-shadow:inset 3px 0 rgba(227,255,99,.58),0 14px 32px rgba(0,0,0,.22),0 0 24px rgba(227,255,99,.08)}
+  to{opacity:1;filter:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .scene-modal[open] .scene-hotspot,.scene-modal[open] .interior-action{animation:none!important;filter:none!important}
+}
+body.lc09-reduced-motion .scene-modal[open] .scene-hotspot,
+body.lc09-reduced-motion .scene-modal[open] .interior-action{animation:none!important;filter:none!important}
