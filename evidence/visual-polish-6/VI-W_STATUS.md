@@ -22,7 +22,23 @@ Nach einer erfolgreichen Innenraumaktion Kosten und konkrete Ergebniswirkung unm
 - Browser-JavaScript-/Python-Prüfpfad: PASS innerhalb des qualifizierten Vertragslaufs
 
 ## Remote-Qualifikation
-Wird nach dem validierten Fast-Forward des vollständigen VI-W-Pakets auf dem aktuellen Branch-Head ergänzt.
+Der erste Remote-Lauf #241 / 32066463860 bestätigte Vertragslauf und JavaScript-Syntax, scheiterte jedoch im echten Chrome-E2E an einem transient überlagerten Kampf-Schließen-Button. Der direkte Selenium-Klick wurde auf den bereits vorhandenen robusten `safe_click`-Pfad umgestellt und lokal erneut validiert.
+
+Requalifikation #242 / 32066709012: SUCCESS.
+- qualifizierter Vertragslauf: PASS
+- echter Google-Chrome-Desktop-E2E: PASS
+- Shell-/Browser-JavaScript-/Python-Syntax: PASS
+- deterministischer Manifest-Neubau: PASS
+- Paketvalidierung: PASS
+
+Implementierungs-Head: `c2dbf57b081b98da34200659ece7d39e6f8285d9`
+Implementierungs-Tree: `50687948b782fca0729f6d67481438a41fc08440`
+
+### Remote-Artefakte des Implementierungs-Gates
+- Source: `9300185235` · `sha256:55ae91f4e5318eacb7a8a32e0fb074fbdc0db54115d45689f39d2181d984a552`
+- Chrome-E2E: `9300183156` · `sha256:d9d7068ca699423c5801c13a5c8acd4e97ba5744ac537dc370ad7e08e22bd18e`
+
+Der dokumentierte Branch-Head wird zusätzlich durch das nach diesem Nachweis automatisch ausgelöste finale Head-Gate qualifiziert; dessen konkrete Run-/Artefaktdaten werden im PR-Nachweis geführt, ohne diesen Statusnachweis erneut zu verändern.
 
 ## Hygiene
-Keine ZIP-, `__pycache__`- oder `.pyc`-Dateien zur Repository-Aufnahme vorgesehen; keine unbeabsichtigten Löschungen. PR #6 bleibt Draft und ungemergt.
+Keine ZIP-, `__pycache__`- oder `.pyc`-Dateien aufgenommen; keine unbeabsichtigten Löschungen. PR #6 bleibt Draft und ungemergt.
