@@ -26,7 +26,11 @@ assert.ok(ui.includes('0.17.6 · Schema 12'));
   '.tab.active{',
   '.btn:focus-visible',
   '@media (min-width:1100px) and (max-height:800px)',
-  'Kleine Desktop-Höhen: weniger Leerraum statt kleinere Schrift'
+  'Kleine Desktop-Höhen: weniger Leerraum statt kleinere Schrift',
+  'Visual-Polish VI-B: Aktionsleiste als klare Entscheidungshierarchie',
+  '.action-panel .group-title::after',
+  '.action-panel .action-card:focus-visible',
+  '.action-panel .cost{'
 ].forEach((x)=>assert.ok(css.includes(x),x));
 assert.ok(css.includes('button:focus-visible')&&css.includes('.district-node:focus-visible'),'Fokuszustände müssen sichtbar bleiben.');
 assert.ok(!css.includes('pointer-events:auto'),'Visual Polish VI darf keine eigene aktive Interaktionsebene erzwingen.');
