@@ -61,3 +61,6 @@ Die Stadtkarte erhält eine stärkere räumliche Bühne mit ortsspezifischer Bez
 
 ### Visual-Polish VI-A – Lesbarkeits- und Dichtepass
 Die bestehende 0.17.6-Präsentationsschicht wurde gezielt nachgeschärft: Sekundärtexte, Tabs, Fokuszustände, Standort-/Tickerflächen und niedrige Desktop-Höhen sind klarer lesbar. Bei 720–800 px Höhe wird Leerraum reduziert statt Schrift zu verkleinern. Gameplay, Schema 12 und Save-Spiegel v0170 bleiben unverändert. Der bestehende Gesamtvertrag bleibt bei **35/35 PASS** und prüft die neuen Lesbarkeitsmarker mit.
+
+### Visual-Polish VI-B – Aktions-/Entscheidungsleiste
+Die rechte Aktionsleiste besitzt jetzt eine deutlichere Entscheidungshierarchie: Gruppenüberschriften werden visuell getrennt, Aktionskarten erhalten größere Trefferflächen, klarere Kosten-Chips, stärkere Hover-/Fokuszustände und besser lesbare Beschreibungen. Die Tabs bleiben auf hohen Desktop-Ansichten im Aktionsbereich sichtbar; bei schmalen Ansichten fällt diese Fixierung bewusst weg. Die Änderung bleibt rein präsentational; Gameplay, Schema 12 und Save-Spiegel v0170 bleiben unverändert.
