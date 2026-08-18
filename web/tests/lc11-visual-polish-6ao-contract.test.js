@@ -1,0 +1,12 @@
+const fs=require('fs');const path=require('path');const assert=require('assert');
+const root=path.join(__dirname,'..'),css=fs.readFileSync(path.join(root,'lc11-visual-polish-6s.css'),'utf8'),loader=fs.readFileSync(path.join(root,'lc11-close-control.css'),'utf8'),hardening=fs.readFileSync(path.join(root,'lc11-browser-hardening.js'),'utf8');
+['Visual Polish VI-AO · Zeitliche Dringlichkeit der Sekundärfolgen','data-consequence-urgency="immediate"','data-consequence-urgency="soon"','data-consequence-urgency="later"','attr(data-consequence-urgency-label)'].forEach((token)=>assert.ok(css.includes(token),token));
+['const consequenceUrgency=','security:[\'immediate\',\'sofort\',0]','agency:[\'soon\',\'bald\',1]','resources:[\'later\',\'später\',2]','data-consequence-urgency="${consequenceUrgencyKey}"','data-consequence-urgency-label="${esc(consequenceUrgencyLabel)}"','zeitliche Dringlichkeit ${consequenceUrgencyLabel}'].forEach((token)=>assert.ok(hardening.includes(token),token));
+assert.ok(hardening.includes(".sort((a,b)=>(consequenceUrgency[a.group]||consequenceUrgency.other)[2]-(consequenceUrgency[b.group]||consequenceUrgency.other)[2]||a.groupRank-b.groupRank||a.priority-b.priority)"),'Sekundärfolgen müssen zeitliche Dringlichkeit vor Wirkungsrang priorisieren.');
+assert.ok(loader.includes('@import url("lc11-visual-polish-6s.css");'),'VI-AO muss über die bestehende VI-AI..AN-Datei in der finalen visuellen Importkette geladen werden.');
+const section=css.split('Visual Polish VI-AO')[1]||'';
+assert.ok(!/(^|[;{])\s*(padding|margin|min-height|min-width|max-height|max-width|width|height|gap|grid-template(?:-areas|-columns|-rows)?)\s*:/m.test(section),'VI-AO darf keine Layoutmaße oder Grid-Geometrie setzen.');
+assert.ok(!section.includes('animation:'),'VI-AO ergänzt keine Bewegungslogik.');
+assert.ok(!section.includes('pointer-events:auto'),'VI-AO darf keine aktive Interaktionsebene erzwingen.');
+assert.ok(css.indexOf('VI-AO')>css.indexOf('VI-AN'),'VI-AO muss additiv auf VI-AN aufsetzen.');
+console.log('PASS: Visual Polish VI-AO – Sekundärfolgen werden nach zeitlicher Dringlichkeit priorisiert und semantisch lesbar.');
