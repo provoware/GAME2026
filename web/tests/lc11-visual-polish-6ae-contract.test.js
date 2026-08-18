@@ -1,0 +1,10 @@
+const fs=require('fs');const path=require('path');const assert=require('assert');
+const root=path.join(__dirname,'..');const hardening=fs.readFileSync(path.join(root,'lc11-browser-hardening.js'),'utf8'),css=fs.readFileSync(path.join(root,'lc11-visual-polish-6r.css'),'utf8');
+['metricPriority','districtPolice:10','districtRival:20','tension:30','crewStress:40','money:50','orderedKeys','priority:metricPriority[key]??100','a.priority-b.priority||a.index-b.index','data-priority="${priority}"'].forEach((token)=>assert.ok(hardening.includes(token),token));
+['Visual Polish VI-AE · semantische Metrikpriorität bei Gleichrang','data-priority="10"','data-priority="20"','text-underline-offset:3px'].forEach((token)=>assert.ok(css.includes(token),token));
+const section=css.split('Visual Polish VI-AE')[1]||'';
+assert.ok(!/(^|[;{])\s*(padding|min-height|min-width|max-height|max-width|grid-template(?:-areas|-columns|-rows)?)\s*:/m.test(section),'VI-AE darf keine Layoutmaße oder Grid-Geometrie setzen.');
+assert.ok(!section.includes('pointer-events:auto'),'VI-AE darf keine aktive Interaktionsebene erzwingen.');
+assert.ok(!section.includes('animation:'),'VI-AE ergänzt keine Bewegungslogik.');
+assert.ok(!hardening.includes('.sort((a,b)=>a.key.localeCompare'),'VI-AE darf nicht alphabetisch statt semantisch sortieren.');
+console.log('PASS: Visual Polish VI-AE – Gleichrangige Effekte werden semantisch nach Metrikrelevanz priorisiert.');
