@@ -1,0 +1,21 @@
+/* Visual Polish VI-AW · Navigationsmarker-Hierarchie */
+/* Rein präsentativ und geometrieneutral: Nebenbezirke treten zurück, Position und empfohlenes Ziel bleiben klar dominant. */
+body:has(#coachRail[data-tone="success"] .coach-delta[data-action-target-mode="travel"]) .district-node:not(.current) .owner-ring{opacity:.58!important}
+body:has(#coachRail[data-tone="success"] .coach-delta[data-action-target-mode="travel"]) .district-node:not(.current) .node-core{opacity:.78!important}
+body:has(#coachRail[data-tone="success"] .coach-delta[data-action-target-mode="travel"]) .district-node:not(.current) :is(.asset-pin,.intel-pin,.train-pin){opacity:.52!important}
+body:has(#coachRail[data-tone="success"] .coach-delta[data-action-target-mode="travel"]) .district-node.current :is(.owner-ring,.node-core,.asset-pin,.intel-pin,.train-pin){opacity:1!important}
+body:has(#coachRail[data-tone="success"] .coach-delta[data-action-target-mode="travel"][data-action-target-location="Hauptbunker"]) .district-node[data-location="location.bunker.main"] :is(.owner-ring,.node-core,.asset-pin,.intel-pin,.train-pin),
+body:has(#coachRail[data-tone="success"] .coach-delta[data-action-target-mode="travel"][data-action-target-location="Schwarzmarkt"]) .district-node[data-location="location.market.black"] :is(.owner-ring,.node-core,.asset-pin,.intel-pin,.train-pin),
+body:has(#coachRail[data-tone="success"] .coach-delta[data-action-target-mode="travel"][data-action-target-location="Geisterbahnhof"]) .district-node[data-location="location.station.ghost"] :is(.owner-ring,.node-core,.asset-pin,.intel-pin,.train-pin),
+body:has(#coachRail[data-tone="success"] .coach-delta[data-action-target-mode="travel"][data-action-target-location="Neon-Kellerclub"]) .district-node[data-location="location.neon.cellar_club"] :is(.owner-ring,.node-core,.asset-pin,.intel-pin,.train-pin),
+body:has(#coachRail[data-tone="success"] .coach-delta[data-action-target-mode="travel"][data-action-target-location="Ostblöcke"]) .district-node[data-location="location.blocks.east"] :is(.owner-ring,.node-core,.asset-pin,.intel-pin,.train-pin),
+body:has(#coachRail[data-tone="success"] .coach-delta[data-action-target-mode="travel"][data-action-target-location="Casino 9909"]) .district-node[data-location="location.casino.9909"] :is(.owner-ring,.node-core,.asset-pin,.intel-pin,.train-pin),
+body:has(#coachRail[data-tone="success"] .coach-delta[data-action-target-mode="travel"][data-action-target-location="Altstadt"]) .district-node[data-location="location.oldtown.central"] :is(.owner-ring,.node-core,.asset-pin,.intel-pin,.train-pin),
+body:has(#coachRail[data-tone="success"] .coach-delta[data-action-target-mode="travel"][data-action-target-location="Südhafen"]) .district-node[data-location="location.harbor.south"] :is(.owner-ring,.node-core,.asset-pin,.intel-pin,.train-pin){opacity:1!important}
+@media(prefers-contrast:more){
+  body:has(#coachRail[data-tone="success"] .coach-delta[data-action-target-mode="travel"]) .district-node:not(.current) .owner-ring{opacity:.72!important}
+  body:has(#coachRail[data-tone="success"] .coach-delta[data-action-target-mode="travel"]) .district-node:not(.current) .node-core{opacity:.88!important}
+}
+@media(prefers-reduced-motion:reduce){
+  body:has(#coachRail[data-tone="success"] .coach-delta[data-action-target-mode="travel"]) .district-node :is(.owner-ring,.node-core,.asset-pin,.intel-pin,.train-pin){transition:none!important;animation:none!important}
+}
