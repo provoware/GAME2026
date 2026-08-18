@@ -1,0 +1,11 @@
+/* Visual Polish VI-AT · Empfehlung → Zielbezirk → Reiseweg */
+/* Geometrieneutral und bewegungsfrei: vorhandene Straßen-/Bahnlinien werden nur semantisch hervorgehoben. */
+.route.recommendation-route,.train-route.recommendation-route{
+  stroke:#79f1ff!important;stroke-width:3.65!important;opacity:1!important;
+  stroke-dasharray:9 5!important;filter:drop-shadow(0 0 7px rgba(121,241,255,.38))!important;
+}
+.train-route.recommendation-route{stroke:#b9c7ff!important;stroke-dasharray:4 5!important;filter:drop-shadow(0 0 7px rgba(185,199,255,.40))!important}
+.route.recommendation-route-next,.train-route.recommendation-route-next{
+  stroke:#e3ff63!important;stroke-width:4.35!important;filter:drop-shadow(0 0 8px rgba(227,255,99,.46)) drop-shadow(0 0 2px rgba(255,255,255,.20))!important;
+}
+@media(prefers-contrast:more){.route.recommendation-route,.train-route.recommendation-route{stroke-width:4.1!important}.route.recommendation-route-next,.train-route.recommendation-route-next{stroke-width:4.8!important}}
