@@ -2,79 +2,82 @@
 
 ## Stand
 
-**Paket:** 0.3.0-mission-iteration-c  
-**Engineziel:** Godot 4.6.x, GL Compatibility  
-**Primärplattform:** Linux  
-**Sekundärplattform:** Windows
+**Browser-Spielstand:** 0.17.6-living-city-11-visual-polish-6  
+**Browser-Schema:** 12  
+**Primärplattform:** Chrome/Chromium, offline-first  
+**GitHub-Strang:** `agent/html-gang-map-boss-dynamics`
 
-## Implementiert
+## LIVING-CITY-11 – Gameplay & Visual Update
 
-### Fundament
+### Gameplay
 
-- strukturierte Ergebnisse und Fehler;
-- Command-/Effect-Verarbeitung;
-- atomarer Rollback;
-- idempotente Transaktionen;
-- Domain-Event-Bus;
-- autoritativer Sitzungszustand;
-- atomare Speicherung mit SHA-256;
-- Save-Version 3 mit Migration älterer Zustände.
+- Casino 9909: Automaten, Jackpot-Töpfe, Sessionwerte, Casino-Aufgaben und 5-Card-Draw-Poker;
+- Dojo Ostblock: Kampfsport, Intensität, Rangfortschritt, Stress und Trainingshistorie;
+- Eisenladen: Schutzkleidung mit Zustandswert, wirksamer Abnutzung und Wartung;
+- Geisterbahnhof: vier Fernziele mit Ticketkosten, Dauer und protokollierter Rückkehr;
+- Innenräume werden als progressive Vollansicht dargestellt statt die Hauptoberfläche weiter zu verdichten.
 
-### Missionen – Iteration A bis C
+### Design & Animation
 
-- JSON-basierte Missionsregistry und striktes Schema;
-- mehrstufige Phasen und alternative Lösungswege;
-- pfadabhängige Ziele und neutrale Missionssignale;
-- absolute Fristen, Erfolg, Teilerfolg, Fehlschlag und Abbruch;
-- Pause und Fortsetzung durch `Riss`;
-- Ergebnisqualität von NONE bis GOLD;
-- dauerhafte Missionshistorie mit Pfad-, Phasen- und Ergebnisdaten;
-- sichere Wiederaufnahmepunkte beim Start, Phasenwechsel und bei Unterbrechungen;
-- kontrollierte Wiederherstellung über Command und Effect;
-- Graybox-Missionstracker;
-- 15 automatisierte Selbsttests;
-- Massensimulation mit 120 vollständigen Durchläufen.
+- neuer LC11-Visual-Layer mit klarer Ortscodierung;
+- animierte Slot-Walzen, Gleisbewegung und dezente Licht-/Sweep-Effekte;
+- größere Kartenflächen und bessere visuelle Priorisierung innerhalb der Vollansicht;
+- Responsive-Breakpoints für Desktop und schmale Ansichten;
+- `prefers-reduced-motion` und vorhandener Ruhemodus schalten Animationen zuverlässig ab.
 
-### Werkzeuge
+### Speicher & Architektur
 
-- Paketverifikation;
-- Manifest mit SHA-256-Prüfsummen;
-- GDScript-Linting und optionale Formatierung;
-- automatische ZIP-Erstellung;
-- semantische Missionsgraphprüfung.
+- Schema 12;
+- Save-Spiegel `pppoppi-bunkerwahrheit-html-v0170`;
+- Migration aus v0160 und älteren Ständen;
+- additive LC11-Schicht über LC10;
+- keine globale DOM-Beobachtung und keine ungedrosselte Render-Schleife.
 
-## Noch nicht implementiert
+## Abnahmestand lokal
 
-- Missionstransformationen und Folgeaufträge;
-- vollständige Archivansicht im finalen UI;
-- Welt- und Stadtgraph;
-- Bunkerbasisverwaltung;
-- vollständige Figuren- und Beziehungssysteme;
-- Resonanzsystem;
-- Dialogsystem;
-- Wirtschaft;
-- Konfliktsystem;
-- Musik- und Medienproduktion;
-- finales UI und Art;
-- vollständige Kampagne.
+- Gesamtvertrag: **35/35 PASS**;
+- LC11-Engine: **12/12 PASS**;
+- 3500-Zug-Langlauf: **PASS**;
+- historische LC03–LC10-Regressionen: **PASS**;
+- LC11 UI-/Animations-/v0170-Vertrag: **PASS**.
 
-## Fortschritt
+## Nächstes Remote-Gate
 
-- Spezifikation und Architektur: 57 %
-- Codeimplementierung: 12 %
-- Validierungs- und Testinfrastruktur: 17 %
-- gewichteter Gesamtfortschritt: 34 %
+GitHub Actions muss den neuen Commit erneut prüfen. Ein finaler Release-/ZIP-Stand wird erst aus einem erfolgreichen Remote-Artefakt qualifiziert.
 
-Die Werte beschreiben den gesamten Weg bis zu einem getesteten Release und nicht nur den Quellcodeumfang.
+### Visual-Polish III
+Die Darstellung kommuniziert Bezirksdruck und aktive Ereignisse direkt auf der Karte. Die Schicht bleibt rein präsentational; Schema 12 und Gameplaylogik bleiben unverändert.
 
-## Nächster Meilenstein
 
-**WORLD-01 – Iteration A**
+### Visual-Polish IV
+Die Oberfläche wurde kontraststärker, spürbar klarer gegliedert und in Tabs, KPIs, Formularen, Kartenhilfen und Footer besser lesbar gemacht. Das Hilfe-Dock ordnet sich sauberer ein; Schema 12 und Gameplaylogik bleiben unverändert.
 
-- datengetriebener Welt- und Stadtgraph;
-- erreichbare Orte, Verbindungen und Reisekosten;
-- autoritative Positionsverfolgung;
-- Missionstrigger beim Betreten eines Ortes;
-- Karten-Graybox mit tastaturbedienbarer Ortsauswahl;
-- positive und negative Routentests;
-- Save-/Load-Roundtrip für Weltzustände.
+
+### Visual-Polish V
+Die Hauptansicht priorisiert Spielfläche und Entscheidungsklarheit: kompakter Kopfbereich, dominantere Karte, ruhigere Seitenleisten, stärkere Kontrastlogik und eine spielartigere Kampf-/Stadtleben-Inszenierung. Gameplay und Schema 12 bleiben unverändert. Der bisherige Visual-Polish-V-Gesamtvertrag stand bei **34/34 PASS**.
+
+### Visual-Polish VI
+Die Stadtkarte erhält eine stärkere räumliche Bühne mit ortsspezifischer Bezirkscodierung, klareren Routen-/Fokuszuständen und hochwertigeren Aktionsflächen. Casino, Training, Schutz und Bahnhof wirken materieller und unterscheidbarer; Innenräume und Kampf erhalten zusätzliche Tiefen-, Licht- und Bühnenebenen. Die Schicht bleibt rein präsentational: **Schema 12, Save-Spiegel v0170 und Gameplaylogik bleiben unverändert**. Der lokale Gesamtvertrag umfasst nun **35/35 Prüfblöcke**.
+
+### Visual-Polish VI-A – Lesbarkeits- und Dichtepass
+Die bestehende 0.17.6-Präsentationsschicht wurde gezielt nachgeschärft: Sekundärtexte, Tabs, Fokuszustände, Standort-/Tickerflächen und niedrige Desktop-Höhen sind klarer lesbar. Bei 720–800 px Höhe wird Leerraum reduziert statt Schrift zu verkleinern. Gameplay, Schema 12 und Save-Spiegel v0170 bleiben unverändert. Der bestehende Gesamtvertrag bleibt bei **35/35 PASS** und prüft die neuen Lesbarkeitsmarker mit.
+
+### Visual-Polish VI-B – Aktions-/Entscheidungsleiste
+Die rechte Aktionsleiste besitzt jetzt eine deutlichere Entscheidungshierarchie: Gruppenüberschriften werden visuell getrennt, Aktionskarten erhalten größere Trefferflächen, klarere Kosten-Chips, stärkere Hover-/Fokuszustände und besser lesbare Beschreibungen. Die Tabs bleiben auf hohen Desktop-Ansichten im Aktionsbereich sichtbar; bei schmalen Ansichten fällt diese Fixierung bewusst weg. Die Änderung bleibt rein präsentational; Gameplay, Schema 12 und Save-Spiegel v0170 bleiben unverändert.
+### Visual-Polish VI-C – Boss-Zentrale
+Die linke Boss-Zentrale ist jetzt klar als Lage- und Führungsbereich priorisiert: Entscheidungswerte sind stärker gewichtet, Warnungen als eigener Lageblock gebündelt, der erste Warnhinweis erhält höhere Dringlichkeit und Skills/Details sind kontrastreicher gegliedert. Der aktuelle Standort bleibt auf großen Desktop-Ansichten sichtbar, fällt bei schmaleren Layouts aber bewusst in den normalen Dokumentfluss zurück. Die Änderung ist rein präsentational; Gameplay, Schema 12 und Save-Spiegel v0170 bleiben unverändert.
+
+### Visual-Polish VI-D – Kartenlage
+Die zentrale Stadtkarte priorisiert Besitz, Gefahr und Reisewege jetzt klarer: Spieler-, Rivalen- und neutrale Bezirke sind eindeutiger getrennt, Druckstufen und aktive Ereignisse treten gezielt hervor und inaktive Routen werden bewusst zurückgenommen. Fokus- und Auswahlzustände bleiben tastaturlesbar. Die Änderung ist rein präsentational; Gameplay, Schema 12 und Save-Spiegel v0170 bleiben unverändert.
+
+### Visual-Polish VI-E – Kartenleseschlüssel
+Legende, Lagehinweis, Schnellaktionen und direkt erreichbare Ziele werden jetzt als zusammenhängende, kompakte Lesekette geführt. Besitz- und Standortlegende erhält klarere Chips, der aktuelle Kartenhinweis eine eindeutige Lage-Markierung und Direktziele bleiben horizontal schnell erfassbar, ohne die Karte zu verkleinern. Responsive- und Reduced-Motion-Regeln sind enthalten. Die Änderung ist rein präsentational; Gameplay, Browser-Schema 12 und Save-Spiegel v0170 bleiben unverändert.
+
+### Visual-Polish VI-F – Bezirksmarker
+Bezirksname, Kontrolle, Druck und lokale Statusindikatoren sind direkt am Marker stärker hierarchisiert. Aktueller und ausgewählter Bezirk bleiben klar unterscheidbar; die Änderung ist rein präsentational und geometrieneutral. Gameplay, Browser-Schema 12 und Save-Spiegel v0170 bleiben unverändert.
+
+### Visual-Polish VI-G – Straßen-, Bahn- und Routenhierarchie
+Straßen, Bahnlinien, direkt erreichbare Verbindungen, geplante Etappen und das konkret gewählte Reiseziel besitzen nun klar getrennte visuelle Signaturen. Straßen bleiben ruhig und durchgezogen, Bahnlinien gepunktet, geplante Routen goldfarben und das gewählte Ziel limefarben priorisiert. Die dezente Routenbewegung wird durch Reduced-Motion und Ruhemodus vollständig deaktiviert. Gameplay, Browser-Schema 12 und Save-Spiegel v0170 bleiben unverändert.
+
+### Visual-Polish VI-AR – Handlungziel auf einen Blick
+Die in VI-AQ ermittelte konkrete Aktion bzw. der Zielort ist nun ohne zusätzliche Fläche schneller unterscheidbar: `HIER` wird als direkte, limefarbene Handlungsmöglichkeit codiert, `ORT` als cyanfarbener Reisehinweis. Ein fehlendes Ziel tritt bewusst zurück; hoher Kontrast erhält zusätzliche Konturen. Die Änderung bleibt rein präsentational und bewegungsfrei; Gameplay, Browser-Schema 12 und Save-Spiegel v0170 bleiben unverändert.

@@ -1,118 +1,55 @@
-# PPPOPPI – Bunkerwahrheit
+# PPPOPPI – Bunkerwahrheit · LIVING-CITY-11
 
-Professionelles Godot-Grundprojekt für die schrittweise, testbare Umsetzung des Spiels.
+Version **0.17.6-living-city-11-visual-polish-6**, Browser-Schema **12**. LC11 baut additiv auf dem qualifizierten LC10-Stadtmodell auf und macht vier bisher vorhandene Grundsysteme zu eigenständigen Gameplay-Schleifen: **Casino, Kampfsporttraining, Schutz/Ausrüstung und Bahnhof-Fernreisen**. Darauf liegen sechs additive Visual-Polish-Stufen; Visual Polish VI vertieft Kartenraum, Bezirksidentität, Spezialorte, Innenräume und Kampfdramaturgie, ohne Gameplay oder Save-Schema zu verändern.
 
-## Aktueller implementierter Umfang
+## Neu in LIVING-CITY-11
 
-### Fundament
+- **Casino 9909:** drei vollständig bedienbare Automaten mit animierten Walzen, Session-Bilanz, Gewinnserie, wachsendem Jackpot und kleinen Casino-Aufgaben;
+- **5-Card-Draw-Poker:** Hand starten, Karten halten, bis zu zwei Ziehrunden, Showdown und Session-Auswertung;
+- **Dojo Ostblock:** Crew wählen, Kampfsportart und Trainingsintensität bestimmen, Rangfortschritt und Stressentwicklung sehen;
+- **Schutz & Ausrüstung:** Schutzkleidung besitzt einen Zustandswert, wirkt abhängig vom Zustand und kann im Eisenladen gewartet werden;
+- **Geisterbahnhof:** Fernreisen nach Nordhafen, Stahlwerk-Metropole, Lichtbogen und Grenzring mit Ticketkosten, Reisedauer und abstrakten Spielbelohnungen;
+- **Stärker inszenierte Innenräume:** eigene Vollansicht „Stadtleben“ mit Ortslicht, Karten, Szenenflächen, Automaten-/Gleisanimationen und klarer visueller Hierarchie;
+- **Barrierefreiheit:** Animationen respektieren `prefers-reduced-motion` sowie den vorhandenen LC09-Ruhemodus;
+- **Speicher:** neuer Spiegel `v0170`, Schema 12, automatische Migration aus LC10 und älteren Ständen.
 
-- typisierte Ergebnis- und Fehlerobjekte
-- Command-/Effect-Transaktionskette
-- vollständiger Rollback mehrteiliger Änderungen
-- Domain-Event-Bus
-- autoritativer `GameSessionState`
-- idempotente Transaktionen gegen Doppelbuchungen
-- atomarer JSON-Speicherstand mit SHA-256-Prüfsumme
-- Migration des Zustandsformats von Version 1 auf Version 2
+## Visual Polish VI – 0.17.6
 
-### MISSION-01 · Iteration A und B
+- räumlichere Kartenbühne mit Live-Sektor-Raster, klareren Routen, aktuellen/ausgewählten Bezirken und ortsspezifischer Farbidentität;
+- hochwertigere Karten- und Aktionsflächen mit präziseren Hover-, Fokus- und Disabled-Zuständen;
+- Casino, Training, Schutz/Ausrüstung und Bahnhof erhalten eigenständige Material-, Licht- und Tiefensprache;
+- Innenräume gewinnen deutlichere Vorder-/Mittel-/Hintergrundstaffelung, Kampf eine klarere Arenaachse und Teamdramaturgie;
+- Mikroanimationen bleiben dezent und werden durch `prefers-reduced-motion` sowie LC09-Ruhemodus vollständig abgeschaltet;
+- Gameplay, Browser-Schema 12 und Save-Spiegel v0170 bleiben unverändert.
 
-- datengetriebene Missionsregistry
-- striktes JSON-Schema für Missionscontent
-- mehrstufige Missionsphasen
-- alternative Lösungswege mit Voraussetzungen
-- pfadabhängige Pflicht- und optionale Ziele
-- neutrale Missionssignale für Welt, Dialog, Figuren und Resonanz
-- absolute Monatsfristen
-- voller Erfolg, Teilerfolg, Fehlschlag und Abbruch
-- sichere Missionspause und Fortsetzung
-- automatische Pause durch das Signal `resonance.riss_invoked`
-- Abbruch-, Fehlschlags- und Teilerfolgsfolgen
-- Missionsgraph- und Erreichbarkeitsprüfung
-- Missionstracker als Graybox-Oberfläche
-- elf automatisierte Selbsttests
+## Schnellstart
 
-## Start unter Linux
+Unter Linux/Kubuntu:
 
 ```bash
-chmod +x start.sh
-./start.sh
+./START_GAME.sh
 ```
 
-Das Startskript sucht `godot4`, `godot` oder eine lokale Godot-Binärdatei unter `./tools/`.
+Unter Windows `START_GAME.bat` starten. Alternativ `web/index.html` direkt öffnen.
 
-## Tests
+## Bedienung
+
+`V` Stadtleben · `G` nächster Schritt · `L` Stadtlage · `J` Stadtgedächtnis · `U` Stadt & Komfort · `M` Karte · `H` Hilfe · `R` Reise · `E` Zugende · `I` Innenraum · `K` Klang.
+
+Die LC11-Vollansicht zeigt **Casino / Training / Schutz / Bahnhof** nur auf Abruf. Die Hauptansicht bleibt dadurch kompakt.
+
+## Prüfvertrag
 
 ```bash
-chmod +x test.sh verify.sh
-./verify.sh
-./test.sh
+./PRUEFEN.sh
 ```
 
-- `verify.sh` erneuert das deterministische Manifest und prüft GDScript, JSON-Schema, Missionsgraphen, IDs, Ressourcenpfade und Prüfsummen.
-- `test.sh` führt die Godot-Selbsttests aus, sobald eine Godot-4-Binärdatei verfügbar ist.
+Der lokale Vertrag umfasst **35 reproduzierbare Prüfblöcke**. LC11 selbst besitzt **12/12 Engine-Tests** einschließlich eines **3500-Zug-Langlaufs** sowie einen eigenen UI-/Animations-/Speichervertrag. Alle historischen LC03–LC10-Regressionssätze bleiben aktiv.
 
-## Paket erzeugen
+## Architektur
 
-```bash
-chmod +x package.sh
-./package.sh
-```
+LC11 bleibt additiv: `lc11-data.js`, `lc11-engine.js`, `lc11-bootstrap.js`, `lc11-ui.js`, `lc11.css` und eigene Tests. Bestehende LC10-Dateien werden nur dort angepasst, wo ein historischer Test ausdrücklich lernen muss, dass eine spätere Version weiterhin die LC10-Schicht enthält.
 
-Der Ablauf formatiert den GDScript-Code, baut das Manifest neu auf, prüft das Projekt und erzeugt anschließend ein ZIP-Paket.
+## Simulationshinweis
 
-## Vertikaler Referenzablauf
-
-```text
-Mission starten
-→ Lösungsweg wählen
-→ Welt- oder Dialogsignal empfangen
-→ Ziel automatisch fortschreiben
-→ Folgephase aktivieren
-→ Riss-Unterbrechung verarbeiten
-→ Frist oder Abschluss auflösen
-→ Folgen atomar buchen
-→ Zustand speichern und laden
-```
-
-## Projektstruktur
-
-```text
-content/missions/       Missionsdefinitionen als JSON
-schemas/                JSON-Schemas
-scenes/                 Godot-Szenen
-scripts/core/            Grundarchitektur
-scripts/mission/         Missionssystem
-scripts/save/            Speicherarchitektur
-scripts/ui/              Präsentationsschicht
-scripts/tests/           Selbsttests
-tools/                   Validierung und Paketautomatisierung
-docs/                    Spezifikationen und Iterationsberichte
-```
-
-## Entwicklungsregel
-
-Jede weitere Fachphase liefert parallel:
-
-1. Spezifikation,
-2. ausführbaren Referenzcode,
-3. automatisierte Tests,
-4. aktualisierte Validierung,
-5. neues Downloadpaket.
-
-Der aktuelle Code ist ein belastbares vertikales Fundament, noch kein vollständiges Spiel.
-
-## Entwicklerdokumentation
-
-- [Architektur](docs/ARCHITECTURE.md)
-- [Entwicklungsumgebung und Ablauf](docs/DEVELOPMENT.md)
-- [Teststrategie](docs/TESTING.md)
-- [Content-Erstellung](docs/CONTENT_AUTHORING.md)
-- [Sicherheit und lokale Daten](docs/SECURITY_AND_DATA.md)
-- [Releaseprozess](docs/RELEASE_PROCESS.md)
-- [Aktueller Projektstatus](docs/PROJECT_STATUS.md)
-- [Beitragsrichtlinien](CONTRIBUTING.md)
-
-## GitHub-Arbeitsweise
-
-Änderungen werden auf einem Arbeitsbranch entwickelt und über einen Draft-Pull-Request geprüft. Der GitHub-Actions-Workflow führt bei Pushes und Pull Requests die statische Projekt-, Schema-, Referenz- und Manifestprüfung aus.
+Konflikt-, Casino-, Institutions- und Stadtmechaniken sind fiktionale Spielsysteme. Sie sind als Spielwerte und Unterhaltung umgesetzt, nicht als reale Handlungsanleitung.

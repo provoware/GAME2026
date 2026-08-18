@@ -1,0 +1,21 @@
+/* Visual Polish VI-Z · Stärke der Vorher→Nachher-Veränderung */
+/* Geometrieneutral: Effektstärke wird zusätzlich zur Wirkungsrichtung über Intensität und Liniengewicht vermittelt. */
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-magnitude="small"]{
+  opacity:.82!important;
+  box-shadow:inset 0 -1px 0 rgba(174,238,255,.08)!important;
+}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-magnitude="medium"]{
+  opacity:.94!important;
+  box-shadow:inset 0 -2px 0 rgba(174,238,255,.12)!important;
+}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-magnitude="strong"]{
+  opacity:1!important;
+  box-shadow:inset 0 -3px 0 currentColor,0 0 14px rgba(174,238,255,.07)!important;
+}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-magnitude="strong"] [data-after]{
+  font-weight:950!important;
+  text-shadow:0 0 12px currentColor!important;
+}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-magnitude="none"]{
+  opacity:.72!important;
+}

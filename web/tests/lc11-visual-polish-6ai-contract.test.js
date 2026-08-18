@@ -1,0 +1,10 @@
+const fs=require('fs');const path=require('path');const assert=require('assert');
+const root=path.join(__dirname,'..');const css=fs.readFileSync(path.join(root,'lc11-visual-polish-6s.css'),'utf8'),loader=fs.readFileSync(path.join(root,'lc11-close-control.css'),'utf8');
+['Visual Polish VI-AI · Gruppenlage-Scanpriorität','data-group-state="worsening"','data-group-state="mixed"','outline:2px solid currentColor','opacity:.66','opacity:.72'].forEach((token)=>assert.ok(css.includes(token),token));
+assert.ok(loader.includes('@import url("lc11-visual-polish-6s.css");'),'VI-AI muss in der finalen visuellen Importkette geladen werden.');
+assert.ok(css.indexOf('data-group-state="worsening"')<css.indexOf('data-group-state="mixed"'),'Kippende Gruppen müssen vor gemischten Gruppen priorisiert werden.');
+const section=css.split('Visual Polish VI-AI')[1]||'';
+assert.ok(!/(^|[;{])\s*(padding|margin|min-height|min-width|max-height|max-width|width|height|gap|grid-template(?:-areas|-columns|-rows)?)\s*:/m.test(section),'VI-AI darf keine Layoutmaße oder Grid-Geometrie setzen.');
+assert.ok(!section.includes('animation:'),'VI-AI ergänzt keine Bewegungslogik.');
+assert.ok(!section.includes('pointer-events:auto'),'VI-AI darf keine aktive Interaktionsebene erzwingen.');
+console.log('PASS: Visual Polish VI-AI – kippende und gemischte Wirkungsgruppen erhalten eine klare, geometrieneutrale Scanpriorität.');

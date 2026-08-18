@@ -1,0 +1,50 @@
+/* Visual Polish VI-R · Einheitliche Entscheidungslogik für Innenraumaktionen */
+/* Rein präsentational und geometrieneutral: Nutzen, Kosten/Ressourcen, Risiko und Sperrstatus behalten über alle Ortsthemen dieselbe visuelle Bedeutung. */
+.scene-modal[open]{
+  --vp6-decision-benefit:#9fffd0;
+  --vp6-decision-cost:#ffd27a;
+  --vp6-decision-risk:#ff9aae;
+  --vp6-decision-info:#aeeeff;
+  --vp6-decision-muted:#9caebe;
+}
+.scene-modal[open] .interior-action em{
+  color:var(--vp6-decision-benefit)!important;
+  text-decoration-color:rgba(79,255,190,.34)!important;
+  text-shadow:0 0 12px rgba(79,255,190,.12)!important;
+}
+.scene-modal[open] .interior-action .cost,
+.scene-modal[open] .interior-action .price,
+.scene-modal[open] .interior-action .expense{
+  color:var(--vp6-decision-cost)!important;
+  font-weight:900!important;
+  text-shadow:0 0 12px rgba(255,210,122,.12)!important;
+}
+.scene-modal[open] .interior-action .risk,
+.scene-modal[open] .interior-action .danger,
+.scene-modal[open] .interior-action .warning,
+.scene-modal[open] .interior-action u{
+  color:var(--vp6-decision-risk)!important;
+  font-weight:900!important;
+  text-shadow:0 0 12px rgba(255,109,138,.12)!important;
+}
+.scene-modal[open] .interior-action>i,
+.scene-modal[open] .interior-action .info{
+  color:var(--vp6-decision-info)!important;
+}
+.scene-modal[open] .interior-action small,
+.scene-modal[open] .interior-action .muted{
+  color:var(--vp6-decision-muted)!important;
+}
+.theme-casino .interior-action em,.theme-dojo .interior-action em,.theme-market .interior-action em,.theme-station .interior-action em{color:var(--vp6-decision-benefit)!important}
+.theme-casino .interior-action .cost,.theme-dojo .interior-action .cost,.theme-market .interior-action .cost,.theme-station .interior-action .cost{color:var(--vp6-decision-cost)!important}
+.theme-casino .interior-action .risk,.theme-dojo .interior-action .risk,.theme-market .interior-action .risk,.theme-station .interior-action .risk{color:var(--vp6-decision-risk)!important}
+.scene-modal[open] .interior-action:hover:not(:disabled) em,
+.scene-modal[open] .interior-action:focus-visible em{filter:saturate(1.08) brightness(1.08)!important}
+.scene-modal[open] .interior-action:hover:not(:disabled) .cost,
+.scene-modal[open] .interior-action:focus-visible .cost{filter:saturate(1.08) brightness(1.06)!important}
+.scene-modal[open] .interior-action:disabled em,
+.scene-modal[open] .interior-action:disabled .cost,
+.scene-modal[open] .interior-action:disabled>i{filter:saturate(.62) brightness(.84)!important}
+.scene-modal[open] .interior-action:disabled u{filter:saturate(1.12) brightness(1.08)!important}
+@media(prefers-reduced-motion:reduce){.scene-modal[open] .interior-action em,.scene-modal[open] .interior-action .cost,.scene-modal[open] .interior-action u{transition:none!important}}
+body.lc09-reduced-motion .scene-modal[open] .interior-action em,body.lc09-reduced-motion .scene-modal[open] .interior-action .cost,body.lc09-reduced-motion .scene-modal[open] .interior-action u{transition:none!important}

@@ -1,0 +1,42 @@
+/* Visual Polish VI-L · ortsspezifische Innenraum-Inszenierung */
+/* Rein präsentational und geometrieneutral: Licht, Material und Fokuscharakter je Spezialort. */
+.theme-casino{
+  background:radial-gradient(circle at 50% 13%,rgba(255,210,122,.26),transparent 28%),radial-gradient(circle at 18% 72%,rgba(198,82,255,.10),transparent 30%),linear-gradient(135deg,#180b19,#090b13 58%,#251706)!important;
+  box-shadow:inset 0 0 90px rgba(255,191,71,.035),inset 0 -70px 120px rgba(0,0,0,.52)!important;
+}
+.theme-casino .scene-depth.back{background:linear-gradient(180deg,rgba(255,210,122,.13),transparent 58%),repeating-linear-gradient(90deg,transparent 0 12%,rgba(255,214,133,.035) 12% 12.6%)!important}
+.theme-casino .scene-depth.mid{border-color:rgba(255,210,122,.13)!important;background:linear-gradient(180deg,rgba(255,216,145,.035),rgba(28,10,20,.22))!important;box-shadow:inset 0 0 54px rgba(255,198,89,.035),0 0 28px rgba(222,120,255,.035)!important}
+.theme-casino .scene-hotspot i{color:#ffe0a0!important;background:rgba(255,210,122,.10)!important}
+.theme-casino .scene-hotspot:hover,.theme-casino .scene-hotspot:focus-within{border-color:rgba(255,210,122,.43)!important;box-shadow:0 18px 40px rgba(0,0,0,.34),0 0 26px rgba(255,210,122,.09),inset 3px 0 rgba(255,210,122,.38)!important}
+
+.theme-dojo{
+  background:radial-gradient(circle at 50% 14%,rgba(227,255,99,.10),transparent 30%),linear-gradient(180deg,#24190e,#0f1110 64%),linear-gradient(90deg,rgba(255,231,179,.08),transparent)!important;
+  box-shadow:inset 0 0 80px rgba(227,255,99,.025),inset 0 -72px 110px rgba(0,0,0,.48)!important;
+}
+.theme-dojo .scene-depth.back{background:linear-gradient(180deg,rgba(255,231,179,.08),transparent 60%),repeating-linear-gradient(90deg,transparent 0 16%,rgba(227,255,99,.026) 16% 16.5%)!important}
+.theme-dojo .scene-depth.mid{border-color:rgba(227,255,99,.11)!important;background:linear-gradient(180deg,rgba(227,255,99,.025),rgba(17,17,12,.24))!important;box-shadow:inset 0 0 48px rgba(227,255,99,.028),0 0 24px rgba(255,231,179,.022)!important}
+.theme-dojo .scene-hotspot i{color:#f0ff9f!important;background:rgba(227,255,99,.085)!important}
+.theme-dojo .scene-hotspot:hover,.theme-dojo .scene-hotspot:focus-within{border-color:rgba(227,255,99,.38)!important;box-shadow:0 18px 40px rgba(0,0,0,.32),0 0 24px rgba(227,255,99,.075),inset 3px 0 rgba(227,255,99,.34)!important}
+
+.theme-market{
+  background:radial-gradient(circle at 18% 20%,rgba(79,255,190,.16),transparent 26%),radial-gradient(circle at 82% 27%,rgba(255,75,147,.17),transparent 27%),linear-gradient(160deg,#0c1518,#080d12 68%)!important;
+  box-shadow:inset 0 0 82px rgba(79,255,190,.025),inset 0 -74px 115px rgba(0,0,0,.50)!important;
+}
+.theme-market .scene-depth.back{background:linear-gradient(180deg,rgba(121,241,255,.08),transparent 62%),repeating-linear-gradient(90deg,transparent 0 10%,rgba(79,255,190,.025) 10% 10.5%)!important}
+.theme-market .scene-depth.mid{border-color:rgba(79,255,190,.105)!important;background:linear-gradient(180deg,rgba(79,255,190,.022),rgba(7,15,17,.24))!important;box-shadow:inset 0 0 50px rgba(79,255,190,.025),0 0 25px rgba(255,75,147,.025)!important}
+.theme-market .scene-hotspot i{color:#a8ffe3!important;background:rgba(79,255,190,.085)!important}
+.theme-market .scene-hotspot:hover,.theme-market .scene-hotspot:focus-within{border-color:rgba(79,255,190,.38)!important;box-shadow:0 18px 40px rgba(0,0,0,.33),0 0 24px rgba(79,255,190,.075),inset 3px 0 rgba(79,255,190,.34)!important}
+
+.theme-station{
+  background:radial-gradient(circle at 50% 12%,rgba(199,166,255,.11),transparent 30%),linear-gradient(180deg,#111a26,#080b10 65%),repeating-linear-gradient(90deg,transparent 0 16%,rgba(121,241,255,.035) 16% 16.5%)!important;
+  box-shadow:inset 0 0 84px rgba(199,166,255,.028),inset 0 -76px 120px rgba(0,0,0,.52)!important;
+}
+.theme-station .scene-depth.back{background:linear-gradient(180deg,rgba(199,166,255,.07),transparent 58%),repeating-linear-gradient(90deg,transparent 0 16%,rgba(121,241,255,.032) 16% 16.5%)!important}
+.theme-station .scene-depth.mid{border-color:rgba(199,166,255,.12)!important;background:linear-gradient(180deg,rgba(199,166,255,.025),rgba(7,11,17,.26))!important;box-shadow:inset 0 0 50px rgba(199,166,255,.028),0 0 28px rgba(121,241,255,.025)!important}
+.theme-station .scene-hotspot i{color:#e0ceff!important;background:rgba(199,166,255,.085)!important}
+.theme-station .scene-hotspot:hover,.theme-station .scene-hotspot:focus-within{border-color:rgba(199,166,255,.39)!important;box-shadow:0 18px 40px rgba(0,0,0,.34),0 0 26px rgba(199,166,255,.08),inset 3px 0 rgba(199,166,255,.35)!important}
+
+.theme-casino .interior-action{box-shadow:inset 3px 0 rgba(255,210,122,.38),0 10px 24px rgba(0,0,0,.13)!important}
+.theme-dojo .interior-action{box-shadow:inset 3px 0 rgba(227,255,99,.38),0 10px 24px rgba(0,0,0,.13)!important}
+.theme-market .interior-action{box-shadow:inset 3px 0 rgba(79,255,190,.36),0 10px 24px rgba(0,0,0,.13)!important}
+.theme-station .interior-action{box-shadow:inset 3px 0 rgba(199,166,255,.36),0 10px 24px rgba(0,0,0,.13)!important}

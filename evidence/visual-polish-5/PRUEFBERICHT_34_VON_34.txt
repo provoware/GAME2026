@@ -1,0 +1,64 @@
+===== LIVING-CITY-11 VISUAL-POLISH-V GAMEPLAY-, VISUAL-, BROWSER- & RELEASE-VORPRÜFUNG =====
+[1/34] Basis-Daten Syntax
+[2/34] Revival-/05-/06-/07-/08-/09-Daten Syntax
+[3/34] Basis-Engine Syntax
+[4/34] Revival-Engine Syntax
+[5/34] 04A-Reparatur Syntax
+[6/34] LIVING-CITY-05/06/07/08/09 Syntax
+[7/34] Basis-/Revival-UI Syntax
+[8/34] Kern-Regression / 500 Züge
+PASS: HTML-Gangspiel Engine – 52/52 Tests erfolgreich.
+[9/34] Revival-Regression
+PASS: Revival-Engine – 15/15 Tests erfolgreich.
+[10/34] LIVING-CITY-05 Regression / 1200 Züge
+PASS: LIVING-CITY-05 Engine – 20/20 Tests erfolgreich.
+[11/34] LIVING-CITY-06 Regression / 1500 Züge
+PASS: LIVING-CITY-06 Engine – 19/19 Tests erfolgreich.
+[12/34] LIVING-CITY-07 Regression / 2000 Züge
+PASS: LIVING-CITY-07 Engine – 19/19 Tests erfolgreich.
+[13/34] LIVING-CITY-08 Regression / 2500 Züge
+PASS: LIVING-CITY-08 Engine – 18/18 Tests erfolgreich.
+[14/34] LIVING-CITY-09 Stadt-Puls-/Bedienprofil-Regression
+PASS: LIVING-CITY-09 Engine – 8/8 Tests erfolgreich.
+[15/34] LIVING-CITY-10 Bezirks-/Crew-Regression / 3000 Züge
+PASS: LIVING-CITY-10 Engine – 12/12 Tests erfolgreich.
+[16/34] LIVING-CITY-11 Gameplay-Regression / 3500 Züge
+PASS: LIVING-CITY-11 Engine – 12/12 Tests erfolgreich.
+[17/34] Revival-Director / 1000 Züge
+PASS: Revival-Director – 1000 Züge stabil · Events 187 · Missionen 61/290.
+[18/34] UI-Smoke + finaler statischer UI-Vertrag
+PASS: UI-Smoke – Start-Render, Kernpanels und Autosave erfolgreich.
+PASS: Static-UI – 47 IDs, 33 Direktreferenzen, 73 Engine-Aufrufe geprüft.
+[19/34] Karten-/Bedien-Regression
+PASS: UI-Regression – Zugsteuerung, Rivalen, Karte, Speicher-Migration und Sperrlogik geprüft.
+[20/34] LIVING-CITY-05 Modul-/Visual-Vertrag
+PASS: LIVING-CITY-05 Vertrag – Module, Engine, Speicher, UI und Visual Layer geprüft.
+[21/34] Revival-Modul-/Visual-Vertrag
+PASS: Revival-Vertrag – Modulreihenfolge, Daten, Engine und Visual Layer geprüft.
+[22/34] Chrome-/Performance-Regression
+PASS: Chrome-/Performance-Regression – keine DOM-Render-Schleife, gedrosselter Refresh und Chrome-first geprüft.
+[23/34] LIVING-CITY-05B Karten-/Responsive-Vertrag
+PASS: LIVING-CITY-05B Vertrag – Hilfe-Dock, Aufgaben-Dashboard, Reise, Zoom/Pan, Tastatur und Responsive Design geprüft.
+[24/34] LIVING-CITY-06 Führungs-/Innenraum-/Klang-/Kampf-Vertrag
+PASS: LIVING-CITY-06 Vertrag – Führung, Innenräume, Dialoge, Klang, Kampf, Speicher und Tastatur geprüft.
+[25/34] LIVING-CITY-07 Folgeketten-/Chrome-Basisvertrag
+PASS: LIVING-CITY-07 Vertrag – historische Chrome-Basisschicht, Folgeketten, Innenräume, Audio, Kampf und Speicher geprüft.
+[26/34] LIVING-CITY-08 Stadtgedächtnis-/Journal-/Fokusvertrag
+PASS: LIVING-CITY-08 Vertrag – historische Funktionsschicht, Stadtgedächtnis, Fokus, Speicher und Chrome-Kompatibilitätskern geprüft.
+[27/34] LIVING-CITY-09 Recovery-/Lesemodus-Vertrag
+PASS: LIVING-CITY-09 Vertrag – Stadt-Puls, Recovery, Lesemodus, v0150 und Startreihenfolge geprüft.
+[28/34] LIVING-CITY-10 Bezirksdynamik-/Crew-/v0160-Vertrag + Python-Syntax
+PASS: LIVING-CITY-10 Vertrag – Bezirksdynamik, Crew-Eigeninitiative, Stadtlage, v0160 und Startreihenfolge geprüft.
+[29/34] LIVING-CITY-11 Casino-/Training-/Schutz-/Fernreise-/Animationsvertrag
+PASS: LIVING-CITY-11 Vertrag – Casino, Training, Schutz, Fernreisen, Animationen, v0170 und Startreihenfolge geprüft.
+[30/34] LIVING-CITY-11 Visual-Polish-Vertrag
+PASS: LC11 Visual-Polish – Hierarchie, Tiefenwirkung, Karte, Ortsidentität, Mikroanimationen und Reduced-Motion geprüft.
+[31/34] LIVING-CITY-11 Visual-Polish-II-Vertrag
+PASS: Visual-Polish II – Kartenlesbarkeit, Panelhierarchie, Innenraumtiefe, Kampfinszenierung, ortsspezifische LC11-Atmosphäre und Reduced-Motion geprüft.
+[32/34] LIVING-CITY-11 Visual-Polish-III-/Living-Atmosphere-Vertrag
+PASS: Visual-Polish III – dynamische Bezirksatmosphäre, Kartenstatus, Stadtereignisse, Innenraumtiefe, Kampfdramaturgie und Reduced-Motion geprüft.
+[33/34] LIVING-CITY-11 Visual-Polish-IV-/Layout-/Kontrast-Vertrag
+PASS: Visual-Polish IV – Layout, Erscheinungsbild, Kontrastfarben, Lesbarkeit, Hilfe-Dock und Reduced-Motion geprüft.
+[34/34] LIVING-CITY-11 Visual-Polish-V-/Premium-Ansicht-/Kontrast-Vertrag
+PASS: Visual-Polish V – Premium-Ansicht, Spielflächenpriorität, Kontrastlogik, Karten-/Kampfdramaturgie und Reduced-Motion geprüft.
+ERGEBNIS: PASS

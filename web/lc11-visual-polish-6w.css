@@ -1,0 +1,31 @@
+/* Visual Polish VI-AV · Navigationskorridor */
+/* Rein präsentativ, geometrieneutral und bewegungsfrei: Empfehlungspfad führt, übrige Infrastruktur tritt kontrolliert zurück. */
+body:has(#coachRail[data-tone="success"] .coach-delta[data-action-target-mode="travel"]) .route:not(.recommendation-route),
+body:has(#coachRail[data-tone="success"] .coach-delta[data-action-target-mode="travel"]) .train-route:not(.recommendation-route){
+  opacity:.28!important;
+}
+body:has(#coachRail[data-tone="success"] .coach-delta[data-action-target-mode="travel"]) .route.reachable:not(.recommendation-route),
+body:has(#coachRail[data-tone="success"] .coach-delta[data-action-target-mode="travel"]) .train-route.reachable:not(.recommendation-route){
+  opacity:.52!important;
+}
+body:has(#coachRail[data-tone="success"] .coach-delta[data-action-target-mode="travel"]) .route.planned:not(.recommendation-route),
+body:has(#coachRail[data-tone="success"] .coach-delta[data-action-target-mode="travel"]) .train-route.planned:not(.recommendation-route){
+  opacity:.46!important;
+}
+body:has(#coachRail[data-tone="success"] .coach-delta[data-action-target-mode="travel"]) .district-field{opacity:.62!important}
+body:has(#coachRail[data-tone="success"] .coach-delta[data-action-target-mode="travel"]) .recommendation-route{
+  opacity:1!important;filter:drop-shadow(0 0 5px rgba(121,241,255,.24))!important;
+}
+body:has(#coachRail[data-tone="success"] .coach-delta[data-action-target-mode="travel"]) .recommendation-route-next{
+  filter:drop-shadow(0 0 7px rgba(227,255,99,.30))!important;
+}
+@media(prefers-contrast:more){
+  body:has(#coachRail[data-tone="success"] .coach-delta[data-action-target-mode="travel"]) .route:not(.recommendation-route),
+  body:has(#coachRail[data-tone="success"] .coach-delta[data-action-target-mode="travel"]) .train-route:not(.recommendation-route){opacity:.38!important}
+  body:has(#coachRail[data-tone="success"] .coach-delta[data-action-target-mode="travel"]) .recommendation-route{opacity:1!important;stroke-width:4.6!important}
+}
+@media(prefers-reduced-motion:reduce){
+  body:has(#coachRail[data-tone="success"] .coach-delta[data-action-target-mode="travel"]) .route,
+  body:has(#coachRail[data-tone="success"] .coach-delta[data-action-target-mode="travel"]) .train-route,
+  body:has(#coachRail[data-tone="success"] .coach-delta[data-action-target-mode="travel"]) .district-field{transition:none!important;animation:none!important}
+}

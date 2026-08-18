@@ -1,0 +1,500 @@
+/* LIVING-CITY-11 · Visual Polish VI · Spezialbühnen Fortsetzung */
+/* 5. Schutz/Ausrüstung: Inventargefühl und Zustand besser lesbar. */
+.lc11-gear-card,.lc11-owned-gear{
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 92% 10%,rgba(255,210,122,.055),transparent 28%),
+    linear-gradient(150deg,rgba(255,255,255,.045),rgba(10,12,16,.92))!important;
+}
+.lc11-gear-icon{
+  border:1px solid rgba(255,210,122,.18)!important;
+  background:linear-gradient(145deg,rgba(255,210,122,.14),rgba(255,255,255,.035))!important;
+  box-shadow:inset 0 1px rgba(255,255,255,.06)!important;
+}
+.lc11-condition{
+  height:8px!important;
+  border:1px solid rgba(255,255,255,.08);
+  background:rgba(0,0,0,.28)!important;
+  box-shadow:inset 0 1px 3px rgba(0,0,0,.42)!important;
+}
+.lc11-condition i{box-shadow:0 0 10px currentColor}
+
+/* 6. Bahnhof: Bewegung und Ferne werden sichtbar, ohne zusätzliche JS-Logik. */
+.lc11-station-head{
+  position:relative;
+  overflow:hidden;
+  background:
+    linear-gradient(100deg,rgba(121,241,255,.07),transparent 46%),
+    linear-gradient(155deg,rgba(255,255,255,.04),rgba(7,13,19,.94))!important;
+}
+.lc11-station-head::after{
+  content:"FERNLINIE 9909";
+  position:absolute;
+  right:14px;
+  top:12px;
+  color:rgba(121,241,255,.22);
+  font-size:7px;
+  font-weight:900;
+  letter-spacing:.16em;
+}
+.lc11-destination{
+  border-color:rgba(121,241,255,.17)!important;
+  background:
+    radial-gradient(circle at 93% 12%,rgba(121,241,255,.055),transparent 30%),
+    linear-gradient(145deg,rgba(121,241,255,.038),rgba(7,12,18,.96))!important;
+  box-shadow:inset 0 1px rgba(255,255,255,.03),0 10px 24px rgba(0,0,0,.12)!important;
+}
+.lc11-destination:hover{border-color:rgba(121,241,255,.30)!important;box-shadow:inset 0 1px rgba(255,255,255,.04),0 14px 28px rgba(0,0,0,.17),0 0 20px rgba(121,241,255,.04)!important}
+.lc11-train-line i{
+  background:repeating-linear-gradient(to bottom,var(--vp6-cyan) 0 7px,transparent 7px 12px)!important;
+  filter:drop-shadow(0 0 4px rgba(121,241,255,.24));
+}
+
+/* 7. Innenräume: echte Vorder-/Mittel-/Hintergrundwirkung. */
+.scene-modal .modal-card.wide{
+  background:
+    radial-gradient(ellipse at 50% -8%,rgba(121,241,255,.04),transparent 28%),
+    linear-gradient(160deg,#111a24,#070b11 72%)!important;
+}
+.scene-hero{
+  isolation:isolate;
+  border-color:rgba(218,236,255,.16)!important;
+  background-color:#070c12!important;
+  box-shadow:inset 0 -80px 100px rgba(0,0,0,.48),0 18px 42px rgba(0,0,0,.26)!important;
+}
+.scene-hero::before{
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.025),transparent 16%,transparent 56%,rgba(0,0,0,.54)),
+    radial-gradient(ellipse at 50% 38%,transparent 28%,rgba(0,0,0,.38) 100%)!important;
+}
+.scene-hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:8;
+  pointer-events:none;
+  background:linear-gradient(105deg,transparent 0 44%,rgba(121,241,255,.028) 51%,transparent 58%);
+  mix-blend-mode:screen;
+  animation:vp6SceneSweep 8.5s ease-in-out infinite;
+}
+.scene-depth.back{filter:saturate(.76) brightness(.70) blur(.15px)!important;transform:scale(1.018)}
+.scene-depth.mid{filter:saturate(.92) brightness(.88)!important}
+.scene-depth.front{filter:saturate(1.12) brightness(1.075) contrast(1.03)!important;filter:drop-shadow(0 10px 18px rgba(0,0,0,.34)) saturate(1.12) brightness(1.075)!important}
+.scene-hotspot{
+  border-color:rgba(218,236,255,.18)!important;
+  background:linear-gradient(155deg,rgba(7,14,21,.82),rgba(4,8,13,.78))!important;
+  backdrop-filter:blur(10px) saturate(1.08);
+  box-shadow:0 12px 30px rgba(0,0,0,.24),inset 0 1px rgba(255,255,255,.035)!important;
+}
+.scene-hotspot:hover{border-color:rgba(121,241,255,.34)!important;box-shadow:0 16px 36px rgba(0,0,0,.28),0 0 20px rgba(121,241,255,.06)!important}
+.interior-action{
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.014))!important;
+  box-shadow:inset 3px 0 rgba(121,241,255,.08)!important;
+}
+.interior-action:hover:not(:disabled){box-shadow:inset 3px 0 rgba(227,255,99,.34),0 10px 24px rgba(0,0,0,.14)!important}
+.lc06-dialogue{
+  background:
+    radial-gradient(circle at 94% 8%,rgba(199,166,255,.08),transparent 25%),
+    linear-gradient(135deg,rgba(199,166,255,.065),rgba(121,241,255,.024))!important;
+  box-shadow:inset 0 1px rgba(255,255,255,.03)!important;
+}
+
+/* 8. Kampf: stärkere Arena, Teamseiten und Fokus der aktuellen Entscheidung. */
+.combat-modal .modal-card.wide{
+  background:
+    radial-gradient(ellipse at 50% -8%,rgba(255,210,122,.055),transparent 28%),
+    linear-gradient(160deg,#111721,#070b11 74%)!important;
+}
+.combat-hud{
+  position:relative;
+  overflow:hidden;
+  background:rgba(3,7,11,.74)!important;
+  border:1px solid rgba(218,236,255,.09);
+  border-radius:12px;
+  box-shadow:inset 0 1px rgba(255,255,255,.025)!important;
+}
+.combat-vs{
+  border:1px solid rgba(255,210,122,.18)!important;
+  background:radial-gradient(circle,rgba(255,210,122,.10),rgba(5,8,12,.88))!important;
+  box-shadow:0 0 26px rgba(255,210,122,.08),inset 0 1px rgba(255,255,255,.04)!important;
+}
+.combat-stage{
+  position:relative;
+  overflow:hidden;
+  min-height:272px!important;
+  background:
+    radial-gradient(ellipse at 21% 52%,rgba(227,255,99,.085),transparent 30%),
+    radial-gradient(ellipse at 79% 52%,rgba(255,113,136,.10),transparent 31%),
+    linear-gradient(90deg,rgba(227,255,99,.018),transparent 42%,rgba(255,210,122,.016) 50%,transparent 58%,rgba(255,113,136,.022)),
+    linear-gradient(180deg,#111a24,#06090e 76%)!important;
+  box-shadow:inset 0 0 90px rgba(0,0,0,.36),0 16px 36px rgba(0,0,0,.20)!important;
+}
+.combat-stage::before{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  pointer-events:none!important;
+  background:
+    linear-gradient(90deg,transparent 49.86%,rgba(255,210,122,.22) 50%,transparent 50.14%),
+    repeating-linear-gradient(135deg,transparent 0 44px,rgba(255,255,255,.010) 45px 46px),
+    linear-gradient(180deg,rgba(255,255,255,.015),transparent 20%,transparent 74%,rgba(0,0,0,.32))!important;
+}
+.combat-side{position:relative;z-index:2}
+.fighter{
+  position:relative;
+  border:1px solid rgba(218,236,255,.13)!important;
+  box-shadow:inset 0 1px rgba(255,255,255,.05),0 13px 28px rgba(0,0,0,.28)!important;
+}
+.fighter.player{
+  border-color:rgba(227,255,99,.28)!important;
+  background:linear-gradient(145deg,#1c2a21,#11191d)!important;
+  box-shadow:inset 0 1px rgba(255,255,255,.05),0 13px 28px rgba(0,0,0,.28),0 0 22px rgba(227,255,99,.07)!important;
+}
+.fighter.enemy{
+  border-color:rgba(255,113,136,.28)!important;
+  background:linear-gradient(145deg,#2a1820,#171218)!important;
+  box-shadow:inset 0 1px rgba(255,255,255,.05),0 13px 28px rgba(0,0,0,.28),0 0 22px rgba(255,113,136,.08)!important;
+}
+.fighter::after{
+  content:"";
+  position:absolute;
+  left:14%;right:14%;bottom:-8px;height:12px;
+  border-radius:50%;
+  background:rgba(0,0,0,.48);
+  filter:blur(5px);
+  z-index:-1;
+}
+.combat-choice-preview article{
+  background:linear-gradient(145deg,rgba(255,255,255,.042),rgba(255,255,255,.014))!important;
+  box-shadow:inset 0 1px rgba(255,255,255,.025)!important;
+}
+.combat-choice-preview article.recommended{
+  border-color:rgba(227,255,99,.48)!important;
+  background:linear-gradient(145deg,rgba(227,255,99,.095),rgba(227,255,99,.025))!important;
+  box-shadow:inset 3px 0 rgba(227,255,99,.38),0 0 24px rgba(227,255,99,.06)!important;
+}
+.combat-info-grid>div{
+  background:linear-gradient(155deg,rgba(255,255,255,.04),rgba(255,255,255,.012))!important;
+  border-color:rgba(218,236,255,.11)!important;
+}
+
+@keyframes vp6SceneSweep{
+  0%,62%{transform:translateX(-110%);opacity:0}
+  70%{opacity:.45}
+  86%,100%{transform:translateX(110%);opacity:0}
+}
+
+@media(max-width:980px){
+  .lc11-feature{min-height:146px!important}
+  .lc11-header::after{display:none}
+  .combat-stage{min-height:232px!important}
+}
+@media(max-width:620px){
+  .lc11-feature{min-height:132px!important}
+  .lc11-current-scene::after,.lc11-station-head::after,.lc11-training-hero::after{display:none}
+  .combat-stage{min-height:196px!important}
+}
+@media(prefers-reduced-motion:reduce){
+  .scene-hero::after{animation:none!important;display:none!important}
+  .lc11-feature{transition:none!important}
+  .lc11-feature:hover{transform:none!important}
+}
+body.lc09-reduced-motion .scene-hero::after{animation:none!important;display:none!important}
+body.lc09-reduced-motion .lc11-feature{transition:none!important}
+body.lc09-reduced-motion .lc11-feature:hover{transform:none!important}
+
+/* 9. Lesbarkeits-/Dichtepass: klare Hierarchie ohne zusätzliche UI- oder Gameplay-Schicht. */
+:root{
+  --vp6-text-secondary:#c4d2df;
+  --vp6-text-tertiary:#9fb0c1;
+}
+.muted,
+.metric-list,
+.summary-grid,
+.help-dock-body,
+.tab-panel p,
+.detail-box,
+.map-nav-hint,
+.footerbar{
+  color:var(--vp6-text-secondary)!important;
+}
+.eyebrow{
+  color:#a9e9f2!important;
+  font-weight:900!important;
+  letter-spacing:.13em!important;
+}
+.panel-head h2,.map-toolbar h2,.lc11-header h2,.scene-modal h2,.combat-modal h2{
+  color:#f7fbff!important;
+  text-wrap:balance;
+  letter-spacing:-.018em;
+}
+.tabs{
+  gap:5px!important;
+  padding:5px!important;
+}
+.tab{
+  min-height:36px;
+  padding:8px 10px!important;
+  font-weight:800!important;
+  border:1px solid transparent!important;
+}
+.tab:hover:not(.active){
+  color:#eef8ff!important;
+  border-color:rgba(121,241,255,.16)!important;
+  background:rgba(121,241,255,.045)!important;
+}
+.tab.active{
+  color:#f8ffdc!important;
+  border-color:rgba(227,255,99,.28)!important;
+  background:linear-gradient(180deg,rgba(227,255,99,.13),rgba(227,255,99,.045))!important;
+  box-shadow:inset 0 -2px rgba(227,255,99,.48),0 7px 18px rgba(0,0,0,.12)!important;
+}
+.btn,.mini-btn,.map-control,.direct-target,.interior-action{
+  min-height:36px;
+}
+.btn:focus-visible,.mini-btn:focus-visible,.map-control:focus-visible,.tab:focus-visible,.direct-target:focus-visible,.interior-action:focus-visible{
+  outline:3px solid rgba(121,241,255,.72)!important;
+  outline-offset:2px!important;
+  box-shadow:0 0 0 4px rgba(4,9,14,.92),0 0 0 6px rgba(121,241,255,.22)!important;
+}
+.location-now,.ticker{
+  border-color:rgba(121,241,255,.14)!important;
+  background:linear-gradient(145deg,rgba(121,241,255,.045),rgba(255,255,255,.012))!important;
+}
+.location-now strong,.ticker strong{color:#f4fbff!important}
+.warning-stack:not(:empty){
+  border-left:3px solid rgba(255,113,136,.52);
+  padding-left:8px;
+}
+
+/* Kleine Desktop-Höhen: weniger Leerraum statt kleinere Schrift. */
+@media (min-width:1100px) and (max-height:800px){
+  .topbar{padding-top:8px!important;padding-bottom:8px!important;gap:8px!important}
+  .brand p{margin-top:1px!important}
+  .workspace{gap:10px!important}
+  .panel{padding:12px!important}
+  .panel-head,.map-toolbar{margin-bottom:8px!important}
+  .map-commandbar{gap:7px!important;margin-bottom:7px!important}
+  .map-workbench{min-height:0!important}
+  .decision-grid,.warning-stack,.skill-grid,.summary-grid{gap:7px!important}
+  .detail-box{margin-top:8px!important}
+  .tabs{margin-bottom:7px!important}
+  .tab-panels{min-height:0!important}
+  .footerbar{min-height:34px!important;padding-top:5px!important;padding-bottom:5px!important}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .tab,.btn,.mini-btn,.map-control,.direct-target,.interior-action{transition:none!important}
+}
+body.lc09-reduced-motion .tab,
+body.lc09-reduced-motion .btn,
+body.lc09-reduced-motion .mini-btn,
+body.lc09-reduced-motion .map-control,
+body.lc09-reduced-motion .direct-target,
+body.lc09-reduced-motion .interior-action{transition:none!important}
+
+/* 10. Visual-Polish VI-B: Aktionsleiste als klare Entscheidungshierarchie. */
+.action-panel{
+  background:
+    radial-gradient(circle at 88% 6%,rgba(227,255,99,.045),transparent 26%),
+    linear-gradient(180deg,rgba(15,22,31,.97),rgba(7,11,17,.985))!important;
+  border-color:rgba(218,236,255,.14)!important;
+  box-shadow:inset 0 1px rgba(255,255,255,.04),-12px 0 34px rgba(0,0,0,.14)!important;
+}
+.action-panel .panel-head{
+  padding-bottom:9px;
+  border-bottom:1px solid rgba(121,241,255,.11);
+}
+.action-panel .tabs{
+  position:sticky;
+  top:0;
+  z-index:4;
+  background:rgba(7,12,18,.94)!important;
+  backdrop-filter:blur(12px) saturate(1.08);
+  box-shadow:0 8px 22px rgba(0,0,0,.18)!important;
+}
+.action-panel .tab-panels{
+  padding-top:2px;
+}
+.action-panel .group-title{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  margin:10px 0 6px;
+  color:#dceaf6!important;
+  font-size:9px!important;
+  font-weight:900!important;
+  letter-spacing:.11em!important;
+  text-transform:uppercase;
+}
+.action-panel .group-title::after{
+  content:"";
+  flex:1;
+  height:1px;
+  background:linear-gradient(90deg,rgba(121,241,255,.18),transparent);
+}
+.action-panel .action-grid{
+  gap:8px!important;
+}
+.action-panel .action-card{
+  min-height:58px;
+  grid-template-columns:34px minmax(0,1fr) auto!important;
+  gap:9px!important;
+  padding:9px 10px!important;
+  border-color:rgba(218,236,255,.105)!important;
+  background:linear-gradient(145deg,rgba(255,255,255,.042),rgba(255,255,255,.013))!important;
+  box-shadow:inset 0 1px rgba(255,255,255,.028),0 8px 20px rgba(0,0,0,.10)!important;
+}
+.action-panel .action-card::before{
+  top:14%;
+  bottom:14%;
+  width:3px;
+  opacity:.48;
+}
+.action-panel .action-card:hover:not(:disabled){
+  border-color:rgba(227,255,99,.40)!important;
+  background:linear-gradient(145deg,rgba(227,255,99,.075),rgba(121,241,255,.025))!important;
+  box-shadow:inset 3px 0 rgba(227,255,99,.34),0 12px 26px rgba(0,0,0,.17)!important;
+}
+.action-panel .action-card:focus-visible{
+  outline:3px solid rgba(121,241,255,.74)!important;
+  outline-offset:2px!important;
+  box-shadow:0 0 0 4px rgba(4,9,14,.94),0 0 0 6px rgba(121,241,255,.22)!important;
+}
+.action-panel .action-icon{
+  width:34px!important;
+  height:34px!important;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(121,241,255,.16);
+  background:linear-gradient(145deg,rgba(121,241,255,.10),rgba(255,255,255,.025));
+  border-radius:10px!important;
+}
+.action-panel .action-copy strong{
+  color:#f6fbff!important;
+  font-size:10px!important;
+  letter-spacing:.005em;
+}
+.action-panel .action-copy small{
+  color:var(--vp6-text-secondary)!important;
+  line-height:1.36!important;
+}
+.action-panel .cost{
+  align-self:center;
+  min-width:54px;
+  padding:5px 7px;
+  border:1px solid rgba(255,210,122,.16);
+  border-radius:8px;
+  background:rgba(255,210,122,.045);
+  color:#ffe0a2!important;
+  font-weight:900!important;
+  text-align:center;
+}
+.action-panel .action-card:disabled{
+  opacity:.52!important;
+  filter:saturate(.58) brightness(.88);
+}
+.action-panel .action-card:disabled .cost{
+  color:#aeb7c0!important;
+  border-color:rgba(174,183,192,.10);
+  background:rgba(174,183,192,.025);
+}
+
+@media (min-width:1100px) and (max-height:800px){
+  .action-panel .action-card{min-height:52px;padding:7px 9px!important}
+  .action-panel .action-icon{width:30px!important;height:30px!important}
+  .action-panel .group-title{margin-top:7px}
+}
+@media(max-width:820px){
+  .action-panel .tabs{position:static}
+  .action-panel .action-card{min-height:56px}
+}
+@media(prefers-reduced-motion:reduce){
+  .action-panel .action-card{transition:none!important}
+}
+body.lc09-reduced-motion .action-panel .action-card{transition:none!important}
+
+/* Visual-Polish VI-D: Stadtkarte mit klarer Besitz-, Gefahren- und Routenhierarchie. */
+.map-stage{
+  background:
+    radial-gradient(ellipse at 50% 46%,rgba(121,241,255,.075),transparent 42%),
+    radial-gradient(circle at 18% 76%,rgba(255,113,136,.035),transparent 24%),
+    linear-gradient(180deg,#07131e 0%,#03080e 72%,#020509 100%)!important;
+}
+.map-stage::before{
+  background:
+    linear-gradient(180deg,rgba(121,241,255,.028),transparent 20%,transparent 74%,rgba(0,0,0,.44)),
+    repeating-linear-gradient(0deg,transparent 0 41px,rgba(121,241,255,.012) 42px),
+    repeating-linear-gradient(90deg,transparent 0 41px,rgba(121,241,255,.010) 42px),
+    repeating-linear-gradient(135deg,transparent 0 82px,rgba(255,255,255,.006) 83px 84px),
+    radial-gradient(circle at 50% 50%,transparent 30%,rgba(0,0,0,.18) 76%)!important;
+}
+.route,.train-route{
+  opacity:.62;
+  stroke-linecap:round;
+}
+.route{stroke:rgba(142,170,192,.26)!important;stroke-width:2.35!important}
+.train-route{stroke:rgba(199,166,255,.40)!important;stroke-width:2.1!important;filter:drop-shadow(0 0 3px rgba(199,166,255,.10))}
+.route.reachable,.train-route.reachable{opacity:.94!important}
+.route.planned,.train-route.planned{opacity:1!important}
+.district-node .zone{
+  stroke-width:2.15!important;
+  filter:drop-shadow(0 8px 12px rgba(0,0,0,.18));
+}
+.district-node .owner-ring.owner-player{
+  stroke:#dff86d!important;
+  filter:drop-shadow(0 0 6px rgba(227,255,99,.24));
+}
+.district-node .owner-ring.owner-rival{
+  stroke:#ff7188!important;
+  filter:drop-shadow(0 0 6px rgba(255,113,136,.20));
+}
+.district-node .owner-ring.owner-neutral{
+  stroke:#8093a5!important;
+  opacity:.72;
+}
+.district-node .control-ring{
+  stroke-width:3.2!important;
+  opacity:.94!important;
+}
+.district-node.pressure-watch .zone{
+  stroke:rgba(255,210,122,.42)!important;
+  fill:rgba(255,210,122,.045)!important;
+}
+.district-node.pressure-critical .zone{
+  stroke:rgba(255,113,136,.58)!important;
+  fill:rgba(255,113,136,.060)!important;
+  filter:drop-shadow(0 0 12px rgba(255,113,136,.11)) drop-shadow(0 8px 12px rgba(0,0,0,.20));
+}
+.district-node.event-hot .node-core{
+  stroke:rgba(255,210,122,.78)!important;
+  filter:drop-shadow(0 0 9px rgba(255,210,122,.26));
+}
+.district-node.current .node-label{
+  fill:#f6ffd4!important;
+  stroke:#071006!important;
+}
+.district-node.selected:not(.current) .node-label{fill:#d8f9ff!important}
+.district-node:focus-visible .zone{
+  stroke-width:3.1!important;
+  stroke:rgba(121,241,255,.80)!important;
+  filter:drop-shadow(0 0 10px rgba(121,241,255,.18));
+}
+.map-callout{
+  border-color:rgba(121,241,255,.20)!important;
+  background:linear-gradient(145deg,rgba(7,16,24,.94),rgba(4,9,14,.94))!important;
+}
+.map-callout strong{font-size:12px!important;color:#f7fbff!important}
+.map-callout span{color:#b8c8d8!important;line-height:1.45!important}
+@media(prefers-reduced-motion:reduce){
+  .district-node .zone,.district-node .owner-ring,.district-node .control-ring,.district-node .node-core,.route,.train-route{transition:none!important}
+}
+body.lc09-reduced-motion .district-node .zone,
+body.lc09-reduced-motion .district-node .owner-ring,
+body.lc09-reduced-motion .district-node .control-ring,
+body.lc09-reduced-motion .district-node .node-core,
+body.lc09-reduced-motion .route,
+body.lc09-reduced-motion .train-route{transition:none!important}

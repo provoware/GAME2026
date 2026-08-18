@@ -1,0 +1,15 @@
+const fs=require('fs');const path=require('path');const assert=require('assert');const root=path.join(__dirname,'..');const read=(f)=>fs.readFileSync(path.join(root,f),'utf8');
+const html=read('index.html'),css=read('lc11-visual-polish-5.css')+read('lc11-visual-polish-5b.css'),closeCss=read('lc11-close-control.css'),ui=read('lc11-ui.js'),data=read('lc11-data.js');
+assert.ok(html.includes('lc11-visual-polish-5.css')&&html.includes('lc11-close-control.css'));
+assert.ok(html.indexOf('lc11-visual-polish-5b.css')<html.indexOf('lc11-close-control.css'),'Close-Control-Layer muss zuletzt laden.');
+assert.ok(html.indexOf('lc11-visual-polish-4.css')<html.indexOf('lc11-visual-polish-5.css'));
+assert.ok(html.includes('0.17.6 LIVING-CITY-11 VISUAL-POLISH-VI'));
+assert.ok(data.includes("version:'0.17.6-living-city-11-visual-polish-6'"));
+assert.ok(ui.includes('0.17.6 · Schema 12'));
+['--vp5-text:#f8fbff','--vp5-cyan:#72efff','.workspace{grid-template-columns:minmax(205px,.62fr)','.top-kpis{display:none!important}', '.tabs{display:grid!important','.district-bars .stat-bar:nth-child(4) .bar i','.combat-stage{min-height:260px!important','.lc11-feature:nth-child(4)::after{content:"04"','@media(min-width:1180px) and (max-height:900px)','@media(prefers-reduced-motion:reduce)','body.lc09-reduced-motion'].forEach(x=>assert.ok(css.includes(x),x));
+assert.ok(css.includes('outline:2px solid var(--vp5-lime)'));
+assert.ok(css.includes('button:disabled'));
+assert.ok(!css.includes('pointer-events:auto'),'Visual-Polish-Hauptlayer dürfen keine Interaktionsebene erzwingen.');
+const pointerAuto=(closeCss.match(/pointer-events:auto/g)||[]).length;assert.equal(pointerAuto,1,'Nur der kritische LC11-Schließen-Button darf pointer-events:auto explizit setzen.');
+assert.ok(closeCss.includes('.lc11-modal .modal-close{')&&closeCss.includes('z-index:120!important')&&closeCss.includes('visibility:visible!important'),'LC11-Schließen-Button muss sichtbar und über dekorativen Ebenen liegen.');
+console.log('PASS: Visual-Polish V – Premium-Ansicht, Spielflächenpriorität, Kontrastlogik, Karten-/Kampfdramaturgie und Reduced-Motion geprüft.');

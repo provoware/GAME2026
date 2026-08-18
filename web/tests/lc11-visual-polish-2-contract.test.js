@@ -1,0 +1,12 @@
+const fs=require('fs');const path=require('path');const assert=require('assert');const root=path.join(__dirname,'..');const read=(f)=>fs.readFileSync(path.join(root,f),'utf8');
+const html=read('index.html'),css=read('lc11-visual-polish-2.css')+read('lc11-visual-polish-2b.css'),ui=read('lc11-ui.js');
+assert.ok(html.includes('lc11-visual-polish-2.css'));
+assert.ok(html.indexOf('lc11-visual-polish.css')<html.indexOf('lc11-visual-polish-2.css'));
+['.boss-panel::after','.action-panel::after','.map-stage::after','.district-node.current .node-label','.scene-hero::before','.scene-hotspot:hover','.combat-stage::before','.combat-vs','.lc11-card[data-view="casino"]','.lc11-card[data-view="training"]','.lc11-card[data-view="gear"]','.lc11-card[data-view="station"]','.lc11-poker::after','.lc11-training-stage::after'].forEach(x=>assert.ok(css.includes(x),x));
+assert.ok(css.includes('@keyframes vp2MeterSweep'));
+assert.ok(css.includes('@media(prefers-reduced-motion:reduce)'));
+assert.ok(css.includes('body.lc09-reduced-motion'));
+assert.ok(ui.includes('body.dataset.view=activeView'));
+assert.ok(ui.includes('card.dataset.view=activeView'));
+assert.ok(!css.includes('pointer-events:auto'));
+console.log('PASS: Visual-Polish II – Kartenlesbarkeit, Panelhierarchie, Innenraumtiefe, Kampfinszenierung, ortsspezifische LC11-Atmosphäre und Reduced-Motion geprüft.');

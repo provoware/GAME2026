@@ -1,0 +1,15 @@
+const fs=require('fs');const path=require('path');const assert=require('assert');const root=path.join(__dirname,'..');const read=(f)=>fs.readFileSync(path.join(root,f),'utf8');
+const html=read('index.html'),css=read('lc11-visual-polish-3.css'),map=read('repair-04a.js'),ui=read('lc11-ui.js');
+assert.ok(html.includes('lc11-visual-polish-3.css'));
+assert.ok(html.indexOf('lc11-visual-polish-2.css')<html.indexOf('lc11-visual-polish-3.css'));
+['.map-panel[data-map-alert="critical"]','.district-node.pressure-critical','.district-node.event-hot','.route.reachable','.director-hero::after','.mission-card.active','.combat-stage','.lc11-card::after','.lc11-destination::after','.event::after'].forEach(x=>assert.ok(css.includes(x),x));
+['vp3EventRing','vp3RouteBreath','vp3RouteMarch'].forEach(x=>assert.ok(css.includes('@keyframes '+x),x));
+assert.ok(css.includes('@media(prefers-reduced-motion:reduce)'));
+assert.ok(css.includes('body.lc09-reduced-motion'));
+assert.ok(map.includes('pressureClass'));
+assert.ok(map.includes("mapPanel.dataset.mapAlert"));
+assert.ok(map.includes("mapPanel.dataset.mapOwner"));
+assert.ok(map.includes("event?'event-hot':''"));
+assert.ok(ui.includes('0.17.6 · Schema 12'));
+assert.ok(!css.includes('pointer-events:auto'));
+console.log('PASS: Visual-Polish III – dynamische Bezirksatmosphäre, Kartenstatus, Stadtereignisse, Innenraumtiefe, Kampfdramaturgie und Reduced-Motion geprüft.');

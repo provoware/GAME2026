@@ -1,0 +1,26 @@
+/* LC11 modal close control · final interaction layer.
+   Kept separate so the qualified Visual-Polish layers remain byte-stable. */
+@import url("lc11-visual-polish-6d.css");
+@import url("lc11-visual-polish-6e.css");
+@import url("lc11-visual-polish-6f.css");
+@import url("lc11-visual-polish-6g.css");
+@import url("lc11-visual-polish-6h.css");
+@import url("lc11-visual-polish-6i.css");
+@import url("lc11-visual-polish-6j.css");
+@import url("lc11-visual-polish-6k.css");
+@import url("lc11-visual-polish-6l.css");
+@import url("lc11-visual-polish-6m.css");
+@import url("lc11-visual-polish-6n.css");
+@import url("lc11-visual-polish-6o.css");
+@import url("lc11-visual-polish-6p.css");
+@import url("lc11-visual-polish-6q.css");
+@import url("lc11-visual-polish-6r.css");
+@import url("lc11-visual-polish-6s.css");
+@import url("lc11-visual-polish-6t.css");
+@import url("lc11-visual-polish-6u.css");
+@import url("lc11-visual-polish-6v.css");
+@import url("lc11-visual-polish-6w.css");
+@import url("lc11-visual-polish-6x.css");
+.lc11-modal .modal-close{position:absolute!important;top:10px!important;right:10px!important;z-index:120!important;display:grid!important;place-items:center!important;width:34px!important;height:34px!important;padding:0!important;border:1px solid rgba(114,239,255,.42)!important;border-radius:50%!important;background:#101b28!important;color:#fff!important;opacity:1!important;visibility:visible!important;filter:none!important;transform:none!important;pointer-events:auto!important;box-shadow:0 8px 22px rgba(0,0,0,.34),0 0 0 3px rgba(114,239,255,.035)!important}
+.lc11-modal .modal-close:hover{border-color:rgba(221,255,85,.62)!important;background:#172332!important;color:#faffda!important;box-shadow:0 10px 26px rgba(0,0,0,.38),0 0 18px rgba(221,255,85,.10)!important}
+.lc11-modal .modal-close:focus-visible{outline:2px solid var(--vp5-lime)!important;outline-offset:3px!important;box-shadow:0 0 0 5px rgba(221,255,85,.12),0 10px 26px rgba(0,0,0,.38)!important}

@@ -1,0 +1,11 @@
+const fs=require('fs');const path=require('path');const assert=require('assert');
+const root=path.join(__dirname,'..'),css=fs.readFileSync(path.join(root,'lc11-visual-polish-6s.css'),'utf8'),loader=fs.readFileSync(path.join(root,'lc11-close-control.css'),'utf8'),hardening=fs.readFileSync(path.join(root,'lc11-browser-hardening.js'),'utf8');
+['Visual Polish VI-AK · Gruppenübergreifender Kritikalitätsfokus','data-global-critical="true"','outline:3px double currentColor','opacity:.58','font-weight:900'].forEach((token)=>assert.ok(css.includes(token),token));
+['const globalCritical=enriched.filter','groupState(item.group)===\'worsening\'','data-global-critical="${globalCriticalCause}"','gruppenübergreifend kritischste Ursache'].forEach((token)=>assert.ok(hardening.includes(token),token));
+assert.ok(loader.includes('@import url("lc11-visual-polish-6s.css");'),'VI-AK muss über die bestehende VI-AI/AJ-Datei in der finalen visuellen Importkette geladen werden.');
+const section=css.split('Visual Polish VI-AK')[1]||'';
+assert.ok(!/(^|[;{])\s*(padding|margin|min-height|min-width|max-height|max-width|width|height|gap|grid-template(?:-areas|-columns|-rows)?)\s*:/m.test(section),'VI-AK darf keine Layoutmaße oder Grid-Geometrie setzen.');
+assert.ok(!section.includes('animation:'),'VI-AK ergänzt keine Bewegungslogik.');
+assert.ok(!section.includes('pointer-events:auto'),'VI-AK darf keine aktive Interaktionsebene erzwingen.');
+assert.ok(css.indexOf('VI-AK')>css.indexOf('VI-AJ'),'VI-AK muss additiv auf VI-AJ aufsetzen.');
+console.log('PASS: Visual Polish VI-AK – bei mehreren kippenden Wirkungsgruppen führt genau die gruppenübergreifend kritischste Ursache.');

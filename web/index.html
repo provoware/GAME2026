@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#07090d">
+  <meta name="description" content="PPPOPPI Bunkerwahrheit – LIVING-CITY-11 mit spielbarem Casino, Kampfsporttraining, Schutz-/Ausrüstungszustand, Fernreisen und stärker inszenierten Innenräumen.">
+  <title>PPPOPPI – Bunkerwahrheit · 0.17.6 LIVING-CITY-11 VISUAL-POLISH-VI</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="revival.css">
+  <link rel="stylesheet" href="repair-04a.css">
+  <link rel="stylesheet" href="lc05.css">
+  <link rel="stylesheet" href="lc05b.css">
+  <link rel="stylesheet" href="lc06.css">
+  <link rel="stylesheet" href="lc07.css">
+  <link rel="stylesheet" href="lc08.css">
+  <link rel="stylesheet" href="lc09.css">
+  <link rel="stylesheet" href="lc10.css">
+  <link rel="stylesheet" href="lc11.css">
+  <link rel="stylesheet" href="lc11-visual-polish.css">
+  <link rel="stylesheet" href="lc11-visual-polish-2.css">
+  <link rel="stylesheet" href="lc11-visual-polish-2b.css">
+  <link rel="stylesheet" href="lc11-visual-polish-3.css">
+  <link rel="stylesheet" href="lc11-visual-polish-4.css">
+  <link rel="stylesheet" href="lc11-visual-polish-5.css">
+  <link rel="stylesheet" href="lc11-visual-polish-5b.css">
+  <link rel="stylesheet" href="lc11-visual-polish-6.css">
+  <link rel="stylesheet" href="lc11-visual-polish-6b.css">
+  <link rel="stylesheet" href="lc11-visual-polish-6c.css">
+  <link rel="stylesheet" href="lc11-close-control.css">
+</head>
+<body>
+<div class="app-shell">
+  <header class="topbar glass">
+    <div class="brand"><div class="brand-mark">9909</div><div><h1>PPPOPPI · Bunkerwahrheit</h1><p>LIVING-CITY-11 · Casino · Training · Schutz · Fernreisen</p></div></div>
+    <div class="top-kpis" id="topKpis"></div>
+    <div class="top-actions"><button class="btn primary turn-button" id="endTurnButton" title="Zug beenden / bewusst warten (Taste E)"><span>Zug beenden</span><small>Warten</small></button><button class="btn ghost" id="lc06AudioButton" title="Sound- und Musikmixer (Taste K)">Klang</button><button class="btn ghost" id="helpButton" aria-controls="helpDock" aria-expanded="false">Hilfe</button><button class="btn ghost" id="saveButton">Speichern</button></div>
+    <section class="focus-dashboard" id="focusDashboard" aria-label="Aufgaben-Dashboard" aria-live="polite"></section>
+    <section class="coach-rail" id="coachRail" aria-live="polite" hidden></section>
+  </header>
+
+  <main class="workspace">
+    <aside class="panel boss-panel glass">
+      <div class="panel-head"><div><span class="eyebrow">BOSS-ZENTRALE</span><h2 id="bossTitle">Aufsteiger</h2></div><span class="rank-pill" id="bossRank">Aufsteiger</span></div>
+      <p class="muted" id="bossNote"></p>
+      <div class="decision-grid" id="decisionGrid"></div>
+      <div class="warning-stack" id="bossWarnings"></div>
+      <details class="detail-box" open><summary>Boss-Skills</summary><div class="skill-grid" id="bossSkills"></div></details>
+      <details class="detail-box"><summary>Rohwerte & Stadtbilanz</summary><div id="bossMetrics" class="metric-list"></div><div id="citySummary" class="summary-grid"></div></details>
+      <div class="location-now"><span>AKTUELLER STANDORT</span><strong id="currentLocation">Hauptbunker</strong></div>
+    </aside>
+
+    <section class="panel map-panel glass">
+      <div class="map-toolbar"><div><span class="eyebrow">LIVE-STADTKARTE</span><h2>Stadtsektor 9909</h2></div><div class="map-toolbar-actions"><div class="legend"><span><i class="dot player"></i>Du</span><span><i class="dot rival"></i>Rivalen</span><span><i class="dot neutral"></i>Neutral</span><span><i class="dot current"></i>Standort</span><span><i class="route-key"></i>direkt erreichbar</span></div><div class="map-controls" aria-label="Kartenzoom"><button class="map-control" id="mapZoomOut" title="Karte verkleinern">−</button><button class="map-control" id="mapZoomReset" title="Gesamtkarte">Gesamt</button><button class="map-control" id="mapZoomIn" title="Karte vergrößern">+</button></div></div></div>
+      <div class="map-commandbar" id="mapCommandbar">
+        <div class="map-callout" id="mapCallout"></div>
+        <div class="map-quickbar" id="mapQuickbar"></div>
+        <div class="map-direct-targets" id="mapDirectTargets" aria-label="Direkt erreichbare Ziele"></div>
+      </div>
+      <div class="map-workbench" id="mapWorkbench">
+        <div class="map-stage" id="mapStage"><svg id="cityMap" viewBox="0 0 1000 700" tabindex="0" role="img" aria-label="Interaktive Stadtkarte. Mit Maus ziehen oder Pfeiltasten und WASD verschieben. Mausrad oder Plus/Minus zoomt."></svg><div class="map-nav-hint" id="mapNavHint">Ziehen = Karte bewegen · Mausrad = zoomen · WASD/Pfeile = bewegen · M = Karte</div></div>
+        <aside class="help-dock" id="helpDock" hidden aria-label="Kontexthilfe">
+          <div class="help-dock-head"><div><span class="eyebrow">HILFE OHNE ÜBERDECKEN</span><h3>Was ist jetzt wichtig?</h3></div><button class="mini-btn" id="helpDockClose" aria-label="Hilfe schließen">Schließen</button></div>
+          <div class="help-dock-body" id="helpDockBody"></div>
+        </aside>
+      </div>
+      <div class="ticker"><span>LETZTE MELDUNG</span><strong id="tickerText">System bereit.</strong></div>
+    </section>
+
+    <aside class="panel action-panel glass">
+      <nav class="tabs" id="tabs" aria-label="Spielbereiche">
+        <button class="tab active" data-tab="district">Bezirk</button><button class="tab" data-tab="crew">Crew</button><button class="tab" data-tab="assets">Besitz</button><button class="tab" data-tab="bank">Bank</button><button class="tab" data-tab="network">Netz</button><button class="tab" data-tab="rivals">Rivalen</button><button class="tab" data-tab="casino">Casino</button><button class="tab" data-tab="log">Chronik</button>
+      </nav>
+      <div class="tab-panels">
+        <section class="tab-panel active" data-panel="district"><div id="districtPanel"></div></section><section class="tab-panel" data-panel="crew" hidden><div id="crewPanel"></div></section><section class="tab-panel" data-panel="assets" hidden><div id="assetsPanel"></div></section><section class="tab-panel" data-panel="bank" hidden><div id="bankPanel"></div></section><section class="tab-panel" data-panel="network" hidden><div id="networkPanel"></div></section><section class="tab-panel" data-panel="rivals" hidden><div id="rivalsPanel"></div></section><section class="tab-panel" data-panel="casino" hidden><div id="casinoPanel"></div></section><section class="tab-panel" data-panel="log" hidden><div id="logPanel"></div></section>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="footerbar glass"><span id="saveStatus">Automatisch lokal gespeichert</span><span class="turn-rule">Aktionen beenden meist automatisch einen Zug · <b>Zug beenden</b> = bewusst warten</span><span>Version <strong>0.17.6</strong> · Schema 12</span><button class="text-button" id="resetButton">Neues Spiel</button></footer>
+</div>
+
+<dialog id="personDialog" class="modal person-modal"><div class="modal-card"><button class="modal-close" data-close="personDialog">×</button><div id="personDialogContent"></div></div></dialog>
+<dialog id="combatDialog" class="modal combat-modal"><div class="modal-card wide"><button class="modal-close" data-close="combatDialog">×</button><div id="combatDialogContent"></div></div></dialog>
+<dialog id="helpDialog" class="modal"><div class="modal-card"><button class="modal-close" data-close="helpDialog">×</button><span class="eyebrow">KURZANLEITUNG</span><h2>LIVING-CITY-11</h2><div class="help-grid"><article><b>Stadtlage</b><p>Zeigt Bezirks-Trends, Druck, Stabilität, Chancen und offene Crew-Initiativen. Tastatur: L.</p></article><article><b>Stadt & Komfort</b><p>Öffnet Stadt-Puls, Lesemodus und bis zu fünf manuelle Wiederherstellungspunkte. Tastatur: U.</p></article><article><b>Zug beenden</b><p>Mit dem gut sichtbaren Button oben rechts oder Taste E bewusst einen Zug verstreichen lassen.</p></article><article><b>Karte</b><p>Leuchtende Verbindungen sind direkt erreichbar. Maus, Mausrad, WASD und Pfeiltasten unterstützen die Navigation.</p></article><article><b>Stadtgedächtnis</b><p>Das Journal zeigt Entscheidungen, Entwicklungsbögen und spätere Folgen. Taste J öffnet es direkt.</p></article><article><b>Innenansichten</b><p>Casino, Dojo, Eisenladen und Bahnhof besitzen jetzt stärker inszenierte, animierte Vollansichten. Taste V öffnet Stadtleben.</p></article><article><b>Casino</b><p>Automaten besitzen sichtbare Drehungen, Sessionwerte und Jackpot-Töpfe; Poker bleibt vollständig spielbar.</p></article><article><b>Training & Schutz</b><p>Kampfsport besitzt Rangfortschritt. Schutzkleidung hat Zustand und kann am Schwarzmarkt gewartet werden.</p></article><article><b>Fernreisen</b><p>Am Geisterbahnhof starten mehrzügige Reisen in andere Städte mit Kosten und abstrakten Spielbelohnungen.</p></article><article><b>Crew</b><p>Moral, Stress, Beziehungen und Fähigkeiten verändern sich durch Aufgaben und gemeinsame Erfahrungen.</p></article><article><b>Klang</b><p>Musik, Effekte und Ducking bleiben lokal und starten nur nach einer Nutzeraktion.</p></article><article><b>Kampf</b><p>Crew auswählen, Kräftebeiträge prüfen und rundenweise Angriff, Deckung oder Rückzug entscheiden.</p></article></div></div></dialog>
+
+<script src="data.js"></script><script src="revival-data.js"></script><script src="lc05-data.js"></script><script src="lc06-data.js"></script><script src="lc07-data.js"></script><script src="lc08-data.js"></script><script src="lc09-data.js"></script><script src="lc10-data.js"></script><script src="lc11-data.js"></script>
+<script src="engine.js"></script><script src="revival-missions.js"></script><script src="revival-world.js"></script><script src="revival-engine.js"></script><script src="lc05-engine.js"></script><script src="lc06-engine.js"></script><script src="lc07-engine.js"></script><script src="lc08-engine.js"></script><script src="lc09-engine.js"></script><script src="lc10-engine.js"></script><script src="lc11-engine.js"></script>
+<script src="repair-bootstrap.js"></script><script src="lc05-bootstrap.js"></script><script src="lc06-bootstrap.js"></script><script src="lc07-bootstrap.js"></script><script src="lc08-bootstrap.js"></script><script src="lc09-bootstrap.js"></script><script src="lc10-bootstrap.js"></script><script src="lc11-bootstrap.js"></script>
+<script src="app.js"></script><script src="revival-ui.js"></script><script src="repair-04a.js"></script><script src="lc05-ui.js"></script><script src="lc05b-ui.js"></script><script src="lc06-ui.js"></script><script src="lc07-ui.js"></script><script src="lc08-ui.js"></script><script src="lc09-ui.js"></script><script src="lc10-ui.js"></script><script src="lc11-ui.js"></script><script src="ui-refresh.js"></script><script src="lc11-browser-hardening.js"></script>
+</body>
+</html>

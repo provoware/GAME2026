@@ -1,0 +1,38 @@
+/* Visual Polish VI-U · unmittelbares Erfolgsfeedback nach Innenraumaktionen */
+/* Rein präsentational und geometrieneutral: vorhandene Erfolgsrückmeldung wird im geöffneten Innenraum deutlich inszeniert. */
+body:has(.scene-modal[open]) #coachRail[data-tone="success"]{
+  border-color:rgba(159,255,208,.38)!important;
+  box-shadow:0 10px 28px rgba(0,0,0,.22),0 0 22px rgba(79,255,190,.09),inset 0 0 0 1px rgba(174,238,255,.04)!important;
+  animation:vp6ActionConfirmed .78s cubic-bezier(.18,.82,.2,1) both;
+}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-orb{
+  color:var(--vp6-decision-benefit)!important;
+  text-shadow:0 0 14px rgba(79,255,190,.24)!important;
+}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-copy>span,
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-copy>strong{
+  color:var(--vp6-decision-benefit)!important;
+}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-copy>small{
+  color:#d9f8eb!important;
+}
+body:has(.scene-modal[open]):has(#coachRail[data-tone="success"]) .scene-modal[open] .lc06-interactive-panel{
+  box-shadow:inset 0 0 0 1px rgba(159,255,208,.16),0 0 22px rgba(79,255,190,.055)!important;
+  animation:vp6ActionPanelConfirm .72s ease-out both;
+}
+@keyframes vp6ActionConfirmed{
+  0%{filter:brightness(1);transform:translateY(0)}
+  32%{filter:brightness(1.08) saturate(1.05);transform:translateY(-1px)}
+  100%{filter:brightness(1);transform:translateY(0)}
+}
+@keyframes vp6ActionPanelConfirm{
+  0%{filter:brightness(1)}
+  24%{filter:brightness(1.07) saturate(1.06)}
+  100%{filter:brightness(1)}
+}
+@media(prefers-reduced-motion:reduce){
+  body:has(.scene-modal[open]) #coachRail[data-tone="success"],
+  body:has(.scene-modal[open]):has(#coachRail[data-tone="success"]) .scene-modal[open] .lc06-interactive-panel{animation:none!important;filter:none!important}
+}
+body.lc09-reduced-motion:has(.scene-modal[open]) #coachRail[data-tone="success"],
+body.lc09-reduced-motion:has(.scene-modal[open]):has(#coachRail[data-tone="success"]) .scene-modal[open] .lc06-interactive-panel{animation:none!important;filter:none!important}

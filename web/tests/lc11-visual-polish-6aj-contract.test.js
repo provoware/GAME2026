@@ -1,0 +1,11 @@
+const fs=require('fs');const path=require('path');const assert=require('assert');
+const root=path.join(__dirname,'..'),css=fs.readFileSync(path.join(root,'lc11-visual-polish-6s.css'),'utf8'),loader=fs.readFileSync(path.join(root,'lc11-close-control.css'),'utf8'),hardening=fs.readFileSync(path.join(root,'lc11-browser-hardening.js'),'utf8');
+['Visual Polish VI-AJ · Ursachenwert-Fokus bei kippender Gruppenlage','data-group-dominant="true"][data-group-state="worsening"]>b','data-group-dominant="true"][data-group-state="worsening"]>[data-after]','data-group-dominant="true"][data-group-state="worsening"]>[data-before]','data-group-dominant="true"][data-group-state="worsening"]>i','opacity:.56','opacity:.48'].forEach((token)=>assert.ok(css.includes(token),token));
+['data-group-dominant="${dominant}"','data-group-state="${state}"','<b>${esc(label)}</b>','<span data-before>','<span data-after>'].forEach((token)=>assert.ok(hardening.includes(token),token));
+assert.ok(loader.includes('@import url("lc11-visual-polish-6s.css");'),'VI-AJ muss über die bestehende VI-AI-Datei in der finalen visuellen Importkette geladen werden.');
+const section=css.split('Visual Polish VI-AJ')[1]||'';
+assert.ok(!/(^|[;{])\s*(padding|margin|min-height|min-width|max-height|max-width|width|height|gap|grid-template(?:-areas|-columns|-rows)?)\s*:/m.test(section),'VI-AJ darf keine Layoutmaße oder Grid-Geometrie setzen.');
+assert.ok(!section.includes('animation:'),'VI-AJ ergänzt keine Bewegungslogik.');
+assert.ok(!section.includes('pointer-events:auto'),'VI-AJ darf keine aktive Interaktionsebene erzwingen.');
+assert.ok(css.indexOf('VI-AJ')>css.indexOf('VI-AI'),'VI-AJ muss additiv auf VI-AI aufsetzen.');
+console.log('PASS: Visual Polish VI-AJ – in kippenden Gruppen führt der konkrete Ursachenwert ohne zusätzliche Geometrie oder Bewegung.');

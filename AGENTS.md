@@ -20,3 +20,17 @@
 18. Kritische Datenschutz-, Save- oder Ressourcenfehler stoppen die Iteration sofort.
 19. CI-Skripte müssen lokal reproduzierbar bleiben und dürfen keine versteckte Cloudabhängigkeit einführen.
 20. Neue Contenttypen benötigen Schema, Semantikprüfung, Positivtest und Negativtest.
+21. Hilfen, Coach-Hinweise und Zusatzpanels dürfen die Karte nicht überdecken; sie ordnen sich in den Layoutfluss ein.
+22. Neue UI-Schichten dürfen keine globalen `MutationObserver` oder ungedrosselten Voll-Render-Schleifen einführen.
+23. Tastaturpfade müssen dieselben Aktionen wie Mauspfade erreichen und sichtbaren Fokus besitzen.
+24. Audio bleibt optional, lokal erzeugt und darf ohne Nutzerinteraktion nicht automatisch starten.
+25. Kampf- und Konfliktinformationen bleiben abstrahierte Spielwerte ohne reale Handlungsanleitungen.
+
+## LIVING-CITY-07 Zusatzvertrag
+
+- Google Chrome ist der primäre Release-Browser; Chromium ist Reserve.
+- Änderungen dürfen die 05B-Karten-/Responsive-Schicht nicht unnötig neu schreiben.
+- `tools/chrome_e2e.py` ist ein Release-Gate und muss auf GitHub in echtem Google Chrome laufen.
+- Desktop-Abnahme umfasst 1280×720, 1366×768 und 1600×900.
+- Hilfe/Coach-Inhalte dürfen die Karte nicht überdecken.
+- Neue Storyfolgen bleiben fiktional und wirken nur auf abstrakte Spielwerte.

@@ -1,0 +1,10 @@
+const fs=require('fs');const path=require('path');const assert=require('assert');
+const root=path.join(__dirname,'..');const hardening=fs.readFileSync(path.join(root,'lc11-browser-hardening.js'),'utf8'),css=fs.readFileSync(path.join(root,'lc11-visual-polish-6r.css'),'utf8');
+['effectRank','groupDominant','data-group-dominant="${dominant}"','dominierende Gruppenwirkung','item.groupRank<current.groupRank','item.priority<current.priority'].forEach((token)=>assert.ok(hardening.includes(token),token));
+['Visual Polish VI-AG · dominante Einzelwirkung innerhalb jeder Wirkungsgruppe','data-group-dominant="true"','data-group-dominant="false"','text-decoration-thickness:2px','text-shadow:0 0 8px currentColor'].forEach((token)=>assert.ok(css.includes(token),token));
+const section=css.split('Visual Polish VI-AG')[1]||'';
+assert.ok(!/(^|[;{])\s*(padding|margin|min-height|min-width|max-height|max-width|width|height|gap|grid-template(?:-areas|-columns|-rows)?)\s*:/m.test(section),'VI-AG darf keine Layoutmaße oder Grid-Geometrie setzen.');
+assert.ok(!section.includes('animation:'),'VI-AG ergänzt keine Bewegungslogik.');
+assert.ok(!section.includes('pointer-events:auto'),'VI-AG darf keine aktive Interaktionsebene erzwingen.');
+assert.ok(hardening.indexOf('groupDominant')>hardening.indexOf('effectGroup='),'VI-AG muss auf den bestehenden Wirkungsgruppen aufsetzen.');
+console.log('PASS: Visual Polish VI-AG – Jede Wirkungsgruppe kennzeichnet ihre entscheidungsrelevanteste Einzelwirkung geometrieneutral und barrierearm.');

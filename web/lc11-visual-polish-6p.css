@@ -1,0 +1,26 @@
+/* Visual Polish VI-Y · semantische Richtung für Vorher→Nachher-Werte */
+/* Geometrieneutral: Vorteil, Neutralität und Nachteil werden über Farbe UND Linienstil unterschieden. */
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-impact="benefit"]{
+  background:linear-gradient(90deg,rgba(79,255,190,.045),rgba(159,255,208,.085))!important;
+  border-bottom:1px solid rgba(159,255,208,.48)!important;
+}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-impact="benefit"] i,
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-impact="benefit"] [data-after]{
+  color:var(--vp6-decision-benefit)!important;
+}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-impact="risk"]{
+  background:linear-gradient(90deg,rgba(255,154,174,.035),rgba(255,154,174,.075))!important;
+  border-bottom:1px dashed rgba(255,154,174,.58)!important;
+}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-impact="risk"] i,
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-impact="risk"] [data-after]{
+  color:var(--vp6-decision-risk)!important;
+  text-shadow:0 0 10px rgba(255,154,174,.10)!important;
+}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-impact="neutral"]{
+  background:rgba(174,238,255,.025)!important;
+  border-bottom:1px dotted rgba(174,238,255,.34)!important;
+}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-impact="neutral"] [data-after]{
+  color:var(--vp6-decision-info)!important;
+}

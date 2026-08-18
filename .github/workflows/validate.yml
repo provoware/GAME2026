@@ -2,7 +2,7 @@ name: Validate project
 
 on:
   push:
-    branches: [main, "agent/**", "feature/**"]
+    branches: [main]
   pull_request:
 
 permissions:
@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   static-validation:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -20,17 +20,70 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Install validators
-        run: python -m pip install --upgrade jsonschema gdtoolkit
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install validators and Chrome E2E driver library
+        run: python -m pip install --upgrade jsonschema gdtoolkit selenium==4.46.0
+
+      - name: Report real Chrome environment
+        run: |
+          google-chrome --version
+          chromedriver --version
+          python -c "import selenium; print('Selenium', selenium.__version__)"
 
       - name: Check shell syntax
-        run: bash -n start.sh test.sh verify.sh package.sh
+        run: bash -n start.sh test.sh verify.sh package.sh START_GAME.sh PRUEFEN.sh
+
+      - name: Check browser JavaScript syntax
+        run: |
+          for f in web/*.js web/tests/*.js; do node --check "$f"; done
+
+      - name: Run qualified local contract
+        run: ./PRUEFEN.sh
+
+      - name: Real Google Chrome desktop E2E
+        run: python tools/chrome_e2e_lc11.py --output evidence/chrome-e2e
+
+      - name: Publish Chrome E2E evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: PPPOPPI-Bunkerwahrheit-0.17.6-VISUAL-POLISH-6-Chrome-E2E
+          if-no-files-found: error
+          retention-days: 14
+          path: evidence/chrome-e2e/
 
       - name: Rebuild deterministic manifest
         run: python tools/build_manifest.py
-
       - name: Validate package
         run: ./verify.sh
-
       - name: Check Python syntax
         run: python -m compileall -q tools
+
+      - name: Publish 0.17.6 Visual-Polish-VI source artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: PPPOPPI-Bunkerwahrheit-0.17.6-VISUAL-POLISH-6
+          if-no-files-found: error
+          retention-days: 14
+          path: |
+            web/
+            tools/chrome_e2e.py
+            tools/chrome_e2e_core.py
+            tools/chrome_e2e_lc10.py
+            tools/chrome_e2e_lc11.py
+            evidence/chrome-e2e/
+            evidence/visual-polish-6/
+            README.md
+            CHANGELOG.md
+            docs/PROJECT_STATUS.md
+            docs/CHROME_E2E.md
+            docs/REVIVAL_MASTER_PROMPT.md
+            AGENTS.md
+            START_GAME.sh
+            START_GAME.bat
+            PRUEFEN.sh
+            KLICKSTART_ANLEITUNG.md

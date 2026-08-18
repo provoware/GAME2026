@@ -1,0 +1,11 @@
+const assert=require('assert'),fs=require('fs');
+const hardening=fs.readFileSync('web/lc11-browser-hardening.js','utf8'),css=fs.readFileSync('web/lc11-visual-polish-6s.css','utf8'),targetCss=fs.readFileSync('web/lc11-visual-polish-6t.css','utf8'),loader=fs.readFileSync('web/lc11-close-control.css','utf8'),app=fs.readFileSync('web/app.js','utf8');
+['data-action-target-mode=\"${actionTarget.mode}\"','data-action-target-label=\"${esc(actionTarget.label)}\"','HIER: ${best.action.title}','ORT: ${location} · ${best.action.title}'].forEach((t)=>assert.ok(hardening.includes(t),t));
+['Visual Polish VI-AR','data-action-target-mode=\"here\"','data-action-target-mode=\"travel\"','data-action-target-mode=\"none\"','text-decoration-style:double','text-decoration-style:dashed','prefers-contrast:more'].forEach((t)=>assert.ok(css.includes(t),t));
+assert.ok(!css.includes('@keyframes viAR'),'VI-AR bleibt bewegungsfrei');
+assert.ok(loader.includes('@import url(\"lc11-visual-polish-6t.css\");'),'VI-AS muss in der finalen Importkette geladen werden.');
+[['Hauptbunker','location.bunker.main'],['Schwarzmarkt','location.market.black'],['Geisterbahnhof','location.station.ghost'],['Neon-Kellerclub','location.neon.cellar_club'],['Ostblöcke','location.blocks.east'],['Casino 9909','location.casino.9909'],['Altstadt','location.oldtown.central'],['Südhafen','location.harbor.south']].forEach(([title,id])=>{assert.ok(targetCss.includes(`data-action-target-location=\"${title}\"`),title);assert.ok(targetCss.includes(`data-location=\"${id}\"`),id);});
+['district-node','data-location=\"${l.id}\"'].forEach((t)=>assert.ok(app.includes(t),t));
+['Visual Polish VI-AS','data-action-target-mode=\"travel\"','stroke-dasharray:8 5','prefers-contrast:more'].forEach((t)=>assert.ok(targetCss.includes(t),t));
+assert.ok(!targetCss.includes('@keyframes viAS'),'VI-AS bleibt bewegungsfrei');
+console.log('LC11 Visual Polish VI-AR/AS contract: PASS');

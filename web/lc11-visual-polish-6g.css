@@ -1,0 +1,61 @@
+/* Visual Polish VI-M · Übergang Stadtkarte → Innenraum mit Fokus- und Orientierungshandoff */
+/* Rein präsentational und geometrieneutral: Eintritt, Ortsorientierung und Fokus werden sichtbar, ohne Layout- oder Gameplay-Ebene. */
+.scene-modal[open]::backdrop{
+  background:radial-gradient(circle at 50% 44%,rgba(121,241,255,.055),rgba(0,0,0,.82) 48%,rgba(0,0,0,.90))!important;
+  backdrop-filter:blur(8px) saturate(.86)!important;
+}
+.scene-modal[open] .modal-card.wide{transform-origin:50% 46%;animation:vp6InteriorEnter .28s cubic-bezier(.2,.74,.22,1) both}
+.scene-modal[open] .scene-hero{animation:vp6InteriorResolve .42s cubic-bezier(.18,.72,.2,1) both}
+.scene-modal[open] .scene-sign{animation:vp6OrientationCue .36s .08s cubic-bezier(.2,.78,.2,1) both}
+.scene-modal[open] .modal-close:focus-visible{outline:2px solid var(--vp5-lime)!important;outline-offset:3px!important;box-shadow:0 0 0 5px rgba(227,255,99,.12),0 10px 28px rgba(0,0,0,.38)!important}
+@keyframes vp6InteriorEnter{from{opacity:.74;transform:translateY(10px) scale(.992);filter:saturate(.82) brightness(.88)}to{opacity:1;transform:none;filter:none}}
+@keyframes vp6InteriorResolve{from{opacity:.72;transform:scale(1.008);filter:saturate(.78) brightness(.78) blur(.35px)}to{opacity:1;transform:none;filter:none}}
+@keyframes vp6OrientationCue{from{opacity:.55;transform:translateY(6px);filter:brightness(.78)}to{opacity:1;transform:none;filter:none}}
+@media(prefers-reduced-motion:reduce){.scene-modal[open] .modal-card.wide,.scene-modal[open] .scene-hero,.scene-modal[open] .scene-sign{animation:none!important;transform:none!important;filter:none!important}}
+body.lc09-reduced-motion .scene-modal[open] .modal-card.wide,body.lc09-reduced-motion .scene-modal[open] .scene-hero,body.lc09-reduced-motion .scene-modal[open] .scene-sign{animation:none!important;transform:none!important;filter:none!important}
+
+/* Visual Polish VI-N · Fokusführung Ortslabel → Hotspots → Hauptaktion */
+/* Rein präsentational und geometrieneutral: gestaffelte Licht-/Kontrastführung ohne neue UI-Flächen oder Interaktion. */
+.scene-modal[open] .scene-hotspot{animation:vp6HotspotGuide .38s .16s cubic-bezier(.2,.72,.2,1) both}
+.scene-modal[open] .interior-action{animation:vp6PrimaryGuide .46s .28s cubic-bezier(.16,.78,.2,1) both}
+.scene-modal[open] .scene-hotspot:focus-within,.scene-modal[open] .scene-hotspot:hover{animation:none}
+.scene-modal[open] .interior-action:focus-within,.scene-modal[open] .interior-action:hover:not(:disabled){animation:none}
+.theme-casino .interior-action{border-color:rgba(255,210,122,.25)!important}.theme-dojo .interior-action{border-color:rgba(227,255,99,.24)!important}.theme-market .interior-action{border-color:rgba(79,255,190,.23)!important}.theme-station .interior-action{border-color:rgba(199,166,255,.24)!important}
+@keyframes vp6HotspotGuide{from{opacity:.80;filter:saturate(.82) brightness(.82)}62%{opacity:1;filter:saturate(1.08) brightness(1.08)}to{opacity:1;filter:none}}
+@keyframes vp6PrimaryGuide{from{opacity:.82;filter:saturate(.84) brightness(.82);box-shadow:inset 3px 0 rgba(227,255,99,.18),0 8px 18px rgba(0,0,0,.10)}58%{opacity:1;filter:saturate(1.12) brightness(1.10);box-shadow:inset 3px 0 rgba(227,255,99,.58),0 14px 32px rgba(0,0,0,.22),0 0 24px rgba(227,255,99,.08)}to{opacity:1;filter:none}}
+@media(prefers-reduced-motion:reduce){.scene-modal[open] .scene-hotspot,.scene-modal[open] .interior-action{animation:none!important;filter:none!important}}
+body.lc09-reduced-motion .scene-modal[open] .scene-hotspot,body.lc09-reduced-motion .scene-modal[open] .interior-action{animation:none!important;filter:none!important}
+
+/* Visual Polish VI-O · Innenraum-Aktionsflächen als klare Entscheidungsinstrumente */
+/* Rein präsentational und geometrieneutral: Hauptaktion, Nutzen/Kosten, Risiko und Nebenaktion werden ohne neue UI-Fläche getrennt. */
+.scene-modal[open] .interior-action{
+  border-color:rgba(218,236,255,.18)!important;
+  background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.012))!important;
+  box-shadow:inset 3px 0 rgba(121,241,255,.14),inset 0 1px rgba(255,255,255,.035),0 9px 22px rgba(0,0,0,.13)!important;
+}
+.scene-modal[open] .interior-action strong,.scene-modal[open] .interior-action b{color:#f8fbff!important;text-shadow:0 1px 10px rgba(0,0,0,.32)}
+.scene-modal[open] .interior-action small,.scene-modal[open] .interior-action .muted{color:#b8c8d8!important}
+.scene-modal[open] .interior-action .cost{color:#ffd27a!important;font-weight:900!important;text-shadow:0 0 12px rgba(255,210,122,.12)}
+.scene-modal[open] .interior-action .risk,.scene-modal[open] .interior-action .danger,.scene-modal[open] .interior-action .warning{color:#ff91a5!important;font-weight:900!important}
+.scene-modal[open] .interior-action:hover:not(:disabled),.scene-modal[open] .interior-action:focus-within{
+  border-color:rgba(227,255,99,.42)!important;
+  background:linear-gradient(145deg,rgba(227,255,99,.075),rgba(255,255,255,.018))!important;
+  box-shadow:inset 4px 0 rgba(227,255,99,.56),inset 0 1px rgba(255,255,255,.05),0 14px 30px rgba(0,0,0,.20),0 0 20px rgba(227,255,99,.055)!important;
+}
+.scene-modal[open] .interior-action:disabled{opacity:.56!important;filter:saturate(.62) brightness(.84)!important;box-shadow:inset 3px 0 rgba(159,176,193,.12)!important}
+.scene-modal[open] .scene-hotspot .interior-action~.interior-action{border-color:rgba(218,236,255,.12)!important;box-shadow:inset 2px 0 rgba(121,241,255,.08),0 6px 16px rgba(0,0,0,.09)!important}
+.theme-casino .interior-action:hover:not(:disabled),.theme-casino .interior-action:focus-within{border-color:rgba(255,210,122,.48)!important;box-shadow:inset 4px 0 rgba(255,210,122,.62),0 14px 30px rgba(0,0,0,.20),0 0 20px rgba(255,210,122,.07)!important}
+.theme-dojo .interior-action:hover:not(:disabled),.theme-dojo .interior-action:focus-within{border-color:rgba(227,255,99,.46)!important}
+.theme-market .interior-action:hover:not(:disabled),.theme-market .interior-action:focus-within{border-color:rgba(79,255,190,.44)!important;box-shadow:inset 4px 0 rgba(79,255,190,.54),0 14px 30px rgba(0,0,0,.20),0 0 20px rgba(79,255,190,.06)!important}
+.theme-station .interior-action:hover:not(:disabled),.theme-station .interior-action:focus-within{border-color:rgba(199,166,255,.46)!important;box-shadow:inset 4px 0 rgba(199,166,255,.56),0 14px 30px rgba(0,0,0,.20),0 0 20px rgba(199,166,255,.065)!important}
+
+/* Visual Polish VI-P · Entscheidungszeile in realen Innenraum-Aktionskarten präzisiert */
+/* Rein präsentational und geometrieneutral: vorhandene Titel-, Beschreibung-, Ergebnis- und Sperrtexte werden semantisch gewichtet. */
+.scene-modal[open] .interior-action>i{color:#9fefff!important;filter:saturate(1.08) brightness(1.06)}
+.scene-modal[open] .interior-action:not(:disabled)>i{text-shadow:0 0 14px rgba(121,241,255,.18)}
+.scene-modal[open] .interior-action em{color:#8fffc7!important;font-weight:850!important;text-shadow:0 0 12px rgba(79,255,190,.10)}
+.scene-modal[open] .interior-action u{color:#ff9aae!important;font-weight:900!important;text-decoration:none!important;text-shadow:0 0 12px rgba(255,109,138,.10)}
+.scene-modal[open] .interior-action:disabled b{color:#d4dde7!important;text-shadow:none!important}
+.scene-modal[open] .interior-action:disabled small{color:#91a0af!important}
+.scene-modal[open] .interior-action:disabled u{color:#ff9aae!important;filter:saturate(1.12) brightness(1.06)}
+.scene-modal[open] .interior-action:hover:not(:disabled) em,.scene-modal[open] .interior-action:focus-visible em{color:#b4ffd8!important;text-shadow:0 0 16px rgba(79,255,190,.16)}

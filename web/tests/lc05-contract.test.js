@@ -1,0 +1,13 @@
+'use strict';
+const assert=require('node:assert/strict');const fs=require('node:fs');const path=require('node:path');
+const root=path.join(__dirname,'..'),html=fs.readFileSync(path.join(root,'index.html'),'utf8'),ui=fs.readFileSync(path.join(root,'lc05-ui.js'),'utf8'),css=fs.readFileSync(path.join(root,'lc05.css'),'utf8'),boot=fs.readFileSync(path.join(root,'lc05-bootstrap.js'),'utf8');
+const DATA=require('../lc05-data.js');const {GameEngine}=require('../lc05-engine.js');
+const scripts=['data.js','revival-data.js','lc05-data.js','engine.js','revival-missions.js','revival-world.js','revival-engine.js','lc05-engine.js','repair-bootstrap.js','lc05-bootstrap.js','app.js','revival-ui.js','repair-04a.js','lc05-ui.js','ui-refresh.js'];
+const positions=scripts.map((n)=>html.indexOf(`src="${n}"`));assert.ok(positions.every((x)=>x>=0),'LC05-Script fehlt.');for(let i=1;i<positions.length;i++)assert.ok(positions[i]>positions[i-1],`Script-Reihenfolge bei ${scripts[i]} falsch.`);
+assert.ok(html.includes('lc05.css'),'LC05-CSS fehlt.');assert.equal(DATA.schema,6);assert.equal(DATA.version,'0.11.2-living-city-05b');assert.ok(Object.keys(DATA.interiorScenes).length>=8);assert.equal(DATA.briefingChoices.length,3);
+['getCrewRelationsOverview','runCrewInteraction','getInterior','getMissionBriefing','resolveMissionBriefing','setMapLayer','setAmbientEnabled'].forEach((m)=>assert.equal(typeof GameEngine.prototype[m],'function',`${m} fehlt.`));
+['map-layers','scene-hero','scene-hotspot','lc05-relations','briefing-choices','lc05-pressure'].forEach((c)=>assert.ok(css.includes(`.${c}`),`CSS ${c} fehlt.`));
+['data-map-layer','data-open-interior','data-crew-interaction','data-open-briefing','data-briefing-choice'].forEach((x)=>assert.ok(ui.includes(x),`UI-Vertrag ${x} fehlt.`));
+assert.ok(boot.includes('pppoppi-bunkerwahrheit-html-v0110')&&boot.includes('pppoppi-bunkerwahrheit-html-v0100'),'LC05-Speichermigration unvollständig.');
+assert.equal((css.match(/\{/g)||[]).length,(css.match(/\}/g)||[]).length,'LC05-CSS-Klammern unausgeglichen.');
+console.log('PASS: LIVING-CITY-05 Vertrag – Module, Engine, Speicher, UI und Visual Layer geprüft.');

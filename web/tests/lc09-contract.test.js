@@ -1,0 +1,15 @@
+const fs=require('fs');const path=require('path');const assert=require('assert');
+const root=path.join(__dirname,'..');
+const read=(f)=>fs.readFileSync(path.join(root,f),'utf8');
+const html=read('index.html'),ui=read('lc09-ui.js'),css=read('lc09.css'),boot=read('lc09-bootstrap.js'),data=read('lc09-data.js'),engine=read('lc09-engine.js');
+assert.ok(html.includes('lc09-data.js')&&html.includes('lc09-engine.js')&&html.includes('lc09-bootstrap.js')&&html.includes('lc09-ui.js')&&html.includes('lc09.css'));
+assert.ok(data.includes("schema:10")&&engine.includes('getCityPulse')&&engine.includes('setAccessibilityPreferences'));
+assert.ok(boot.includes('html-v0150')&&boot.includes('recovery-v0150'));
+assert.ok(ui.includes('Stadt & Komfort')&&ui.includes('data-lc09-snapshot')&&ui.includes('data-lc09-restore')&&ui.includes('data-lc09-preset'));
+assert.ok(ui.includes("e.key.toLowerCase()==='u'"));
+assert.ok(css.includes('lc09-high-contrast')&&css.includes('lc09-reduced-motion')&&css.includes('--lc09-font-scale'));
+assert.ok(html.indexOf('lc09-data.js')<html.indexOf('lc09-engine.js'));
+assert.ok(html.indexOf('lc09-engine.js')<html.indexOf('app.js'));
+assert.ok(html.indexOf('lc09-bootstrap.js')<html.indexOf('app.js'));
+assert.ok(html.indexOf('lc09-ui.js')>html.indexOf('app.js'));
+console.log('PASS: LIVING-CITY-09 Vertrag – Stadt-Puls, Recovery, Lesemodus, v0150 und Startreihenfolge geprüft.');

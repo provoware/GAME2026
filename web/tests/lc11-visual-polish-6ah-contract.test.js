@@ -1,0 +1,10 @@
+const fs=require('fs');const path=require('path');const assert=require('assert');
+const root=path.join(__dirname,'..');const hardening=fs.readFileSync(path.join(root,'lc11-browser-hardening.js'),'utf8'),css=fs.readFileSync(path.join(root,'lc11-visual-polish-6r.css'),'utf8');
+['groupBalance','groupState=(group)','data-group-state="${state}"','Gesamtlage verbessert sich','Gesamtlage kippt','Gesamtlage gemischt','Gesamtlage stabil'].forEach((token)=>assert.ok(hardening.includes(token),token));
+['Visual Polish VI-AH · Gruppengesamtlage mit dominanter Einzelwirkung verknüpfen','data-group-state="improving"','data-group-state="worsening"','data-group-state="mixed"','data-group-state="stable"','text-decoration-style:dashed','text-decoration-style:dotted'].forEach((token)=>assert.ok(css.includes(token),token));
+const section=css.split('Visual Polish VI-AH')[1]||'';
+assert.ok(!/(^|[;{])\s*(padding|margin|min-height|min-width|max-height|max-width|width|height|gap|grid-template(?:-areas|-columns|-rows)?)\s*:/m.test(section),'VI-AH darf keine Layoutmaße oder Grid-Geometrie setzen.');
+assert.ok(!section.includes('animation:'),'VI-AH ergänzt keine Bewegungslogik.');
+assert.ok(!section.includes('pointer-events:auto'),'VI-AH darf keine aktive Interaktionsebene erzwingen.');
+assert.ok(hardening.indexOf('groupBalance')>hardening.indexOf('groupDominant'),'VI-AH muss auf VI-AG aufsetzen.');
+console.log('PASS: Visual Polish VI-AH – Gruppengesamtlage ist mit der dominanten Einzelwirkung verknüpft, geometrieneutral und barrierearm.');

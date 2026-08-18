@@ -1,0 +1,68 @@
+/* Visual Polish VI-AI · Gruppenlage-Scanpriorität */
+/* Kippende oder gemischte Wirkungsgruppen führen den Blick vor positiven/stabilen Gruppen. Geometrieneutral, bewegungsfrei und ohne neue Interaktion. */
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-deltas:has(.coach-delta[data-group-dominant="true"][data-group-state="worsening"]) .coach-delta[data-group-dominant="true"]:not([data-group-state="worsening"]){opacity:.66;filter:saturate(.82) brightness(.94)}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-group-dominant="true"][data-group-state="worsening"]{outline:2px solid currentColor;outline-offset:2px;filter:saturate(1.16) brightness(1.08);text-shadow:0 0 12px rgba(255,112,112,.62);box-shadow:0 0 16px rgba(255,112,112,.12)}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-deltas:not(:has(.coach-delta[data-group-dominant="true"][data-group-state="worsening"])):has(.coach-delta[data-group-dominant="true"][data-group-state="mixed"]) .coach-delta[data-group-dominant="true"]:not([data-group-state="mixed"]){opacity:.72;filter:saturate(.86) brightness(.96)}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-group-dominant="true"][data-group-state="mixed"]{outline:1px dashed currentColor;outline-offset:2px;filter:saturate(1.1) brightness(1.05);text-shadow:0 0 10px rgba(255,211,92,.44)}
+
+/* Visual Polish VI-AJ · Ursachenwert-Fokus bei kippender Gruppenlage */
+/* Innerhalb einer kippenden Wirkungsgruppe führt der dominante Einzelwert: Metrikname und neuer Wert bleiben dominant, Ausgangswert und Pfeil treten zurück. Geometrieneutral und bewegungsfrei. */
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-group-dominant="true"][data-group-state="worsening"]>b{filter:saturate(1.18) brightness(1.1);text-shadow:0 0 10px rgba(255,112,112,.52)}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-group-dominant="true"][data-group-state="worsening"]>[data-after]{color:#ffd7d7;filter:saturate(1.2) brightness(1.16);text-shadow:0 0 12px rgba(255,112,112,.68)}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-group-dominant="true"][data-group-state="worsening"]>[data-before]{opacity:.56;filter:saturate(.7) brightness(.86)}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-group-dominant="true"][data-group-state="worsening"]>i{opacity:.48;filter:saturate(.65)}
+
+/* Visual Polish VI-AK · Gruppenübergreifender Kritikalitätsfokus */
+/* Wenn mehrere Wirkungsgruppen gleichzeitig kippen, führt genau die kritischste dominante Ursache. Andere kippende Gruppen bleiben sichtbar, treten aber klar zurück. Geometrieneutral und bewegungsfrei. */
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-deltas:has(.coach-delta[data-global-critical="true"]) .coach-delta[data-group-dominant="true"][data-group-state="worsening"]:not([data-global-critical="true"]){opacity:.58;filter:saturate(.7) brightness(.9);text-shadow:none;box-shadow:none}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-global-critical="true"]{outline:3px double currentColor;outline-offset:3px;filter:saturate(1.28) brightness(1.14);text-shadow:0 0 14px rgba(255,112,112,.78);box-shadow:0 0 20px rgba(255,112,112,.18)}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-global-critical="true"]>b,body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-global-critical="true"]>[data-after]{font-weight:900;letter-spacing:.01em}
+
+/* Visual Polish VI-AL · Ursache → Gruppenlage → Konsequenz */
+/* Die gruppenübergreifend kritischste Ursache trägt ihre unmittelbare Gruppenkonsequenz als kompakte Overlay-Notiz. Keine zusätzliche Layoutfläche, keine Bewegung. */
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-global-critical="true"]{position:relative}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-global-critical="true"]::after{content:"→ " attr(data-consequence-label);position:absolute;inset-inline-end:0;bottom:calc(100% + 2px);white-space:nowrap;font-size:.72em;font-weight:800;letter-spacing:.015em;color:#ffd7d7;text-shadow:0 0 9px rgba(255,112,112,.72);pointer-events:none}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-global-critical="true"][data-effect-group="resources"]::after{color:#ffe3a1;text-shadow:0 0 9px rgba(255,211,92,.62)}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-global-critical="true"][data-effect-group="agency"]::after{color:#c9ffe8;text-shadow:0 0 9px rgba(117,255,191,.58)}
+
+/* Visual Polish VI-AM · Hauptfolge / Sekundärfolge bei Mehrfachkritik */
+/* Bei mehreren gleichzeitig kippenden Wirkungsgruppen bleibt die globale Hauptfolge dominant; weitere kritische Gruppen zeigen eine klar zurückgenommene Sekundärfolge. Geometrieneutral und bewegungsfrei. */
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-consequence-tier="primary"]::after{content:"Hauptfolge → " attr(data-consequence-label);font-weight:900;filter:saturate(1.08) brightness(1.08)}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-consequence-tier="secondary"]{position:relative}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-consequence-tier="secondary"]::after{content:"Sekundärfolge ↳ " attr(data-consequence-label);position:absolute;inset-inline-end:0;bottom:calc(100% + 1px);white-space:nowrap;font-size:.66em;font-weight:700;letter-spacing:.01em;color:#ffc6c6;opacity:.72;text-shadow:0 0 7px rgba(255,112,112,.42);pointer-events:none}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-consequence-tier="secondary"][data-effect-group="resources"]::after{color:#ffe0a0;text-shadow:0 0 7px rgba(255,211,92,.36)}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-consequence-tier="secondary"][data-effect-group="agency"]::after{color:#c9ffe8;text-shadow:0 0 7px rgba(117,255,191,.34)}
+
+/* Visual Polish VI-AN · Rangfolge mehrerer Sekundärfolgen */
+/* Bei mehreren sekundären kritischen Folgen führt Rang 1 klar vor weiteren Sekundärfolgen. Geometrieneutral, bewegungsfrei und ohne neue Interaktion. */
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-consequence-tier="secondary"][data-secondary-rank="1"]{opacity:.82;filter:saturate(.92) brightness(.98)}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-consequence-tier="secondary"][data-secondary-rank="1"]::after{content:"Sekundärfolge 1 ↳ " attr(data-consequence-label);font-weight:800;opacity:.86;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:2px}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-consequence-tier="secondary"]:not([data-secondary-rank="1"]){opacity:.5;filter:saturate(.62) brightness(.88)}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-consequence-tier="secondary"]:not([data-secondary-rank="1"])::after{content:"Sekundärfolge " attr(data-secondary-rank) " ↳ " attr(data-consequence-label);opacity:.52;text-shadow:none}
+
+/* Visual Polish VI-AO · Zeitliche Dringlichkeit der Sekundärfolgen */
+/* Sekundärfolgen werden zusätzlich nach zeitlicher Dringlichkeit lesbar: sofort vor bald vor später. Geometrieneutral, bewegungsfrei und ohne neue Interaktion. */
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-consequence-tier="secondary"]::after{content:"Sekundärfolge " attr(data-secondary-rank) " · " attr(data-consequence-urgency-label) " ↳ " attr(data-consequence-label)}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-consequence-tier="secondary"][data-consequence-urgency="immediate"]::after{font-weight:900;opacity:.9;text-decoration:underline double;text-underline-offset:2px}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-consequence-tier="secondary"][data-consequence-urgency="soon"]::after{font-weight:800;opacity:.76;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:2px}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-consequence-tier="secondary"][data-consequence-urgency="later"]::after{font-weight:700;opacity:.58;text-decoration:none}
+
+/* Visual Polish VI-AP · Handlungsempfehlungs-Priorität */
+/* Zeitliche Dringlichkeit wird in eine sofort lesbare Handlungsreihenfolge übersetzt. Nur bestehende Overlays werden semantisch verdichtet; keine Layoutmaße, keine Bewegung, keine neue Interaktion. */
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-consequence-tier="primary"]::after{content:attr(data-action-priority-label) " · " attr(data-action-recommendation) " · " attr(data-action-target-label) " → " attr(data-consequence-label);letter-spacing:.02em}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-consequence-tier="secondary"]::after{content:attr(data-action-priority-label) " · " attr(data-action-recommendation) " · " attr(data-action-target-label) " ↳ " attr(data-consequence-label)}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-action-priority="first"]::after{font-weight:900;opacity:1;text-decoration:underline double;text-underline-offset:2px}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-action-priority="next"]::after{font-weight:850;opacity:.9;text-decoration:underline;text-underline-offset:2px}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-action-priority="soon"]::after{font-weight:800;opacity:.76}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-action-priority="plan"]::after{font-weight:700;opacity:.58}
+
+/* Visual Polish VI-AQ · Handlung direkt mit verfügbarer Aktion/Ort verbinden */
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-action-target-mode="here"]::after{font-weight:800}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-action-target-mode="travel"]::after{opacity:.92}
+
+/* Visual Polish VI-AR · Handlungziel auf einen Blick */
+/* Das bereits ermittelte Ziel wird innerhalb der vorhandenen Konsequenz-Overlays visuell codiert: HIER = lime/doppelt, ORT = cyan/gestrichelt. Keine zusätzliche Layoutfläche, keine Bewegung, keine neue Interaktion. */
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-action-target-mode="here"]::after{color:#caffb2;text-shadow:0 0 10px rgba(154,255,112,.58);text-decoration-line:underline;text-decoration-style:double;text-decoration-thickness:2px;text-underline-offset:3px;filter:saturate(1.12) brightness(1.08)}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-action-target-mode="travel"]::after{color:#bdefff;text-shadow:0 0 9px rgba(91,218,255,.48);text-decoration-line:underline;text-decoration-style:dashed;text-decoration-thickness:1px;text-underline-offset:3px;filter:saturate(1.06) brightness(1.03)}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-action-target-mode="none"]::after{opacity:.62;filter:saturate(.68) brightness(.92)}
+@media (prefers-contrast:more){body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-action-target-mode="here"]::after{outline:2px solid currentColor;outline-offset:2px}body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-action-target-mode="travel"]::after{outline:1px dashed currentColor;outline-offset:2px}}

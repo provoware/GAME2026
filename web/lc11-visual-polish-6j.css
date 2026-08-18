@@ -1,0 +1,13 @@
+/* Visual Polish VI-S · Typografische Staffelung für Innenraum-Aktionskarten */
+/* Rein präsentational und geometrieneutral: vorhandene Informationen werden über Gewicht, Kontrast und optische Ruhe hierarchisiert, ohne neue UI-Fläche. */
+.scene-modal[open] .interior-action b{color:#fbfdff!important;font-weight:950!important;text-shadow:0 1px 12px rgba(0,0,0,.38),0 0 10px rgba(174,238,255,.055)!important}
+.scene-modal[open] .interior-action small{color:#aebdcc!important;opacity:.88!important;font-weight:560!important;text-shadow:none!important}
+.scene-modal[open] .interior-action em{opacity:1!important;font-weight:900!important;text-shadow:0 0 14px rgba(79,255,190,.14)!important}
+.scene-modal[open] .interior-action u{opacity:.98!important;font-weight:950!important;text-shadow:0 0 14px rgba(255,109,138,.14)!important}
+.scene-modal[open] .interior-action:not(:disabled):not(:hover):not(:focus-visible) small{filter:saturate(.78) brightness(.94)!important}
+.scene-modal[open] .interior-action:hover:not(:disabled) small,.scene-modal[open] .interior-action:focus-visible small{opacity:1!important;filter:saturate(.96) brightness(1.04)!important}
+.scene-modal[open] .interior-action:disabled b{opacity:.84!important}
+.scene-modal[open] .interior-action:disabled small{opacity:.72!important}
+.scene-modal[open] .interior-action:disabled u{opacity:1!important}
+@media(prefers-reduced-motion:reduce){.scene-modal[open] .interior-action b,.scene-modal[open] .interior-action small,.scene-modal[open] .interior-action em,.scene-modal[open] .interior-action u{transition:none!important}}
+body.lc09-reduced-motion .scene-modal[open] .interior-action b,body.lc09-reduced-motion .scene-modal[open] .interior-action small,body.lc09-reduced-motion .scene-modal[open] .interior-action em,body.lc09-reduced-motion .scene-modal[open] .interior-action u{transition:none!important}

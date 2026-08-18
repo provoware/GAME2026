@@ -1,0 +1,38 @@
+/* Visual Polish VI-T · Icon-/Text-Balance für Innenraum-Aktionskarten */
+/* Rein präsentational und geometrieneutral: Symbol, Titel und Entscheidungswerte werden als zusammengehörige Einheit gewichtet, ohne neue UI-Fläche. */
+.scene-modal[open] .interior-action>i{
+  color:var(--vp6-decision-info)!important;
+  opacity:.82!important;
+  font-weight:900!important;
+  text-shadow:0 0 12px rgba(174,238,255,.12)!important;
+  box-shadow:inset 0 0 0 1px rgba(174,238,255,.08),0 0 14px rgba(121,241,255,.045)!important;
+}
+.scene-modal[open] .interior-action>b,
+.scene-modal[open] .interior-action>span>b{
+  letter-spacing:.015em!important;
+  text-wrap:balance;
+}
+.scene-modal[open] .interior-action em,
+.scene-modal[open] .interior-action u{
+  letter-spacing:.01em!important;
+}
+.scene-modal[open] .interior-action:not(:disabled):hover>i,
+.scene-modal[open] .interior-action:focus-visible>i{
+  opacity:1!important;
+  filter:saturate(1.08) brightness(1.08)!important;
+  text-shadow:0 0 16px rgba(174,238,255,.20)!important;
+}
+.scene-modal[open] .interior-action:disabled>i{
+  opacity:.52!important;
+  box-shadow:inset 0 0 0 1px rgba(156,174,190,.06)!important;
+}
+.scene-modal[open] .interior-action:disabled u{
+  letter-spacing:.015em!important;
+}
+@media(prefers-reduced-motion:reduce){
+  .scene-modal[open] .interior-action>i,.scene-modal[open] .interior-action b,.scene-modal[open] .interior-action em,.scene-modal[open] .interior-action u{transition:none!important}
+}
+body.lc09-reduced-motion .scene-modal[open] .interior-action>i,
+body.lc09-reduced-motion .scene-modal[open] .interior-action b,
+body.lc09-reduced-motion .scene-modal[open] .interior-action em,
+body.lc09-reduced-motion .scene-modal[open] .interior-action u{transition:none!important}

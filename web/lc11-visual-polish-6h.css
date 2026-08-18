@@ -1,0 +1,36 @@
+/* Visual Polish VI-Q · Vergleich mehrerer gleichzeitig sichtbarer Innenraumaktionen */
+/* Rein präsentational und geometrieneutral: aktive Wahl wird fokussiert, Alternativen treten nur temporär zurück. */
+.scene-modal[open] .scene-hotspot:has(.interior-action:hover:not(:disabled)) .interior-action:not(:hover),
+.scene-modal[open] .scene-hotspot:has(.interior-action:focus-visible) .interior-action:not(:focus-visible){
+  opacity:.72!important;
+  filter:saturate(.78) brightness(.88)!important;
+}
+.scene-modal[open] .scene-hotspot .interior-action:hover:not(:disabled),
+.scene-modal[open] .scene-hotspot .interior-action:focus-visible{
+  opacity:1!important;
+  filter:saturate(1.08) brightness(1.06)!important;
+  outline:1px solid rgba(227,255,99,.38)!important;
+  outline-offset:2px!important;
+}
+.scene-modal[open] .scene-hotspot .interior-action em{
+  text-decoration:underline;
+  text-decoration-color:rgba(79,255,190,.28);
+  text-underline-offset:.18em;
+}
+.scene-modal[open] .scene-hotspot .interior-action u{
+  text-decoration:underline!important;
+  text-decoration-color:rgba(255,109,138,.34)!important;
+  text-underline-offset:.18em;
+}
+.scene-modal[open] .scene-hotspot .interior-action:disabled{
+  opacity:.54!important;
+  filter:saturate(.58) brightness(.80)!important;
+}
+.scene-modal[open] .scene-hotspot .interior-action:disabled u{
+  opacity:1!important;
+  filter:saturate(1.18) brightness(1.10)!important;
+}
+@media(prefers-reduced-motion:reduce){
+  .scene-modal[open] .scene-hotspot .interior-action{transition:none!important}
+}
+body.lc09-reduced-motion .scene-modal[open] .scene-hotspot .interior-action{transition:none!important}
