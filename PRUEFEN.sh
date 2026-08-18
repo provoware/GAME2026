@@ -41,4 +41,5 @@ echo '[34/35] LIVING-CITY-11 Visual-Polish-V-/Premium-Ansicht-/Kontrast-Vertrag'
 echo '[35/35] LIVING-CITY-11 Visual-Polish-VI-/Cinematic-City-Vertrag'; node web/tests/lc11-visual-polish-6-contract.test.js; node web/tests/lc11-visual-polish-6ac-contract.test.js; node web/tests/lc11-visual-polish-6ad-contract.test.js; node web/tests/lc11-visual-polish-6ae-contract.test.js; node web/tests/lc11-visual-polish-6af-contract.test.js; node web/tests/lc11-visual-polish-6ag-contract.test.js; node web/tests/lc11-visual-polish-6ah-contract.test.js; node web/tests/lc11-visual-polish-6ai-contract.test.js; node web/tests/lc11-visual-polish-6aj-contract.test.js; node web/tests/lc11-visual-polish-6ak-contract.test.js; node web/tests/lc11-visual-polish-6al-contract.test.js; node web/tests/lc11-visual-polish-6am-contract.test.js; node web/tests/lc11-visual-polish-6an-contract.test.js; node web/tests/lc11-visual-polish-6ao-contract.test.js; node web/tests/lc11-visual-polish-6ap-contract.test.js
 node web/tests/lc11-visual-polish-6aq-contract.test.js
 node web/tests/lc11-visual-polish-6ar-contract.test.js
+node web/tests/lc11-visual-polish-6at-contract.test.js
 echo 'ERGEBNIS: PASS'
