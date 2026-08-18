@@ -59,3 +59,10 @@ body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-a
 /* Visual Polish VI-AQ · Handlung direkt mit verfügbarer Aktion/Ort verbinden */
 body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-action-target-mode="here"]::after{font-weight:800}
 body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-action-target-mode="travel"]::after{opacity:.92}
+
+/* Visual Polish VI-AR · Handlungziel auf einen Blick */
+/* Das bereits ermittelte Ziel wird innerhalb der vorhandenen Konsequenz-Overlays visuell codiert: HIER = lime/doppelt, ORT = cyan/gestrichelt. Keine zusätzliche Layoutfläche, keine Bewegung, keine neue Interaktion. */
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-action-target-mode="here"]::after{color:#caffb2;text-shadow:0 0 10px rgba(154,255,112,.58);text-decoration-line:underline;text-decoration-style:double;text-decoration-thickness:2px;text-underline-offset:3px;filter:saturate(1.12) brightness(1.08)}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-action-target-mode="travel"]::after{color:#bdefff;text-shadow:0 0 9px rgba(91,218,255,.48);text-decoration-line:underline;text-decoration-style:dashed;text-decoration-thickness:1px;text-underline-offset:3px;filter:saturate(1.06) brightness(1.03)}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-action-target-mode="none"]::after{opacity:.62;filter:saturate(.68) brightness(.92)}
+@media (prefers-contrast:more){body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-action-target-mode="here"]::after{outline:2px solid currentColor;outline-offset:2px}body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-action-target-mode="travel"]::after{outline:1px dashed currentColor;outline-offset:2px}}
