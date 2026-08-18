@@ -1,0 +1,12 @@
+const fs=require('fs');const path=require('path');const assert=require('assert');
+const root=path.join(__dirname,'..'),css=fs.readFileSync(path.join(root,'lc11-visual-polish-6s.css'),'utf8'),loader=fs.readFileSync(path.join(root,'lc11-close-control.css'),'utf8'),hardening=fs.readFileSync(path.join(root,'lc11-browser-hardening.js'),'utf8');
+['Visual Polish VI-AP · Handlungsempfehlungs-Priorität','data-action-priority="first"','data-action-priority="next"','data-action-priority="soon"','data-action-priority="plan"','attr(data-action-priority-label)','attr(data-action-recommendation)'].forEach((token)=>assert.ok(css.includes(token),token));
+['const actionAdvice=','const actionPriority=','security:\'Druck senken\'','agency:\'Optionen sichern\'','resources:\'Reserven sichern\'','data-action-priority="${actionPriorityKey}"','data-action-priority-label="${esc(actionPriorityLabel)}"','data-action-recommendation="${esc(actionRecommendation)}"','Handlung: ${actionPriorityLabel} – ${actionRecommendation}'].forEach((token)=>assert.ok(hardening.includes(token),token));
+assert.ok(hardening.includes("actionKey=globalCriticalCause?'primary':secondaryCriticalCause?consequenceUrgencyKey:'later'"),'VI-AP muss Hauptfolge und zeitliche Dringlichkeit deterministisch in eine Handlungspriorität übersetzen.');
+assert.ok(loader.includes('@import url("lc11-visual-polish-6s.css");'),'VI-AP muss über die bestehende VI-AI..AO-Datei in der finalen visuellen Importkette geladen werden.');
+const section=css.split('Visual Polish VI-AP')[1]||'';
+assert.ok(!/(^|[;{])\s*(padding|margin|min-height|min-width|max-height|max-width|width|height|gap|grid-template(?:-areas|-columns|-rows)?)\s*:/m.test(section),'VI-AP darf keine Layoutmaße oder Grid-Geometrie setzen.');
+assert.ok(!section.includes('animation:'),'VI-AP ergänzt keine Bewegungslogik.');
+assert.ok(!section.includes('pointer-events:auto'),'VI-AP darf keine aktive Interaktionsebene erzwingen.');
+assert.ok(css.indexOf('VI-AP')>css.indexOf('VI-AO'),'VI-AP muss additiv auf VI-AO aufsetzen.');
+console.log('PASS: Visual Polish VI-AP – Dringlichkeit wird in eine klare Handlungsempfehlungs-Priorität übersetzt.');
