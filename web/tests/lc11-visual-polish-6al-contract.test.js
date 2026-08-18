@@ -1,0 +1,11 @@
+const fs=require('fs');const path=require('path');const assert=require('assert');
+const root=path.join(__dirname,'..'),css=fs.readFileSync(path.join(root,'lc11-visual-polish-6s.css'),'utf8'),loader=fs.readFileSync(path.join(root,'lc11-close-control.css'),'utf8'),hardening=fs.readFileSync(path.join(root,'lc11-browser-hardening.js'),'utf8');
+['Visual Polish VI-AL · Ursache → Gruppenlage → Konsequenz','data-consequence-label','content:"→ " attr(data-consequence-label)','position:absolute','pointer-events:none'].forEach((token)=>assert.ok(css.includes(token),token));
+['const consequenceLabel=','Handlungsdruck steigt','Spielraum sinkt','Optionen werden enger','data-consequence-label="${esc(consequence)}"','Konsequenz: ${consequence}'].forEach((token)=>assert.ok(hardening.includes(token),token));
+assert.ok(loader.includes('@import url("lc11-visual-polish-6s.css");'),'VI-AL muss über die bestehende VI-AI..AK-Datei in der finalen visuellen Importkette geladen werden.');
+const section=css.split('Visual Polish VI-AL')[1]||'';
+assert.ok(!/(^|[;{])\s*(padding|margin|min-height|min-width|max-height|max-width|width|height|gap|grid-template(?:-areas|-columns|-rows)?)\s*:/m.test(section),'VI-AL darf keine Layoutmaße oder Grid-Geometrie setzen.');
+assert.ok(!section.includes('animation:'),'VI-AL ergänzt keine Bewegungslogik.');
+assert.ok(!section.includes('pointer-events:auto'),'VI-AL darf keine aktive Interaktionsebene erzwingen.');
+assert.ok(css.indexOf('VI-AL')>css.indexOf('VI-AK'),'VI-AL muss additiv auf VI-AK aufsetzen.');
+console.log('PASS: Visual Polish VI-AL – kritischste Ursache, Gruppenlage und unmittelbare Konsequenz sind in einer Blickfolge verbunden.');
