@@ -1,0 +1,30 @@
+/* Visual Polish VI-AU · Jetzt fahren → nächste Etappe → Ziel */
+/* Rein präsentativ, geometrieneutral und bewegungsfrei: bestehende Kartenmarker/Route werden als Navigationskette gewichtet. */
+body:has(#coachRail[data-tone="success"] .coach-delta[data-action-target-mode="travel"]) .district-node.current .zone{
+  stroke:#f4fbff!important;stroke-width:2.65!important;stroke-dasharray:2 4!important;
+  filter:drop-shadow(0 0 7px rgba(244,251,255,.24))!important;
+}
+body:has(#coachRail[data-tone="success"] .coach-delta[data-action-target-mode="travel"]) .district-node.current .node-label{
+  fill:#f4fbff!important;font-weight:900!important;paint-order:stroke;stroke:#071116!important;stroke-width:3px!important;
+}
+.route.recommendation-route-next,.train-route.recommendation-route-next{
+  stroke-linecap:round!important;stroke-linejoin:round!important;
+}
+.route.recommendation-route:not(.recommendation-route-next),.train-route.recommendation-route:not(.recommendation-route-next){
+  opacity:.88!important;
+}
+body:has(#coachRail[data-tone="success"] .coach-delta[data-action-target-mode="travel"]) .district-node.current .node-kind{
+  fill:#e3ff63!important;filter:drop-shadow(0 0 5px rgba(227,255,99,.30))!important;
+}
+/* VI-AS-Ziel bleibt cyan dominant; VI-AT nächste Etappe bleibt lime dominant. */
+body:has(#coachRail[data-tone="success"] .coach-delta[data-action-target-mode="travel"]) .map-panel{
+  --vi-au-origin:#f4fbff;--vi-au-next:#e3ff63;--vi-au-target:#79f1ff;
+}
+@media(prefers-contrast:more){
+  body:has(#coachRail[data-tone="success"] .coach-delta[data-action-target-mode="travel"]) .district-node.current .zone{stroke-width:3.35!important;stroke-dasharray:3 3!important}
+  .route.recommendation-route:not(.recommendation-route-next),.train-route.recommendation-route:not(.recommendation-route-next){opacity:1!important}
+}
+@media(prefers-reduced-motion:reduce){
+  body:has(#coachRail[data-tone="success"] .coach-delta[data-action-target-mode="travel"]) .district-node.current .zone,
+  body:has(#coachRail[data-tone="success"] .coach-delta[data-action-target-mode="travel"]) .district-node.current .node-kind{transition:none!important;animation:none!important}
+}
