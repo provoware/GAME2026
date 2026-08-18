@@ -1,0 +1,31 @@
+/* Visual Polish VI-AA · Effektstärke mit zeitlicher Bestätigung */
+/* Geometrieneutral: starke Resultate erhalten einen kurzen, semantischen Bestätigungsimpuls; Reduced Motion bleibt vollständig ruhig. */
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-magnitude="medium"]{
+  animation:vp6MagnitudeConfirmMedium .46s ease-out 1;
+}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-magnitude="strong"]{
+  animation:vp6MagnitudeConfirmStrong .62s cubic-bezier(.2,.8,.2,1) 1;
+}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-magnitude="strong"] [data-after]{
+  animation:vp6MagnitudeValueConfirm .62s ease-out 1;
+}
+@keyframes vp6MagnitudeConfirmMedium{
+  0%{filter:brightness(1)}
+  38%{filter:brightness(1.12)}
+  100%{filter:brightness(1)}
+}
+@keyframes vp6MagnitudeConfirmStrong{
+  0%{filter:brightness(1);box-shadow:inset 0 -3px 0 currentColor,0 0 14px rgba(174,238,255,.07)}
+  32%{filter:brightness(1.18);box-shadow:inset 0 -3px 0 currentColor,0 0 22px rgba(174,238,255,.15)}
+  100%{filter:brightness(1);box-shadow:inset 0 -3px 0 currentColor,0 0 14px rgba(174,238,255,.07)}
+}
+@keyframes vp6MagnitudeValueConfirm{
+  0%,100%{text-shadow:0 0 12px currentColor}
+  36%{text-shadow:0 0 18px currentColor}
+}
+body.lc09-reduced-motion:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta,
+body.lc09-reduced-motion:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta [data-after]{animation:none!important}
+@media (prefers-reduced-motion:reduce){
+  body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta,
+  body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta [data-after]{animation:none!important}
+}
