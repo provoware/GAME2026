@@ -13,7 +13,14 @@ Bei aktiver Reiseempfehlung werden die Bezirksmarker visuell hierarchisiert: Neb
 - `prefers-contrast: more` und `prefers-reduced-motion: reduce` berücksichtigt
 
 ## Vorvalidierung
-Der neue VI-AW-Vertrag und seine Node-Syntax wurden vor Veröffentlichung isoliert erfolgreich ausgeführt. Die vollständige Repository-/Chrome-Qualifikation erfolgt über den bestehenden GitHub-Actions-Gatepfad auf dem finalen Head.
+Der neue VI-AW-Vertrag und seine Node-Syntax wurden vor Veröffentlichung isoliert erfolgreich ausgeführt.
+
+## Remote-Qualifikation
+- Implementierungs-Head: `a8b64c3bcc9218cfc15253a3b5d9f774abdc9e0e`
+- Tree: `eef4ca89e12d1cfe282d489d5b0c9a611737d0d4`
+- GitHub Actions #369 / `32187496076`: **SUCCESS**
+- vollständiger qualifizierter Repository-Vertrag einschließlich Prüfblock 35: **PASS**
+- echter Chrome-E2E-Pfad des bestehenden Gates: **PASS**
 
 ## Freigabestatus
-Remote-Qualifikation ausstehend. Dieser Nachweis darf erst nach erfolgreichem finalem Actions- und Chrome-E2E-Gate als remote qualifiziert bezeichnet werden.
+VI-AW ist auf dem Implementierungs-Head remote qualifiziert. Der nachfolgende reine Status-/Dokumentations-Head muss abschließend erneut durch das unveränderte Gate laufen, bevor er als final qualifizierter Stand ausgewiesen wird.
