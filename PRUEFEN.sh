@@ -42,4 +42,5 @@ echo '[35/35] LIVING-CITY-11 Visual-Polish-VI-/Cinematic-City-Vertrag'; node web
 node web/tests/lc11-visual-polish-6aq-contract.test.js
 node web/tests/lc11-visual-polish-6ar-contract.test.js
 node web/tests/lc11-visual-polish-6at-contract.test.js
+node web/tests/lc11-visual-polish-6au-contract.test.js
 echo 'ERGEBNIS: PASS'
