@@ -10,4 +10,6 @@
 - Vertragsprüfung: `web/tests/lc11-visual-polish-6ar-contract.test.js`.
 - Lokale Vollprüfung: **35/35 PASS**.
 - LIVING-CITY-11 Engine: **12/12 PASS**, inklusive 3500-Zug-Langlauf.
-- Remote-Qualifikation: ausstehend bis GitHub Actions und echter Chrome-E2E vollständig PASS.
+- Implementierungs-Gate GitHub Actions **#343 / 32165214385: SUCCESS**.
+- Echter Chrome-E2E im Implementierungs-Gate: **PASS**.
+- VI-AR ist remote qualifiziert; der abschließende Dokumentations-Head wird separat erneut durch das vollständige Gate geprüft.
