@@ -1,0 +1,11 @@
+const fs=require('fs');const path=require('path');const assert=require('assert');
+const root=path.join(__dirname,'..'),css=fs.readFileSync(path.join(root,'lc11-visual-polish-6s.css'),'utf8'),loader=fs.readFileSync(path.join(root,'lc11-close-control.css'),'utf8'),hardening=fs.readFileSync(path.join(root,'lc11-browser-hardening.js'),'utf8');
+['Visual Polish VI-AN · Rangfolge mehrerer Sekundärfolgen','data-secondary-rank="1"','content:"Sekundärfolge 1 ↳ " attr(data-consequence-label)',':not([data-secondary-rank="1"])'].forEach((token)=>assert.ok(css.includes(token),token));
+['const secondaryCritical=','secondaryRank=new Map','secondaryCriticalRank=secondaryCriticalCause?(secondaryRank.get(item)||0):0','data-secondary-rank="${secondaryCriticalRank}"','Sekundärfolge Rang ${secondaryCriticalRank}','sekundäre kritische Ursache Rang ${secondaryCriticalRank}'].forEach((token)=>assert.ok(hardening.includes(token),token));
+assert.ok(loader.includes('@import url("lc11-visual-polish-6s.css");'),'VI-AN muss über die bestehende VI-AI..AM-Datei in der finalen visuellen Importkette geladen werden.');
+const section=css.split('Visual Polish VI-AN')[1]||'';
+assert.ok(!/(^|[;{])\s*(padding|margin|min-height|min-width|max-height|max-width|width|height|gap|grid-template(?:-areas|-columns|-rows)?)\s*:/m.test(section),'VI-AN darf keine Layoutmaße oder Grid-Geometrie setzen.');
+assert.ok(!section.includes('animation:'),'VI-AN ergänzt keine Bewegungslogik.');
+assert.ok(!section.includes('pointer-events:auto'),'VI-AN darf keine aktive Interaktionsebene erzwingen.');
+assert.ok(css.indexOf('VI-AN')>css.indexOf('VI-AM'),'VI-AN muss additiv auf VI-AM aufsetzen.');
+console.log('PASS: Visual Polish VI-AN – mehrere Sekundärfolgen besitzen eine eindeutige, geometrieneutrale Rangfolge.');
