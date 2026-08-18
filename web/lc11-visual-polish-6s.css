@@ -17,3 +17,10 @@ body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-g
 body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-deltas:has(.coach-delta[data-global-critical="true"]) .coach-delta[data-group-dominant="true"][data-group-state="worsening"]:not([data-global-critical="true"]){opacity:.58;filter:saturate(.7) brightness(.9);text-shadow:none;box-shadow:none}
 body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-global-critical="true"]{outline:3px double currentColor;outline-offset:3px;filter:saturate(1.28) brightness(1.14);text-shadow:0 0 14px rgba(255,112,112,.78);box-shadow:0 0 20px rgba(255,112,112,.18)}
 body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-global-critical="true"]>b,body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-global-critical="true"]>[data-after]{font-weight:900;letter-spacing:.01em}
+
+/* Visual Polish VI-AL · Ursache → Gruppenlage → Konsequenz */
+/* Die gruppenübergreifend kritischste Ursache trägt ihre unmittelbare Gruppenkonsequenz als kompakte Overlay-Notiz. Keine zusätzliche Layoutfläche, keine Bewegung. */
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-global-critical="true"]{position:relative}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-global-critical="true"]::after{content:"→ " attr(data-consequence-label);position:absolute;inset-inline-end:0;bottom:calc(100% + 2px);white-space:nowrap;font-size:.72em;font-weight:800;letter-spacing:.015em;color:#ffd7d7;text-shadow:0 0 9px rgba(255,112,112,.72);pointer-events:none}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-global-critical="true"][data-effect-group="resources"]::after{color:#ffe3a1;text-shadow:0 0 9px rgba(255,211,92,.62)}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-global-critical="true"][data-effect-group="agency"]::after{color:#c9ffe8;text-shadow:0 0 9px rgba(117,255,191,.58)}
