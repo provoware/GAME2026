@@ -46,3 +46,12 @@ body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-c
 body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-consequence-tier="secondary"][data-consequence-urgency="immediate"]::after{font-weight:900;opacity:.9;text-decoration:underline double;text-underline-offset:2px}
 body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-consequence-tier="secondary"][data-consequence-urgency="soon"]::after{font-weight:800;opacity:.76;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:2px}
 body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-consequence-tier="secondary"][data-consequence-urgency="later"]::after{font-weight:700;opacity:.58;text-decoration:none}
+
+/* Visual Polish VI-AP · Handlungsempfehlungs-Priorität */
+/* Zeitliche Dringlichkeit wird in eine sofort lesbare Handlungsreihenfolge übersetzt. Nur bestehende Overlays werden semantisch verdichtet; keine Layoutmaße, keine Bewegung, keine neue Interaktion. */
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-consequence-tier="primary"]::after{content:attr(data-action-priority-label) " · " attr(data-action-recommendation) " → " attr(data-consequence-label);letter-spacing:.02em}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-consequence-tier="secondary"]::after{content:attr(data-action-priority-label) " · " attr(data-action-recommendation) " ↳ " attr(data-consequence-label)}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-action-priority="first"]::after{font-weight:900;opacity:1;text-decoration:underline double;text-underline-offset:2px}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-action-priority="next"]::after{font-weight:850;opacity:.9;text-decoration:underline;text-underline-offset:2px}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-action-priority="soon"]::after{font-weight:800;opacity:.76}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-action-priority="plan"]::after{font-weight:700;opacity:.58}
