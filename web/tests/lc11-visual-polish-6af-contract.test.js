@@ -1,0 +1,10 @@
+const fs=require('fs');const path=require('path');const assert=require('assert');
+const root=path.join(__dirname,'..');const hardening=fs.readFileSync(path.join(root,'lc11-browser-hardening.js'),'utf8'),css=fs.readFileSync(path.join(root,'lc11-visual-polish-6r.css'),'utf8');
+['effectGroup','districtPolice:[\'security\',\'Sicherheitslage\']','money:[\'resources\',\'Ressourcen\']','districtControl:[\'agency\',\'Handlungsfähigkeit\']','data-effect-group="${group}"','${groupLabel}, ${label}'].forEach((token)=>assert.ok(hardening.includes(token),token));
+['Visual Polish VI-AF · kompakte semantische Wirkungsgruppen','data-effect-group="security"','data-effect-group="resources"','data-effect-group="agency"','text-decoration-line:underline','text-underline-offset:4px'].forEach((token)=>assert.ok(css.includes(token),token));
+const section=css.split('Visual Polish VI-AF')[1]||'';
+assert.ok(!/(^|[;{])\s*(padding|margin|min-height|min-width|max-height|max-width|width|height|gap|grid-template(?:-areas|-columns|-rows)?)\s*:/m.test(section),'VI-AF darf keine Layoutmaße oder Grid-Geometrie setzen.');
+assert.ok(!section.includes('animation:'),'VI-AF ergänzt keine Bewegungslogik.');
+assert.ok(!section.includes('pointer-events:auto'),'VI-AF darf keine aktive Interaktionsebene erzwingen.');
+assert.ok(hardening.indexOf('districtPolice:10')<hardening.indexOf('orderedKeys='),'VI-AF muss auf der bestehenden semantischen Priorisierung aufsetzen.');
+console.log('PASS: Visual Polish VI-AF – Zusammengehörige Effekte sind semantisch gruppiert und ohne zusätzliche Fläche besser lesbar.');
