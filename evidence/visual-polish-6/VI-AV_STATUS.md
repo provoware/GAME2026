@@ -1,6 +1,6 @@
 # Visual Polish VI-AV – Navigationskorridor
 
-Status: IMPLEMENTIERT / LOKAL QUALIFIZIERT / REMOTE-QUALIFIKATION AUSSTEHEND
+Status: IMPLEMENTIERT / LOKAL QUALIFIZIERT / REMOTE QUALIFIZIERT
 
 ## Umfang
 - bei aktiver Reiseempfehlung tritt nicht empfohlene Straßen-/Bahninfrastruktur kontrolliert zurück
@@ -19,9 +19,14 @@ Status: IMPLEMENTIERT / LOKAL QUALIFIZIERT / REMOTE-QUALIFIKATION AUSSTEHEND
 - Vertrag: `web/tests/lc11-visual-polish-6av-contract.test.js`
 - `PRUEFEN.sh` Prüfblock 35 erweitert
 
+## Validierung
+- vollständiges lokales `PRUEFEN.sh`: 35/35 PASS
+- LIVING-CITY-11 Engine: 12/12 PASS, inklusive 3500-Zug-Langlauf
+- Implementierungs-Gate GitHub Actions #363 / 32182434735: SUCCESS
+- echter Google-Chrome-Desktop-E2E im Remote-Gate: PASS
+- finaler Statuscommit wird nochmals durch dasselbe Head-Gate validiert
+
 ## Repository-Hygiene
 - keine beabsichtigten Löschungen
 - keine ZIP-, `.pyc`- oder `__pycache__`-Artefakte
 - PR #6 bleibt Draft, offen und ungemergt
-
-Remote-Gate und finaler Commit/Tree werden nach erfolgreicher GitHub-Actions-Qualifikation ergänzt.
