@@ -148,5 +148,6 @@ node web/tests/lc11-visual-polish-6-contract.test.js
 node web/tests/lc11-visual-polish-6ac-contract.test.js
 node web/tests/lc11-visual-polish-6ad-contract.test.js
 node web/tests/lc11-visual-polish-6ae-contract.test.js
+node web/tests/lc11-visual-polish-6af-contract.test.js
 
 echo 'ERGEBNIS: PASS'
