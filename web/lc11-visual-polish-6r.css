@@ -42,3 +42,8 @@ body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-e
 body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-effect-group="resources"]{text-decoration-line:underline;text-decoration-color:rgba(255,211,92,.58);text-decoration-thickness:1px}
 body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-effect-group="agency"]{text-decoration-line:underline;text-decoration-color:rgba(124,240,170,.58);text-decoration-thickness:1px}
 body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-effect-group]{text-decoration-style:solid;text-underline-offset:4px}
+
+/* Visual Polish VI-AG · dominante Einzelwirkung innerhalb jeder Wirkungsgruppe */
+/* Pro semantischer Gruppe führt genau die entscheidungsrelevanteste Wirkung; Begleitwerte bleiben vollständig sichtbar. Keine neue Fläche oder Bewegung. */
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-effect-group][data-group-dominant="true"]{text-decoration-thickness:2px;text-shadow:0 0 8px currentColor;filter:saturate(1.08) brightness(1.05)}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-effect-group][data-group-dominant="false"]{text-decoration-thickness:1px}
