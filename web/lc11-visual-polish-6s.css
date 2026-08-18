@@ -32,3 +32,10 @@ body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-c
 body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-consequence-tier="secondary"]::after{content:"Sekundärfolge ↳ " attr(data-consequence-label);position:absolute;inset-inline-end:0;bottom:calc(100% + 1px);white-space:nowrap;font-size:.66em;font-weight:700;letter-spacing:.01em;color:#ffc6c6;opacity:.72;text-shadow:0 0 7px rgba(255,112,112,.42);pointer-events:none}
 body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-consequence-tier="secondary"][data-effect-group="resources"]::after{color:#ffe0a0;text-shadow:0 0 7px rgba(255,211,92,.36)}
 body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-consequence-tier="secondary"][data-effect-group="agency"]::after{color:#c9ffe8;text-shadow:0 0 7px rgba(117,255,191,.34)}
+
+/* Visual Polish VI-AN · Rangfolge mehrerer Sekundärfolgen */
+/* Bei mehreren sekundären kritischen Folgen führt Rang 1 klar vor weiteren Sekundärfolgen. Geometrieneutral, bewegungsfrei und ohne neue Interaktion. */
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-consequence-tier="secondary"][data-secondary-rank="1"]{opacity:.82;filter:saturate(.92) brightness(.98)}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-consequence-tier="secondary"][data-secondary-rank="1"]::after{content:"Sekundärfolge 1 ↳ " attr(data-consequence-label);font-weight:800;opacity:.86;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:2px}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-consequence-tier="secondary"]:not([data-secondary-rank="1"]){opacity:.5;filter:saturate(.62) brightness(.88)}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-consequence-tier="secondary"]:not([data-secondary-rank="1"])::after{content:"Sekundärfolge " attr(data-secondary-rank) " ↳ " attr(data-consequence-label);opacity:.52;text-shadow:none}
