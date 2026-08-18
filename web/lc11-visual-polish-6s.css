@@ -11,3 +11,9 @@ body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-g
 body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-group-dominant="true"][data-group-state="worsening"]>[data-after]{color:#ffd7d7;filter:saturate(1.2) brightness(1.16);text-shadow:0 0 12px rgba(255,112,112,.68)}
 body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-group-dominant="true"][data-group-state="worsening"]>[data-before]{opacity:.56;filter:saturate(.7) brightness(.86)}
 body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-group-dominant="true"][data-group-state="worsening"]>i{opacity:.48;filter:saturate(.65)}
+
+/* Visual Polish VI-AK · Gruppenübergreifender Kritikalitätsfokus */
+/* Wenn mehrere Wirkungsgruppen gleichzeitig kippen, führt genau die kritischste dominante Ursache. Andere kippende Gruppen bleiben sichtbar, treten aber klar zurück. Geometrieneutral und bewegungsfrei. */
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-deltas:has(.coach-delta[data-global-critical="true"]) .coach-delta[data-group-dominant="true"][data-group-state="worsening"]:not([data-global-critical="true"]){opacity:.58;filter:saturate(.7) brightness(.9);text-shadow:none;box-shadow:none}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-global-critical="true"]{outline:3px double currentColor;outline-offset:3px;filter:saturate(1.28) brightness(1.14);text-shadow:0 0 14px rgba(255,112,112,.78);box-shadow:0 0 20px rgba(255,112,112,.18)}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-global-critical="true"]>b,body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-global-critical="true"]>[data-after]{font-weight:900;letter-spacing:.01em}
