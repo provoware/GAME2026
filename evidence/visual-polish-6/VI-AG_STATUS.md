@@ -22,11 +22,12 @@ Innerhalb der in VI-AF eingeführten Wirkungsgruppen wird die jeweils entscheidu
 - lokale Vollprüfung `PRUEFEN.sh`: **35/35 PASS**
 - LIVING-CITY-11 Gameplay-Regression: **12/12 PASS**, inklusive 3500-Zug-Langlauf
 - Implementierungs-Gate GitHub Actions **#285 / 32106511167: SUCCESS**
+- Dokumentations-/Head-Gate GitHub Actions **#286 / 32106622096: SUCCESS**
 - echter Google-Chrome-Desktop-E2E: **PASS**
 - Source-, Syntax-, Manifest- und Paketprüfungen: **PASS**
-- qualifiziertes Implementierungs-Source-Artefakt: `9313350034`
-- qualifiziertes Implementierungs-Chrome-E2E-Artefakt: `9313348779`
-- beide Artefakte sind exakt an Implementierungs-Head `b460d8035a02db534e6735d855a24a6e903e13ca` gebunden
+- qualifiziertes Source-Artefakt aus #286: `9313392389`
+- qualifiziertes Chrome-E2E-Artefakt aus #286: `9313390521`
+- beide Artefakte sind exakt an Head `72f139c21ea4201926b9b87d3078b29c4dc3c9b1` gebunden
 
 ## Repository-Hygiene
 - lineare, nicht-forcierte Branch-Aktualisierung
@@ -34,4 +35,4 @@ Innerhalb der in VI-AF eingeführten Wirkungsgruppen wird die jeweils entscheidu
 - keine ZIP-, `__pycache__`- oder `.pyc`-Dateien in den Repository-Änderungen
 
 ## Status
-VI-AG ist implementiert und auf dem Implementierungs-Head remote qualifiziert. Der Dokumentations-Head wird anschließend separat durch das finale Remote-Gate qualifiziert.
+VI-AG ist funktional und remote qualifiziert. Diese abschließende Statussynchronisierung ändert nur den Nachweistext; der daraus entstehende finale Dokumentations-Head wird zusätzlich durch GitHub Actions qualifiziert und im PR-Nachweis mit Commit, Tree und finalen Artefakten festgehalten.
