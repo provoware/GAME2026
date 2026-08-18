@@ -78,3 +78,6 @@ Bezirksname, Kontrolle, Druck und lokale Statusindikatoren sind direkt am Marker
 
 ### Visual-Polish VI-G – Straßen-, Bahn- und Routenhierarchie
 Straßen, Bahnlinien, direkt erreichbare Verbindungen, geplante Etappen und das konkret gewählte Reiseziel besitzen nun klar getrennte visuelle Signaturen. Straßen bleiben ruhig und durchgezogen, Bahnlinien gepunktet, geplante Routen goldfarben und das gewählte Ziel limefarben priorisiert. Die dezente Routenbewegung wird durch Reduced-Motion und Ruhemodus vollständig deaktiviert. Gameplay, Browser-Schema 12 und Save-Spiegel v0170 bleiben unverändert.
+
+### Visual-Polish VI-AR – Handlungziel auf einen Blick
+Die in VI-AQ ermittelte konkrete Aktion bzw. der Zielort ist nun ohne zusätzliche Fläche schneller unterscheidbar: `HIER` wird als direkte, limefarbene Handlungsmöglichkeit codiert, `ORT` als cyanfarbener Reisehinweis. Ein fehlendes Ziel tritt bewusst zurück; hoher Kontrast erhält zusätzliche Konturen. Die Änderung bleibt rein präsentational und bewegungsfrei; Gameplay, Browser-Schema 12 und Save-Spiegel v0170 bleiben unverändert.
