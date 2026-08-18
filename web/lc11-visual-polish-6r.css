@@ -35,3 +35,10 @@ body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-deltas:not(:
 /* Kritische operative Metriken führen gleichrangige Effekte unabhängig von der ursprünglichen Effekt-Reihenfolge; keine neue Geometrie oder Animation. */
 body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-priority="10"],
 body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-priority="20"]{text-underline-offset:3px}
+
+/* Visual Polish VI-AF · kompakte semantische Wirkungsgruppen */
+/* Zusammengehörige Effekte teilen eine ruhige Unterstreichungssemantik; keine neue Fläche, Geometrie oder Bewegung. */
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-effect-group="security"]{text-decoration-line:underline;text-decoration-color:rgba(255,112,112,.62);text-decoration-thickness:1px}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-effect-group="resources"]{text-decoration-line:underline;text-decoration-color:rgba(255,211,92,.58);text-decoration-thickness:1px}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-effect-group="agency"]{text-decoration-line:underline;text-decoration-color:rgba(124,240,170,.58);text-decoration-thickness:1px}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-effect-group]{text-decoration-style:solid;text-underline-offset:4px}
