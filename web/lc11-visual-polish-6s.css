@@ -39,3 +39,10 @@ body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-c
 body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-consequence-tier="secondary"][data-secondary-rank="1"]::after{content:"Sekundärfolge 1 ↳ " attr(data-consequence-label);font-weight:800;opacity:.86;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:2px}
 body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-consequence-tier="secondary"]:not([data-secondary-rank="1"]){opacity:.5;filter:saturate(.62) brightness(.88)}
 body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-consequence-tier="secondary"]:not([data-secondary-rank="1"])::after{content:"Sekundärfolge " attr(data-secondary-rank) " ↳ " attr(data-consequence-label);opacity:.52;text-shadow:none}
+
+/* Visual Polish VI-AO · Zeitliche Dringlichkeit der Sekundärfolgen */
+/* Sekundärfolgen werden zusätzlich nach zeitlicher Dringlichkeit lesbar: sofort vor bald vor später. Geometrieneutral, bewegungsfrei und ohne neue Interaktion. */
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-consequence-tier="secondary"]::after{content:"Sekundärfolge " attr(data-secondary-rank) " · " attr(data-consequence-urgency-label) " ↳ " attr(data-consequence-label)}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-consequence-tier="secondary"][data-consequence-urgency="immediate"]::after{font-weight:900;opacity:.9;text-decoration:underline double;text-underline-offset:2px}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-consequence-tier="secondary"][data-consequence-urgency="soon"]::after{font-weight:800;opacity:.76;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:2px}
+body:has(.scene-modal[open]) #coachRail[data-tone="success"] .coach-delta[data-consequence-tier="secondary"][data-consequence-urgency="later"]::after{font-weight:700;opacity:.58;text-decoration:none}
