@@ -1,0 +1,11 @@
+const fs=require('fs');const path=require('path');const assert=require('assert');
+const root=path.join(__dirname,'..'),css=fs.readFileSync(path.join(root,'lc11-visual-polish-6s.css'),'utf8'),loader=fs.readFileSync(path.join(root,'lc11-close-control.css'),'utf8'),hardening=fs.readFileSync(path.join(root,'lc11-browser-hardening.js'),'utf8');
+['Visual Polish VI-AM · Hauptfolge / Sekundärfolge bei Mehrfachkritik','data-consequence-tier="primary"','data-consequence-tier="secondary"','content:"Hauptfolge → " attr(data-consequence-label)','content:"Sekundärfolge ↳ " attr(data-consequence-label)','pointer-events:none'].forEach((token)=>assert.ok(css.includes(token),token));
+['secondaryCriticalCause=dominant&&state===\'worsening\'&&!globalCriticalCause','consequenceTier=globalCriticalCause?\'primary\':secondaryCriticalCause?\'secondary\':\'context\'','data-secondary-critical="${secondaryCriticalCause}"','data-consequence-tier="${consequenceTier}"','Hauptfolge','Sekundärfolge','sekundäre kritische Ursache'].forEach((token)=>assert.ok(hardening.includes(token),token));
+assert.ok(loader.includes('@import url("lc11-visual-polish-6s.css");'),'VI-AM muss über die bestehende VI-AI..AL-Datei in der finalen visuellen Importkette geladen werden.');
+const section=css.split('Visual Polish VI-AM')[1]||'';
+assert.ok(!/(^|[;{])\s*(padding|margin|min-height|min-width|max-height|max-width|width|height|gap|grid-template(?:-areas|-columns|-rows)?)\s*:/m.test(section),'VI-AM darf keine Layoutmaße oder Grid-Geometrie setzen.');
+assert.ok(!section.includes('animation:'),'VI-AM ergänzt keine Bewegungslogik.');
+assert.ok(!section.includes('pointer-events:auto'),'VI-AM darf keine aktive Interaktionsebene erzwingen.');
+assert.ok(css.indexOf('VI-AM')>css.indexOf('VI-AL'),'VI-AM muss additiv auf VI-AL aufsetzen.');
+console.log('PASS: Visual Polish VI-AM – Hauptfolge und Sekundärfolgen sind bei mehreren kritischen Wirkungsgruppen unmittelbar unterscheidbar.');
