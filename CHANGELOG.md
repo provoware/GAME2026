@@ -1,5 +1,11 @@
 # Changelog
 
+## Unveröffentlicht – Bedienbarkeit
+
+- Startfenster auf 800 × 600 Pixel umgestellt; dynamische Fenstervergrößerung beibehalten.
+- Status und Missionstracker mit getrennten, tastaturfokussierbaren vertikalen Scrollbereichen ausgestattet, damit lange Meldungen die Aktionen nicht verdrängen.
+- Statische Layoutkontrolle mit Positiv- und Negativtests in die GitHub-Prüfung aufgenommen; keine Änderungen an Spielregeln oder Speicherständen.
+
 ## 0.3.0-mission-iteration-c
 
 - Zustands- und Missionsschema auf Version 3 erweitert

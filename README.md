@@ -41,6 +41,18 @@ chmod +x start.sh
 
 Das Startskript sucht `godot4`, `godot` oder eine lokale Godot-Binärdatei unter `./tools/`.
 
+## Bedienung auf kleinen Bildschirmen
+
+Die Hauptansicht startet mit **800 × 600 Pixeln** als Grundgröße und passt sich beim
+Vergrößern des Fensters automatisch an. Status und Missionstracker teilen sich den
+verfügbaren Platz; längere Texte können in beiden Bereichen separat **vertikal**
+gescrollt werden. Die vier Aktionsschaltflächen bleiben außerhalb dieser Textbereiche.
+Auch per Tastatur lassen sich die Textbereiche zum Scrollen fokussieren.
+
+Die automatische Layoutprüfung (`python3 tools/check_small_screen_layout.py`)
+kontrolliert die Grundgröße und die Scroll-Regeln. Sie ersetzt **keine** visuelle
+Prüfung in Godot bei 800 × 600 Pixeln und hoher Schriftskalierung.
+
 ## Tests
 
 ```bash

@@ -31,7 +31,7 @@
 - dauerhafte Missionshistorie mit Pfad-, Phasen- und Ergebnisdaten;
 - sichere Wiederaufnahmepunkte beim Start, Phasenwechsel und bei Unterbrechungen;
 - kontrollierte Wiederherstellung über Command und Effect;
-- Graybox-Missionstracker;
+- Graybox-Missionstracker mit vertikal scrollbaren Textbereichen und 800 × 600-Grundfenster;
 - 15 automatisierte Selbsttests;
 - Massensimulation mit 120 vollständigen Durchläufen.
 
@@ -41,7 +41,8 @@
 - Manifest mit SHA-256-Prüfsummen;
 - GDScript-Linting und optionale Formatierung;
 - automatische ZIP-Erstellung;
-- semantische Missionsgraphprüfung.
+- semantische Missionsgraphprüfung;
+- statische 800 × 600-Layoutkontrolle mit Positiv- und Negativtests (keine visuelle Engine-Abnahme).
 
 ## Noch nicht implementiert
 

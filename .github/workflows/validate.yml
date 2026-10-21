@@ -32,5 +32,8 @@ jobs:
       - name: Validate package
         run: ./verify.sh
 
+      - name: Check compact UI layout contract
+        run: python tools/check_small_screen_layout.py
+
       - name: Check Python syntax
         run: python -m compileall -q tools
