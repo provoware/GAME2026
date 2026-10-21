@@ -80,7 +80,6 @@ autowrap_mode = 2
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
 size_flags_horizontal = 3
-layout_mode = 2
 
 [node name="TrackerScroll" type="ScrollContainer" parent="MarginContainer/VBoxContainer/Columns/TrackerPanel"]
 layout_mode = 2

@@ -51,6 +51,8 @@ def layout_errors(project: str, scene: str) -> list[str]:
         errors.append("Missionstracker beansprucht zu viel Mindestbreite")
     if "size_flags_horizontal = 3" not in tracker:
         errors.append("Missionstracker passt sich nicht an die Breite an")
+    if tracker.count("layout_mode = 2") != 1:
+        errors.append("Missionstracker enthält doppelte oder fehlende Layout-Angaben")
 
     for name in ("StatusLabel", "DetailLabel", "TrackerLabel"):
         if "autowrap_mode = 2" not in node_block(scene, name):
@@ -81,6 +83,14 @@ class SmallScreenLayoutTests(unittest.TestCase):
     def test_rejects_horizontal_scrolling(self) -> None:
         altered = self.scene.replace("horizontal_scroll_mode = 0", "horizontal_scroll_mode = 1", 1)
         self.assertTrue(any("horizontales Scrollen" in e for e in layout_errors(self.project, altered)))
+
+    def test_rejects_duplicate_layout_property(self) -> None:
+        altered = self.scene.replace(
+            "custom_minimum_size = Vector2(280, 0)\nlayout_mode = 2",
+            "custom_minimum_size = Vector2(280, 0)\nlayout_mode = 2\nlayout_mode = 2",
+            1,
+        )
+        self.assertTrue(any("doppelte" in e for e in layout_errors(self.project, altered)))
 
     def test_rejects_missing_action(self) -> None:
         altered = self.scene.replace('name="SaveButton"', 'name="RemovedButton"', 1)
