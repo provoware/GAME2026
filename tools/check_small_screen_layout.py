@@ -13,7 +13,7 @@ ROOT = Path(__file__).resolve().parents[1]
 def node_block(scene: str, name: str) -> str:
     """Liest den Abschnitt eines Godot-Szenenknotens ohne fremde Knoten."""
     pattern = re.compile(
-        r'^\\[node name="' + re.escape(name) + r'"[^\\n]*\\]\\n(.*?)(?=^\\[node |\\Z)',
+        r'^\[node name="' + re.escape(name) + r'"[^\n]*\]\n(.*?)(?=^\[node |\Z)',
         re.MULTILINE | re.DOTALL,
     )
     match = pattern.search(scene)
