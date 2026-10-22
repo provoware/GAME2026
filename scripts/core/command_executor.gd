@@ -16,12 +16,25 @@ func execute(command: GameCommand, state: GameSessionState, context: Dictionary)
 		)
 
 	if state.has_processed_transaction(command.transaction_id):
+		var previous_summary: Dictionary = state.processed_transactions[command.transaction_id]
+		if _transaction_conflicts(command, previous_summary):
+			return GameResult.failure(
+				GameError.new(
+					"CORE-ERR-004",
+					"Transaktions-ID wurde bereits für einen anderen Command verwendet.",
+					{
+						"transaction_id": command.transaction_id,
+						"previous_command_id": previous_summary.get("command_id", ""),
+						"command_id": command.command_id,
+					}
+				)
+			)
 		return (
 			GameResult
 			. success(
 				{
 					"duplicate": true,
-					"summary": state.processed_transactions[command.transaction_id],
+					"summary": previous_summary,
 				},
 				["Transaktion wurde bereits verarbeitet."]
 			)
@@ -56,4 +69,13 @@ func execute(command: GameCommand, state: GameSessionState, context: Dictionary)
 				"events": transaction_result.value.get("events", []),
 			}
 		)
+	)
+
+
+func _transaction_conflicts(command: GameCommand, previous_summary: Dictionary) -> bool:
+	var previous_command_id := str(previous_summary.get("command_id", ""))
+	var previous_actor_id := str(previous_summary.get("actor_id", ""))
+	return (
+		(not previous_command_id.is_empty() and previous_command_id != command.command_id)
+		or (not previous_actor_id.is_empty() and previous_actor_id != command.actor_id)
 	)

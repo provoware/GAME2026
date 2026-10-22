@@ -28,6 +28,7 @@ func run_all() -> Dictionary:
 		["Riss pausiert und Fortsetzung funktioniert", _test_pause_resume],
 		["Abbruchfolgen werden atomar gebucht", _test_cancel_consequences],
 		["Doppelte Transaktion wird nicht doppelt gebucht", _test_idempotency],
+		["Transaktions-ID-Kollision wird abgewiesen", _test_transaction_id_collision],
 		["Save-/Load-Roundtrip bleibt konsistent", _test_save_load_roundtrip],
 	]
 
@@ -273,6 +274,26 @@ func _test_idempotency() -> GameResult:
 		return second
 	if state.resource_amount("resource.money") != money_after_first:
 		return _failure("TEST-ERR-023", "Doppelte Transaktion hat erneut Ressourcen verändert.")
+	return GameResult.success()
+
+
+func _test_transaction_id_collision() -> GameResult:
+	var state := GameSessionState.new()
+	var transaction_id := "test-collision"
+	var first := _executor.execute(
+		StartMissionCommand.new(MISSION_ID, transaction_id), state, _context
+	)
+	if not first.ok:
+		return first
+
+	var month_before_collision := state.campaign_month_index
+	var collision := _executor.execute(
+		AdvanceCampaignMonthCommand.new(1, transaction_id), state, _context
+	)
+	if collision.ok:
+		return _failure("TEST-ERR-025", "Kollision der Transaktions-ID wurde akzeptiert.")
+	if state.campaign_month_index != month_before_collision:
+		return _failure("TEST-ERR-026", "Abgewiesene Kollision veränderte den Zustand.")
 	return GameResult.success()
 
 

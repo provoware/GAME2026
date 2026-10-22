@@ -1,5 +1,371 @@
 {
   "project": "PPPOPPI – Bunkerwahrheit",
   "package_version": "0.2.0-mission-iteration-b",
-  "files": []
+  "files": [
+    {
+      "path": ".github/pull_request_template.md",
+      "size": 510,
+      "sha256": "ba0f920d716cb94b7ed1d46ed9785be89d33091e6a30ad4cbd7e2530030ffd3c"
+    },
+    {
+      "path": ".github/workflows/validate.yml",
+      "size": 785,
+      "sha256": "419e9cb77dcefd0c13d0040843637571deae110aef5bd8018cfd0085d1f10779"
+    },
+    {
+      "path": ".gitignore",
+      "size": 51,
+      "sha256": "60194e39ca51da29fd619bf518ff051f1cb5508e2f72f2cbae21268b316ce35e"
+    },
+    {
+      "path": "AGENTS.md",
+      "size": 1615,
+      "sha256": "08ca91adf570099612f0ea0993b9f24dbdd045e4a70f0ee04d208dcbad715ebb"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "size": 2279,
+      "sha256": "cd074c1370a7639d56cc3ad073314608c1aa3f8cec5978f79b068237ed6dac12"
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "size": 2788,
+      "sha256": "f2d4ff88a15f54f6b9b992ad8bbb7e17c13f5ab6494120eadaf3861dee11ba16"
+    },
+    {
+      "path": "README.md",
+      "size": 3586,
+      "sha256": "633a626fe55feee32866173292ca3b8fd1ae06e000059341518271c9be993ee2"
+    },
+    {
+      "path": "content/missions/mission_neon_signal_9909.json",
+      "size": 4882,
+      "sha256": "a49bc66fe7e0f18b7ee1ac0d1598993c0c82c3785cfd9c6450a5a1eca0923b8f"
+    },
+    {
+      "path": "content/world/city_graph.json",
+      "size": 3667,
+      "sha256": "2948b6b438a84882fec86446f97c0c4585825e4e3dd0ec6a57ec7f0cb130cc3d"
+    },
+    {
+      "path": "docs/ARCHITECTURE.md",
+      "size": 3897,
+      "sha256": "9cb03a15e987ed78fc7ee6543509d97a98e03f5b0dc908eac772d594f5447574"
+    },
+    {
+      "path": "docs/CONTENT_AUTHORING.md",
+      "size": 1930,
+      "sha256": "ce2442780dac60cc823a41a592462c7791129cef39e5a473e4936b201553bfbf"
+    },
+    {
+      "path": "docs/DEVELOPMENT.md",
+      "size": 3306,
+      "sha256": "a2dd487f1f9d56ddacf944a71692666df1d88651ec72393988b446957ab6801a"
+    },
+    {
+      "path": "docs/MISSION-01_FULL.md",
+      "size": 6793,
+      "sha256": "1f3f4c4db2184a272d13c64fedfd0e61b7903dc3d2b2160a871eb9e89e099d67"
+    },
+    {
+      "path": "docs/MISSION-01_ITERATION_B.md",
+      "size": 3132,
+      "sha256": "624c372a9f9f24d24386bedbc208926ae0d0509590e7bebac147b8cbc51ce364"
+    },
+    {
+      "path": "docs/MISSION-01_SPEC.md",
+      "size": 1312,
+      "sha256": "dfe97677995b5efc857b48579b7115960ab43afc39666e53629bf84c8496c9c6"
+    },
+    {
+      "path": "docs/PROJECT_STATUS.md",
+      "size": 2320,
+      "sha256": "5872f704be6f981de7d8b59f1f6f7ee0b1cc29f893911119ae64fd6c8e76c1bb"
+    },
+    {
+      "path": "docs/RELEASE_PROCESS.md",
+      "size": 1427,
+      "sha256": "9268a1f42dea3493a557d3c86ceed9120589ac612ea21cdff83acd461d2d8d7e"
+    },
+    {
+      "path": "docs/SECURITY_AND_DATA.md",
+      "size": 1297,
+      "sha256": "d98c0d8ba43e8fa8775f5b4793d0467cf4f01f0e83d434ce9055b820bca5d1db"
+    },
+    {
+      "path": "docs/TESTING.md",
+      "size": 2527,
+      "sha256": "2c311c4ce2e5ccafae8807ec5fc243457dd8eba06692cedbb24fd628369f6df5"
+    },
+    {
+      "path": "gdlintrc",
+      "size": 111,
+      "sha256": "760557e430cbe18f18de8fc773c599ee36378d71f4b5a0b822c1f529fe6431a7"
+    },
+    {
+      "path": "package.sh",
+      "size": 579,
+      "sha256": "c87eafc591bfaac97680c5d8f0b2b3f3da3fb621191c60c91d066cd8b05bedb5"
+    },
+    {
+      "path": "project.godot",
+      "size": 746,
+      "sha256": "ae05cb0f9e35f5f1320389371a9b20443eca900a5770716b32b2ac0340ff08ff"
+    },
+    {
+      "path": "scenes/main/main.tscn",
+      "size": 3735,
+      "sha256": "807e430af0cfdf222cf12a9eb9f3450d34d84b2b5c964ce677e4b8e157cea691"
+    },
+    {
+      "path": "schemas/mission.schema.json",
+      "size": 5301,
+      "sha256": "73840d6067688e6a1749708a3f3a14bc462e57b256f2c93d85b17e2d6eee2cae"
+    },
+    {
+      "path": "schemas/world.schema.json",
+      "size": 2796,
+      "sha256": "84182a8f72245a3757d918fa53d77576284906539987518440a247e19b0dc204"
+    },
+    {
+      "path": "scripts/core/command_executor.gd",
+      "size": 2344,
+      "sha256": "e0bad95180f4cc43857d2718518c49fb1c1f7b5497acb36a2d4dc0bb76d517d3"
+    },
+    {
+      "path": "scripts/core/domain_event.gd",
+      "size": 551,
+      "sha256": "1abeafef6578f79f10f9f0fc833f8e401287229c75b65e7bc25eccbd336c733e"
+    },
+    {
+      "path": "scripts/core/domain_event_bus.gd",
+      "size": 379,
+      "sha256": "f8d773484fb0e61b1d46613e7f13af32d96b786bfd5efe4e430248465f12ac72"
+    },
+    {
+      "path": "scripts/core/effect_transaction.gd",
+      "size": 810,
+      "sha256": "2d66da7d084d7a8c7743741d200e44d322be99387aae3bce37f5a14247f9b35e"
+    },
+    {
+      "path": "scripts/core/game_command.gd",
+      "size": 523,
+      "sha256": "2063277557eb6af73109aaf8f79cff4aeb8564cb855783984795e91447a2fce1"
+    },
+    {
+      "path": "scripts/core/game_effect.gd",
+      "size": 205,
+      "sha256": "d4cb73381006ac1f0af95adb4c1f1979e7dace80070d68b55b1cfc83373731b8"
+    },
+    {
+      "path": "scripts/core/game_error.gd",
+      "size": 381,
+      "sha256": "4e7a2d2f9fb03390c01a04f45f726c42035c6fba807a07772f1fa345bae596e6"
+    },
+    {
+      "path": "scripts/core/game_result.gd",
+      "size": 866,
+      "sha256": "df2811c8537dc39a4fd5f306f81a9bba439c5c7bd915f5b9a737ede9bdd604bd"
+    },
+    {
+      "path": "scripts/core/game_session_state.gd",
+      "size": 6265,
+      "sha256": "ec47c9db1ba1eac673794613e741e5b8dea7d35cd2d4cf9a551931c3c143f66f"
+    },
+    {
+      "path": "scripts/mission/commands/advance_campaign_month_command.gd",
+      "size": 2739,
+      "sha256": "e4d4de1cb581e24c8a556ff324cc2956a34bab579d8467f6569477e572ab8bf5"
+    },
+    {
+      "path": "scripts/mission/commands/advance_mission_objective_command.gd",
+      "size": 2515,
+      "sha256": "d68a10b6ce73b90d99f3c0d8f497aeca22d8713c95c88c09c01d42a4255f6272"
+    },
+    {
+      "path": "scripts/mission/commands/apply_mission_signal_command.gd",
+      "size": 2357,
+      "sha256": "9a28cfe03c499d181ece032de0c6cd8584d7bb3e4f22ddddf182a69fa242726c"
+    },
+    {
+      "path": "scripts/mission/commands/cancel_mission_command.gd",
+      "size": 1843,
+      "sha256": "fb2b19604678e9ac20f6c6c7be2c041208cd8dbad5a3dfafa7e1ee97e39d5fa7"
+    },
+    {
+      "path": "scripts/mission/commands/pause_mission_command.gd",
+      "size": 1232,
+      "sha256": "0cc7f85b3f208db18fc779266dfe4385599fa616fe8d55b452ecd6db51652dd3"
+    },
+    {
+      "path": "scripts/mission/commands/restore_mission_checkpoint_command.gd",
+      "size": 1274,
+      "sha256": "ed8c3d4757fc34a4ee88aa6fc2daffe88d92c3589cb8c18cf3a2280c0657ff30"
+    },
+    {
+      "path": "scripts/mission/commands/resume_mission_command.gd",
+      "size": 1657,
+      "sha256": "224116a09038f24e60ffb9c1c0fc54165d83e3c314fad5acb32664a51a827b52"
+    },
+    {
+      "path": "scripts/mission/commands/select_mission_path_command.gd",
+      "size": 2535,
+      "sha256": "60423195d446bf114be1fe438121a75b6a87a136072e901ad2c61ca2431a934d"
+    },
+    {
+      "path": "scripts/mission/commands/start_mission_command.gd",
+      "size": 1806,
+      "sha256": "e3da92796b15da2fcca720fb2c65aa72cf121ebb179e3b384ca535202b05db71"
+    },
+    {
+      "path": "scripts/mission/effect_factory.gd",
+      "size": 1012,
+      "sha256": "fb96acd01ba331362ae556294093c10946992f70ef4c5465650f0c49409134cf"
+    },
+    {
+      "path": "scripts/mission/effects/add_mission_failure_reason_effect.gd",
+      "size": 630,
+      "sha256": "99e9f47b4688e2fa80c1e550e94dfd3d7a918c10179ac77561b1e7b7598e2cc4"
+    },
+    {
+      "path": "scripts/mission/effects/add_mission_instance_effect.gd",
+      "size": 698,
+      "sha256": "4bb9b1f21d50ef34b4c72e14a6e84af4d0e139ce5f8a3b09e66fcfea6ef0aaad"
+    },
+    {
+      "path": "scripts/mission/effects/advance_objective_effect.gd",
+      "size": 1349,
+      "sha256": "fe5808661cba2a7786e0fcab99af2dea132a759f75082c69f22ae2256b8a159c"
+    },
+    {
+      "path": "scripts/mission/effects/modify_campaign_month_effect.gd",
+      "size": 795,
+      "sha256": "74f3cf9b44ec9a10fd4495329033df89c2c0088a3ffadb1f8f6b60890de18ac8"
+    },
+    {
+      "path": "scripts/mission/effects/modify_resource_effect.gd",
+      "size": 1480,
+      "sha256": "76d8f170f0e1b2adfda1404b72fd71ea7e562e95e722c56cb58452234944cb92"
+    },
+    {
+      "path": "scripts/mission/effects/restore_mission_checkpoint_effect.gd",
+      "size": 1220,
+      "sha256": "4eb93ac91fcea7f3356aa73a991a97d501612c4b133410fe43ca8b5d3310a5ef"
+    },
+    {
+      "path": "scripts/mission/effects/select_mission_path_effect.gd",
+      "size": 1070,
+      "sha256": "8a891d8c41c31de47962efcb8f28e1c7445cd7369b396f76b5280d68fab5fc60"
+    },
+    {
+      "path": "scripts/mission/effects/set_flag_effect.gd",
+      "size": 531,
+      "sha256": "9ba726dfec4edc8d818cc9bead44c0735a6f80ea52f3ceafd94e919bd98333f0"
+    },
+    {
+      "path": "scripts/mission/effects/set_mission_pause_effect.gd",
+      "size": 2004,
+      "sha256": "8c1282687111486c56eca98487838ac805b1bbfff5d78194e61164ee57a53f91"
+    },
+    {
+      "path": "scripts/mission/effects/set_mission_phase_effect.gd",
+      "size": 1524,
+      "sha256": "c466a71ead6981f566a0c566b03f5e473d1e848c513b6727bf223233f88d10f5"
+    },
+    {
+      "path": "scripts/mission/effects/set_mission_status_effect.gd",
+      "size": 3632,
+      "sha256": "9fe952039c3dec6eb6baace12c56b33fc7193d1dd9e6dc1e805d6037f7366875"
+    },
+    {
+      "path": "scripts/mission/mission_definition.gd",
+      "size": 12176,
+      "sha256": "8b3f077ffe2855ba132fb81c4c765d6961151331485006f9fcb1fca56d2ff632"
+    },
+    {
+      "path": "scripts/mission/mission_instance_state.gd",
+      "size": 8304,
+      "sha256": "2c5c6b58c01391d1bfeb3d67e5b528a596069c9ba10683da47a12a98681bf018"
+    },
+    {
+      "path": "scripts/mission/mission_outcome_evaluator.gd",
+      "size": 1726,
+      "sha256": "1233e4a406f52721febf2f0c08cfa1b3e5677fb1252e9ea1d62bd099725277ca"
+    },
+    {
+      "path": "scripts/mission/mission_progress_planner.gd",
+      "size": 3540,
+      "sha256": "4333b104e8d3cc81e7c66be2835caca1acacb5dfb2600fe41b81065d419436d0"
+    },
+    {
+      "path": "scripts/mission/mission_registry.gd",
+      "size": 2483,
+      "sha256": "ea7120fdbbf17a2ac23c0c8e61e671248a37876d35fb023a13a3adafa20d5442"
+    },
+    {
+      "path": "scripts/mission/mission_rules.gd",
+      "size": 7823,
+      "sha256": "a0d449e85c3dfe313d5efbaed9e47e32991b5f4fb437449014101283c615f8a5"
+    },
+    {
+      "path": "scripts/mission/mission_status.gd",
+      "size": 792,
+      "sha256": "7969a896663df9673d7eaa0e3148a4ffb12b6058b0b670c0b1d6b1080e9e3eef"
+    },
+    {
+      "path": "scripts/save/save_service.gd",
+      "size": 3795,
+      "sha256": "69a54e549232bb1c2bf77328bad928e3bf90395769295720bf31ef0237275c39"
+    },
+    {
+      "path": "scripts/tests/headless_test_runner.gd",
+      "size": 780,
+      "sha256": "8c26c65bdece87abd5c3743f8e13c62957ce7d259de4bb3e193be55b8c7410eb"
+    },
+    {
+      "path": "scripts/tests/iteration_c_test_runner.gd",
+      "size": 5803,
+      "sha256": "b34aee2d5151f0282c85dd42dbdf417999b58366afa315919d3a890b9a092348"
+    },
+    {
+      "path": "scripts/tests/mission_mass_simulator.gd",
+      "size": 2794,
+      "sha256": "60321cab4164dbb335001126876a04a4516a0f91e68e07231d5c8ef5178039c9"
+    },
+    {
+      "path": "scripts/tests/test_runner.gd",
+      "size": 12172,
+      "sha256": "5411a9c5d97a794f057a09a8a6995cc32841a7b70b1bb3d9984fe4db03c38c31"
+    },
+    {
+      "path": "scripts/ui/main.gd",
+      "size": 8631,
+      "sha256": "d85900f0ce1750e36922df56b321ae1948516ca20238782a2311a74d700db0e8"
+    },
+    {
+      "path": "start.sh",
+      "size": 1234,
+      "sha256": "70b7b3a2c8ec250b1030f1710a4e298883d5826a3f56095ebd2357dd8c653966"
+    },
+    {
+      "path": "test.sh",
+      "size": 712,
+      "sha256": "d5acd3e751292a4bbf275b6a3f4675b73c1012f89e04a6a847b17f07d270448e"
+    },
+    {
+      "path": "tools/build_manifest.py",
+      "size": 1210,
+      "sha256": "016d6aa49d59cb4ac50f0aeb75b7644fd00dee8a70d2e1ca74d925c6635768ea"
+    },
+    {
+      "path": "tools/verify_package.py",
+      "size": 8636,
+      "sha256": "d9321192f4b04feb5a4d333673115fddaf4631bda90113e9eb117dab8ee89bb7"
+    },
+    {
+      "path": "verify.sh",
+      "size": 585,
+      "sha256": "f5f0d11b4ce1c870d5524d1905b5b9d70c264dc693c02876a888e5d9b7bb8f89"
+    }
+  ]
 }
