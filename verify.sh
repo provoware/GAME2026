@@ -18,3 +18,5 @@ fi
 
 python3 tools/build_manifest.py
 python3 tools/verify_package.py
+python3 tools/verify_world.py
+python3 -m unittest discover -s tools/tests -p 'test_*.py' -v

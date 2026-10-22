@@ -2,6 +2,8 @@
 
 ## Unveröffentlicht
 
+- WORLD-01: statische Weltgraphprüfung (IDs, Kanten, Startort, gerichtete Erreichbarkeit, Voraussetzungen), zehn Python-Regressionsfälle und verbindliches CI-Gate ergänzt; keine Änderung an Spielständen oder Reisekommandos.
+
 - Kollisionen einer Transaktions-ID zwischen unterschiedlichen Commands werden abgewiesen
 - Verifikation prüft Python und `jsonschema` vor der Manifest-Erzeugung und nennt den Installationsbefehl
 - Regressionstest für kollidierende Transaktions-IDs ergänzt
