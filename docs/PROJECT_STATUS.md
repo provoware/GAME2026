@@ -41,7 +41,8 @@
 - Manifest mit SHA-256-Prüfsummen;
 - GDScript-Linting und optionale Formatierung;
 - automatische ZIP-Erstellung;
-- semantische Missionsgraphprüfung.
+- semantische Missionsgraphprüfung;
+- statische Weltgraph- und Erreichbarkeitsprüfung mit zehn Negativ-/Positivtests (noch keine spielbare Reise).
 
 ## Noch nicht implementiert
 
