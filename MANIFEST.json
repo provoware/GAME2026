@@ -9,8 +9,8 @@
     },
     {
       "path": ".github/workflows/validate.yml",
-      "size": 785,
-      "sha256": "419e9cb77dcefd0c13d0040843637571deae110aef5bd8018cfd0085d1f10779"
+      "size": 695,
+      "sha256": "12a2ec8061bf726141d8ab269bf3f1ba24b6099148bc33bd6b146d1dd3ff5c8b"
     },
     {
       "path": ".gitignore",
@@ -19,13 +19,13 @@
     },
     {
       "path": "AGENTS.md",
-      "size": 1615,
-      "sha256": "08ca91adf570099612f0ea0993b9f24dbdd045e4a70f0ee04d208dcbad715ebb"
+      "size": 3575,
+      "sha256": "828e81afe506662669a527027f8bda856ac6d5e12dd39f63c5f1927a0d794e80"
     },
     {
       "path": "CHANGELOG.md",
-      "size": 2279,
-      "sha256": "cd074c1370a7639d56cc3ad073314608c1aa3f8cec5978f79b068237ed6dac12"
+      "size": 2509,
+      "sha256": "a5ec08cbb6a01eb8ad5cb7bf784ecfa1d44035f17000f1035b49af7fe18b8c0c"
     },
     {
       "path": "CONTRIBUTING.md",
@@ -79,8 +79,8 @@
     },
     {
       "path": "docs/PROJECT_STATUS.md",
-      "size": 2320,
-      "sha256": "5872f704be6f981de7d8b59f1f6f7ee0b1cc29f893911119ae64fd6c8e76c1bb"
+      "size": 2432,
+      "sha256": "592212adcb086cf9e8d5fed94c1b08764cc0fe31dc602e0a7baa124cf5a69e39"
     },
     {
       "path": "docs/RELEASE_PROCESS.md",
@@ -96,6 +96,11 @@
       "path": "docs/TESTING.md",
       "size": 2527,
       "sha256": "2c311c4ce2e5ccafae8807ec5fc243457dd8eba06692cedbb24fd628369f6df5"
+    },
+    {
+      "path": "docs/VORRELEASE_PFLICHTMATRIX.md",
+      "size": 8257,
+      "sha256": "8974b9c3b2b4b3d90b1062bde3cddc1b817d7a22ec0726b9a3e18dadcc167720"
     },
     {
       "path": "gdlintrc",
@@ -358,14 +363,29 @@
       "sha256": "016d6aa49d59cb4ac50f0aeb75b7644fd00dee8a70d2e1ca74d925c6635768ea"
     },
     {
+      "path": "tools/tests/test_manifest_integrity.py",
+      "size": 2902,
+      "sha256": "16d8429b5571914cc0699bc20601d1b66ef5c690fad16837448ef04ed6dc8ab9"
+    },
+    {
+      "path": "tools/tests/test_verify_world.py",
+      "size": 2806,
+      "sha256": "46838d0f04235ca1d00806a9b02b3ccf2e20dd0d56ca72fb56439f2e47e3ac38"
+    },
+    {
       "path": "tools/verify_package.py",
       "size": 8636,
       "sha256": "d9321192f4b04feb5a4d333673115fddaf4631bda90113e9eb117dab8ee89bb7"
     },
     {
+      "path": "tools/verify_world.py",
+      "size": 4302,
+      "sha256": "b448cb823c413f4e78e4386310f646f6beb97faa0cf89385c6945a911527fdaf"
+    },
+    {
       "path": "verify.sh",
-      "size": 585,
-      "sha256": "f5f0d11b4ce1c870d5524d1905b5b9d70c264dc693c02876a888e5d9b7bb8f89"
+      "size": 645,
+      "sha256": "20f59864fb225dab31fceeb3f17f80b2d3dddb410c1ad9fb03e7fb6fbb36443f"
     }
   ]
 }

@@ -26,9 +26,6 @@ jobs:
       - name: Check shell syntax
         run: bash -n start.sh test.sh verify.sh package.sh
 
-      - name: Rebuild deterministic manifest
-        run: python tools/build_manifest.py
-
       - name: Validate package
         run: ./verify.sh
 
