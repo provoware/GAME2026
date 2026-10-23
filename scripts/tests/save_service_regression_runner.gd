@@ -34,9 +34,9 @@ class BackupRestoreFailureService:
 	extends SaveService
 
 	func _rename_file(source: String, destination: String) -> Error:
-		if (source.ends_with(".json") and destination.ends_with(".bak")) or (
-			source.ends_with(".bak.previous") and destination.ends_with(".bak"
-		):
+		if source.ends_with(".json") and destination.ends_with(".bak"):
+			return ERR_CANT_CREATE
+		if source.ends_with(".bak.previous") and destination.ends_with(".bak"):
 			return ERR_CANT_CREATE
 		return super._rename_file(source, destination)
 
@@ -45,9 +45,9 @@ class FailedRollbackService:
 	extends SaveService
 
 	func _rename_file(source: String, destination: String) -> Error:
-		if (source.ends_with(".tmp") or source.ends_with(".bak")) and (
-			destination.ends_with(".json")
-		):
+		if source.ends_with(".tmp") and destination.ends_with(".json"):
+			return ERR_CANT_CREATE
+		if source.ends_with(".bak") and destination.ends_with(".json"):
 			return ERR_CANT_CREATE
 		return super._rename_file(source, destination)
 
@@ -201,9 +201,10 @@ func _test_failed_current_backup() -> GameResult:
 		result = _expect_amount(path, 900)
 	if result.ok:
 		result = _expect_amount("%s.bak" % path, 1000)
-	if result.ok and (FileAccess.file_exists("%s.tmp" % path) or
-			FileAccess.file_exists("%s.bak.previous" % path)):
-		result = _failure("TEST-SAVE-016", "Rücknahme hinterließ eine Zwischenstufe.")
+	if result.ok and FileAccess.file_exists("%s.tmp" % path):
+		result = _failure("TEST-SAVE-016", "Temporäre Datei blieb nach Rücknahme liegen.")
+	if result.ok and FileAccess.file_exists("%s.bak.previous" % path):
+		result = _failure("TEST-SAVE-016", "Stufendatei blieb nach Rücknahme liegen.")
 	_cleanup(path)
 	return result
 
