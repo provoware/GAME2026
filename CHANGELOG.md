@@ -57,3 +57,9 @@
 - Missionsstart, Fortschritt, Abschluss und Belohnungen implementiert
 - atomare Save-/Load-Funktion ergänzt
 - vertikalen Missionstest und Selbsttests hinzugefügt
+
+## Unreleased – SAV-04 Recovery-Diagnose (24.10.2026)
+
+- Lesende Prüfung der vier Recovery-Kandidaten mit Validitätsstatus und Hinweis auf manuelle Entscheidung; niemals automatische Aktivierung.
+- Sechs isolierte Godot-Regressionen für unterbrochene Rotation, defekte Haupt-/Temporärdateien, verwaiste Sicherungen und leere Fälle.
+- Testminimum auf 33 Engine-Tests erhöht. P0-SAV-04 bleibt bis zu Unterbrechungs-, Plattform- und Migrationsnachweisen offen.

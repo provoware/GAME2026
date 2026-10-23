@@ -24,8 +24,8 @@
     },
     {
       "path": "CHANGELOG.md",
-      "size": 3682,
-      "sha256": "4fef50f18b41a4db8c70e5824149a1c9a823a120fc3b7406ad4a9518f9d89d7c"
+      "size": 4149,
+      "sha256": "7b3358ee709f21014c98b9c554c7d57f863a418681c543a717a4afa3c46e0e72"
     },
     {
       "path": "CONTRIBUTING.md",
@@ -34,8 +34,8 @@
     },
     {
       "path": "README.md",
-      "size": 3655,
-      "sha256": "ecc323440a3739dfeadf0910ebffd90031bca131c8606e97e2382149a83adfa6"
+      "size": 3771,
+      "sha256": "a2139b4c6f7edc6e4372ecd3eeba537822ac271f822fb54d6f125da0d6c9a8a8"
     },
     {
       "path": "content/missions/mission_neon_signal_9909.json",
@@ -79,8 +79,8 @@
     },
     {
       "path": "docs/PROJECT_STATUS.md",
-      "size": 5182,
-      "sha256": "615b1656e60cc57a3893418a1cd9ffb0ca6e226bf0fc39787a725785b1cc92fa"
+      "size": 5758,
+      "sha256": "8d01e029e6aa43132f4f30a38e0261c49d6511bd5e4ed1e75575c4ef13a2f50c"
     },
     {
       "path": "docs/RELEASE_PROCESS.md",
@@ -91,6 +91,11 @@
       "path": "docs/SAVE_BACKUP_SAFETY_GATE_20261023.md",
       "size": 9090,
       "sha256": "48851d824ab9c380ca1ca165ba4242766c930dff678ad023a7874ce1645a8256"
+    },
+    {
+      "path": "docs/SAVE_RECOVERY_INSPECTION_20261024.md",
+      "size": 2537,
+      "sha256": "98351ca9ac20fb71a55e0ffbb8662722e1f7c029700c02a176dd88e24a819deb"
     },
     {
       "path": "docs/SECURITY_AND_DATA.md",
@@ -104,8 +109,8 @@
     },
     {
       "path": "docs/VORRELEASE_PFLICHTMATRIX.md",
-      "size": 12875,
-      "sha256": "cc73f1306b31347f2d3f0fa72f559a1daf4e8dbc63bd32337bb5b459b6c5ff1e"
+      "size": 13627,
+      "sha256": "173026beb125b4c6c12579e0a7f2bba991f991c02060b59e6d0e003d1fc2db9e"
     },
     {
       "path": "gdlintrc",
@@ -323,14 +328,19 @@
       "sha256": "7969a896663df9673d7eaa0e3148a4ffb12b6058b0b670c0b1d6b1080e9e3eef"
     },
     {
+      "path": "scripts/save/recovery_inspector.gd",
+      "size": 1582,
+      "sha256": "84d260c9fb962a7387be0585c654a1cd6191407acb01d271832b277b78449aa7"
+    },
+    {
       "path": "scripts/save/save_service.gd",
       "size": 7926,
       "sha256": "e815c710d078590bd510026a3d7c3c1d7047ecde57968b951b88ef31d778542f"
     },
     {
       "path": "scripts/tests/headless_test_runner.gd",
-      "size": 827,
-      "sha256": "dcfabf8c6b26461be4486521c1ea63be72555d2d6a9f944a6477956ac6a44fd9"
+      "size": 878,
+      "sha256": "85af199dc57f4e3dbf4b90b81bb72dafc6d98daac7c6a0cfdb86d2db1aa91a67"
     },
     {
       "path": "scripts/tests/iteration_c_test_runner.gd",
@@ -341,6 +351,11 @@
       "path": "scripts/tests/mission_mass_simulator.gd",
       "size": 2794,
       "sha256": "60321cab4164dbb335001126876a04a4516a0f91e68e07231d5c8ef5178039c9"
+    },
+    {
+      "path": "scripts/tests/recovery_inspector_test_runner.gd",
+      "size": 7095,
+      "sha256": "dd7c2440baa14e7a6ebe073b88ab63dbe601940efbfe1444b4216599753e39a2"
     },
     {
       "path": "scripts/tests/save_service_regression_runner.gd",
@@ -365,7 +380,7 @@
     {
       "path": "test.sh",
       "size": 1697,
-      "sha256": "5ea76d48c1c48dca6e2ebbd3b57aefdf4af95c7ec073ead64c6dbed4777af39d"
+      "sha256": "0a779b49e4fa4ada3b2c5d96032c235e308256b314ec0faad6a6c593a4e45cab"
     },
     {
       "path": "tools/build_manifest.py",

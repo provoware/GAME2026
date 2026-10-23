@@ -98,3 +98,7 @@ Auf `agent/prerelease-sav04-rollback-20261023-2033` ist die Rücknahme so angepa
 ### Verifizierter Zwischenstand – 23.10.2026, 20:37 MESZ
 
 Am Code-HEAD `1356e4811a1a7436dee6e9cebd1bc6f62cb2a0e1` bestanden **27/27 Godot-4.6-Tests** und **23/23 Python-Tests** samt Manifest-/GDScript-Prüfung (https://github.com/provoware/GAME2026/actions/runs/40004794570). Die Rücknahme schützt den letzten gültigen Hauptstand auch bei fehlgeschlagener Wiederherstellung. Dies ist ein **Teilnachweis**, kein vollständiger SAV-04- oder Vorrelease-Abschluss. Nachfolgende reine Dokumentationsänderungen benötigen eigene CI. Nächste Pflichtarbeit: isolierte Kurzschreib-/Unterbrechungs-/Recovery- und Migrationsprüfungen.
+
+## SAV-04 – Lesende Recovery-Diagnose (24.10.2026)
+
+Sechs isolierte Engine-Regressionen und eine schreibfreie Diagnose für Hauptstand, `.bak`, `.bak.previous` und `.tmp` sind auf getrenntem Entwicklungszweig implementiert. Keine automatische Wiederherstellung; `.tmp` ist niemals eine bestätigte Speicherung. **Status bis zur tatsächlichen GitHub-CI: UNGEPRUEFT.** P0-SAV-04 und alle Gesamtgates bleiben ROT. Details: `docs/SAVE_RECOVERY_INSPECTION_20261024.md`. Nächster Schritt: CI-Auswertung, anschließend isolierte Kurzschreib-/Stromausfall- und Migrationsfälle.

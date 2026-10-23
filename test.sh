@@ -44,7 +44,7 @@ if [[ ! "$passed" =~ ^[0-9]+$ || ! "$total" =~ ^[0-9]+$ ]]; then
   echo "[Tests][FEHLER] Ungültige Testzahlen." >&2
   exit 1
 fi
-if (( total < 27 || passed != total )); then
-  echo "[Tests][FEHLER] Unvollständige Suite: $passed/$total (mindestens 27 erwartet)." >&2
+if (( total < 33 || passed != total )); then
+  echo "[Tests][FEHLER] Unvollständige Suite: $passed/$total (mindestens 33 erwartet)." >&2
   exit 1
 fi

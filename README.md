@@ -13,6 +13,7 @@ Professionelles Godot-Grundprojekt für die schrittweise, testbare Umsetzung des
 - autoritativer `GameSessionState`
 - idempotente Transaktionen gegen Doppelbuchungen
 - atomarer JSON-Speicherstand mit SHA-256-Prüfsumme
+- lesende Wiederherstellungsdiagnose für Hauptstand, Sicherungen und Zwischenstände (ohne automatische Reparatur)
 - Migration des Zustandsformats von Version 1 auf Version 2
 
 ### MISSION-01 · Iteration A und B
