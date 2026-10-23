@@ -1,6 +1,6 @@
 # GAME2026 – Verbindliche Vorrelease-Pflichtmatrix
 
-**Basis:** `main` `de351d56ca848b1fb8b668a311017663078642bc`, geprüft am 23.10.2026. **Arbeitszweig:** `agent/prerelease-manifest-integrity-20261023-0029`. Die 44 Anforderungen stammen aus dem geschlossenen, nicht gemergten PR #8 und wurden gegen den aktuellen Hauptzweig abgeglichen. Keine Top-5-Repositories betroffen.
+**Basis:** `main` `de351d56ca848b1fb8b668a311017663078642bc`, geprüft am 23.10.2026. **Arbeitszweig (aktuell):** `agent/prerelease-sav04-rotation-20261023-1037`, aufgebaut auf dem Manifest- und SAV-04-Dokumentationszweig. Die 44 Anforderungen stammen aus dem geschlossenen, nicht gemergten PR #8 und wurden gegen den aktuellen Hauptzweig abgeglichen. Keine Top-5-Repositories betroffen.
 
 **Status:** CODE = Funktion vorhanden, aber noch nicht insgesamt freigegeben; OFFEN = fehlende Implementierung oder Nachweise; P0-OFFEN = kritisches Risiko; BLOCKED = technische Blockade; ZURUECKGESTELLT = persönliche Endabnahme erst nach vollständiger technischer Prüfung und Kandidaten-Freeze. Kein Gesamt-Release-Gate ist PASS.
 
@@ -25,7 +25,7 @@
 | SAV-01 | Atomarer Speicherstand und SHA-256 | scripts/save/save_service.gd | CODE | Abbruch, volle Platte, Rechte |
 | SAV-02 | Save-v1/v2/v3-Migration | scripts/core/game_session_state.gd | CODE | Echte Altversionen testen |
 | SAV-03 | Kaputtes JSON/Prüfsumme ablehnen | scripts/save/save_service.gd | CODE | Keine Datenänderung bei Fehler |
-| SAV-04 | Sicherung und Wiederherstellung | scripts/save/save_service.gd | P0-OFFEN | Vorhandene .bak wird vor Aktivierung gelöscht; Recovery- und Fehlertests fehlen |
+| SAV-04 | Sicherung und Wiederherstellung | scripts/save/save_service.gd | P0-CODE-UNGEPRUEFT | Sicherungsrotation auf Arbeitszweig korrigiert; sechs statische und sechs Godot-Regressionsfälle integriert, echte Godot-/Recovery-Tests fehlen |
 | UI-01 | Missionstracker-Graybox | scenes/main/main.tscn | CODE | Godot-Bedienprüfung |
 | UI-02 | 800x600 bei 175–200 Prozent | docs/TESTING.md | OFFEN | Automatisierte Clipping-Prüfung |
 | UI-03 | Tastatur, Fokus und Mausfreiheit | scripts/ui/main.gd | OFFEN | Fokusfolge und Shortcuts |
@@ -56,7 +56,7 @@
 - `main` `de351d56ca848b1fb8b668a311017663078642bc` hatte am 22.10.2026 einen erfolgreichen GitHub-Actions-Lauf: https://github.com/provoware/GAME2026/actions/runs/39863874960 . **Das alte Manifest-Gate war trotzdem nicht aussagekräftig**, weil `verify.sh` und CI das Manifest unmittelbar vor seiner Kontrolle neu erzeugten.
 - Vor dem Paket erfasste `MANIFEST.json` nur 73 statt 75 vorhandener versionierter Dateien. Außerdem waren Prüfsummen von `AGENTS.md`, `CHANGELOG.md`, `docs/PROJECT_STATUS.md` und `verify.sh` veraltet. Die beiden Weltprüfdateien fehlten vollständig.
 - `tools/verify_world.py` und zehn Weltgraph-Regressionstests liegen auf `main`. Statische Erreichbarkeit beweist noch keine spielbare Reise.
-- **P0-Speicherverlust:** `scripts/save/save_service.gd` entfernt eine vorhandene Sicherung vor Abschluss des neuen Speichervorgangs. Sicherungsschutz in isoliertem Testbereich korrigieren und Schreib-/Umbenennungsfehler gezielt simulieren; niemals echte Spielstände als Testdaten verwenden.
+- **P0-Speicherverlust:** Auf `main` wird eine vorhandene Sicherung vor Abschluss des neuen Speichervorgangs entfernt. Auf dem getrennten SAV-04-Arbeitszweig ist eine Schutzkorrektur mit sechs neuen Godot-Tests implementiert, aber mangels Godot-4.6-Laufzeit **nicht freigegeben**. Weitere Fehler-Injektion und Recovery-Prüfungen fehlen; niemals echte Spielstände als Testdaten verwenden.
 - Godot-4.6-Lauf, Missions- und Kampagnenverläufe, Save-/Load-/Migrationstests, 800×600, hohe Skalierung, Tastatur, Balance, Leistung und Erscheinungsbild sind nicht vollständig nachgewiesen.
 - `docs/PROJECT_STATUS.md` nennt Version 0.3.0, `tools/build_manifest.py` noch 0.2.0. Vor Release angleichen.
 
@@ -66,4 +66,4 @@
 2. GitHub-CI auf dem neuen Commit vollständig auswerten; ein früherer grüner Lauf zählt nicht als Nachweis für diesen Commit.
 3. Danach P0-Speicher-Backup mit Fehler-Injektion absichern und WORLD-01-Reise, Ressourcen, Zeit, Missionstrigger, Positionszustand und Save-Roundtrip über Commands und Effects umsetzen.
 
-**Freigabe: ROT (0/44 vollständig abgeschlossene Release-Pflichten).** Kein Merge und kein Release. Persönliche Kubuntu-/Sichtabnahme ausschließlich am eingefrorenen Vorrelease-Kandidaten.
+**Freigabe: ROT (0/44 vollständig abgeschlossene Release-Pflichten; SAV-04-Code nicht runtime-geprüft).** Kein Merge und kein Release. Persönliche Kubuntu-/Sichtabnahme ausschließlich am eingefrorenen Vorrelease-Kandidaten.
