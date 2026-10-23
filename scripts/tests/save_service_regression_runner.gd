@@ -28,6 +28,7 @@ func run_all() -> Dictionary:
 		["Unterbrochene Rotation wird nicht überschrieben", _test_stale_stage],
 		["Vorhandene tmp-Datei wird nicht überschrieben", _test_stale_tmp],
 		["Verwaiste Sicherung wird nicht überschrieben", _test_orphan_backup],
+		["JSON-Ganzzahlen und Bruchwerte bleiben erhalten", _test_json_number_types],
 	]
 	var passed := 0
 	var failures: Array[String] = []
@@ -148,6 +149,29 @@ func _test_orphan_backup() -> GameResult:
 	_cleanup(path)
 	return result
 
+
+
+func _test_json_number_types() -> GameResult:
+	var path := _new_path()
+	var state := GameSessionState.new()
+	state.resources["resource.money"] = 900
+	state.journal.append({"type": "test_metric", "value": 0.75})
+	var service := SaveService.new()
+	var result := service.save_to_path(path, state)
+	if result.ok:
+		var load_result := service.load_from_path(path)
+		if not load_result.ok:
+			result = load_result
+		else:
+			var restored: GameSessionState = load_result.value
+			if typeof(restored.resources["resource.money"]) != TYPE_INT:
+				result = _failure("TEST-SAVE-012", "Ganzzahliger Ressourcenwert wurde zum float.")
+			elif typeof(restored.journal[0]["value"]) != TYPE_FLOAT:
+				result = _failure("TEST-SAVE-013", "Bruchwert wurde fälschlich zu int.")
+			elif restored.journal[0]["value"] != 0.75:
+				result = _failure("TEST-SAVE-014", "Bruchwert wurde verändert.")
+	_cleanup(path)
+	return result
 
 func _new_path() -> String:
 	var folder := "user://_prerelease_save_tests"
