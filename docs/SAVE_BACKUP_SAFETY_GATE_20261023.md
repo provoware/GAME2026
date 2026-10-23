@@ -59,3 +59,19 @@
 **PASS (eingeschränkter Umfang):** https://github.com/provoware/GAME2026/actions/runs/39963911354 am Code-HEAD `1044716b07ae2352749d9c9b35b53c972199a4a1`. Offizielle Godot 4.6-stable geprüft; Projektimport fehlerfrei; 23/23 Engine-Selbsttests einschließlich sieben Save-Regressionen und 23/23 Python-Tests erfolgreich. Ein realer JSON-Ganzzahl-Roundtrip-Fehler wurde dadurch entdeckt und behoben. 
 
 **NICHT FREIGEGEBEN:** SAVE-T01/T02/T05/T06/T08 besitzen jetzt Teilnachweise, aber die zwölf vollständigen Sicherheitsfälle sind nicht geschlossen. Insbesondere Kurzschreiben, fehlgeschlagene Rücknahme, Stromausfall, Save-v1/v2/v3, Windows-Dateisystem und Grenzen großer Zahlen bleiben offen. Kein produktiver Spielstand wurde als Testdatensatz verwendet. **SAV-04 P0 bleibt offen.**
+
+## SAV-04 – Rücknahme-Fehler-Injektion (23.10.2026, 20:33 MESZ)
+
+**Arbeitszweig:** `agent/prerelease-sav04-rollback-20261023-2033`, Ausgangs-HEAD `f095970a158ea64628fa3334de6d4643d5ad0aa6` (PR #13). Keine echten Spielstände betroffen.
+
+**Prüfhypothese (Quellcodebefund):** Scheitert die Rücknahme `.bak -> Hauptstand` nach fehlgeschlagener Aktivierung, darf `.bak.previous -> .bak` nicht mehr ausgeführt werden. Andernfalls kann die ältere Sicherung den letzten gültigen Hauptstand in `.bak` ersetzen. Der Zweig enthält eine Schutzbedingung und einen gezielten Negativtest.
+
+**Neu registrierte Engine-Regressionen (bis zum CI-Lauf UNGEPRUEFT):**
+- SAVE-T05: Fehler beim Verschieben des aktuellen Hauptstands nach `.bak`; ältere Sicherung muss unverändert zurückkehren.
+- SAVE-T07a: Rücknahme der alten Sicherung scheitert; `.bak.previous` bleibt unverändert erhalten und der Fehler wird gesondert gemeldet.
+- SAVE-T07b: Aktivierung und Hauptstand-Rücknahme scheitern; `.bak` muss den zuletzt gültigen Hauptstand und `.bak.previous` die ältere Sicherung enthalten. Kein stilles Überschreiben.
+- SAVE-T09: Manipulierte SHA-256-Prüfsumme wird beim Laden abgelehnt, ohne die bestehende Sicherung zu verändern.
+
+**CI-Gate:** `test.sh` verlangt mindestens **27/27** registrierte Godot-Tests. Der frühere Nachweis von 23/23 auf PR #13 gilt nur für dessen HEAD. Ergebnisse des neuen Zweigs erst nach tatsächlichem GitHub-Actions-Lauf als PASS/FAIL bewerten.
+
+**Weiterhin P0-OFFEN:** unvollständiges Schreiben/Datenträgerfehler, tatsächliche Unterbrechung an jeder Umbenennungsgrenze, automatisierte nicht destruktive Recovery-Anleitung, Save-v1/v2/v3, große Zahlen und Windows-Semantik. Kein Merge, kein Release.
