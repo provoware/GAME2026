@@ -93,3 +93,23 @@ Ein Fachmodul gilt als stabil, wenn:
 - Tastaturbedienung geprüft ist;
 - keine offene kritische technische Schuld besteht;
 - Performancebudget eingehalten oder begründet angepasst wurde.
+
+## 8. Reproduzierbare Godot-4.6-Laufzeitprüfung (23.10.2026)
+
+Der zusätzliche GitHub-Actions-Auftrag `godot-headless` lädt die offizielle Linux-x86_64-Ausgabe von Godot **4.6-stable** aus `godotengine/godot-builds` und prüft das ZIP vor der Ausführung gegen die feste SHA-256-Prüfsumme `6bcc59dfd1d670e918c77eae06e82b9dc5699de13d353dc3a4b3b6b307b6dc06`. Ohne passende Prüfsumme wird abgebrochen; kein Download wird ungeprüft ausgeführt. Anschließend werden der Projektimport und `./test.sh` als echte Engine-Laufzeittests ausgeführt.
+
+Lokal: Eine vertrauenswürdig installierte Godot-4.6-Binärdatei unter `tools/godot` ablegen oder `godot4`/`godot` im Suchpfad bereitstellen; dann `./test.sh` ausführen. Die Engine ist eine offen dokumentierte Entwicklungs-/CI-Voraussetzung, keine Laufzeit-Cloudabhängigkeit des Spiels. Die Tests verwenden ausschließlich `user://_prerelease_save_tests` und dürfen keine persönlichen Spielstände verändern. **Die Einrichtung des Prüfauftrags ist noch kein PASS der Godot-Tests; das Ergebnis des konkreten CI-Commits ist separat auszuwerten.**
+
+Noch offen: gezielte Schreibfehler, Stromausfall-Recovery, Save-Migrationen v1/v2/v3, Windows-Dateisystem, vollständige Spielverläufe, Grafik-/Tastaturtests bei 800×600 und 200 % sowie Performance- und Stabilitätsmessungen.
+
+### Befund aus dem ersten echten Engine-Lauf (23.10.2026)
+
+**REPRODUCED:** Godot 4.6-stable führte erstmals die gesamte Headless-Suite aus: 21/22 bestanden, `TEST-ERR-024` (Save-/Load-Roundtrip) fehlgeschlagen; Nachweis: https://github.com/provoware/GAME2026/actions/runs/39962933988 . Die Laufzeitdiagnose zeigte, dass der JSON-Parser Ganzzahlen als `float` wiederherstellt und dadurch Ressourcen, Missionsfortschritt, Journal und Transaktionshistorie ihre numerischen Typen verlieren. Die Korrektur stellt exakt darstellbare Ganzzahlen rekursiv wieder her und erhält Bruchwerte. Ein zusätzlicher Godot-Negativ-/Positivtest prüft beide Typen. **Der korrigierte Stand ist erst nach erfolgreicher neuer CI als PASS zu bewerten.** Weiter offen: Überlauf-/Präzisionsgrenzen, Dateisystemfehler und Recovery.
+
+### Schutz vor falsch-grüner Godot-CI (23.10.2026)
+
+Beim ersten Korrekturversuch meldete Godot einen GDScript-Typfehler in `save_service.gd` und weitere Laufzeitfehler. Trotzdem endete der Prozess mit Exitcode 0 und meldete irreführend `[Tests] 4/4 bestanden`; der CI-Auftrag erschien grün: https://github.com/provoware/GAME2026/actions/runs/39963412124 . **Das ist kein gültiger PASS.** Die Ursache wurde im Quelltext korrigiert (expliziter Dictionary-Typ). Der Teststarter lehnt jetzt Script-/Laufzeitfehler, fehlende Zusammenfassungen, unvollständige Testzahlen (<23) und Fehlschläge ausdrücklich ab. Der Godot-Projektimport kontrolliert seine Fehlerausgabe ebenfalls. Der nachfolgende Commit muss beide CI-Aufträge erfolgreich durchlaufen, bevor ein Nachweis gilt.
+
+### Verifizierter Headless-Lauf (23.10.2026, 15:46 MESZ)
+
+**PASS am Commit `1044716b07ae2352749d9c9b35b53c972199a4a1`:** https://github.com/provoware/GAME2026/actions/runs/39963911354 . Godot 4.6-stable (SHA-256 geprüft), fehlerfreier Projektimport und 23/23 echte Godot-Selbsttests. Zusätzlich 23/23 Python-Tests, GDScript-/Shell-Syntax, JSON-Schemas, Manifest und Referenzprüfung erfolgreich. Die neu eingeführte Teststarter-Prüfung verlangt mindestens 23 Tests und weist Script-/Laufzeitfehler zurück. Dies bestätigt die vorhandene Testauswahl, **nicht** alle Release-Pflichten.

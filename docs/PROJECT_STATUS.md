@@ -85,3 +85,7 @@ Die Werte beschreiben den gesamten Weg bis zu einem getesteten Release und nicht
 - Karten-Graybox mit tastaturbedienbarer Ortsauswahl;
 - positive und negative Routentests;
 - Save-/Load-Roundtrip für Weltzustände.
+
+## Verifizierter QA-05-Zwischenstand (23.10.2026)
+
+Auf getrenntem Entwicklungszweig `agent/prerelease-godot46-runtime-20261023-1535` wurde die echte Godot-4.6-Laufzeitprüfung eingeführt. Der erste Lauf entdeckte eine numerische Typveränderung beim Laden von JSON-Spielständen; die Korrektur und ein zusätzlicher Regressionstest sind am Commit `1044716b07ae2352749d9c9b35b53c972199a4a1` erfolgreich geprüft: https://github.com/provoware/GAME2026/actions/runs/39963911354 (**23/23 Godot, 23/23 Python, beide CI-Aufträge PASS**). Die CI erkennt nun auch Godot-Scriptfehler trotz Exitcode 0. **Kein Vorrelease-Kandidat:** SAV-04-Fehlerfälle, Weltreise, vollständige Kampagne, 800×600/Skalierung, Tastatur, Performance, Windows und Release-Freeze sind offen. Nächste Umsetzung: kontrollierte Save-Fehler-Injektion und nicht destruktive Wiederherstellung.

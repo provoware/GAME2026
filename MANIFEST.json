@@ -9,8 +9,8 @@
     },
     {
       "path": ".github/workflows/validate.yml",
-      "size": 695,
-      "sha256": "12a2ec8061bf726141d8ab269bf3f1ba24b6099148bc33bd6b146d1dd3ff5c8b"
+      "size": 1987,
+      "sha256": "8cfb0e32dab81060b9530358e079c191b1d4f428fb71d82519fc9d426fec277b"
     },
     {
       "path": ".gitignore",
@@ -24,8 +24,8 @@
     },
     {
       "path": "CHANGELOG.md",
-      "size": 2788,
-      "sha256": "21a0aa46d8a85f52dc6be2cb9ccf3427ac5f695e413423470807ccd7dc13461c"
+      "size": 3406,
+      "sha256": "18a1e5d37331940a96512fbd9c0b14cd0598d8c067fc656c45012d8164eaddbf"
     },
     {
       "path": "CONTRIBUTING.md",
@@ -34,8 +34,8 @@
     },
     {
       "path": "README.md",
-      "size": 3586,
-      "sha256": "633a626fe55feee32866173292ca3b8fd1ae06e000059341518271c9be993ee2"
+      "size": 3655,
+      "sha256": "ecc323440a3739dfeadf0910ebffd90031bca131c8606e97e2382149a83adfa6"
     },
     {
       "path": "content/missions/mission_neon_signal_9909.json",
@@ -79,8 +79,8 @@
     },
     {
       "path": "docs/PROJECT_STATUS.md",
-      "size": 2929,
-      "sha256": "2afc3330acf6e7cc1f58c3f1975be841e87566728a5ef22e8b872abee5271d84"
+      "size": 3791,
+      "sha256": "9600df8e75a16387cd89a13eb6b396476bec620257b4cbd3a7afd5195ec36e01"
     },
     {
       "path": "docs/RELEASE_PROCESS.md",
@@ -89,8 +89,8 @@
     },
     {
       "path": "docs/SAVE_BACKUP_SAFETY_GATE_20261023.md",
-      "size": 4831,
-      "sha256": "f7ea24e0f2283344323e3462d56b06739c895ea8fbdc6714c31d79a32b914682"
+      "size": 6655,
+      "sha256": "b4243ea046a97b8861fb363704819f4395e9b135ab6a63f6e40657023363df6b"
     },
     {
       "path": "docs/SECURITY_AND_DATA.md",
@@ -99,13 +99,13 @@
     },
     {
       "path": "docs/TESTING.md",
-      "size": 2527,
-      "sha256": "2c311c4ce2e5ccafae8807ec5fc243457dd8eba06692cedbb24fd628369f6df5"
+      "size": 6033,
+      "sha256": "2be6969757123c56ca92c0d7cf641bcb6da228d18c3ab0d7e20a5de418b57d7b"
     },
     {
       "path": "docs/VORRELEASE_PFLICHTMATRIX.md",
-      "size": 8530,
-      "sha256": "4b418f13cc5d5c65941d0c9bfac66fb44313e331f8b688ce4da76bad48c8b6bd"
+      "size": 11269,
+      "sha256": "4d663453f75f25c774a43675b5b8aa98a5af7b57e245ce1d165fc462818ce117"
     },
     {
       "path": "gdlintrc",
@@ -324,8 +324,8 @@
     },
     {
       "path": "scripts/save/save_service.gd",
-      "size": 6600,
-      "sha256": "b532e1ec4c3ced7e8890914f04dc6977caf60ef4123e30a81db350c0ad9398e7"
+      "size": 7708,
+      "sha256": "66779253fadfc19be3cccbffe08e88d41f15507c44882caa21e857d8bc10596d"
     },
     {
       "path": "scripts/tests/headless_test_runner.gd",
@@ -344,13 +344,13 @@
     },
     {
       "path": "scripts/tests/save_service_regression_runner.gd",
-      "size": 6611,
-      "sha256": "238d29cbdf6329e222e1a9d25f8545c68e38553e0b25a208347796faedb7f81d"
+      "size": 7599,
+      "sha256": "8ef9fd83b58bd25424bab28ea4335096a28b363b65b0d28f44e0681228104c33"
     },
     {
       "path": "scripts/tests/test_runner.gd",
-      "size": 12172,
-      "sha256": "5411a9c5d97a794f057a09a8a6995cc32841a7b70b1bb3d9984fe4db03c38c31"
+      "size": 12497,
+      "sha256": "bcf17d199e10832c303ad32dd27d26712dd2aefffd7b33bc64d98fe13ea50571"
     },
     {
       "path": "scripts/ui/main.gd",
@@ -364,8 +364,8 @@
     },
     {
       "path": "test.sh",
-      "size": 712,
-      "sha256": "d5acd3e751292a4bbf275b6a3f4675b73c1012f89e04a6a847b17f07d270448e"
+      "size": 1697,
+      "sha256": "6fe263dac898914ea3ced9f4ebb8d7fe201de7573f8ace463407f11e2e625d8c"
     },
     {
       "path": "tools/build_manifest.py",

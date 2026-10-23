@@ -202,7 +202,32 @@ func load_from_path(path: String) -> GameResult:
 		)
 
 	var state := GameSessionState.new()
-	var restore_result := state.restore_from_dict(state_parser.data as Dictionary)
+	# Godot-JSON liest Ganzzahlen als float; ohne Normalisierung ändern sich
+	# Ressourcen, Missionsfortschritt und Journaleinträge beim Roundtrip.
+	var normalized_state: Dictionary = _normalize_json_integral_numbers(state_parser.data) as Dictionary
+	var restore_result := state.restore_from_dict(normalized_state as Dictionary)
 	if not restore_result.ok:
 		return restore_result
 	return GameResult.success(state)
+
+
+# JSON kennt keinen separaten Ganzzahltyp. Nur exakt darstellbare, ganze
+# Zahlen konvertieren; echte Bruchwerte (z. B. Qualitätsgrade) bleiben float.
+# Außerhalb des exakten IEEE-754-Bereichs ist die Präzision nicht garantiert;
+# die Grenzprüfung ist vor einer vollständigen Save-Freigabe zu ergänzen.
+func _normalize_json_integral_numbers(value: Variant) -> Variant:
+	if value is Dictionary:
+		var normalized: Dictionary = {}
+		for key in value:
+			normalized[key] = _normalize_json_integral_numbers(value[key])
+		return normalized
+	if value is Array:
+		var normalized: Array = []
+		for item in value:
+			normalized.append(_normalize_json_integral_numbers(item))
+		return normalized
+	if typeof(value) == TYPE_FLOAT:
+		var number: float = value
+		if absf(number) <= 9007199254740991.0 and number == floorf(number):
+			return int(number)
+	return value

@@ -49,7 +49,7 @@ chmod +x test.sh verify.sh
 ./test.sh
 ```
 
-- `verify.sh` erneuert das deterministische Manifest und prüft GDScript, JSON-Schema, Missionsgraphen, IDs, Ressourcenpfade und Prüfsummen.
+- `verify.sh` prüft das gespeicherte Manifest **ohne es zu verändern** sowie GDScript, JSON-Schema, Missionsgraphen, IDs, Ressourcenpfade und Prüfsummen. Nur `tools/build_manifest.py` erzeugt es bewusst neu.
 - `test.sh` führt die Godot-Selbsttests aus, sobald eine Godot-4-Binärdatei verfügbar ist.
 
 ## Paket erzeugen

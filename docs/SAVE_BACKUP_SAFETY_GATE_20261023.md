@@ -47,3 +47,15 @@
 **Offene Nachweise:** simulierte Kurzschreibvorgänge, fehlgeschlagene Rücknahme, Stromausfall an allen Umbenennungsgrenzen, Migrationen v1/v2/v3, Windows/Linux-Dateisystemsemantik, tatsächlicher Godot-4.6-Lauf, vollständige CI, Testpaket. Diese Fälle müssen vor Freigabe durch weitere automatisierte Tests abgedeckt werden.
 
 **Nächste Implementierung:** gezielte Fehler-Injektion bei allen Umbenennungsgrenzen und nicht destruktiver Recovery-Assistent; erst danach Save-Roundtrip und Weltreise integrieren. Persönliche Endabnahme ausschließlich am eingefrorenen Kandidaten.
+
+## Laufzeit-Nachweisauftrag – 23.10.2026, 15:35 MESZ
+
+**Änderung:** Der getrennte Entwicklungszweig `agent/prerelease-godot46-runtime-20261023-1535` ergänzt einen GitHub-CI-Auftrag für Godot 4.6-stable mit fester SHA-256-Prüfsumme. Der Projektimport und die sechs bereits registrierten SAV-04-Regressionen sollen damit erstmals in der echten Engine laufen. **Status zunächst IN PRUEFUNG, nicht PASS.** Kein Spielstand außerhalb des isolierten Testverzeichnisses wird als Testziel verwendet. Die zwölf SAVE-T01 bis SAVE-T12 bleiben bis zu ihrem jeweils vollständigen Nachweis offen; insbesondere Fehler-Injektion, Recovery nach Unterbrechung und Windows bleiben ungeprüft.
+
+**Nachfolge:** CI-Protokoll zum HEAD dokumentieren; bei Fehlern Tests oder Produktcode auf dem Entwicklungszweig korrigieren. Danach Save-v1/v2/v3-Migration und Rücknahmefehler unter kontrollierter Fehler-Injektion testen. Kein Merge, kein Release, keine persönliche Abnahme.
+
+## Tatsächlich ausgeführte Godot-Tests – 23.10.2026, 15:46 MESZ
+
+**PASS (eingeschränkter Umfang):** https://github.com/provoware/GAME2026/actions/runs/39963911354 am Code-HEAD `1044716b07ae2352749d9c9b35b53c972199a4a1`. Offizielle Godot 4.6-stable geprüft; Projektimport fehlerfrei; 23/23 Engine-Selbsttests einschließlich sieben Save-Regressionen und 23/23 Python-Tests erfolgreich. Ein realer JSON-Ganzzahl-Roundtrip-Fehler wurde dadurch entdeckt und behoben. 
+
+**NICHT FREIGEGEBEN:** SAVE-T01/T02/T05/T06/T08 besitzen jetzt Teilnachweise, aber die zwölf vollständigen Sicherheitsfälle sind nicht geschlossen. Insbesondere Kurzschreiben, fehlgeschlagene Rücknahme, Stromausfall, Save-v1/v2/v3, Windows-Dateisystem und Grenzen großer Zahlen bleiben offen. Kein produktiver Spielstand wurde als Testdatensatz verwendet. **SAV-04 P0 bleibt offen.**
