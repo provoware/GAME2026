@@ -89,3 +89,8 @@
 - **QA-05:** Der bisherige Nachweis 23/23 bezieht sich ausschließlich auf PR #13. Für den neuen Zweig gilt ein verschärftes Minimum von 27 Tests; Ergebnis bis zur tatsächlichen CI **UNGEPRUEFT**.
 - **Traceability:** Ausgangs-HEAD `f095970a158ea64628fa3334de6d4643d5ad0aa6` → `scripts/save/save_service.gd` + `scripts/tests/save_service_regression_runner.gd` → `test.sh` → GitHub-CI am endgültigen Commit.
 - **BLOCKS:** SAVE-T04/T10/T11/T12 und sämtliche technischen Vorrelease-Gesamtgates. **NEXT:** CI am neuen HEAD, dann isolierte Unterbrechungs-/Recovery-Tests; kein Merge/Release.
+
+
+### Evidenznachtrag – 23.10.2026, 20:37 MESZ
+
+**SAV-04 Teilnachweis PASS:** Auf Code-HEAD `1356e4811a1a7436dee6e9cebd1bc6f62cb2a0e1` bestanden 27/27 Godot-4.6-Laufzeittests (einschließlich vier zusätzlicher Rücknahme-/SHA-Negativfälle) sowie 23/23 Python-Tests und Manifestprüfung: https://github.com/provoware/GAME2026/actions/runs/40004794570 . **Gesamt-SAV-04 bleibt P0-OFFEN**, da Kurzschreib-, Stromausfall-/Recovery-, Migrations- und Windows-Fälle fehlen. **QA-05:** Laufzeit-Testinfrastruktur und registrierte 27 Fälle am angegebenen Code-HEAD PASS. Alle anderen Pflichtmatrix-Status unverändert. Dokumentationsfolgecommits müssen am finalen HEAD neu geprüft werden.
