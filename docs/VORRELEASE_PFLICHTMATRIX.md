@@ -43,7 +43,7 @@
 | QA-02 | Balance und Missbrauchsversuche | docs/TESTING.md | OFFEN | Reproduzierbare Seeds |
 | QA-03 | Leistung, Speicher und Stabilität | docs/TESTING.md | OFFEN | Budgets und Belastungstest |
 | QA-04 | Python, Shell, JSON, GDScript, CI | .github/workflows/validate.yml | CODE | CI zuletzt grün, aber Manifest wurde vorher neu erzeugt; Gate nach Korrektur prüfen |
-| QA-05 | Godot 4.6 Headless-Selbsttests | test.sh | BLOCKED | Godot-4.6-Binärdatei nötig |
+| QA-05 | Godot 4.6 Headless-Selbsttests | test.sh / .github/workflows/validate.yml | IN_PRUEFUNG | Neuer CI-Auftrag mit SHA-256-verifizierter Godot 4.6; tatsächliche CI-Tests und Fehlermeldungen noch auswerten |
 | QA-06 | Negativ- und Regressionstests | tools/tests/test_verify_world.py | CODE | Zehn Weltgraph-Regressionstests vorhanden; weitere Fachtests fehlen |
 | OPS-01 | Linux/Windows-Start und Offlinebetrieb | start.sh | OFFEN | Frischinstallation, Start |
 | OPS-02 | ZIP, Manifest, Prüfsummen | package.sh | CODE | Manifest darf vor Prüfung nicht neu erzeugt werden; ZIP-Roundtrip fehlt |
@@ -67,3 +67,9 @@
 3. Danach P0-Speicher-Backup mit Fehler-Injektion absichern und WORLD-01-Reise, Ressourcen, Zeit, Missionstrigger, Positionszustand und Save-Roundtrip über Commands und Effects umsetzen.
 
 **Freigabe: ROT (0/44 vollständig abgeschlossene Release-Pflichten; SAV-04-Code nicht runtime-geprüft).** Kein Merge und kein Release. Persönliche Kubuntu-/Sichtabnahme ausschließlich am eingefrorenen Vorrelease-Kandidaten.
+
+## Technischer Nachtrag – 23.10.2026, 15:35 MESZ
+
+- **QA-05 / SAV-04:** Godot-4.6-Laufzeitprüfung auf separatem Zweig `agent/prerelease-godot46-runtime-20261023-1535` ergänzt. SHA-256-verifizierte Engine-Binärdatei, Projektimport und `./test.sh` sind als CI-Schritte definiert. Erst die tatsächlichen Ergebnisse am neuen HEAD dürfen als PASS/FAIL bezeichnet werden.
+- **SAV-04 bleibt P0-CODE-UNGEPRUEFT**, bis die sechs vorhandenen Regressionen und alle zwölf Sicherheitsfälle nachgewiesen sind. Die CI-Einrichtung allein ist keine Freigabe.
+- **Unabhängig offen:** WORLD-01, vollständige Missionen und Kampagne, 800×600/Skalierung, Tastatur, Speicherung/Migration, Performance, Startbarkeit, Release-Freeze. Keine persönliche Endabnahme vor den technischen Gates.

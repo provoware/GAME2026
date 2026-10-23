@@ -2,6 +2,8 @@
 
 ## Unveröffentlicht
 
+- QA-05: GitHub-Actions-Godot-4.6-Headless-Prüfung mit fest verifizierter offizieller Engine, Projektimport und `./test.sh` ergänzt; tatsächliche Laufzeitergebnisse bleiben separat nachzuweisen.
+
 - SAV-04 (Entwicklungszweig): nicht destruktive Sicherungsrotation mit Kollisionsschutz, temporärer Schreibprüfung, Fehler-Rücknahme und sechs Godot-Regressionsfällen sowie sechs statischen Quelltextverträgen ergänzt; Godot-Laufzeit- und Recovery-Abnahme stehen noch aus.
 
 - WORLD-01: statische Weltgraphprüfung (IDs, Kanten, Startort, gerichtete Erreichbarkeit, Voraussetzungen), zehn Python-Regressionsfälle und verbindliches CI-Gate ergänzt; keine Änderung an Spielständen oder Reisekommandos.

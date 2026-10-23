@@ -93,3 +93,11 @@ Ein Fachmodul gilt als stabil, wenn:
 - Tastaturbedienung geprüft ist;
 - keine offene kritische technische Schuld besteht;
 - Performancebudget eingehalten oder begründet angepasst wurde.
+
+## 8. Reproduzierbare Godot-4.6-Laufzeitprüfung (23.10.2026)
+
+Der zusätzliche GitHub-Actions-Auftrag `godot-headless` lädt die offizielle Linux-x86_64-Ausgabe von Godot **4.6-stable** aus `godotengine/godot-builds` und prüft das ZIP vor der Ausführung gegen die feste SHA-256-Prüfsumme `6bcc59dfd1d670e918c77eae06e82b9dc5699de13d353dc3a4b3b6b307b6dc06`. Ohne passende Prüfsumme wird abgebrochen; kein Download wird ungeprüft ausgeführt. Anschließend werden der Projektimport und `./test.sh` als echte Engine-Laufzeittests ausgeführt.
+
+Lokal: Eine vertrauenswürdig installierte Godot-4.6-Binärdatei unter `tools/godot` ablegen oder `godot4`/`godot` im Suchpfad bereitstellen; dann `./test.sh` ausführen. Die Engine ist eine offen dokumentierte Entwicklungs-/CI-Voraussetzung, keine Laufzeit-Cloudabhängigkeit des Spiels. Die Tests verwenden ausschließlich `user://_prerelease_save_tests` und dürfen keine persönlichen Spielstände verändern. **Die Einrichtung des Prüfauftrags ist noch kein PASS der Godot-Tests; das Ergebnis des konkreten CI-Commits ist separat auszuwerten.**
+
+Noch offen: gezielte Schreibfehler, Stromausfall-Recovery, Save-Migrationen v1/v2/v3, Windows-Dateisystem, vollständige Spielverläufe, Grafik-/Tastaturtests bei 800×600 und 200 % sowie Performance- und Stabilitätsmessungen.

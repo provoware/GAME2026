@@ -9,8 +9,8 @@
     },
     {
       "path": ".github/workflows/validate.yml",
-      "size": 695,
-      "sha256": "12a2ec8061bf726141d8ab269bf3f1ba24b6099148bc33bd6b146d1dd3ff5c8b"
+      "size": 1677,
+      "sha256": "8a150aabbc933b941c8785e00533877ec9a26781d4e87cf90b3e45dea220c6ab"
     },
     {
       "path": ".gitignore",
@@ -24,8 +24,8 @@
     },
     {
       "path": "CHANGELOG.md",
-      "size": 2788,
-      "sha256": "21a0aa46d8a85f52dc6be2cb9ccf3427ac5f695e413423470807ccd7dc13461c"
+      "size": 2987,
+      "sha256": "0ab9bbb76ceac0365941a875a9235a615342b067d00402ee4d9b1abc54d70203"
     },
     {
       "path": "CONTRIBUTING.md",
@@ -89,8 +89,8 @@
     },
     {
       "path": "docs/SAVE_BACKUP_SAFETY_GATE_20261023.md",
-      "size": 4831,
-      "sha256": "f7ea24e0f2283344323e3462d56b06739c895ea8fbdc6714c31d79a32b914682"
+      "size": 5794,
+      "sha256": "ddecb45b7634282ec1ae8a8b2f154901f2e5051385a32a5bd6c5786c7113811c"
     },
     {
       "path": "docs/SECURITY_AND_DATA.md",
@@ -99,13 +99,13 @@
     },
     {
       "path": "docs/TESTING.md",
-      "size": 2527,
-      "sha256": "2c311c4ce2e5ccafae8807ec5fc243457dd8eba06692cedbb24fd628369f6df5"
+      "size": 3854,
+      "sha256": "6f3a6d16a16cf1df1b38958aedc6f59f164c35511cfbdcdc6fb10bb576df5cda"
     },
     {
       "path": "docs/VORRELEASE_PFLICHTMATRIX.md",
-      "size": 8530,
-      "sha256": "4b418f13cc5d5c65941d0c9bfac66fb44313e331f8b688ce4da76bad48c8b6bd"
+      "size": 9429,
+      "sha256": "661f4dde03132e98827210ebb01b997dfd7aa3835db970f9e4d1bcaa74064d07"
     },
     {
       "path": "gdlintrc",

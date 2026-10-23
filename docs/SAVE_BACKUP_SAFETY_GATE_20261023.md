@@ -47,3 +47,9 @@
 **Offene Nachweise:** simulierte Kurzschreibvorgänge, fehlgeschlagene Rücknahme, Stromausfall an allen Umbenennungsgrenzen, Migrationen v1/v2/v3, Windows/Linux-Dateisystemsemantik, tatsächlicher Godot-4.6-Lauf, vollständige CI, Testpaket. Diese Fälle müssen vor Freigabe durch weitere automatisierte Tests abgedeckt werden.
 
 **Nächste Implementierung:** gezielte Fehler-Injektion bei allen Umbenennungsgrenzen und nicht destruktiver Recovery-Assistent; erst danach Save-Roundtrip und Weltreise integrieren. Persönliche Endabnahme ausschließlich am eingefrorenen Kandidaten.
+
+## Laufzeit-Nachweisauftrag – 23.10.2026, 15:35 MESZ
+
+**Änderung:** Der getrennte Entwicklungszweig `agent/prerelease-godot46-runtime-20261023-1535` ergänzt einen GitHub-CI-Auftrag für Godot 4.6-stable mit fester SHA-256-Prüfsumme. Der Projektimport und die sechs bereits registrierten SAV-04-Regressionen sollen damit erstmals in der echten Engine laufen. **Status zunächst IN PRUEFUNG, nicht PASS.** Kein Spielstand außerhalb des isolierten Testverzeichnisses wird als Testziel verwendet. Die zwölf SAVE-T01 bis SAVE-T12 bleiben bis zu ihrem jeweils vollständigen Nachweis offen; insbesondere Fehler-Injektion, Recovery nach Unterbrechung und Windows bleiben ungeprüft.
+
+**Nachfolge:** CI-Protokoll zum HEAD dokumentieren; bei Fehlern Tests oder Produktcode auf dem Entwicklungszweig korrigieren. Danach Save-v1/v2/v3-Migration und Rücknahmefehler unter kontrollierter Fehler-Injektion testen. Kein Merge, kein Release, keine persönliche Abnahme.
