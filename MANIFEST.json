@@ -28,16 +28,6 @@
       "sha256": "a5ec08cbb6a01eb8ad5cb7bf784ecfa1d44035f17000f1035b49af7fe18b8c0c"
     },
     {
-      "path": "CONTRIBUTING.md",
-      "size": 2788,
-      "sha256": "f2d4ff88a15f54f6b9b992ad8bbb7e17c13f5ab6494120eadaf3861dee11ba16"
-    },
-    {
-      "path": "README.md",
-      "size": 3586,
-      "sha256": "633a626fe55feee32866173292ca3b8fd1ae06e000059341518271c9be993ee2"
-    },
-    {
       "path": "content/missions/mission_neon_signal_9909.json",
       "size": 4882,
       "sha256": "a49bc66fe7e0f18b7ee1ac0d1598993c0c82c3785cfd9c6450a5a1eca0923b8f"
@@ -46,6 +36,11 @@
       "path": "content/world/city_graph.json",
       "size": 3667,
       "sha256": "2948b6b438a84882fec86446f97c0c4585825e4e3dd0ec6a57ec7f0cb130cc3d"
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "size": 2788,
+      "sha256": "f2d4ff88a15f54f6b9b992ad8bbb7e17c13f5ab6494120eadaf3861dee11ba16"
     },
     {
       "path": "docs/ARCHITECTURE.md",
@@ -88,6 +83,11 @@
       "sha256": "9268a1f42dea3493a557d3c86ceed9120589ac612ea21cdff83acd461d2d8d7e"
     },
     {
+      "path": "docs/SAVE_BACKUP_SAFETY_GATE_20261023.md",
+      "size": 3699,
+      "sha256": "b7729e914d449373a6779295f21d3d3735261a6df5c4c557260c87b6c0a11244"
+    },
+    {
       "path": "docs/SECURITY_AND_DATA.md",
       "size": 1297,
       "sha256": "d98c0d8ba43e8fa8775f5b4793d0467cf4f01f0e83d434ce9055b820bca5d1db"
@@ -118,6 +118,11 @@
       "sha256": "ae05cb0f9e35f5f1320389371a9b20443eca900a5770716b32b2ac0340ff08ff"
     },
     {
+      "path": "README.md",
+      "size": 3586,
+      "sha256": "633a626fe55feee32866173292ca3b8fd1ae06e000059341518271c9be993ee2"
+    },
+    {
       "path": "scenes/main/main.tscn",
       "size": 3735,
       "sha256": "807e430af0cfdf222cf12a9eb9f3450d34d84b2b5c964ce677e4b8e157cea691"
@@ -138,14 +143,14 @@
       "sha256": "e0bad95180f4cc43857d2718518c49fb1c1f7b5497acb36a2d4dc0bb76d517d3"
     },
     {
-      "path": "scripts/core/domain_event.gd",
-      "size": 551,
-      "sha256": "1abeafef6578f79f10f9f0fc833f8e401287229c75b65e7bc25eccbd336c733e"
-    },
-    {
       "path": "scripts/core/domain_event_bus.gd",
       "size": 379,
       "sha256": "f8d773484fb0e61b1d46613e7f13af32d96b786bfd5efe4e430248465f12ac72"
+    },
+    {
+      "path": "scripts/core/domain_event.gd",
+      "size": 551,
+      "sha256": "1abeafef6578f79f10f9f0fc833f8e401287229c75b65e7bc25eccbd336c733e"
     },
     {
       "path": "scripts/core/effect_transaction.gd",
