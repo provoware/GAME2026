@@ -75,3 +75,8 @@
 **CI-Gate:** `test.sh` verlangt mindestens **27/27** registrierte Godot-Tests. Der frühere Nachweis von 23/23 auf PR #13 gilt nur für dessen HEAD. Ergebnisse des neuen Zweigs erst nach tatsächlichem GitHub-Actions-Lauf als PASS/FAIL bewerten.
 
 **Weiterhin P0-OFFEN:** unvollständiges Schreiben/Datenträgerfehler, tatsächliche Unterbrechung an jeder Umbenennungsgrenze, automatisierte nicht destruktive Recovery-Anleitung, Save-v1/v2/v3, große Zahlen und Windows-Semantik. Kein Merge, kein Release.
+
+
+### Verifizierter SAV-04-Codecheckpoint – 23.10.2026, 20:37 MESZ
+
+**PASS auf Code-HEAD `1356e4811a1a7436dee6e9cebd1bc6f62cb2a0e1`:** GitHub Actions https://github.com/provoware/GAME2026/actions/runs/40004794570 – Godot 4.6-stable **27/27 Engine-Tests**, Python **23/23 Tests**, GDScript/JSON/Shell/Manifest **PASS**. Die vier neuen Fehler-Injektionsfälle wurden tatsächlich ausgeführt. Die vorangegangene Syntaxstörung im Testcode wurde behoben; frühere fehlgeschlagene Zwischen-HEADs sind keine Freigaben. **SAV-04 bleibt P0-OFFEN** für Kurzschreiben, Stromausfall-/Recovery-Tests, Migration und Windows. Dokumentationsfolgecommits erfordern erneut eine grüne CI auf ihrem eigenen HEAD.
