@@ -94,3 +94,13 @@
 ### Evidenznachtrag – 23.10.2026, 20:37 MESZ
 
 **SAV-04 Teilnachweis PASS:** Auf Code-HEAD `1356e4811a1a7436dee6e9cebd1bc6f62cb2a0e1` bestanden 27/27 Godot-4.6-Laufzeittests (einschließlich vier zusätzlicher Rücknahme-/SHA-Negativfälle) sowie 23/23 Python-Tests und Manifestprüfung: https://github.com/provoware/GAME2026/actions/runs/40004794570 . **Gesamt-SAV-04 bleibt P0-OFFEN**, da Kurzschreib-, Stromausfall-/Recovery-, Migrations- und Windows-Fälle fehlen. **QA-05:** Laufzeit-Testinfrastruktur und registrierte 27 Fälle am angegebenen Code-HEAD PASS. Alle anderen Pflichtmatrix-Status unverändert. Dokumentationsfolgecommits müssen am finalen HEAD neu geprüft werden.
+
+## SAV-04 – Lesende Recovery-Diagnose (24.10.2026)
+
+**Ausgangs-HEAD:** `186b5cc18daa3cb34c2abb303494c13bf92ea9e0` (offener Entwurfs-PR #14). Neues, getrenntes Paket: `scripts/save/recovery_inspector.gd`, sechs isolierte Engine-Regressionen REC-T01 bis REC-T06 und Mindestgate **33** Engine-Tests. Hauptstand, `.bak`, `.bak.previous` und `.tmp` werden ohne Mutation geprüft; eine gültige `.tmp` wird nicht als bestätigter Stand empfohlen. **Vor CI: UNGEPRUEFT; SAV-04 P0-OFFEN; Vorrelease 1/44.** Die neue Diagnose ersetzt weder vollständige Stromausfall-/Dateisystemtests noch eine geprüfte Wiederherstellung oder Migration. Einzelheiten in `docs/SAVE_RECOVERY_INSPECTION_20261024.md`. Kein Merge/Release, persönliche Abnahme zurückgestellt.
+
+## Verifizierter Engine- und Integritätscheckpoint – 24.10.2026, 01:32 MESZ
+
+**Geprüfter Code-HEAD:** `c7a6e3eeecdb35ea38e43a85b057cbdb8bb672a0`. **GitHub Actions:** https://github.com/provoware/GAME2026/actions/runs/40040205415 (auch Push-Lauf 40040189820). `godot-headless` **PASS: 33/33 tatsächliche Godot-4.6-Laufzeittests**, darunter REC-T01 bis REC-T06; offizielles Godot-Archiv mit SHA-256 verifiziert, Projektimport und Fehlergate erfolgreich. `static-validation` **PASS: 23/23 Python-Regressionen**, Manifest, JSON, GDScript und Shell erfolgreich. GitHub-Laufprotokolle wurden ausgelesen.
+
+**Beweisgrenze:** Die sechs Recovery-Tests zeigen nur die schreibfreie Untersuchung isolierter Zustände, nicht physische Stromausfall- oder Windows-Recovery. **SAV-04 bleibt P0-OFFEN; Gesamt-Vorrelease ROT (1/44).** Dieser Nachtrag ist ein Dokumentationsfolgecommit; dessen endgültiger HEAD benötigt erneut grüne CI.
