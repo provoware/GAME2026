@@ -1,6 +1,6 @@
 # SAV-04 – Sicherungsrotation und Wiederherstellung (23.10.2026)
 
-**Basis:** `main` `de351d56ca848b1fb8b668a311017663078642bc`; abhängig vom offenen Entwurfs-PR #11 (`4d444bc75eb78b64d9be6e26d03c86b61466bd86`). **Status: P0-OFFEN / CODEÜBERTRAGUNG BLOCKED.** Keine Änderungen an echten Spielständen.
+**Basis:** `main` `de351d56ca848b1fb8b668a311017663078642bc`; abhängig vom offenen Entwurfs-PR #11 (`4d444bc75eb78b64d9be6e26d03c86b61466bd86`). **Status: CODE AUF GETRENNTEM ENTWICKLUNGSZWEIG; P0-NACHWEIS OFFEN.** Keine Änderungen an echten Spielständen.
 
 ## Bestätigter Befund
 
@@ -32,8 +32,18 @@
 | SAVE-T11 | Stromausfall an jeder Umbenennungsgrenze | Nachweisbar wiederherstellbarer letzter gültiger Stand | OFFEN (Recovery-Test) |
 | SAVE-T12 | Linux und Windows | Korrekte Umbenennungssemantik und Zugriffsfehler | OFFEN (Plattformtest) |
 
-## Umsetzung / Blockade
+## Umsetzung / Testnachweise (23.10.2026)
 
-Die Codeänderung zur nicht destruktiven Sicherungsrotation wurde am 23.10.2026 zur Übertragung versucht, jedoch durch eine Sicherheitsprüfung des Schreibwerkzeugs abgewiesen. **Kein Code-Commit und kein bestandener Godot-Test.** Ein eigenständiger lokaler Entwurf und vier statische Vertragsprüfungen liegen vor, ersetzen aber keine Godot-Laufzeitprüfung.
+**Arbeitszweig:** `agent/prerelease-sav04-rotation-20261023-1037` (auf `8d1cf5828e6072f0ec01493b7388dbea1bf8cdaf` aufgebaut, ohne Main-Merge). Die Sicherungsrotation ist als **unfreigegebene Codeänderung** integriert:
 
-**Nächster erlaubter Schritt:** Korrektur nach regulärer Freigabe des Schreibwegs übertragen, `test.sh` mit Godot 4.6 auf isolierten Testdaten ausführen, alle zwölf Fälle dokumentieren, Manifest bewusst neu berechnen, `verify.sh` ohne Manifeständerung ausführen und GitHub-CI am neuen SHA prüfen. Persönliche Endabnahme bleibt bis zum eingefrorenen Kandidaten zurückgestellt.
+- vorhandene `.tmp` und `.bak.previous` sowie verwaiste `.bak` blockieren eine neue Speicherung;
+- vor der Rotation wird die vollständig geschriebene `.tmp` mit dem erwarteten Inhalt verglichen;
+- vorhandene ältere Sicherungen werden bis zur erfolgreichen Aktivierung in `.bak.previous` erhalten;
+- Umbenennungsfehler lösen eine Rücknahme aus; Fehler der Rücknahme werden gesondert protokolliert;
+- ein gescheiterter Abschluss der Aufräumarbeiten belässt die ältere Sicherung und blockiert spätere Schreibvorgänge.
+
+**Prüfstatus:** Sechs neue statische Quelltextverträge und sechs registrierte Godot-Regressionsfälle (dreifache Rotation, Aktivierungsfehler, Sicherungsfehler, liegengebliebene Stufendatei, vorhandene tmp, verwaiste bak). **Statische Prüfungen nur nach tatsächlichem CI-Lauf PASS nennen.** Godot-4.6-Laufzeittests sind noch BLOCKED, weil die Engine in der lokalen Prüfumgebung fehlt; deshalb sind SAVE-T01 bis SAVE-T12 nicht als vollständig PASS markiert. Kein Test hat produktive Spielstände verändert.
+
+**Offene Nachweise:** simulierte Kurzschreibvorgänge, fehlgeschlagene Rücknahme, Stromausfall an allen Umbenennungsgrenzen, Migrationen v1/v2/v3, Windows/Linux-Dateisystemsemantik, tatsächlicher Godot-4.6-Lauf, vollständige CI, Testpaket. Diese Fälle müssen vor Freigabe durch weitere automatisierte Tests abgedeckt werden.
+
+**Nächste Implementierung:** gezielte Fehler-Injektion bei allen Umbenennungsgrenzen und nicht destruktiver Recovery-Assistent; erst danach Save-Roundtrip und Weltreise integrieren. Persönliche Endabnahme ausschließlich am eingefrorenen Kandidaten.
