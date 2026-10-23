@@ -79,8 +79,8 @@
     },
     {
       "path": "docs/PROJECT_STATUS.md",
-      "size": 4548,
-      "sha256": "d7433391c478f9975ade209119ddbb4bda24438ad36815810a27b1c4201ca95d"
+      "size": 5182,
+      "sha256": "615b1656e60cc57a3893418a1cd9ffb0ca6e226bf0fc39787a725785b1cc92fa"
     },
     {
       "path": "docs/RELEASE_PROCESS.md",
@@ -89,8 +89,8 @@
     },
     {
       "path": "docs/SAVE_BACKUP_SAFETY_GATE_20261023.md",
-      "size": 8389,
-      "sha256": "7e4ec460aeb25c827f49c6fb9ef91899d5bd53f8b1df2f8f3a10bb3d66a47e15"
+      "size": 9090,
+      "sha256": "48851d824ab9c380ca1ca165ba4242766c930dff678ad023a7874ce1645a8256"
     },
     {
       "path": "docs/SECURITY_AND_DATA.md",
@@ -104,8 +104,8 @@
     },
     {
       "path": "docs/VORRELEASE_PFLICHTMATRIX.md",
-      "size": 12187,
-      "sha256": "839ca0a09c3a8fe87fce7b3c779e269af09867a1a52e0f9661b10a9462f73cf1"
+      "size": 12875,
+      "sha256": "cc73f1306b31347f2d3f0fa72f559a1daf4e8dbc63bd32337bb5b459b6c5ff1e"
     },
     {
       "path": "gdlintrc",
