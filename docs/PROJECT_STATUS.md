@@ -44,6 +44,12 @@
 - semantische Missionsgraphprüfung;
 - statische Weltgraph- und Erreichbarkeitsprüfung mit zehn Negativ-/Positivtests (noch keine spielbare Reise).
 
+## Vorrelease – Sicherheitsarbeit (noch nicht freigegeben)
+
+- SAV-04: Sicherungsrotation auf separatem Arbeitszweig überarbeitet; alte Sicherungen und unklare Zwischenstände werden vor Überschreiben geschützt.
+- Sechs statische Quelltextverträge und sechs isolierte Godot-Tests sind eingebunden; Godot 4.6 und vollständige Stromausfall-/Recovery-Prüfung sind noch offen.
+- Release-Gate bleibt ROT; siehe `docs/SAVE_BACKUP_SAFETY_GATE_20261023.md` und `docs/VORRELEASE_PFLICHTMATRIX.md`.
+
 ## Noch nicht implementiert
 
 - Missionstransformationen und Folgeaufträge;

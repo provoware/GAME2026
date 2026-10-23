@@ -12,6 +12,7 @@ func _initialize() -> void:
 	var reports := [
 		TestRunner.new(registry).run_all(),
 		IterationCTestRunner.new(registry).run_all(),
+		SaveServiceRegressionRunner.new().run_all(),
 	]
 	var passed := 0
 	var total := 0
