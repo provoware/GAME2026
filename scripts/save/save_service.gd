@@ -108,7 +108,10 @@ func save_to_path(path: String, state: GameSessionState) -> GameResult:
 		var backup_restore_error := OK
 		if had_save:
 			save_restore_error = _rename_file(absolute_backup_path, absolute_path)
-			if had_backup:
+			# Falls die Wiederherstellung des Hauptstands fehlschlägt, enthält
+			# .bak weiterhin den letzten gültigen Hauptstand. Die ältere
+			# Sicherung darf diesen niemals überschreiben.
+			if had_backup and save_restore_error == OK:
 				backup_restore_error = _rename_file(
 					absolute_previous_backup_path, absolute_backup_path
 				)

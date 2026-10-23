@@ -89,3 +89,12 @@ Die Werte beschreiben den gesamten Weg bis zu einem getesteten Release und nicht
 ## Verifizierter QA-05-Zwischenstand (23.10.2026)
 
 Auf getrenntem Entwicklungszweig `agent/prerelease-godot46-runtime-20261023-1535` wurde die echte Godot-4.6-Laufzeitprüfung eingeführt. Der erste Lauf entdeckte eine numerische Typveränderung beim Laden von JSON-Spielständen; die Korrektur und ein zusätzlicher Regressionstest sind am Commit `1044716b07ae2352749d9c9b35b53c972199a4a1` erfolgreich geprüft: https://github.com/provoware/GAME2026/actions/runs/39963911354 (**23/23 Godot, 23/23 Python, beide CI-Aufträge PASS**). Die CI erkennt nun auch Godot-Scriptfehler trotz Exitcode 0. **Kein Vorrelease-Kandidat:** SAV-04-Fehlerfälle, Weltreise, vollständige Kampagne, 800×600/Skalierung, Tastatur, Performance, Windows und Release-Freeze sind offen. Nächste Umsetzung: kontrollierte Save-Fehler-Injektion und nicht destruktive Wiederherstellung.
+
+## SAV-04 – Rücknahme-Sicherheitsiteration (23.10.2026, 20:33 MESZ)
+
+Auf `agent/prerelease-sav04-rollback-20261023-2033` ist die Rücknahme so angepasst, dass ein fehlgeschlagenes Wiederherstellen des Hauptstands die ältere Sicherung nicht auf den noch gültigen `.bak`-Stand verschiebt. Vier zusätzliche isolierte Godot-Negativtests prüfen Umbenennungs- und Rücknahmefehler sowie die Ablehnung einer manipulierten Prüfsumme. Das Engine-Gate fordert nun mindestens 27 Tests. **Stand dieser Dokumentation: Implementierung vorhanden, CI am neuen HEAD noch ausstehend; SAV-04 und Gesamt-Vorrelease ROT.** Nächste Arbeit: vollständige GitHub-CI prüfen, danach Kurzschreib-/Stromausfall- und Migrationstests. Persönliche Endabnahme zurückgestellt.
+
+
+### Verifizierter Zwischenstand – 23.10.2026, 20:37 MESZ
+
+Am Code-HEAD `1356e4811a1a7436dee6e9cebd1bc6f62cb2a0e1` bestanden **27/27 Godot-4.6-Tests** und **23/23 Python-Tests** samt Manifest-/GDScript-Prüfung (https://github.com/provoware/GAME2026/actions/runs/40004794570). Die Rücknahme schützt den letzten gültigen Hauptstand auch bei fehlgeschlagener Wiederherstellung. Dies ist ein **Teilnachweis**, kein vollständiger SAV-04- oder Vorrelease-Abschluss. Nachfolgende reine Dokumentationsänderungen benötigen eigene CI. Nächste Pflichtarbeit: isolierte Kurzschreib-/Unterbrechungs-/Recovery- und Migrationsprüfungen.

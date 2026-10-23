@@ -24,8 +24,8 @@
     },
     {
       "path": "CHANGELOG.md",
-      "size": 3406,
-      "sha256": "18a1e5d37331940a96512fbd9c0b14cd0598d8c067fc656c45012d8164eaddbf"
+      "size": 3682,
+      "sha256": "4fef50f18b41a4db8c70e5824149a1c9a823a120fc3b7406ad4a9518f9d89d7c"
     },
     {
       "path": "CONTRIBUTING.md",
@@ -79,8 +79,8 @@
     },
     {
       "path": "docs/PROJECT_STATUS.md",
-      "size": 3791,
-      "sha256": "9600df8e75a16387cd89a13eb6b396476bec620257b4cbd3a7afd5195ec36e01"
+      "size": 5182,
+      "sha256": "615b1656e60cc57a3893418a1cd9ffb0ca6e226bf0fc39787a725785b1cc92fa"
     },
     {
       "path": "docs/RELEASE_PROCESS.md",
@@ -89,8 +89,8 @@
     },
     {
       "path": "docs/SAVE_BACKUP_SAFETY_GATE_20261023.md",
-      "size": 6655,
-      "sha256": "b4243ea046a97b8861fb363704819f4395e9b135ab6a63f6e40657023363df6b"
+      "size": 9090,
+      "sha256": "48851d824ab9c380ca1ca165ba4242766c930dff678ad023a7874ce1645a8256"
     },
     {
       "path": "docs/SECURITY_AND_DATA.md",
@@ -104,8 +104,8 @@
     },
     {
       "path": "docs/VORRELEASE_PFLICHTMATRIX.md",
-      "size": 11269,
-      "sha256": "4d663453f75f25c774a43675b5b8aa98a5af7b57e245ce1d165fc462818ce117"
+      "size": 12875,
+      "sha256": "cc73f1306b31347f2d3f0fa72f559a1daf4e8dbc63bd32337bb5b459b6c5ff1e"
     },
     {
       "path": "gdlintrc",
@@ -324,8 +324,8 @@
     },
     {
       "path": "scripts/save/save_service.gd",
-      "size": 7708,
-      "sha256": "66779253fadfc19be3cccbffe08e88d41f15507c44882caa21e857d8bc10596d"
+      "size": 7926,
+      "sha256": "e815c710d078590bd510026a3d7c3c1d7047ecde57968b951b88ef31d778542f"
     },
     {
       "path": "scripts/tests/headless_test_runner.gd",
@@ -344,8 +344,8 @@
     },
     {
       "path": "scripts/tests/save_service_regression_runner.gd",
-      "size": 7599,
-      "sha256": "8ef9fd83b58bd25424bab28ea4335096a28b363b65b0d28f44e0681228104c33"
+      "size": 13167,
+      "sha256": "cb2b01b926b7f71d553569c5869bc2ece35eae333b243475ba9bf068ec83cfeb"
     },
     {
       "path": "scripts/tests/test_runner.gd",
@@ -365,7 +365,7 @@
     {
       "path": "test.sh",
       "size": 1697,
-      "sha256": "6fe263dac898914ea3ced9f4ebb8d7fe201de7573f8ace463407f11e2e625d8c"
+      "sha256": "5ea76d48c1c48dca6e2ebbd3b57aefdf4af95c7ec073ead64c6dbed4777af39d"
     },
     {
       "path": "tools/build_manifest.py",

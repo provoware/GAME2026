@@ -82,3 +82,15 @@
 - **Kritischer Befund behoben:** JSON-Parser wandelte Ganzzahlen beim Laden in float um; dadurch schlug der Roundtrip fehl (21/22 auf Commit `d250b3f8983d7b453a136c018aa5f05812333c95`). Typnormalisierung und neuer Ganzzahl-/Bruchwert-Test sind nun tatsächlich grün. Ein zweiter Fehler ließ Scriptfehler mit Exitcode 0 fälschlich als grün erscheinen; Import- und Teststarter prüfen deshalb zusätzlich Fehlerausgabe und Mindesttestzahl.
 - **QA-05 (registrierte Godot-Selbsttests): PASS; Vorrelease-Gesamtstatus weiterhin ROT.** SAV-04 bleibt P0 bis zu Fehler-Injektion, Kurzschreib-/Stromausfall-/Recovery-Prüfung, Migrationsfällen und Windows-Vergleich. Alle anderen offenen Pflichtfunktionen und technische Oberflächen-/Gesamttests bleiben offen. Persönliche Endabnahme zurückgestellt.
 - **Nächster erlaubter Schritt:** SAVE-T03/T04/T07/T09/T10/T11 in isolierter Testumgebung mit reproduzierbaren Fehlern prüfen, danach WORLD-01-Reise und Save-Roundtrip. Kein Merge/Release.
+
+## SAV-04 – Ergänzender Pflichtnachweis (23.10.2026, 20:33 MESZ)
+
+- **SAV-04 bleibt P0-OFFEN:** Schutz gegen Verlust des letzten gültigen Hauptstands bei gleichzeitigem Aktivierungs- und Rücknahmefehler auf separatem Zweig implementiert; vier zusätzliche Engine-Negativfälle (SAVE-T05/T07a/T07b/T09) registriert.
+- **QA-05:** Der bisherige Nachweis 23/23 bezieht sich ausschließlich auf PR #13. Für den neuen Zweig gilt ein verschärftes Minimum von 27 Tests; Ergebnis bis zur tatsächlichen CI **UNGEPRUEFT**.
+- **Traceability:** Ausgangs-HEAD `f095970a158ea64628fa3334de6d4643d5ad0aa6` → `scripts/save/save_service.gd` + `scripts/tests/save_service_regression_runner.gd` → `test.sh` → GitHub-CI am endgültigen Commit.
+- **BLOCKS:** SAVE-T04/T10/T11/T12 und sämtliche technischen Vorrelease-Gesamtgates. **NEXT:** CI am neuen HEAD, dann isolierte Unterbrechungs-/Recovery-Tests; kein Merge/Release.
+
+
+### Evidenznachtrag – 23.10.2026, 20:37 MESZ
+
+**SAV-04 Teilnachweis PASS:** Auf Code-HEAD `1356e4811a1a7436dee6e9cebd1bc6f62cb2a0e1` bestanden 27/27 Godot-4.6-Laufzeittests (einschließlich vier zusätzlicher Rücknahme-/SHA-Negativfälle) sowie 23/23 Python-Tests und Manifestprüfung: https://github.com/provoware/GAME2026/actions/runs/40004794570 . **Gesamt-SAV-04 bleibt P0-OFFEN**, da Kurzschreib-, Stromausfall-/Recovery-, Migrations- und Windows-Fälle fehlen. **QA-05:** Laufzeit-Testinfrastruktur und registrierte 27 Fälle am angegebenen Code-HEAD PASS. Alle anderen Pflichtmatrix-Status unverändert. Dokumentationsfolgecommits müssen am finalen HEAD neu geprüft werden.
