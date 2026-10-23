@@ -324,7 +324,13 @@ func _test_save_load_roundtrip() -> GameResult:
 		return load_result
 
 	var loaded: GameSessionState = load_result.value
-	if loaded.to_dict() != state.to_dict():
+	var original_data := state.to_dict()
+	var loaded_data := loaded.to_dict()
+	if loaded_data != original_data:
+		for field in original_data:
+			if original_data[field] != loaded_data.get(field):
+				print("[SAVE-RTRIP] Feld ", field, " vorher=", var_to_str(original_data[field]))
+				print("[SAVE-RTRIP] Feld ", field, " nachher=", var_to_str(loaded_data.get(field)))
 		return _failure("TEST-ERR-024", "Geladener Zustand unterscheidet sich vom Original.")
 	return GameResult.success()
 

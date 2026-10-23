@@ -349,8 +349,8 @@
     },
     {
       "path": "scripts/tests/test_runner.gd",
-      "size": 12172,
-      "sha256": "5411a9c5d97a794f057a09a8a6995cc32841a7b70b1bb3d9984fe4db03c38c31"
+      "size": 12497,
+      "sha256": "bcf17d199e10832c303ad32dd27d26712dd2aefffd7b33bc64d98fe13ea50571"
     },
     {
       "path": "scripts/ui/main.gd",
