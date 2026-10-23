@@ -364,8 +364,8 @@
     },
     {
       "path": "test.sh",
-      "size": 1621,
-      "sha256": "e51eb93604ff0cb4d970600592f730e92493f1500da008544dea64e22d1ad2a0"
+      "size": 1697,
+      "sha256": "6fe263dac898914ea3ced9f4ebb8d7fe201de7573f8ace463407f11e2e625d8c"
     },
     {
       "path": "tools/build_manifest.py",
