@@ -2,6 +2,8 @@
 
 ## Unveröffentlicht
 
+- QA-05: falsch-grüne Godot-CI bei Script-Kompilierfehlern entdeckt; Import- und Teststarter-Gates gegen Fehlerausgaben und unvollständige Tests abgesichert.
+
 - SAV-04: Der erstmals tatsächlich ausgeführte Godot-4.6-Lauf entdeckte `TEST-ERR-024`: JSON-Integer wurden als float zurückgelesen. Typnormalisierung für exakt darstellbare Ganzzahlen und eigener Regressionstest ergänzt; CI-Nachprüfung erforderlich.
 
 - QA-05: GitHub-Actions-Godot-4.6-Headless-Prüfung mit fest verifizierter offizieller Engine, Projektimport und `./test.sh` ergänzt; tatsächliche Laufzeitergebnisse bleiben separat nachzuweisen.

@@ -204,7 +204,7 @@ func load_from_path(path: String) -> GameResult:
 	var state := GameSessionState.new()
 	# Godot-JSON liest Ganzzahlen als float; ohne Normalisierung ändern sich
 	# Ressourcen, Missionsfortschritt und Journaleinträge beim Roundtrip.
-	var normalized_state := _normalize_json_integral_numbers(state_parser.data)
+	var normalized_state: Dictionary = _normalize_json_integral_numbers(state_parser.data) as Dictionary
 	var restore_result := state.restore_from_dict(normalized_state as Dictionary)
 	if not restore_result.ok:
 		return restore_result

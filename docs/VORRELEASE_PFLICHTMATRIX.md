@@ -73,3 +73,5 @@
 - **QA-05 / SAV-04:** Godot-4.6-Laufzeitprüfung auf separatem Zweig `agent/prerelease-godot46-runtime-20261023-1535` ergänzt. SHA-256-verifizierte Engine-Binärdatei, Projektimport und `./test.sh` sind als CI-Schritte definiert. Erst die tatsächlichen Ergebnisse am neuen HEAD dürfen als PASS/FAIL bezeichnet werden.
 - **SAV-04 bleibt P0-CODE-UNGEPRUEFT**, bis die sechs vorhandenen Regressionen und alle zwölf Sicherheitsfälle nachgewiesen sind. Die CI-Einrichtung allein ist keine Freigabe.
 - **Unabhängig offen:** WORLD-01, vollständige Missionen und Kampagne, 800×600/Skalierung, Tastatur, Speicherung/Migration, Performance, Startbarkeit, Release-Freeze. Keine persönliche Endabnahme vor den technischen Gates.
+
+- **QA-05 Nachtrag:** Ein Godot-Importfehler kann bei Exitcode 0 fälschlich grüne CI erzeugen (reproduziert in Run 39963412124). Der neue `test.sh`-Gate prüft Fehlertexte und mindestens 23 vollständige Tests; der Import-Gate prüft Parse-/Ladefehler. Ein früherer grüner Lauf mit nur 4/4 zählt ausdrücklich **nicht** als PASS. Aktuelle CI erneut auswerten.

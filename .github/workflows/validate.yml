@@ -52,8 +52,15 @@ jobs:
           chmod +x tools/godot
           ./tools/godot --version
 
-      - name: Import Godot project
-        run: ./tools/godot --headless --path . --editor --import --quit
+      - name: Import Godot project and reject script errors
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          ./tools/godot --headless --path . --editor --import --quit 2>&1 | tee /tmp/godot-import.log
+          if grep -Eq 'SCRIPT ERROR:|ERROR: Failed to load script' /tmp/godot-import.log; then
+            echo "::error::Godot import reported script errors"
+            exit 1
+          fi
 
       - name: Run Godot regression suite
         run: ./test.sh

@@ -9,8 +9,8 @@
     },
     {
       "path": ".github/workflows/validate.yml",
-      "size": 1677,
-      "sha256": "8a150aabbc933b941c8785e00533877ec9a26781d4e87cf90b3e45dea220c6ab"
+      "size": 1987,
+      "sha256": "8cfb0e32dab81060b9530358e079c191b1d4f428fb71d82519fc9d426fec277b"
     },
     {
       "path": ".gitignore",
@@ -24,8 +24,8 @@
     },
     {
       "path": "CHANGELOG.md",
-      "size": 3245,
-      "sha256": "6f3f7eb915f648065f61559804cd10df90f005bbaf0ac179dc49f455db21c97c"
+      "size": 3406,
+      "sha256": "18a1e5d37331940a96512fbd9c0b14cd0598d8c067fc656c45012d8164eaddbf"
     },
     {
       "path": "CONTRIBUTING.md",
@@ -99,13 +99,13 @@
     },
     {
       "path": "docs/TESTING.md",
-      "size": 4665,
-      "sha256": "98a8a92273c76f6bac0b32f078a5b3361d39a140e120a2f9b1e5410434f5c7bd"
+      "size": 5443,
+      "sha256": "320b93ed85120283a1edb0b648ca978d13aeaf13abe44b17b0619f03dfb0086b"
     },
     {
       "path": "docs/VORRELEASE_PFLICHTMATRIX.md",
-      "size": 9429,
-      "sha256": "661f4dde03132e98827210ebb01b997dfd7aa3835db970f9e4d1bcaa74064d07"
+      "size": 9795,
+      "sha256": "66012c1399d2e06083396be53c14b9a6e36e91d27cd3bf3520a8591d0f0ba983"
     },
     {
       "path": "gdlintrc",
@@ -324,8 +324,8 @@
     },
     {
       "path": "scripts/save/save_service.gd",
-      "size": 7683,
-      "sha256": "9d1b32576c2a3802bb64a71e06a01f0fbaaac76f25aff8d4b241c9073c425187"
+      "size": 7708,
+      "sha256": "66779253fadfc19be3cccbffe08e88d41f15507c44882caa21e857d8bc10596d"
     },
     {
       "path": "scripts/tests/headless_test_runner.gd",
@@ -364,8 +364,8 @@
     },
     {
       "path": "test.sh",
-      "size": 712,
-      "sha256": "d5acd3e751292a4bbf275b6a3f4675b73c1012f89e04a6a847b17f07d270448e"
+      "size": 1621,
+      "sha256": "e51eb93604ff0cb4d970600592f730e92493f1500da008544dea64e22d1ad2a0"
     },
     {
       "path": "tools/build_manifest.py",
