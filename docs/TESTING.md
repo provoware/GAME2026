@@ -109,3 +109,7 @@ Noch offen: gezielte Schreibfehler, Stromausfall-Recovery, Save-Migrationen v1/v
 ### Schutz vor falsch-grüner Godot-CI (23.10.2026)
 
 Beim ersten Korrekturversuch meldete Godot einen GDScript-Typfehler in `save_service.gd` und weitere Laufzeitfehler. Trotzdem endete der Prozess mit Exitcode 0 und meldete irreführend `[Tests] 4/4 bestanden`; der CI-Auftrag erschien grün: https://github.com/provoware/GAME2026/actions/runs/39963412124 . **Das ist kein gültiger PASS.** Die Ursache wurde im Quelltext korrigiert (expliziter Dictionary-Typ). Der Teststarter lehnt jetzt Script-/Laufzeitfehler, fehlende Zusammenfassungen, unvollständige Testzahlen (<23) und Fehlschläge ausdrücklich ab. Der Godot-Projektimport kontrolliert seine Fehlerausgabe ebenfalls. Der nachfolgende Commit muss beide CI-Aufträge erfolgreich durchlaufen, bevor ein Nachweis gilt.
+
+### Verifizierter Headless-Lauf (23.10.2026, 15:46 MESZ)
+
+**PASS am Commit `1044716b07ae2352749d9c9b35b53c972199a4a1`:** https://github.com/provoware/GAME2026/actions/runs/39963911354 . Godot 4.6-stable (SHA-256 geprüft), fehlerfreier Projektimport und 23/23 echte Godot-Selbsttests. Zusätzlich 23/23 Python-Tests, GDScript-/Shell-Syntax, JSON-Schemas, Manifest und Referenzprüfung erfolgreich. Die neu eingeführte Teststarter-Prüfung verlangt mindestens 23 Tests und weist Script-/Laufzeitfehler zurück. Dies bestätigt die vorhandene Testauswahl, **nicht** alle Release-Pflichten.

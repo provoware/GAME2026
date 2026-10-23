@@ -43,7 +43,7 @@
 | QA-02 | Balance und Missbrauchsversuche | docs/TESTING.md | OFFEN | Reproduzierbare Seeds |
 | QA-03 | Leistung, Speicher und Stabilität | docs/TESTING.md | OFFEN | Budgets und Belastungstest |
 | QA-04 | Python, Shell, JSON, GDScript, CI | .github/workflows/validate.yml | CODE | CI zuletzt grün, aber Manifest wurde vorher neu erzeugt; Gate nach Korrektur prüfen |
-| QA-05 | Godot 4.6 Headless-Selbsttests | test.sh / .github/workflows/validate.yml | IN_PRUEFUNG | Neuer CI-Auftrag mit SHA-256-verifizierter Godot 4.6; tatsächliche CI-Tests und Fehlermeldungen noch auswerten |
+| QA-05 | Godot 4.6 Headless-Selbsttests | test.sh / .github/workflows/validate.yml | PASS (23/23, Godot 4.6) | Commit `1044716b07ae2352749d9c9b35b53c972199a4a1`, Actions 39963911354; alle registrierten 23 Engine-Tests bestanden, Import und Fehlergate erfolgreich |
 | QA-06 | Negativ- und Regressionstests | tools/tests/test_verify_world.py | CODE | Zehn Weltgraph-Regressionstests vorhanden; weitere Fachtests fehlen |
 | OPS-01 | Linux/Windows-Start und Offlinebetrieb | start.sh | OFFEN | Frischinstallation, Start |
 | OPS-02 | ZIP, Manifest, Prüfsummen | package.sh | CODE | Manifest darf vor Prüfung nicht neu erzeugt werden; ZIP-Roundtrip fehlt |
@@ -75,3 +75,10 @@
 - **Unabhängig offen:** WORLD-01, vollständige Missionen und Kampagne, 800×600/Skalierung, Tastatur, Speicherung/Migration, Performance, Startbarkeit, Release-Freeze. Keine persönliche Endabnahme vor den technischen Gates.
 
 - **QA-05 Nachtrag:** Ein Godot-Importfehler kann bei Exitcode 0 fälschlich grüne CI erzeugen (reproduziert in Run 39963412124). Der neue `test.sh`-Gate prüft Fehlertexte und mindestens 23 vollständige Tests; der Import-Gate prüft Parse-/Ladefehler. Ein früherer grüner Lauf mit nur 4/4 zählt ausdrücklich **nicht** als PASS. Aktuelle CI erneut auswerten.
+
+## Verifizierter QA-05-Checkpoint – 23.10.2026, 15:46 MESZ
+
+- **Evidenz:** Commit `1044716b07ae2352749d9c9b35b53c972199a4a1`, GitHub Actions https://github.com/provoware/GAME2026/actions/runs/39963911354 – **PASS** `static-validation` (23/23 Python-Tests, Manifest/Syntax/Schemas) und **PASS** `godot-headless` (offizielles Godot 4.6-stable, geprüfte SHA-256, Projektimport, **23/23 tatsächliche Engine-Tests**).
+- **Kritischer Befund behoben:** JSON-Parser wandelte Ganzzahlen beim Laden in float um; dadurch schlug der Roundtrip fehl (21/22 auf Commit `d250b3f8983d7b453a136c018aa5f05812333c95`). Typnormalisierung und neuer Ganzzahl-/Bruchwert-Test sind nun tatsächlich grün. Ein zweiter Fehler ließ Scriptfehler mit Exitcode 0 fälschlich als grün erscheinen; Import- und Teststarter prüfen deshalb zusätzlich Fehlerausgabe und Mindesttestzahl.
+- **QA-05 (registrierte Godot-Selbsttests): PASS; Vorrelease-Gesamtstatus weiterhin ROT.** SAV-04 bleibt P0 bis zu Fehler-Injektion, Kurzschreib-/Stromausfall-/Recovery-Prüfung, Migrationsfällen und Windows-Vergleich. Alle anderen offenen Pflichtfunktionen und technische Oberflächen-/Gesamttests bleiben offen. Persönliche Endabnahme zurückgestellt.
+- **Nächster erlaubter Schritt:** SAVE-T03/T04/T07/T09/T10/T11 in isolierter Testumgebung mit reproduzierbaren Fehlern prüfen, danach WORLD-01-Reise und Save-Roundtrip. Kein Merge/Release.
