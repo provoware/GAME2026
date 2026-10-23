@@ -344,8 +344,8 @@
     },
     {
       "path": "scripts/tests/save_service_regression_runner.gd",
-      "size": 12998,
-      "sha256": "87d005e60c9f7eff2fcbf933a7c0962b33330d1394722c3283431d4495e9e3c7"
+      "size": 13167,
+      "sha256": "cb2b01b926b7f71d553569c5869bc2ece35eae333b243475ba9bf068ec83cfeb"
     },
     {
       "path": "scripts/tests/test_runner.gd",
