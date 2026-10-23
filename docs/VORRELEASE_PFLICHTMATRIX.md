@@ -66,7 +66,7 @@
 2. GitHub-CI auf dem neuen Commit vollständig auswerten; ein früherer grüner Lauf zählt nicht als Nachweis für diesen Commit.
 3. Danach P0-Speicher-Backup mit Fehler-Injektion absichern und WORLD-01-Reise, Ressourcen, Zeit, Missionstrigger, Positionszustand und Save-Roundtrip über Commands und Effects umsetzen.
 
-**Freigabe: ROT (0/44 vollständig abgeschlossene Release-Pflichten; SAV-04-Code nicht runtime-geprüft).** Kein Merge und kein Release. Persönliche Kubuntu-/Sichtabnahme ausschließlich am eingefrorenen Vorrelease-Kandidaten.
+**Freigabe: ROT (1/44 einzeln nachgewiesene Pflichten: QA-05; SAV-04 weiterhin P0 und nicht vollständig freigegeben).** Kein Merge und kein Release. Persönliche Kubuntu-/Sichtabnahme ausschließlich am eingefrorenen Vorrelease-Kandidaten.
 
 ## Technischer Nachtrag – 23.10.2026, 15:35 MESZ
 
