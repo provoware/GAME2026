@@ -102,3 +102,9 @@ Am Code-HEAD `1356e4811a1a7436dee6e9cebd1bc6f62cb2a0e1` bestanden **27/27 Godot-
 ## SAV-04 – Lesende Recovery-Diagnose (24.10.2026)
 
 Sechs isolierte Engine-Regressionen und eine schreibfreie Diagnose für Hauptstand, `.bak`, `.bak.previous` und `.tmp` sind auf getrenntem Entwicklungszweig implementiert. Keine automatische Wiederherstellung; `.tmp` ist niemals eine bestätigte Speicherung. **Status bis zur tatsächlichen GitHub-CI: UNGEPRUEFT.** P0-SAV-04 und alle Gesamtgates bleiben ROT. Details: `docs/SAVE_RECOVERY_INSPECTION_20261024.md`. Nächster Schritt: CI-Auswertung, anschließend isolierte Kurzschreib-/Stromausfall- und Migrationsfälle.
+
+## Verifizierter Engine- und Integritätscheckpoint – 24.10.2026, 01:32 MESZ
+
+**Geprüfter Code-HEAD:** `c7a6e3eeecdb35ea38e43a85b057cbdb8bb672a0`. **GitHub Actions:** https://github.com/provoware/GAME2026/actions/runs/40040205415 (auch Push-Lauf 40040189820). `godot-headless` **PASS: 33/33 tatsächliche Godot-4.6-Laufzeittests**, darunter REC-T01 bis REC-T06; offizielles Godot-Archiv mit SHA-256 verifiziert, Projektimport und Fehlergate erfolgreich. `static-validation` **PASS: 23/23 Python-Regressionen**, Manifest, JSON, GDScript und Shell erfolgreich. GitHub-Laufprotokolle wurden ausgelesen.
+
+**Beweisgrenze:** Die sechs Recovery-Tests zeigen nur die schreibfreie Untersuchung isolierter Zustände, nicht physische Stromausfall- oder Windows-Recovery. **SAV-04 bleibt P0-OFFEN; Gesamt-Vorrelease ROT (1/44).** Dieser Nachtrag ist ein Dokumentationsfolgecommit; dessen endgültiger HEAD benötigt erneut grüne CI.

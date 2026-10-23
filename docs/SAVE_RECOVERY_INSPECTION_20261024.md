@@ -24,3 +24,9 @@ Alle Tests erzeugen und entfernen nur eigene Dateien unter `user://_prerelease_r
 Diese Diagnose stellt **noch keine Wiederherstellungsfunktion** dar. Sie beweist keine Stromausfallsicherheit auf physischem Datenträger, keine Windows-Umbenennungssemantik, keine garantierte Schreibdauerhaftigkeit (fsync), keine Save-v1/v2/v3-Migration und keine Behandlung von Zugriffs-/Sperrfehlern. Bei mehreren gültigen Kandidaten muss der Benutzer später eine gesondert abgesicherte Entscheidung treffen; Dateinamen allein beweisen nicht die jüngste Spielversion.
 
 **Traceability:** SAV-04 → REC-T01 bis REC-T06 → `scripts/save/recovery_inspector.gd` → `scripts/tests/recovery_inspector_test_runner.gd` → `headless_test_runner.gd` → GitHub Actions auf dem finalen HEAD. Vor Ausführung: UNGEPRUEFT; kein Vorrelease, kein Merge. Persönliche Endabnahme zurückgestellt.
+
+## Verifizierter Engine- und Integritätscheckpoint – 24.10.2026, 01:32 MESZ
+
+**Geprüfter Code-HEAD:** `c7a6e3eeecdb35ea38e43a85b057cbdb8bb672a0`. **GitHub Actions:** https://github.com/provoware/GAME2026/actions/runs/40040205415 (auch Push-Lauf 40040189820). `godot-headless` **PASS: 33/33 tatsächliche Godot-4.6-Laufzeittests**, darunter REC-T01 bis REC-T06; offizielles Godot-Archiv mit SHA-256 verifiziert, Projektimport und Fehlergate erfolgreich. `static-validation` **PASS: 23/23 Python-Regressionen**, Manifest, JSON, GDScript und Shell erfolgreich. GitHub-Laufprotokolle wurden ausgelesen.
+
+**Beweisgrenze:** Die sechs Recovery-Tests zeigen nur die schreibfreie Untersuchung isolierter Zustände, nicht physische Stromausfall- oder Windows-Recovery. **SAV-04 bleibt P0-OFFEN; Gesamt-Vorrelease ROT (1/44).** Dieser Nachtrag ist ein Dokumentationsfolgecommit; dessen endgültiger HEAD benötigt erneut grüne CI.
