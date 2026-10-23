@@ -2,6 +2,8 @@
 
 ## Unveröffentlicht
 
+- SAV-04 (Entwicklungszweig): Rücknahme schützt den zuletzt gültigen Sicherungsstand auch dann, wenn die Wiederherstellung des Hauptstands selbst scheitert; vier zusätzliche Godot-Fehler-Injektions-/Prüfsummentests und 27er-CI-Gate. Noch nicht vollständig freigegeben.
+
 - QA-05: falsch-grüne Godot-CI bei Script-Kompilierfehlern entdeckt; Import- und Teststarter-Gates gegen Fehlerausgaben und unvollständige Tests abgesichert.
 
 - SAV-04: Der erstmals tatsächlich ausgeführte Godot-4.6-Lauf entdeckte `TEST-ERR-024`: JSON-Integer wurden als float zurückgelesen. Typnormalisierung für exakt darstellbare Ganzzahlen und eigener Regressionstest ergänzt; CI-Nachprüfung erforderlich.
