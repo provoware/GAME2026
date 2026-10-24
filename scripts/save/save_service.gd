@@ -51,7 +51,7 @@ func save_to_path(path: String, state: GameSessionState) -> GameResult:
 				{"path": temporary_path}
 			)
 		)
-	file.store_string(payload)
+	_store_temporary_payload(file, payload)
 	file.flush()
 	file.close()
 
@@ -138,6 +138,12 @@ func save_to_path(path: String, state: GameSessionState) -> GameResult:
 				["Alte Sicherung konnte nicht entfernt werden; weitere Speicherung gesperrt."]
 			)
 	return GameResult.success(path)
+
+
+# Testnaht: simuliert eine zu kurze Schreiboperation ohne produktive Daten anzufassen.
+# Die produktive Implementierung schreibt weiterhin den vollständigen Inhalt.
+func _store_temporary_payload(file: FileAccess, payload: String) -> void:
+	file.store_string(payload)
 
 
 func _rename_file(source: String, destination: String) -> Error:
