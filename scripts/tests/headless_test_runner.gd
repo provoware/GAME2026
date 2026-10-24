@@ -15,6 +15,7 @@ func _initialize() -> void:
 		SaveServiceRegressionRunner.new().run_all(),
 		SaveRecoveryInspectorTestRunner.new().run_all(),
 		SaveMigrationTestRunner.new().run_all(),
+		SaveRecoveryCopyTestRunner.new().run_all(),
 	]
 	var passed := 0
 	var total := 0
