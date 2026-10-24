@@ -24,8 +24,18 @@
     },
     {
       "path": "CHANGELOG.md",
-      "size": 4657,
-      "sha256": "213bb531813e31497a17ccd7cca84227f60cf73077d18c782cacdd3164520aea"
+      "size": 4901,
+      "sha256": "071007e0c10351af93321e04eb7bc15380b63f18c9287f23bd0429b493406d38"
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "size": 2788,
+      "sha256": "f2d4ff88a15f54f6b9b992ad8bbb7e17c13f5ab6494120eadaf3861dee11ba16"
+    },
+    {
+      "path": "README.md",
+      "size": 3771,
+      "sha256": "a2139b4c6f7edc6e4372ecd3eeba537822ac271f822fb54d6f125da0d6c9a8a8"
     },
     {
       "path": "content/missions/mission_neon_signal_9909.json",
@@ -36,11 +46,6 @@
       "path": "content/world/city_graph.json",
       "size": 3667,
       "sha256": "2948b6b438a84882fec86446f97c0c4585825e4e3dd0ec6a57ec7f0cb130cc3d"
-    },
-    {
-      "path": "CONTRIBUTING.md",
-      "size": 2788,
-      "sha256": "f2d4ff88a15f54f6b9b992ad8bbb7e17c13f5ab6494120eadaf3861dee11ba16"
     },
     {
       "path": "docs/ARCHITECTURE.md",
@@ -74,8 +79,8 @@
     },
     {
       "path": "docs/PROJECT_STATUS.md",
-      "size": 11377,
-      "sha256": "1462b0cd18d5be71569b26df288e14384e3d3bdba0294e583ed8e0862b667901"
+      "size": 12003,
+      "sha256": "50a409f53ddd479e399eef40b2912bcd3d93d48590b060ef034a8bab928d51c9"
     },
     {
       "path": "docs/RELEASE_PROCESS.md",
@@ -86,6 +91,11 @@
       "path": "docs/SAVE_BACKUP_SAFETY_GATE_20261023.md",
       "size": 9090,
       "sha256": "48851d824ab9c380ca1ca165ba4242766c930dff678ad023a7874ce1645a8256"
+    },
+    {
+      "path": "docs/SAVE_RECOVERY_COPY_20261024.md",
+      "size": 2208,
+      "sha256": "3261cfb787e775658eaca180f9d0c998980d3f6c4f60873adb10d9f5a91106b8"
     },
     {
       "path": "docs/SAVE_RECOVERY_INSPECTION_20261024.md",
@@ -104,8 +114,8 @@
     },
     {
       "path": "docs/VORRELEASE_PFLICHTMATRIX.md",
-      "size": 18844,
-      "sha256": "7509d4d72915311e8cbbd4b0e8f45f7f639ca4fe0952db976a12f5a49261b629"
+      "size": 19672,
+      "sha256": "90ebe85d82c760cd19e7eae72617a9daa69df66ea455f3349298150c4df722b7"
     },
     {
       "path": "gdlintrc",
@@ -121,11 +131,6 @@
       "path": "project.godot",
       "size": 746,
       "sha256": "ae05cb0f9e35f5f1320389371a9b20443eca900a5770716b32b2ac0340ff08ff"
-    },
-    {
-      "path": "README.md",
-      "size": 3771,
-      "sha256": "a2139b4c6f7edc6e4372ecd3eeba537822ac271f822fb54d6f125da0d6c9a8a8"
     },
     {
       "path": "scenes/main/main.tscn",
@@ -148,14 +153,14 @@
       "sha256": "e0bad95180f4cc43857d2718518c49fb1c1f7b5497acb36a2d4dc0bb76d517d3"
     },
     {
-      "path": "scripts/core/domain_event_bus.gd",
-      "size": 379,
-      "sha256": "f8d773484fb0e61b1d46613e7f13af32d96b786bfd5efe4e430248465f12ac72"
-    },
-    {
       "path": "scripts/core/domain_event.gd",
       "size": 551,
       "sha256": "1abeafef6578f79f10f9f0fc833f8e401287229c75b65e7bc25eccbd336c733e"
+    },
+    {
+      "path": "scripts/core/domain_event_bus.gd",
+      "size": 379,
+      "sha256": "f8d773484fb0e61b1d46613e7f13af32d96b786bfd5efe4e430248465f12ac72"
     },
     {
       "path": "scripts/core/effect_transaction.gd",
@@ -328,6 +333,11 @@
       "sha256": "7969a896663df9673d7eaa0e3148a4ffb12b6058b0b670c0b1d6b1080e9e3eef"
     },
     {
+      "path": "scripts/save/recovery_copy_service.gd",
+      "size": 3201,
+      "sha256": "f20a4221eb8133014c7d157ae8571fc8a3b3a289d5d1b1d0b7b1742f9575a187"
+    },
+    {
       "path": "scripts/save/recovery_inspector.gd",
       "size": 1582,
       "sha256": "84d260c9fb962a7387be0585c654a1cd6191407acb01d271832b277b78449aa7"
@@ -339,8 +349,8 @@
     },
     {
       "path": "scripts/tests/headless_test_runner.gd",
-      "size": 921,
-      "sha256": "6fecf493b3f8b779b8f98cd20fc3f413937aab469575e38db27ff752210e00f3"
+      "size": 967,
+      "sha256": "ff03873298bb0ab50ca5fcb65f14030b3e7f716ffa16fb2a4a20e56d5209fd21"
     },
     {
       "path": "scripts/tests/iteration_c_test_runner.gd",
@@ -351,6 +361,11 @@
       "path": "scripts/tests/mission_mass_simulator.gd",
       "size": 2794,
       "sha256": "60321cab4164dbb335001126876a04a4516a0f91e68e07231d5c8ef5178039c9"
+    },
+    {
+      "path": "scripts/tests/recovery_copy_test_runner.gd",
+      "size": 7723,
+      "sha256": "b690ccc2435308e775aba2f83037f183bde9c58d3c678314b02676cc67f42658"
     },
     {
       "path": "scripts/tests/recovery_inspector_test_runner.gd",
@@ -385,7 +400,7 @@
     {
       "path": "test.sh",
       "size": 1697,
-      "sha256": "ff63ced604a604b514684c0b02de42daefd6d2099a6007d55d66dfa52e0312bc"
+      "sha256": "ed4661385747ca90bfbe5750bbd79e40a6f315fc727dcc2e7b5d8eaca5cd3df8"
     },
     {
       "path": "tools/build_manifest.py",
