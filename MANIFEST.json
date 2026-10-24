@@ -24,8 +24,8 @@
     },
     {
       "path": "CHANGELOG.md",
-      "size": 4149,
-      "sha256": "7b3358ee709f21014c98b9c554c7d57f863a418681c543a717a4afa3c46e0e72"
+      "size": 4425,
+      "sha256": "9b9017a23ac3e060480081e8d3dffca1e45b4520c8c5e5819864e8bd664da1d2"
     },
     {
       "path": "CONTRIBUTING.md",
@@ -79,8 +79,8 @@
     },
     {
       "path": "docs/PROJECT_STATUS.md",
-      "size": 6684,
-      "sha256": "c4774a3002bf1a734fc2a656a54b0a8f4fc7db6acafad632e38af2c9e2aad798"
+      "size": 9069,
+      "sha256": "f992a748c4653d362409177a6e60ac23511d5cee304989401dec7463b33e339b"
     },
     {
       "path": "docs/RELEASE_PROCESS.md",
@@ -109,8 +109,8 @@
     },
     {
       "path": "docs/VORRELEASE_PFLICHTMATRIX.md",
-      "size": 14553,
-      "sha256": "cf7a3b07800a92d34c5c8f1250c373d42a7eeaf786c8b43d1e0937dae1934965"
+      "size": 16938,
+      "sha256": "36a013938670a3970c37f803f4dcf27b86cbdbcbdac4e01750a714d1ecb7f40a"
     },
     {
       "path": "gdlintrc",
@@ -334,8 +334,8 @@
     },
     {
       "path": "scripts/save/save_service.gd",
-      "size": 7926,
-      "sha256": "e815c710d078590bd510026a3d7c3c1d7047ecde57968b951b88ef31d778542f"
+      "size": 8209,
+      "sha256": "1e4a57e5abcc1acb5d0625a4a42c7050bbb6ce3324cc206a93de59258b15379a"
     },
     {
       "path": "scripts/tests/headless_test_runner.gd",
@@ -359,8 +359,8 @@
     },
     {
       "path": "scripts/tests/save_service_regression_runner.gd",
-      "size": 13167,
-      "sha256": "cb2b01b926b7f71d553569c5869bc2ece35eae333b243475ba9bf068ec83cfeb"
+      "size": 15485,
+      "sha256": "eeb9740e99af77fca01d677ebddca60ff713ec0283ca261ad05e307896f24e13"
     },
     {
       "path": "scripts/tests/test_runner.gd",
@@ -380,7 +380,7 @@
     {
       "path": "test.sh",
       "size": 1697,
-      "sha256": "0a779b49e4fa4ada3b2c5d96032c235e308256b314ec0faad6a6c593a4e45cab"
+      "sha256": "3fe63489ec01e8a62d293a775650285dbb733654cf7507af5e643416af8bd329"
     },
     {
       "path": "tools/build_manifest.py",

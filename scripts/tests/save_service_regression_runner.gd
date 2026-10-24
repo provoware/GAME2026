@@ -52,6 +52,13 @@ class FailedRollbackService:
 		return super._rename_file(source, destination)
 
 
+class ShortWriteService:
+	extends SaveService
+
+	func _store_temporary_payload(file: FileAccess, payload: String) -> void:
+		file.store_string(payload.substr(0, maxi(1, int(payload.length() / 2))))
+
+
 func run_all() -> Dictionary:
 	var tests := [
 		["Sicherung nach erfolgreichem Speichern rotiert", _test_rotation],
@@ -65,6 +72,9 @@ func run_all() -> Dictionary:
 		["Fehlgeschlagene Hauptstand-Rücknahme erhält beide gültigen Stände", _test_failed_main_rollback],
 		["Defekte Prüfsumme verändert keine Sicherung", _test_invalid_checksum],
 		["JSON-Ganzzahlen und Bruchwerte bleiben erhalten", _test_json_number_types],
+		["Kurzschreiben beim ersten Speichern wird abgewiesen", _test_short_write_first],
+		["Kurzschreiben mit Hauptstand schützt den Bestand", _test_short_write_main],
+		["Kurzschreiben mit Sicherung schützt beide Stände", _test_short_write_backup],
 	]
 	var passed := 0
 	var failures: Array[String] = []
@@ -311,6 +321,58 @@ func _test_json_number_types() -> GameResult:
 				result = _failure("TEST-SAVE-014", "Bruchwert wurde verändert.")
 	_cleanup(path)
 	return result
+
+
+func _test_short_write_first() -> GameResult:
+	return _test_short_write_preserves(0)
+
+
+func _test_short_write_main() -> GameResult:
+	return _test_short_write_preserves(1)
+
+
+func _test_short_write_backup() -> GameResult:
+	return _test_short_write_preserves(2)
+
+
+func _test_short_write_preserves(previous_saves: int) -> GameResult:
+	# Nur eindeutige, isolierte Testpfade; niemals produktive Speicherstände.
+	var path := _new_path()
+	var result := GameResult.success()
+	for index in range(previous_saves):
+		result = _save_amount(SaveService.new(), path, 1000 - index * 100)
+		if not result.ok:
+			break
+
+	var before: Dictionary = {}
+	if result.ok:
+		for suffix in ["", ".bak", ".bak.previous"]:
+			var slot_path := "%s%s" % [path, suffix]
+			if FileAccess.file_exists(slot_path):
+				before[suffix] = FileAccess.get_file_as_string(slot_path)
+
+	if result.ok:
+		var failed := _save_amount(ShortWriteService.new(), path, 700)
+		if failed.ok or failed.errors.is_empty():
+			result = _failure("TEST-SAVE-028", "Kurzschreiben wurde nicht zurückgewiesen.")
+		elif (failed.errors[0] as GameError).code != "SAVE-ERR-011":
+			result = _failure("TEST-SAVE-029", "Falscher Fehlercode für Kurzschreiben.")
+
+	if result.ok:
+		for suffix in ["", ".bak", ".bak.previous"]:
+			var slot_path := "%s%s" % [path, suffix]
+			var expected_exists: bool = before.has(suffix)
+			if FileAccess.file_exists(slot_path) != expected_exists:
+				result = _failure("TEST-SAVE-030", "Speicher-Slot wurde unerwartet verändert.")
+				break
+			if expected_exists and FileAccess.get_file_as_string(slot_path) != str(before[suffix]):
+				result = _failure("TEST-SAVE-031", "Bestehender Speicherstand wurde verändert.")
+				break
+	if result.ok and FileAccess.file_exists("%s.tmp" % path):
+		result = _failure("TEST-SAVE-032", "Abgewiesene Test-Schreibdatei blieb liegen.")
+	_cleanup(path)
+	return result
+
 
 func _new_path() -> String:
 	var folder := "user://_prerelease_save_tests"
