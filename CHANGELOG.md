@@ -2,6 +2,8 @@
 
 ## Unveröffentlicht
 
+- SAV-04: explizite, nicht destruktive Recovery-Kopie geprüfter Spielstände mit Zielkollisionsschutz und acht isolierten Godot-Regressionen; Godot-Mindestgate 54, CI noch ausstehend; kein automatischer Restore und keine Vorrelease-Freigabe.
+
 - MIG-01: zehn isolierte Save-v1/v2/v3- und Negativregressionen; strenge Typpruefung vor der Zustandsmigration gegen fehlerhafte Container und Textversionen; Godot-Mindestgate 46. CI-Nachweis ausstehend, keine Vorrelease-Freigabe.
 
 - SAV-04: drei isolierte Godot-Kurzschreib-Regressionen (erster Stand, Hauptstand, vorhandene Sicherung); fehlerhafte temporäre Daten dürfen die Sicherungsrotation nicht erreichen. Engine-Gate auf mindestens 36 erhöht. CI-Nachweis ausstehend; keine Stromausfall-Freigabe.
