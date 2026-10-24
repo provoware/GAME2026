@@ -94,7 +94,14 @@ func to_dict() -> Dictionary:
 
 
 func restore_from_dict(data: Dictionary) -> GameResult:
-	var found_version := int(data.get("schema_version", 1))
+	# Vor einer Migration Typen pruefen: keine stillen Text-zu-Zahl-Konvertierungen
+	# und keine fehlerhaften as-Dictionary/Array-Zugriffe aus Fremddaten.
+	var raw_version: Variant = data.get("schema_version", 1)
+	if typeof(raw_version) != TYPE_INT:
+		return GameResult.failure(
+			GameError.new("SAVE-ERR-001", "Ungueltige Speicherstandversion.", {"found": raw_version})
+		)
+	var found_version: int = raw_version
 	if found_version < 1 or found_version > SCHEMA_VERSION:
 		return GameResult.failure(
 			GameError.new(
@@ -102,6 +109,20 @@ func restore_from_dict(data: Dictionary) -> GameResult:
 				"Unbekannte Speicherstandversion.",
 				{"found": found_version, "maximum_supported": SCHEMA_VERSION}
 			)
+		)
+
+	for field in [
+		"resources", "flags", "available_characters", "unlocked_abilities",
+		"missions", "processed_transactions"
+	]:
+		if data.has(field) and not (data[field] is Dictionary):
+			return GameResult.failure(
+				GameError.new("SAVE-ERR-015", "Ungueltige Speicherstruktur.", {"field": field})
+			)
+	for field in ["mission_history", "journal"]:
+		if data.has(field) and not (data[field] is Array):
+			return GameResult.failure(
+				GameError.new("SAVE-ERR-015", "Ungueltige Speicherstruktur.", {"field": field})
 		)
 
 	schema_version = SCHEMA_VERSION

@@ -24,18 +24,8 @@
     },
     {
       "path": "CHANGELOG.md",
-      "size": 4425,
-      "sha256": "9b9017a23ac3e060480081e8d3dffca1e45b4520c8c5e5819864e8bd664da1d2"
-    },
-    {
-      "path": "CONTRIBUTING.md",
-      "size": 2788,
-      "sha256": "f2d4ff88a15f54f6b9b992ad8bbb7e17c13f5ab6494120eadaf3861dee11ba16"
-    },
-    {
-      "path": "README.md",
-      "size": 3771,
-      "sha256": "a2139b4c6f7edc6e4372ecd3eeba537822ac271f822fb54d6f125da0d6c9a8a8"
+      "size": 4657,
+      "sha256": "213bb531813e31497a17ccd7cca84227f60cf73077d18c782cacdd3164520aea"
     },
     {
       "path": "content/missions/mission_neon_signal_9909.json",
@@ -46,6 +36,11 @@
       "path": "content/world/city_graph.json",
       "size": 3667,
       "sha256": "2948b6b438a84882fec86446f97c0c4585825e4e3dd0ec6a57ec7f0cb130cc3d"
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "size": 2788,
+      "sha256": "f2d4ff88a15f54f6b9b992ad8bbb7e17c13f5ab6494120eadaf3861dee11ba16"
     },
     {
       "path": "docs/ARCHITECTURE.md",
@@ -79,8 +74,8 @@
     },
     {
       "path": "docs/PROJECT_STATUS.md",
-      "size": 9069,
-      "sha256": "f992a748c4653d362409177a6e60ac23511d5cee304989401dec7463b33e339b"
+      "size": 11377,
+      "sha256": "1462b0cd18d5be71569b26df288e14384e3d3bdba0294e583ed8e0862b667901"
     },
     {
       "path": "docs/RELEASE_PROCESS.md",
@@ -109,8 +104,8 @@
     },
     {
       "path": "docs/VORRELEASE_PFLICHTMATRIX.md",
-      "size": 16938,
-      "sha256": "36a013938670a3970c37f803f4dcf27b86cbdbcbdac4e01750a714d1ecb7f40a"
+      "size": 18844,
+      "sha256": "7509d4d72915311e8cbbd4b0e8f45f7f639ca4fe0952db976a12f5a49261b629"
     },
     {
       "path": "gdlintrc",
@@ -126,6 +121,11 @@
       "path": "project.godot",
       "size": 746,
       "sha256": "ae05cb0f9e35f5f1320389371a9b20443eca900a5770716b32b2ac0340ff08ff"
+    },
+    {
+      "path": "README.md",
+      "size": 3771,
+      "sha256": "a2139b4c6f7edc6e4372ecd3eeba537822ac271f822fb54d6f125da0d6c9a8a8"
     },
     {
       "path": "scenes/main/main.tscn",
@@ -148,14 +148,14 @@
       "sha256": "e0bad95180f4cc43857d2718518c49fb1c1f7b5497acb36a2d4dc0bb76d517d3"
     },
     {
-      "path": "scripts/core/domain_event.gd",
-      "size": 551,
-      "sha256": "1abeafef6578f79f10f9f0fc833f8e401287229c75b65e7bc25eccbd336c733e"
-    },
-    {
       "path": "scripts/core/domain_event_bus.gd",
       "size": 379,
       "sha256": "f8d773484fb0e61b1d46613e7f13af32d96b786bfd5efe4e430248465f12ac72"
+    },
+    {
+      "path": "scripts/core/domain_event.gd",
+      "size": 551,
+      "sha256": "1abeafef6578f79f10f9f0fc833f8e401287229c75b65e7bc25eccbd336c733e"
     },
     {
       "path": "scripts/core/effect_transaction.gd",
@@ -184,8 +184,8 @@
     },
     {
       "path": "scripts/core/game_session_state.gd",
-      "size": 6265,
-      "sha256": "ec47c9db1ba1eac673794613e741e5b8dea7d35cd2d4cf9a551931c3c143f66f"
+      "size": 7143,
+      "sha256": "9b8c3bf63cd4dffb096b1ee54e27ef5a0c3725c6b0510c84b0f9d787ad13bcf0"
     },
     {
       "path": "scripts/mission/commands/advance_campaign_month_command.gd",
@@ -339,8 +339,8 @@
     },
     {
       "path": "scripts/tests/headless_test_runner.gd",
-      "size": 878,
-      "sha256": "85af199dc57f4e3dbf4b90b81bb72dafc6d98daac7c6a0cfdb86d2db1aa91a67"
+      "size": 921,
+      "sha256": "6fecf493b3f8b779b8f98cd20fc3f413937aab469575e38db27ff752210e00f3"
     },
     {
       "path": "scripts/tests/iteration_c_test_runner.gd",
@@ -356,6 +356,11 @@
       "path": "scripts/tests/recovery_inspector_test_runner.gd",
       "size": 7095,
       "sha256": "dd7c2440baa14e7a6ebe073b88ab63dbe601940efbfe1444b4216599753e39a2"
+    },
+    {
+      "path": "scripts/tests/save_migration_test_runner.gd",
+      "size": 5675,
+      "sha256": "9a79e1af7e8af005fb5735779cc3278e42d8ff231627e1fb17146d7437aa0969"
     },
     {
       "path": "scripts/tests/save_service_regression_runner.gd",
@@ -380,7 +385,7 @@
     {
       "path": "test.sh",
       "size": 1697,
-      "sha256": "3fe63489ec01e8a62d293a775650285dbb733654cf7507af5e643416af8bd329"
+      "sha256": "ff63ced604a604b514684c0b02de42daefd6d2099a6007d55d66dfa52e0312bc"
     },
     {
       "path": "tools/build_manifest.py",
