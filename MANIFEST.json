@@ -79,8 +79,8 @@
     },
     {
       "path": "docs/PROJECT_STATUS.md",
-      "size": 7892,
-      "sha256": "aa8706440e818810874a640cd7b86491ce27dd0843e2726c8b04eea3540c7600"
+      "size": 9069,
+      "sha256": "f992a748c4653d362409177a6e60ac23511d5cee304989401dec7463b33e339b"
     },
     {
       "path": "docs/RELEASE_PROCESS.md",
@@ -109,8 +109,8 @@
     },
     {
       "path": "docs/VORRELEASE_PFLICHTMATRIX.md",
-      "size": 15761,
-      "sha256": "f72aeb2c72bb541f7ce4542a6a3d026373a053f8d890b7d7e30574fccbd9c2cd"
+      "size": 16938,
+      "sha256": "36a013938670a3970c37f803f4dcf27b86cbdbcbdac4e01750a714d1ecb7f40a"
     },
     {
       "path": "gdlintrc",
